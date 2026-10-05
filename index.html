@@ -1,422 +1,160 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
-<meta name="theme-color" content="#07080d">
-<title>千嬋學校｜第一階段：午夜探校</title>
+<!DOCTYPE html><html lang="zh-Hant"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#05060a"><title>千蟬學校｜第一階段：午夜探校</title>
 <style>
-:root{
- --bg:#05060a;--panel:#0c0f16;--panel2:#121722;--panel3:#181d28;--line:rgba(255,255,255,.10);
- --text:#ede9e2;--muted:#96928d;--red:#8d2438;--red2:#d66578;--gold:#c8aa72;--green:#74b68d;--blue:#6f8cac;
- --shadow:0 30px 100px rgba(0,0,0,.58);--radius:18px
-}
-*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#05060a;color:var(--text);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}
-body{overflow-x:hidden}.hidden{display:none!important}button,input,select,textarea{font:inherit}button{cursor:pointer}
-button:disabled{cursor:not-allowed;opacity:.45}
-.app{min-height:100vh;background:radial-gradient(circle at 50% 6%,rgba(112,23,43,.14),transparent 26%),linear-gradient(180deg,#06070b,#090b10 44%,#040507)}
-.wrap{width:min(1240px,calc(100% - 28px));margin:auto}.btn{border:1px solid var(--line);border-radius:11px;background:rgba(255,255,255,.045);color:var(--text);padding:10px 14px;transition:.18s transform,.18s background,.18s border-color}.btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}.btn.primary{background:linear-gradient(135deg,#641f2d,#9b3045);border-color:#ae4a5c}.btn.gold{background:linear-gradient(135deg,#7f6030,#c7a86e);color:#19140c;border-color:#d8b97b}.btn.blue{background:linear-gradient(135deg,#334c69,#6a86ac)}.btn.small{padding:7px 10px;font-size:12px}
-/* title */
-#titleScreen{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;background:
- radial-gradient(circle at 50% 48%,rgba(120,20,38,.19),transparent 34%),
- linear-gradient(135deg,#08090e,#05060a 55%,#020307)}
-#titleScreen:before{content:"";position:absolute;inset:-25%;opacity:.035;background:repeating-linear-gradient(90deg,transparent 0 60px,#fff 61px 62px),repeating-linear-gradient(0deg,transparent 0 92px,#fff 93px 94px);transform:rotate(-9deg)}
-.title-card{position:relative;z-index:2;text-align:center;width:min(820px,100%);padding:35px 20px}.title-lamp{font-size:56px;filter:drop-shadow(0 0 18px rgba(200,170,114,.22))}.kicker{font-size:11px;letter-spacing:.34em;color:var(--gold);margin-top:4px}.title-card h1{margin:8px 0 0;font-size:clamp(48px,9vw,96px);letter-spacing:.14em;text-shadow:0 14px 40px #000;font-weight:900}.title-sub{margin-top:3px;color:#b7b2ab;letter-spacing:.22em}.title-copy{margin:25px auto;max-width:720px;line-height:2;color:#b6b2aa;font-size:15px}.chips{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin:14px 0 23px}.chip{font-size:11px;border:1px solid var(--line);color:#a5a09a;background:rgba(255,255,255,.025);padding:6px 10px;border-radius:999px}.warning{font-size:11px;color:#68645f;line-height:1.7;margin-top:13px}
-/* top */
-#gameScreen{min-height:100vh}.top{position:sticky;top:0;z-index:50;background:rgba(4,5,8,.90);border-bottom:1px solid var(--line);backdrop-filter:blur(13px)}.topin{min-height:64px;display:flex;align-items:center;gap:12px;padding:7px 0}.brand{font-weight:900;letter-spacing:.08em;white-space:nowrap}.brand small{display:block;font-size:9px;font-weight:500;color:#77736e;letter-spacing:.21em;margin-top:-1px}.stats{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.pill{border:1px solid var(--line);background:rgba(255,255,255,.04);padding:7px 9px;border-radius:999px;font-size:12px;white-space:nowrap}.pill.red{color:#e89ca9}.pill.gold{color:#d8bf8d}.pill.green{color:#9bd0ac}.timer{font-variant-numeric:tabular-nums}.layout{padding:18px 0 44px}
-/* main */
-.main-grid{display:grid;grid-template-columns:1.22fr .78fr;gap:14px}.card{border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(17,21,29,.97),rgba(10,12,17,.97));box-shadow:var(--shadow)}
-.scene-card{overflow:hidden}.scene-head{padding:17px 19px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(255,255,255,.032),transparent)}.scene-chapter{font-size:10px;color:#77736e;letter-spacing:.23em}.scene-title{font-size:27px;font-weight:900;margin-top:5px}.scene-sub{font-size:12px;color:#7e7a75;margin-top:2px}.scene-body{padding:17px}.scene-visual{height:310px;border-radius:16px;border:1px solid var(--line);position:relative;overflow:hidden;background:#0b0e13}.scene-visual .grain{position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.014) 0 1px,transparent 1px 4px);mix-blend-mode:screen;opacity:.45;pointer-events:none}.scene-bg{position:absolute;inset:0;background-size:cover;background-position:center}.scene-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.70),transparent 22%,transparent 78%,rgba(0,0,0,.70)),linear-gradient(0deg,rgba(0,0,0,.48),transparent 36%,rgba(0,0,0,.16))}.hotspot{position:absolute;z-index:4;border:1px solid rgba(214,101,120,.28);background:rgba(8,10,14,.82);color:#ddd8d0;border-radius:10px;padding:8px 10px;font-size:11px;box-shadow:0 10px 28px rgba(0,0,0,.3);backdrop-filter:blur(6px);animation:softPulse 2.6s infinite}.hotspot:hover{background:rgba(139,36,56,.20);border-color:rgba(214,101,120,.55)}.hotspot.locked{border-color:rgba(200,170,114,.24)}@keyframes softPulse{50%{box-shadow:0 10px 28px rgba(0,0,0,.3),0 0 0 4px rgba(214,101,120,.025)}}
-.scene-text{line-height:1.92;color:#cbc6be;font-size:15px;margin-top:17px}.scene-text p{margin:0 0 11px}.scene-choices{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px}.status-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:13px}.mini-stat{border:1px solid var(--line);border-radius:12px;background:rgba(255,255,255,.025);padding:10px}.mini-stat .label{font-size:10px;color:#77736e}.mini-stat .value{font-weight:900;margin-top:4px}
-/* side */
-.side{padding:16px;height:max-content;position:sticky;top:82px}.side-sec{padding:0 0 15px;margin-bottom:15px;border-bottom:1px solid var(--line)}.side-sec:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}.side-title{font-weight:900;margin-bottom:8px}.fearbar{height:7px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden}.fearbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#5f7d67,#a23549)}.npc{display:grid;grid-template-columns:86px 1fr;gap:10px}.portrait{width:86px;height:116px;border:1px solid var(--line);border-radius:14px;background:linear-gradient(180deg,#171c27,#080a0f);position:relative;overflow:hidden;display:grid;place-items:center}.portrait-face{font-size:49px;filter:grayscale(.6)}.human{width:56px;height:82px;position:relative}.human .hface{position:absolute;left:9px;top:16px;width:38px;height:48px;border-radius:48% 48% 44% 44%;background:linear-gradient(160deg,#f2c7a2,#b96e55)}.human .hair{position:absolute;left:5px;top:5px;width:46px;height:43px;border-radius:55% 55% 38% 38%;background:#28232c}.human .eye{position:absolute;top:34px;width:4px;height:4px;border-radius:50%;background:#221922}.human .e1{left:18px}.human .e2{right:18px}.human .mouth{position:absolute;top:48px;left:20px;width:14px;height:6px;border-bottom:2px solid #7d4644;border-radius:50%}.human .neck{position:absolute;left:23px;top:61px;width:10px;height:9px;background:#b96e55}.human.fake .hface{background:linear-gradient(160deg,#eee0d0,#9d7770)}.human.fake .eye{width:6px;height:6px;background:#d34f63;box-shadow:0 0 7px #d34f63}.human.fake .mouth{border-color:#8d2438}.human .body2{position:absolute;left:6px;top:67px;width:44px;height:19px;border-radius:40% 40% 16% 16%;background:linear-gradient(160deg,#5a6685,#252d40)}.npc-name{font-weight:900}.npc-mood{font-size:11px;color:#8b8782;margin-top:2px}.npc-line{margin-top:7px;font-size:12px;color:#bdb8b0;line-height:1.7}.inventory{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.item{min-height:66px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.025);display:grid;place-items:center;padding:6px;text-align:center;font-size:10px;color:#a8a39d}.item b{font-size:22px}.item span{margin-top:2px}.clues{display:grid;gap:6px;max-height:210px;overflow:auto}.clue{font-size:11px;line-height:1.5;color:#9f9a93}.objective{font-size:12px;line-height:1.7;color:#c0bbb4}
-/* bottom panels */
-.bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}.panel{padding:16px}.map{display:grid;grid-template-columns:repeat(5,1fr);gap:5px}.map button{min-height:43px;font-size:10px}.map button.discovered{border-color:rgba(200,170,114,.24);color:#c4b18c}.map button.current{background:rgba(141,36,56,.19);border-color:rgba(214,101,120,.35);color:#e1acb5}.map button.hidden-room{color:#595650}
-/* dialogue */
-.dialogue-overlay{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.72);display:none;align-items:flex-end;justify-content:center;padding:18px}.dialogue-overlay.show{display:flex}.dialogue-box{width:min(980px,100%);border:1px solid var(--line);border-radius:18px;background:linear-gradient(180deg,#151a24,#0b0d12);box-shadow:var(--shadow);display:grid;grid-template-columns:190px 1fr;overflow:hidden}.dialogue-portrait{min-height:235px;background:radial-gradient(circle at 50% 30%,rgba(141,36,56,.22),transparent 42%),linear-gradient(#171d29,#080a10);display:grid;place-items:center;border-right:1px solid var(--line);position:relative}.dialogue-avatar{font-size:112px;filter:grayscale(.65) drop-shadow(0 15px 25px #000);animation:breathe 2.8s infinite}.dialogue-content{padding:20px}.speaker{font-size:12px;letter-spacing:.18em;color:#bc99a0}.dialogue-text{font-size:16px;line-height:1.95;color:#e3ded6;margin-top:8px;min-height:110px}.dialogue-choices{display:flex;gap:8px;flex-wrap:wrap}.npc-status{display:flex;gap:7px;align-items:center;margin:8px 0 15px}.trust{height:6px;background:rgba(255,255,255,.06);border-radius:999px;overflow:hidden;flex:1}.trust i{display:block;height:100%;background:linear-gradient(90deg,#708eb4,#c7a86e);width:50%}@keyframes breathe{50%{transform:translateY(-4px)}}
-/* modal */
-.modal{position:fixed;inset:0;z-index:120;display:none;place-items:center;background:rgba(0,0,0,.78);backdrop-filter:blur(6px);padding:14px}.modal.show{display:grid}.modal-box{width:min(900px,100%);max-height:92vh;overflow:auto;background:#11141b;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--line)}.modal-head b{font-size:16px}.close{border:0;background:none;color:#8b8781;font-size:28px}.modal-body{padding:17px}.paper{background:#e4dece;color:#24211c;border-radius:9px;padding:16px;line-height:1.9;font-family:Georgia,"Noto Serif TC",serif}.note{border:1px dashed rgba(200,170,114,.38);background:rgba(200,170,114,.04);color:#c9c0ae;padding:12px;border-radius:10px;line-height:1.75;margin:10px 0}.feedback{text-align:center;color:#aaa59e;font-size:12px;min-height:22px;margin-top:9px}.keypad{display:grid;grid-template-columns:repeat(3,70px);gap:8px;justify-content:center;margin:14px 0}.key{height:54px;border:1px solid var(--line);border-radius:9px;background:#0a0d13;color:#eee;font-weight:900;font-size:18px}.display{width:min(260px,90%);margin:auto;border:1px solid var(--line);border-radius:10px;background:#07090e;padding:10px;text-align:center;font-family:monospace;font-size:22px;letter-spacing:.25em;min-height:48px}.logic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.logic-card{padding:11px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.025)}.logic-card b{display:block;margin-bottom:5px}.logic-card select{width:100%;border:1px solid var(--line);background:#090c12;color:#eee;border-radius:8px;padding:8px}.sequence{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px 0}.sequence button{min-width:58px;height:52px;border:1px solid var(--line);border-radius:8px;background:#0a0d13;color:#eee;font-weight:900}.sequence button.picked{background:rgba(141,36,56,.25);border-color:rgba(214,101,120,.45)}
-/* jumps */
-.jumpscare{position:fixed;inset:0;z-index:250;display:none;place-items:center;text-align:center;background:rgba(0,0,0,.95)}.jumpscare.show{display:grid;animation:flash .35s}.js-face{font-size:150px;animation:shake .14s infinite}.js-text{font-size:28px;letter-spacing:.2em;color:#d56a78;margin-top:12px}@keyframes flash{0%{opacity:0}18%{opacity:1}38%{opacity:.35}100%{opacity:1}}@keyframes shake{0%,100%{transform:translate(0)}25%{transform:translate(9px,-4px)}50%{transform:translate(-7px,5px)}75%{transform:translate(5px,3px)}}
-.ending{min-height:300px;display:grid;place-items:center;text-align:center;padding:30px;background:radial-gradient(circle at 50% 35%,rgba(141,36,56,.18),transparent 35%),linear-gradient(#10141b,#06070a)}.ending h2{font-size:48px;margin:0}.ending p{max-width:720px;line-height:2;color:#b8b3ab}
-@media(max-width:980px){.main-grid{grid-template-columns:1fr}.side{position:static}.bottom-grid{grid-template-columns:1fr}.scene-visual{height:260px}.dialogue-box{grid-template-columns:130px 1fr}.dialogue-portrait{min-height:200px}.dialogue-avatar{font-size:86px}}
-@media(max-width:620px){.wrap{width:calc(100% - 20px)}.topin{padding:6px 0}.stats .pill:nth-child(2){display:none}.scene-title{font-size:24px}.scene-visual{height:230px}.hotspot{font-size:10px;padding:7px 8px}.scene-body{padding:13px}.npc{grid-template-columns:74px 1fr}.portrait{width:74px;height:102px}.inventory{grid-template-columns:repeat(3,1fr)}.dialogue-overlay{padding:8px}.dialogue-box{grid-template-columns:1fr}.dialogue-portrait{display:none}.dialogue-content{padding:15px}.dialogue-text{font-size:14px}.logic-grid{grid-template-columns:1fr}.keypad{grid-template-columns:repeat(3,62px)}.title-card h1{letter-spacing:.08em}}
-</style>
-</head>
-<body>
-<div class="app">
-<section id="titleScreen">
-  <div class="title-card">
-    <div class="title-lamp">🕯️</div>
-    <div class="kicker">HORROR ESCAPE ROOM · CHAPTER 01</div>
-    <h1>千嬋學校</h1>
-    <div class="title-sub">第一階段：午夜探校</div>
-    <div class="title-copy">
-      晚上十一點四十七分，十五歲的嬨幽翻過千嬋學校南側的圍牆。<br>
-      她和最好的朋友印潔約好，要證明「這裡真的有鬼」只是學生之間嚇人的傳聞。<br>
-      她們不知道的是——<b>有另一個印潔，已經先在校舍裡等她。</b>
-    </div>
-    <div class="chips"><span class="chip">主角：嬨幽／15歲</span><span class="chip">好友 NPC：印潔</span><span class="chip">謎題：普通～困難</span><span class="chip">主線：2～3 小時</span><span class="chip">可探索／可互動</span></div>
-    <button class="btn primary" style="font-size:18px;padding:14px 24px" onclick="begin()">開始第一階段</button>
-    <div class="warning">建議耳機遊玩。包含突然音效、驚嚇畫面、失蹤事件與超自然情節。遊戲進度會儲存在本機瀏覽器。</div>
-  </div>
-</section>
+*{box-sizing:border-box}body{margin:0;background:#05060a;color:#ede9e2;font:15px/1.85 system-ui,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif}.hidden{display:none!important}button,input{font:inherit;color:inherit}button{cursor:pointer}button:disabled{opacity:.4;cursor:not-allowed}
+.b{border:1px solid #fff3;background:#ffffff0d;border-radius:10px;padding:9px 13px;margin:3px}.b:hover:not(:disabled){background:#ffffff1c}.p{background:linear-gradient(135deg,#641f2d,#9b3045);border-color:#ae4a5c}.big{font-size:19px;padding:13px 38px}
+#title{min-height:100vh;display:grid;place-items:center;text-align:center;padding:20px;background:radial-gradient(circle at 50% 38%,#5a1424,#05060a 64%)}#title svg{width:min(250px,62vw)}#title h1{font-size:clamp(46px,13vw,92px);letter-spacing:.14em;margin:2px 0;text-shadow:0 0 34px #8d2438}.k{color:#c8aa72;letter-spacing:.3em;font-size:12px}.sub{color:#b7b2ab;letter-spacing:.2em}.cp{max-width:560px;margin:16px auto 22px;color:#b6b2aa}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;padding:8px 12px;background:#05060af2;border-bottom:1px solid #fff1}.fear{flex:1;height:7px;background:#fff1;border-radius:9px;overflow:hidden}.fear i{display:block;height:100%;width:0;background:linear-gradient(90deg,#5f7d67,#a23549);transition:.4s}
+.wrap{max-width:860px;margin:auto;padding:10px}.card{border:1px solid #fff1;border-radius:16px;background:#0d1017;padding:15px;margin:10px 0}.art{font-size:60px;text-align:center;filter:grayscale(.8)}.hs{display:flex;flex-wrap:wrap}.lc{font-size:12px;color:#9f9a93;margin-top:8px}.npc{display:flex;gap:12px;align-items:center}.face{font-size:44px}#say{font-size:13px;color:#bdb8b0}
+.ov{position:fixed;inset:0;display:none;background:#000b;z-index:50;padding:14px}.ov.show{display:grid}#dlg{align-items:end}.box{width:min(760px,100%);margin:auto;background:#11141b;border:1px solid #fff2;border-radius:16px;padding:16px;max-height:90vh;overflow:auto}#dt{min-height:70px;font-size:16px}.paper{background:#e4dece;color:#24211c;border-radius:9px;padding:14px;line-height:1.9}#in{width:160px;padding:9px;border-radius:8px;border:1px solid #fff3;background:#07090e;text-align:center;font-size:18px;letter-spacing:.2em}.fb{text-align:center;font-size:13px;color:#d66578;min-height:20px}
+#sc{z-index:99;place-items:center;text-align:center;background:#000}#sc.show{animation:fl .4s}#sf{font-size:150px;animation:sh .14s infinite}#st{font-size:26px;color:#d56a78;letter-spacing:.12em;padding:0 16px}
+.fl{animation:fl .9s steps(2)}@keyframes fl{0%,40%,80%{filter:brightness(.15)}20%,60%,100%{filter:brightness(1)}}@keyframes sh{50%{transform:translate(9px,-5px)}}.end{text-align:center}.end h1{color:#d66578;letter-spacing:.1em}
 
-<section id="gameScreen" class="hidden">
-<header class="top"><div class="wrap topin">
-  <div class="brand">千嬋學校<small>CHAPTER 01 · 午夜探校</small></div>
-  <div class="stats"><span class="pill">📍 <b id="roomLabel">校門</b></span><span class="pill timer">⏱ <b id="timeLabel">00:00:00</b></span><span class="pill red">恐懼 <b id="fearLabel">0</b>%</span><button class="btn small" onclick="journal()">📖 筆記</button><button class="btn small" onclick="save(true)">💾 存檔</button></div>
-</div></header>
-<main class="layout"><div class="wrap">
-<div class="main-grid">
-<section class="card scene-card">
- <div class="scene-head"><div class="scene-chapter" id="chapterLabel">第一階段 · 午夜探校</div><div class="scene-title" id="sceneTitle">校門</div><div class="scene-sub" id="sceneSub">23:47 · 南側側門</div></div>
- <div class="scene-body">
-   <div class="scene-visual"><div class="scene-bg" id="sceneBg"></div><div class="grain"></div><div id="hotspots"></div></div>
-   <div class="scene-text" id="sceneText"></div>
-   <div class="scene-choices" id="sceneChoices"></div>
-   <div class="status-row"><div class="mini-stat"><div class="label">目前目標</div><div class="value" id="objectiveShort">探索學校</div></div><div class="mini-stat"><div class="label">線索</div><div class="value" id="clueCount">0</div></div><div class="mini-stat"><div class="label">已解謎題</div><div class="value" id="solveCount">0</div></div></div>
- </div>
-</section>
-<aside class="card side">
- <div class="side-sec"><div class="side-title">🦝 嬨幽</div><div style="font-size:11px;color:#85817c;line-height:1.6">15歲。膽子沒有自己說的那麼大，但觀察力很強。<br>她不喜歡把朋友留在危險裡。</div><div style="margin:7px 0 4px;font-size:11px">恐懼</div><div class="fearbar"><i id="fearBar"></i></div></div>
- <div class="side-sec"><div class="side-title">👧 印潔</div><div class="npc"><div class="portrait"><div class="human" id="npcFace"><div class="hair"></div><div class="hface"><div class="eye e1"></div><div class="eye e2"></div><div class="mouth"></div></div><div class="neck"></div><div class="body2"></div></div></div><div><div class="npc-name" id="npcName">印潔</div><div class="npc-mood" id="npcMood">跟隨中</div><div class="npc-line" id="npcLine">「不要走太快。」</div></div></div><button class="btn small" style="margin-top:9px;width:100%" onclick="talkNPC()">💬 和她說話</button></div>
- <div class="side-sec"><div class="side-title">🎒 手提包</div><div class="inventory" id="inventory"></div></div>
- <div class="side-sec"><div class="side-title">🔎 線索紀錄</div><div class="clues" id="clues"></div></div>
- <div class="side-sec"><div class="side-title">🧭 目前目標</div><div class="objective" id="objective"></div></div>
-</aside>
-</div>
-<div class="bottom-grid">
- <div class="card panel"><div class="side-title">🗺️ 校舍地圖</div><div class="map" id="map"></div></div>
- <div class="card panel"><div class="side-title">🎭 嬨幽的狀態</div><div class="objective">印潔信任度：<b id="trustText">50</b>%</div><div class="fearbar" style="margin-top:7px"><i id="trustBar" style="background:linear-gradient(90deg,#587ca7,#c5a56f);width:50%"></i></div><div class="objective" style="margin-top:9px">你已找到 <b id="itemCount">0</b> 件物品。部分物品可以在之後的房間使用。</div></div>
-</div>
-</div></main>
-</section>
-</div>
+body{--f:0;background:#030305}body:after{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;background:radial-gradient(ellipse at center,transparent 38%,#000 125%),radial-gradient(ellipse at center,transparent 50%,rgba(140,0,25,calc(var(--f)*.007)) 130%)}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:41;opacity:.08;background:repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 3px);animation:gr .25s steps(2) infinite}@keyframes gr{50%{transform:translateY(2px)}}
+.card{background:linear-gradient(180deg,#0e0a0d,#07080b);border-color:#8d243833;box-shadow:0 0 30px #00000099 inset}#tx{font-family:"Noto Serif TC","Songti TC",serif;line-height:2}.art{filter:grayscale(1) sepia(.5) hue-rotate(-30deg);text-shadow:0 0 25px #8d2438;animation:br 4s ease-in-out infinite}@keyframes br{50%{opacity:.55;transform:scale(1.04)}}
+#cov{width:min(250px,64vw);aspect-ratio:3/4;object-fit:cover;border-radius:6px;border:1px solid #8d243888;filter:grayscale(.55) contrast(1.15) brightness(.8) sepia(.25);box-shadow:0 0 60px #8d2438aa;animation:fk 6s infinite}@keyframes fk{0%,93%,100%{opacity:1}94%{opacity:.25}96%{opacity:.9}97%{opacity:.15}}
+#face,#shimg{width:64px;height:84px;object-fit:cover;border-radius:10px;border:1px solid #fff2;filter:grayscale(.45) brightness(.85)}#dp{width:84px;height:112px;object-fit:cover;border-radius:10px;border:1px solid #fff2;filter:grayscale(.45) brightness(.85)}
+.fk{filter:grayscale(1) contrast(1.6) brightness(.6) sepia(1) hue-rotate(-45deg) saturate(3)!important;transform:scaleX(-1)}.sc{filter:grayscale(.8) brightness(.7)!important}body.hi #tx{animation:jt .35s infinite}@keyframes jt{50%{transform:translateX(1px);text-shadow:2px 0 #8d2438,-2px 0 #1b4a6b}}
+</style></head><body>
+<section id="title"><div>
+<img id="cov" alt="慈幽">
+<div class="k">慈幽 · 15 歲</div><h1>千蟬學校</h1><div class="sub">第一階段：午夜探校</div>
+<p class="cp">晚上十一點四十七分，十五歲的慈幽翻過千蟬學校的圍牆，要和最好的朋友印潔一起證明：「這裡有鬼」只是傳聞。<br>她們不知道的是——<b>有另一個印潔，已經先在校舍裡等她。</b></p>
+<button class="b p big" onclick="begin()">新遊戲</button> <button class="b big hidden" id="cont" onclick="begin('c')">繼續遊戲</button></div></section>
 
-<div class="dialogue-overlay" id="dialogue"><div class="dialogue-box"><div class="dialogue-portrait"><div class="human" id="dialogueAvatar"><div class="hair"></div><div class="hface"><div class="eye e1"></div><div class="eye e2"></div><div class="mouth"></div></div><div class="neck"></div><div class="body2"></div></div></div><div class="dialogue-content"><div class="speaker" id="speaker">印潔</div><div class="npc-status"><span class="small">信任</span><div class="trust"><i id="trustBar2"></i></div><span class="small" id="trustMini">50</span></div><div class="dialogue-text" id="dialogueText"></div><div class="dialogue-choices" id="dialogueChoices"></div></div></div></div>
-<div class="modal" id="modal"><div class="modal-box"><div class="modal-head"><b id="modalTitle">謎題</b><button class="close" onclick="closeModal()">×</button></div><div class="modal-body" id="modalBody"></div></div></div>
-<div class="jumpscare" id="jumpscare"><div><div class="js-face" id="jumpFace">👁️</div><div class="js-text" id="jumpText">不要回頭</div></div></div>
+<section id="game" class="hidden"><div class="bar"><b>千蟬學校</b><span id="rn" style="color:#96928d;font-size:13px"></span><div class="fear"><i id="fb2"></i></div><button class="b" onclick="notes()">📖</button><button class="b" onclick="manual()">💾</button><button class="b" onclick="restart()">🗑</button><button class="b" id="mu" onclick="mute()">🔊</button></div>
+<div class="wrap"><div class="card"><div class="art" id="art"></div><div id="tx" style="color:#cbc6be"></div><div class="hs" id="hs"></div><div id="dr" style="margin-top:8px"></div></div>
+<div class="card npc"><img id="face" alt="印潔"><div><b>印潔</b> <small id="tr" style="color:#85817c"></small><div id="say"></div></div></div>
+<div class="card npc hidden" id="cp"><img id="shimg" alt="偲涵"><div><b>偲涵</b> <small style="color:#85817c">同行</small><div id="say2" style="color:#bdb8b0">……</div></div></div>
+<div class="card"><b>🎒</b> <span id="inv"></span><div class="lc" id="lc"></div></div></div></section>
+
+<div class="ov" id="dlg"><div class="box" style="display:flex;gap:12px"><img id="dp" alt=""><div style="flex:1"><b id="who" style="color:#bc99a0;letter-spacing:.15em"></b><div id="dt"></div><div id="dc"></div></div></div></div>
+<div class="ov" id="md"><div class="box"><div style="display:flex;justify-content:space-between"><b id="mt"></b><button class="b" onclick="closeM()">✕</button></div><div id="mb" style="margin-top:10px"></div></div></div>
+<div class="ov" id="sc"><div><div id="sf"></div><div id="st"></div></div></div>
 
 <script>
-const SAVE_KEY='qianchan-school-ch1-v11';
-let timerId=null,audioCtx=null,ambientGain=null;
-const defaultState={started:false,finished:false,room:'gate',seconds:0,startedAt:0,fear:0,trust:50,inventory:[],clues:[],solved:[],discovered:['gate'],flags:{},stats:{inspected:0,dialogues:0}};
-let g=JSON.parse(JSON.stringify(defaultState));
-
-const rooms={
- gate:{title:'校門',sub:'23:47 · 南側側門',obj:'找到進入校舍的方法。',bg:'gate',text:[
- '嬨幽把手機手電筒壓到最低亮度，從南側圍牆翻進操場。草地濕得不自然，鞋底沾上的不是泥，而是一層很細的黑灰。',
- '「這就是千嬋？」印潔把外套拉緊一點。「大家都說這裡晚上會有人唱歌……我看都是自己嚇自己。」',
- '校門旁的門衛室沒有燈，玻璃上卻印著一個剛留下的手掌印。掌印是從裡面往外的。'
- ],hotspots:[
-  ['值夜告示','門旁的舊告示被雨淋得快看不清。','gate_notice',15,22],
-  ['門衛室','裡面沒有值班的人，但玻璃後方像放著什麼。','guard_room',4,46],
-  ['舊門牌','「千嬋學校」的牌子被換過。','gate_plate',62,17],
-  ['鐵門鎖','四位數字鍵盤還有電。','gate_code',69,60],
-  ['和印潔說話','她正在盯著操場最北端。','talk_gate',44,66]
- ],choices:[]},
- lobby:{title:'一樓玄關',sub:'23:55 · 校舍入口',obj:'修復門禁電源，進入主教學樓。',bg:'lobby',text:[
- '門禁打開後，整座校舍像在你們身後吸了一口氣。走進玄關的瞬間，手機訊號掉成一格。',
- '玄關有一面過時的校訓牆，上面掛著四盞老燈。其中第二盞一直閃。',
- '印潔蹲下來：「這裡有鞋印。兩雙……一雙是濕的，一雙是乾的。」'
- ],hotspots:[
-  ['校訓牆','四盞老燈下寫著校訓。','motto',24,22],
-  ['鞋印','兩串腳印在門口停下。','footprints',65,73],
-  ['配電箱','部分斷路器貼著新的紅標。','breaker',75,26],
-  ['公告櫃','裡面卡著校舍平面圖。','floorplan',8,67],
-  ['和印潔說話','她說她似乎聽到樓上有人跑。','talk_lobby',47,67]
- ],choices:[['進入東側走廊','corridor','breakerSolved']]},
- corridor:{title:'東側走廊',sub:'00:08 · 三次腳步聲',obj:'找到 2-A 舊教室的鑰匙。',bg:'corridor',text:[
- '門在你們身後「喀」一聲自動鎖上。',
- '咚。咚。咚。',
- '三聲腳步從二樓傳下來。印潔抬頭，你也抬頭。樓梯是空的。',
- '走廊盡頭的感應燈一盞一盞亮起，最後停在一扇沒有門牌的教室前。'
- ],hotspots:[
-  ['公告欄','社團公告順序可能是線索。','bulletin',8,18],
-  ['紅線鞋櫃','有一格被紅線綁住。','shoelocker',70,22],
-  ['飲水機','機器下方卡著濕紙。','waternote',38,72],
-  ['走廊鏡面','鏡子裡好像多了一個人。','hallmirror',77,71],
-  ['樓梯口','腳步聲似乎又出現一次。','stairs',26,56],
-  ['和印潔說話','她說剛才有人站在二樓欄杆邊。','talk_corridor',50,52]
- ],choices:[['進入 2-A 舊教室','classroom','classKey']]},
- classroom:{title:'2-A 舊教室',sub:'00:26 · 不要坐錯位置',obj:'解開黑板座位謎題，找到圖書室鑰匙。',bg:'classroom',text:[
- '教室裡的桌椅全部朝向黑板。只有最後一張桌子反方向擺著。',
- '黑板上寫著七個名字，右側是七組筆畫數。最下面一行用粉筆寫著：「真正的位置，是兩個朋友第一次交換秘密的位置。」',
- '印潔看了很久：「我好像……來過這個教室。」她說完又搖頭。「不對，我從沒來過。」'
- ],hotspots:[
-  ['黑板','七個名字與筆畫數。','seat_puzzle',12,14],
-  ['講桌','抽屜裡有細金屬棒。','teacherdesk',69,20],
-  ['最後一張課桌','抽屜中有錄音筆。','recorder',74,68],
-  ['窗戶','窗外操場多了一盞不該亮的燈。','class_window',9,71],
-  ['課表','班級課表缺少一堂課。','timetable',43,24],
-  ['和印潔說話','問她為什麼會有熟悉感。','talk_class',46,62]
- ],choices:[['前往圖書室','library','libraryKey']]},
- library:{title:'舊圖書室',sub:'00:54 · 書架後面的呼吸聲',obj:'用館藏線索打開暗櫃，取得理化室鑰匙。',bg:'library',text:[
- '圖書室沒有灰塵，只有「剛有人翻過書」的痕跡。',
- '你每走一步，書架上的紙張就會輕微晃一下。',
- '印潔貼近你：「你有沒有覺得……有人在跟我們同步呼吸？」'
- ],hotspots:[
-  ['借閱登記簿','四本書的借閱日期與頁碼。','library_log',8,22],
-  ['校史書架','四本書被特別換成新書套。','book_stack',35,18],
-  ['摺紙','暗櫃旁有被反覆摺過的紙。','folded_note',72,67],
-  ['暗櫃','四位數字鎖。','library_safe',73,23],
-  ['書架後方','呼吸聲越來越清楚。','library_back',18,69],
-  ['和印潔說話','她不敢再靠近書架後方。','talk_library',49,71]
- ],choices:[['進入理化準備室','lab','labKey']]},
- lab:{title:'理化準備室',sub:'01:22 · 無標籤藥瓶',obj:'完成試管排列，取得音樂教室鑰匙。',bg:'lab',text:[
- '玻璃櫃裡的四支試管擺得像展示品。每支瓶底都貼著顏色與數字。',
- '實驗記錄只留下三條規則：「紅藍不可相鄰」、「小於5只在偶數位」、「最後比第一多1」。',
- '印潔盯著其中一瓶：「這瓶沒有標籤。」她伸手又縮回來。'
- ],hotspots:[
-  ['實驗記錄','三條排列規則。','lab_rules',9,20],
-  ['四支試管','可以兩兩交換。','test_tubes',40,25],
-  ['標本櫃','後方藏著一張舊照片。','specimen',69,28],
-  ['水槽','排水口卡著錄音帶。','sink_tape',78,70],
-  ['和印潔說話','她說這裡有股甜味。','talk_lab',42,71]
- ],choices:[['前往舊音樂教室','music','musicKey']]},
- music:{title:'舊音樂教室',sub:'01:49 · 鋼琴自己響了',obj:'解開不存在的校歌旋律，打開教師辦公室暗門。',bg:'music',text:[
- '你們一起踏進音樂室。鋼琴自己響了一個音。',
- '印潔的手指緊緊抓住袖口。「我沒有碰它。」',
- '琴蓋上放著四張樂譜卡，背面分別畫著月亮、眼睛、門、井。'
- ],hotspots:[
-  ['樂譜卡','四張卡片有旋律與圖像線索。','music_cards',12,18],
-  ['鋼琴','八個白鍵有四個磨損。','piano',45,58],
-  ['講台','藏著學生失蹤記錄。','missing_records',75,19],
-  ['窗簾','後方有人形的凹痕。','music_curtain',12,71],
-  ['和印潔說話','她認得這段旋律。','talk_music',72,68]
- ],choices:[['前往教師辦公室','office','officeDoor']]},
- office:{title:'舊教師辦公室',sub:'02:16 · 被刪掉的名字',obj:'找出地下室鑰匙，並確認真假印潔的驗證方式。',bg:'office',text:[
- '辦公室的空氣像一整夜沒流動過。桌面沒有灰塵，抽屜裡卻全是發黃的紙。',
- '歷屆學生名冊上，有幾個名字被黑墨水劃掉。其中一個名字，你看見了兩次。',
- '印潔問：「嬨幽……你真的確定我們今晚只是來探險？」'
- ],hotspots:[
-  ['學生名冊','同一個名字出現兩次。','student_list',9,20],
-  ['老師日記','最後一頁留下真假朋友的驗證方式。','teacher_diary',37,18],
-  ['鎖櫃','三位字母鎖。','office_locker',74,20],
-  ['校徽機關','可以用金屬棒撬動。','crest_mechanism',62,68],
-  ['電話','話筒沒有接線，卻傳出一個呼吸聲。','office_phone',13,72],
-  ['和印潔說話','她突然答不出第一次見面的細節。','talk_office',45,72]
- ],choices:[['探索隱藏的檔案室','archive','archiveKey'],['前往地下室入口','basement_door','basementKey']]},
- archive:{title:'舊檔案室（隱藏）',sub:'02:27 · 沒有列在平面圖的房間',obj:'拼出被刪掉的校史，取得地下室鑰匙。',bg:'archive',text:[
- '校舍平面圖上沒有檔案室，但你在老師辦公室後牆發現一道窄門。',
- '這裡保存的不是成績，而是「夜間事件紀錄」。',
- '資料夾裡多次出現同一句話：『她會模仿最重要的人。』'
- ],hotspots:[
-  ['事件檔案','記錄多年來的失蹤事件。','archive_files',12,25],
-  ['舊錄影帶','標籤只有日期，沒有內容。','archive_tape',70,24],
-  ['照片牆','同一個女生在不同年份出現。','archive_photos',44,15],
-  ['保險箱','四位數字鎖。','archive_safe',68,69],
-  ['和印潔說話','她看到照片後第一次哭了。','talk_archive',19,70]
- ],choices:[['回到教師辦公室','office']]},
- basement_door:{title:'地下室入口',sub:'02:41 · 鐵門後的低語',obj:'確認眼前的印潔是否為真的她。',bg:'stairs',text:[
- '樓梯往下，燈每隔五秒熄一次。',
- '印潔走在你前面。「嬨幽，你先下去，我在後面看門。」',
- '你突然停住。從一開始，她明明最怕黑，卻從沒要求你走前面。'
- ],hotspots:[
-  ['鐵門刻痕','寫著真假朋友的暗示。','basement_inscription',9,18],
-  ['九點陣','九個圓點排列得像密碼鎖。','stair_dots',65,19],
-  ['牆角錄音','有人留下最後一句提醒。','stair_tape',31,69],
-  ['看印潔的手','她的指甲縫裡不是泥。','inspect_hand',74,73],
-  ['和印潔說話','她開始叫你的全名。','talk_basement',49,71]
- ],choices:[['相信她，下樓','basement_hall'],['回頭直視她','fake_reveal']]},
- basement_hall:{title:'地下室走廊',sub:'02:49 · 她開始知道你沒說出口的事',obj:'確認假的印潔身份，找到關押真正印潔的房間。',bg:'basement',text:[
- '牆面上的水痕像一道道手指抓痕。前面的「印潔」沒有一次回頭。',
- '她突然說：「你最怕的不是黑，對吧？」',
- '你沒有回答。你從沒告訴她這件事。'
- ],hotspots:[
-  ['鏡子','鏡中的你慢了三秒。','basement_mirror',12,23],
-  ['置物櫃','裡面有一張真正的印潔寫給你的紙條。','real_note',38,21],
-  ['牆上照片','某一張照片裡的人臉被刮掉。','basement_photo',73,22],
-  ['腳印','兩種鞋印，一種往裡，一種往外。','basement_tracks',73,73],
-  ['前面的印潔','她站在房門前，背對著你。','fake_yinjie',48,66]
- ],choices:[['跟上她','basement_room']]},
- basement_room:{title:'地下室房間',sub:'03:01 · 真正的印潔',obj:'救出真正的印潔。',bg:'basement_room',text:[
- '門關上的那一瞬間，前面的「印潔」終於回頭。她笑得和你熟悉的一模一樣。',
- '「你真的來了。」她說。',
- '牆上忽然浮出一行新鮮的水字：『那個不是她。』',
- '房間另一側，一個被綁在椅子上的女孩抬起頭。',
- '「嬨幽……不要看她的眼睛。」'
- ],hotspots:[
-  ['真正的印潔','被綁住，需要先確認她說的話。','real_yinjie',11,56],
-  ['配電箱','四個開關控制地下室的燈。','power_box',72,17],
-  ['三層鐵櫃','三種鎖：符號、方向、數字。','rescue_locker',42,18],
-  ['通風口','卡著一張被撕碎的紙。','vent_note',74,69],
-  ['假印潔','她會回答你的問題，但答案可能是錯的。','fake_final',9,19]
- ],choices:[]},
- ending:{title:'第一階段完成',sub:'03:17 · 逃出地下室',obj:'第一階段完成。',bg:'ending',text:[
- '最後一個鎖打開，真正的印潔跌進你懷裡。',
- '她喘著氣說：「嬨幽……你到底跟誰走下來的？」',
- '你回頭看向門口。那個「印潔」已經不見了。',
- '走廊盡頭只剩下一道很遠很遠的腳步聲。',
- '回到地面前，你在牆上看見一行從未見過的字：',
- '「第一個嬨幽，沒有走出去。」'
- ],hotspots:[],choices:[['結束第一階段','finish']]}
-};
-
-const itemNames={schoolKey:['🗝️','舊校舍鑰匙'],classKey:['🔑','2-A 鑰匙'],libraryKey:['🗝️','圖書室鑰匙'],labKey:['⚗️','理化室鑰匙'],musicKey:['🎹','音樂室鑰匙'],basementKey:['🔑','地下室鑰匙'],metalRod:['🪛','金屬棒'],oldPhoto:['📷','舊照片'],redThread:['🧵','紅線'],ventNote:['📎','紙條碎片'],archiveKey:['📁','舊檔案鑰匙'],mirrorShard:['🪞','鏡片']};
-
-function clone(o){return JSON.parse(JSON.stringify(o))}
-function begin(){
-  let old=null;try{old=JSON.parse(localStorage.getItem(SAVE_KEY)||'null')}catch(e){}
-  if(old&&old.started&&!old.finished){if(confirm('找到上次的進度，要繼續嗎？'))g=old;else reset() }else reset();
-  g.started=true;if(!g.startedAt)g.startedAt=Date.now()-((g.seconds||0)*1000);
-  document.getElementById('titleScreen').classList.add('hidden');document.getElementById('gameScreen').classList.remove('hidden');
-  startTimer();startAmbient();render();save(false)
-}
-function reset(){g=clone(defaultState);g.startedAt=Date.now();g.started=true}
-function startTimer(){clearInterval(timerId);timerId=setInterval(()=>{if(g.started&&!g.finished){g.seconds=Math.floor((Date.now()-g.startedAt)/1000);document.getElementById('timeLabel').textContent=timeFmt(g.seconds)}},1000)}
-function timeFmt(s){s=Math.max(0,s||0);return [Math.floor(s/3600),Math.floor(s%3600/60),s%60].map(n=>String(n).padStart(2,'0')).join(':')}
-function save(manual){try{const x=clone(g);x.startedAt=g.startedAt;x.timerDummy=true;localStorage.setItem(SAVE_KEY,JSON.stringify(x));if(manual)toast('💾 進度已保存')}catch(e){if(manual)toast('⚠️ 瀏覽器拒絕保存')}}
-function addFear(n){g.fear=Math.max(0,Math.min(100,g.fear+(n||0)));if(g.fear>=72&&!g.flags.fear72){g.flags.fear72=true;setTimeout(()=>scare('你後面一直有人。','👁️'),250)}}
-function addTrust(n){g.trust=Math.max(0,Math.min(100,g.trust+(n||0)))}
-function item(id){if(!g.inventory.includes(id))g.inventory.push(id);render()}
-function clue(t){if(!g.clues.includes(t)){g.clues.push(t);g.stats.inspected++;addFear(1)}render()}
-function solve(id){if(!g.solved.includes(id))g.solved.push(id);render();save(false)}
-function discover(room){if(!g.discovered.includes(room))g.discovered.push(room)}
-function goRoom(room){if(!rooms[room])return;g.room=room;discover(room);addFear(room==='basement_hall'?7:room==='basement_room'?8:1);render();save(false)}
-function render(){
- const r=rooms[g.room];if(!r)return;
- document.getElementById('roomLabel').textContent=r.title;document.getElementById('sceneTitle').textContent=r.title;document.getElementById('sceneSub').textContent=r.sub;document.getElementById('chapterLabel').textContent=g.room==='ending'?'第一階段完成':'第一階段 · 午夜探校';
- document.getElementById('sceneText').innerHTML=r.text.map(x=>`<p>${esc(x)}</p>`).join('');document.getElementById('objective').textContent=r.obj;document.getElementById('objectiveShort').textContent=r.obj;
- document.getElementById('fearLabel').textContent=g.fear;document.getElementById('fearBar').style.width=g.fear+'%';document.getElementById('trustText').textContent=g.trust;document.getElementById('trustBar').style.width=g.trust+'%';document.getElementById('trustBar2').style.width=g.trust+'%';document.getElementById('trustMini').textContent=g.trust;
- document.getElementById('clueCount').textContent=g.clues.length;document.getElementById('solveCount').textContent=g.solved.length;document.getElementById('itemCount').textContent=g.inventory.length;
- document.getElementById('timeLabel').textContent=timeFmt(g.seconds);
- const bg=document.getElementById('sceneBg');bg.className='scene-bg '+r.bg;bg.innerHTML=sceneArt(r.bg);
- renderHotspots(r);renderChoices(r);renderInv();renderClues();renderMap();renderNPC();
- if(g.room==='ending')renderEnding();
-}
-function sceneArt(type){
- const themes={
- gate:['🏫','校門','雨夜','23:47'],lobby:['🚪','玄關','老燈','23:55'],corridor:['🕯️','長走廊','感應燈','00:08'],classroom:['🪑','2-A','黑板','00:26'],library:['📚','舊圖書室','書架','00:54'],lab:['⚗️','準備室','玻璃櫃','01:22'],music:['🎹','音樂室','鋼琴','01:49'],office:['🗃️','教師辦公室','檔案','02:16'],archive:['📁','舊檔案室','照片牆','02:27'],stairs:['🔒','地下室入口','鐵門','02:41'],basement:['🕳️','地下室走廊','水痕','02:49'],basement_room:['⛓️','地下室房間','椅子','03:01'],ending:['🌘','校舍外','天快亮','03:17']};
- const x=themes[type]||['🏫','千嬋學校','',''];
- return `<div style="position:absolute;inset:0;display:grid;place-items:center;opacity:.9"><div style="text-align:center;transform:translateY(-4px)"><div style="font-size:72px;filter:grayscale(.85) drop-shadow(0 20px 28px #000)">${x[0]}</div><div style="font-size:11px;letter-spacing:.28em;color:#96918b;margin-top:8px">${x[1]}</div><div style="font-size:10px;color:#5f5c57;margin-top:3px">${x[2]} · ${x[3]}</div></div></div><div style="position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 38%,rgba(141,36,56,.10),transparent 24%),linear-gradient(180deg,transparent,rgba(0,0,0,.30))"></div>`
-}
-function renderHotspots(r){
- const el=document.getElementById('hotspots');el.innerHTML='';(r.hotspots||[]).forEach(h=>{const b=document.createElement('button');b.className='hotspot';b.textContent='🔎 '+h[0];b.style.left=h[3]+'%';b.style.top=h[4]+'%';b.onclick=()=>act(h[2]);el.appendChild(b)})
-}
-function renderChoices(r){const el=document.getElementById('sceneChoices');el.innerHTML='';(r.choices||[]).forEach(c=>{let b=document.createElement('button');b.className='btn '+(c[2]?'primary':'');b.textContent=c[0];let ok=!c[2]||g.solved.includes(c[2]);if(!ok){b.disabled=true;b.classList.add('locked')}b.onclick=()=>c[1]==='finish'?finish():goRoom(c[1]);el.appendChild(b)})}
-function renderInv(){const el=document.getElementById('inventory');el.innerHTML=g.inventory.length?g.inventory.map(id=>{const v=itemNames[id]||['📦',id];return `<div class="item"><b>${v[0]}</b><span>${esc(v[1])}</span></div>`}).join(''):'<div class="item" style="grid-column:1/-1">目前沒有特殊物品</div>'}
-function renderClues(){const el=document.getElementById('clues');el.innerHTML=g.clues.length?g.clues.slice(-12).reverse().map((c,i)=>`<div class="clue">• ${esc(c)}</div>`).join(''):'<div class="clue">還沒有線索。</div>'}
-function renderMap(){const el=document.getElementById('map');const all=[['gate','校門'],['lobby','玄關'],['corridor','東側走廊'],['classroom','2-A'],['library','圖書室'],['lab','理化室'],['music','音樂室'],['office','辦公室'],['archive','檔案室'],['basement_door','地下室入口'],['basement_hall','地下室走廊'],['basement_room','地下室房間'],['ending','出口']];el.innerHTML=all.map(([id,n])=>{const d=g.discovered.includes(id);const c=g.room===id?'current':d?'discovered':'hidden-room';return `<button class="btn ${c}" ${d?'onclick="goRoom(\''+id+'\')"':''}>${d?'📍':'?'} ${n}</button>`}).join('')}
-function renderNPC(){
- const fake=g.flags.fakeSeen||g.room==='basement_hall'||g.room==='basement_room';
- document.getElementById('npcName').textContent=fake?'印潔（？）':'印潔';
- document.getElementById('npcMood').textContent=fake?'……她的回答變得太快了。':'跟隨中';
- document.getElementById('npcLine').textContent=fake?'「嬨幽，你不是一直都相信我嗎？」':'「不要走太快，我在你後面。」';
- document.getElementById('npcFace').classList.toggle('fake',fake);document.getElementById('dialogueAvatar').classList.toggle('fake',fake);
-}
-function talkNPC(){
- if(g.room==='gate') dialogue('印潔','「我先講好，真的看到鬼，我一定先跑。」',[['「那你還來？」',()=>{addTrust(4);g.stats.dialogues++;closeDialogue();toast('印潔好像比較放鬆了');}],['「別怕，我會保護你。」',()=>{addTrust(7);g.stats.dialogues++;closeDialogue();toast('印潔信任度 +7')}]]);
- else if(g.room==='lobby') dialogue('印潔','「你看那串鞋印嗎？乾的那串……像是有人從學校裡走出去，濕的那串反而是往裡面。」',[['記下來。',()=>{clue('玄關：乾鞋印向外、濕鞋印向內');closeDialogue();}],['「妳是不是以前看過？」',()=>{addTrust(-2);clue('印潔對千嬋的細節知道得比想像中多');closeDialogue();}]]);
- else if(g.room==='corridor') dialogue('印潔','「剛才二樓欄杆上真的有一個女生。她跟我……長得很像。」',[['「不要離開我。」',()=>{addTrust(6);closeDialogue();}],['「妳是不是看錯了？」',()=>{addTrust(-3);closeDialogue();toast('印潔沒有回答')}]]);
- else if(g.room==='classroom') dialogue('印潔','「黑板上的那個名字，我認得。我只是想不起來……在哪裡。」',[['問她是哪個名字。',()=>{clue('印潔認得2-A黑板上的其中一個名字');closeDialogue();}],['先別想了。',()=>{closeDialogue();}]]);
- else if(g.room==='library') dialogue('印潔','「我現在真的聽到書架後面有人呼吸。」',[['握住她的手。',()=>{addTrust(7);addFear(2);closeDialogue();}],['「我們一起去看。」',()=>{addFear(5);closeDialogue();toast('呼吸聲突然停了')}]]);
- else if(g.room==='lab') dialogue('印潔','「這個地方有股甜味……像醫院裡的藥水。」',[['「不要碰任何瓶子。」',()=>{addTrust(5);closeDialogue();}],['「聞起來還好。」',()=>{addTrust(-2);closeDialogue();}]]);
- else if(g.room==='music') dialogue('印潔','「這首曲子……我小時候真的聽過。」',[['「千嬋有這首歌嗎？」',()=>{clue('印潔說她小時候聽過不存在於校史的歌曲');closeDialogue();}],['「那妳還記得歌名？」',()=>{closeDialogue();toast('她沉默了很久')}]]);
- else if(g.room==='office') dialogue('印潔','「嬨幽，你記得我們第一次見面的時候，我送過你什麼嗎？」',[['「妳送我一張藍色貼紙。」',()=>{addTrust(10);clue('第一次見面的驗證答案：藍色貼紙');closeDialogue();}],['「我忘了。」',()=>{addTrust(-7);closeDialogue();}]]);
- else if(g.room==='archive') dialogue('印潔','她看到照片牆後突然紅了眼眶。「這個女生……跟我爸爸以前描述的夢裡一樣。」',[['問她為什麼哭。',()=>{clue('檔案室照片可能與印潔家族有關');closeDialogue();}],['先離開。',()=>{closeDialogue();}]]);
- else if(g.room==='basement_door') dialogue(g.flags.fakeSeen?'印潔（？）':'印潔','「嬨幽，你先下去。」',[['問：「我們第一次見面，我送你什麼？」',()=>{g.flags.truthQuestion=true;addTrust(4);closeDialogue();toast('她停頓了。回答得太慢。')}],['先下樓。',()=>{closeDialogue();goRoom('basement_hall')}]]);
- else if(g.room==='basement_hall') dialogue('印潔（？）','「你最怕的不是黑，是……被丟下。」',[['後退一步。',()=>{g.flags.fakeSeen=true;addFear(10);closeDialogue();scare('她不可能知道。','👁️')}],['相信她。',()=>{addTrust(-12);closeDialogue();}]]);
- else dialogue(g.flags.fakeSeen?'印潔（？）':'印潔',g.flags.fakeSeen?'「你還是來了。我就知道你一定會救我。」':'「我在這裡。」',[['繼續調查。',()=>closeDialogue()]])
-}
-function dialogue(name,text,choices){const o=document.getElementById('dialogue');document.getElementById('speaker').textContent=name;document.getElementById('dialogueText').textContent='';document.getElementById('dialogueChoices').innerHTML='';o.classList.add('show');let i=0;const letters=[...text];const td=document.getElementById('dialogueText');const iv=setInterval(()=>{td.textContent+=letters[i++]||'';if(i>=letters.length)clearInterval(iv)},14);choices.forEach(c=>{const b=document.createElement('button');b.className='btn';b.textContent=c[0];b.onclick=c[1];document.getElementById('dialogueChoices').appendChild(b)})}
-function closeDialogue(){document.getElementById('dialogue').classList.remove('show')}
-
-function act(a){if(a && a.indexOf('talk_')===0){talkNPC();return}const f=actions[a];if(f)f();}
-const actions={
- gate_notice(){openModal('值夜告示',`<div class="paper">「夜間巡查：北門 → 西樓 → 南門。最後一盞燈於 23:40 熄滅。」<br><br>紙背鉛筆字：<b>別讓四角同時看見你。</b></div>`);clue('值夜告示：23:40；紙背寫著「別讓四角同時看見你」')},
- guard_room(){openModal('門衛室',`<div class="paper">玻璃後面只有一本值班簿。最後一筆不是日期，而是一句：<br><br><b>「1987不是年份，是提醒。」</b><br><br>頁角還沾著新鮮的水。</div>`);clue('值班簿：1987不是年份，是提醒')},
- gate_plate(){openModal('舊門牌',`<div class="paper">新牌下方露出舊刻痕：<b>1987</b>。但 1987 的最後一個數字被磨掉一半，看起來像「?」。</div>`);clue('門牌刻痕：1987')},
- gate_code(){codeModal('南側門禁',4,'1987','校刊、門牌與值班簿都指向同一組年份。輸入四位數字。','schoolGate',()=>{solve('gateUnlocked');item('schoolKey');goRoom('lobby')})},
- motto(){openModal('校訓牆',`<div class="paper">四盞燈下分別刻著：<br><br>「記住、同行、回頭、離開」<br><br>其中第二盞燈旁的字比較新。你摸到牆後有空腔。</div>`);clue('校訓四詞：記住、同行、回頭、離開')},
- footprints(){openModal('玄關鞋印',`<div class="paper">濕鞋印：由南門走進校舍，腳跟朝內。<br>乾鞋印：由東側走廊走出，腳尖朝外。<br><br>兩串腳印在樓梯前重疊，之後只剩一串。</div>`);clue('鞋印：兩人進入，樓梯後只剩一串')},
- breaker(){openModal('配電箱',`<div class="paper">四個開關：A、B、C、D。旁邊貼著夜間巡查規則：<br><br>1. C 不能第一個。<br>2. B 在 A 之後。<br>3. 最後一定是 D。<br><br>輸入正確順序。</div><div class="code"><input class="digit" id="breakerAns" maxlength="4"><button class="btn primary" onclick="checkSimple('breakerAns','ABCD','breakerSolved')">送電</button></div><div class="feedback" id="breakerFb"></div>`)},
- floorplan(){openModal('校舍平面圖',`<div class="paper">你撕開背板，發現平面圖背後藏著一條手繪路線：<br><br>玄關 → 東走廊 → <b>2-A</b> → 圖書室 → 理化室 → 音樂室 → 教師辦公室。<br><br>最末端的地下室被黑筆塗掉。</div>`);clue('手繪路線：玄關→東走廊→2-A→圖書室→理化室→音樂室→辦公室')},
- bulletin(){openModal('公告欄',`<div class="paper">社團排位：<br>攝影社 1<br>天文社 2<br>籃球隊 3<br>音樂社 4<br><br>鞋櫃紅線標記上只有「3、1、4」。</div>`);clue('公告欄暗示鞋櫃密碼：314')},
- shoelocker(){if(g.solved.includes('classKey'))return toast('🔎 這格已經被打開過了。');codeModal('紅線鞋櫃',3,'314','公告欄上的社團順位與紅線標記一致：3、1、4。','classKey',()=>{item('classKey');solve('classKey')})},
- waternote(){openModal('濕紙條',`<div class="paper">「三聲腳步後，記得看腳下。<br>不是每一扇門都在牆上。」</div>`);clue('濕紙條：三聲腳步後，看腳下；不是每一扇門都在牆上')},
- hallmirror(){addFear(7);openModal('走廊鏡面',`<div class="paper">你和印潔站在鏡前。<br><br>你抬手。<br>鏡中的你慢了三秒才抬手。<br><br>印潔沒有動。可鏡中的「印潔」笑了一下。</div>`);clue('鏡子裡的印潔曾在真人沒有動時笑了')},
- stairs(){addFear(8);scare('咚。咚。咚。現在在你身後。','👞')},
- seat_puzzle(){openSeatPuzzle()},
- teacherdesk(){item('metalRod');openModal('講桌抽屜',`<div class="paper">你用指甲撥開抽屜縫，找到一根細金屬棒。棒身刻著：<b>「工具不是用來開門，是用來讓你看見門。」</b></div>`);clue('找到金屬棒，之後可能能撬開機關')},
- recorder(){openModal('錄音筆',`<div class="paper">錄音只有十七秒：<br><br>「如果你們看到這裡……圖書室的暗櫃不要用日期。用<b>被刪掉的頁碼</b>。」<br><br>最後是三下敲擊。</div>`);clue('錄音：圖書室暗櫃使用「被刪掉的頁碼」')},
- class_window(){addFear(4);scare('操場上的燈，剛才明明沒亮。','💡')},
- timetable(){openModal('課表',`<div class="paper">2-A 星期四課表：國文／數學／音樂／理化／體育。<br><br>下午最後一節的位置被人用黑筆寫上：「<b>不要上第五節。</b>」</div>`);clue('2-A課表缺失一堂夜間課，並寫著「不要上第五節」')},
- library_log(){openModal('借閱登記簿',`<div class="paper">依日期排列的借閱：<br>7/12《校史》18頁<br>7/14《值班手冊》07頁<br>7/18《校歌》31頁<br>7/20《失物招領》04頁<br><br>最下方寫：「順序不要改。」</div>`);clue('借閱頁碼：18、07、31、04')},
- book_stack(){openModal('四本新書',`<div class="paper">四本書背的符號依序：○、△、□、×。<br><br>紙條：「從圓開始，越來越尖，然後到最直，最後消失。」<br><br>書頁碼：18、07、31、04。</div>`);clue('圖書室符號順序：○→△→□→×；頁碼18、07、31、04')},
- folded_note(){openModal('摺紙',`<div class="paper">紙背只有一道計算：<br><br><b>18 - 07 + 31 - 04 = 38</b><br><br>旁邊還寫：「不要把 38 當成日期。」</div>`);clue('暗櫃候選密碼：38')},
- library_safe(){codeModal('圖書室暗櫃',2,'38','借閱頁碼＋摺紙算式得到 38。','librarySafe',()=>{solve('librarySafe');item('libraryKey');})},
- library_back(){addFear(10);scare('呼吸聲停在你耳邊。','😶‍🌫️');clue('書架後的呼吸聲與兩人的節奏完全同步')},
- lab_rules(){openModal('實驗記錄',`<div class="paper">① 紅與藍不可相鄰。<br>② 數字小於 5 只能放在偶數位置。<br>③ 最後一支比第一支多 3。<br><br>四支試管：R2、B6、Y5、G9。</div>`);clue('試管規則：紅藍不相鄰；<5只能偶數位；最後比第一大1')},
- test_tubes(){openTubePuzzle()},
- specimen(){item('oldPhoto');openModal('標本櫃後的舊照片',`<div class="paper">四名學生站在音樂教室門口。背面寫：<br><br>「我們約好不再唱第四首歌。」</div>`);clue('舊照片：四名學生約好不再唱第四首歌')},
- sink_tape(){openModal('排水口錄音',`<div class="paper">錄音只有一句：<br><br>「如果你聽見有人唱歌，不要跟著唱。她只是在確認你是不是你。」</div>`);clue('錄音警告：不要跟著未知的歌聲唱')},
- music_cards(){openModal('四張樂譜卡',`<div class="paper">月亮：從最低的音開始。<br>眼睛：跳過第二個。<br>門：回到第一個。<br>井：最後去最遠的鍵。<br><br>八個琴鍵裡有四個磨損最明顯。</div>`);clue('鋼琴旋律線索：由低開始，跳過第二個，再回第一個，最後到最遠')},
- piano(){sequencePuzzle('舊鋼琴','1358',['1','3','5','8'],'officeDoor')},
- missing_records(){openModal('失蹤紀錄',`<div class="paper">2012：1人<br>2015：1人<br>2018：2人<br>2021：不完整<br><br>每份紀錄最後都有同一句：<b>「先被帶到地下室，再看見另一個自己。」</b></div>`);clue('失蹤紀錄：多起事件都提到「另一個自己」')},
- music_curtain(){addFear(5);scare('窗簾後沒有風，卻自己往外鼓起。','🪟')},
- student_list(){openModal('學生名冊',`<div class="paper">你翻過 2012～2021 的名冊。<br><br>同一名字被重複出現三次：<span style="color:#6d2634"><s>印潔</s></span>。<br><br>其中兩次旁邊寫著「2-A」。</div>`);clue('學生名冊：印潔名字在不同年份重複出現')},
- teacher_diary(){openModal('老師日記',`<div class="paper">「她會模仿最重要的人。<br><br>不要問她『妳是不是印潔』，她會回答你想聽的。<br><br>真正的印潔，第一次見面時送過嬨幽一張<b>藍色貼紙</b>。<br><br>假朋友只知道你現在想問什麼，不知道過去。」</div>`);clue('真假印潔驗證：第一次見面時，印潔送嬨幽一張藍色貼紙')},
- archive_files(){openModal('事件檔案',`<div class="paper">四份檔案的受害人數：2012＝1、2015＝1、2018＝2、2021＝1。<br><br>其中只有 2018 的檔案有完整照片。檔案最後一行寫著：<b>「最早的門，通往最新的房間。」</b></div>`);clue('檔案室：2018 是唯一有完整照片的事件');},
- archive_tape(){openModal('舊錄影帶',`<div class="paper">畫面一直是黑的。第 18 秒突然出現：<br><br><b>1987 → 1994 → 2012 → 2018</b><br><br>最後一句聲音：「最早與最新，才是鎖。」</div>`);clue('錄影帶：最早 1987、最新 2018；兩個年份用來開鎖');},
- archive_photos(){openModal('照片牆',`<div class="paper">照片年份依序是 1987、1994、2012、2018。<br><br>2018 照片背面寫著：「千嬋的門一直沒有關。」<br><br>把最早與最新年份各取最後兩位。</div>`);clue('照片牆：最早 1987、最新 2018 → 87、18');},
- archive_safe(){codeModal('檔案室保險箱',4,'8718','錄影帶說「最早與最新才是鎖」；照片牆證明最早 1987、最新 2018，各取最後兩位得到 8718。','archiveSafe',()=>{solve('archiveSafe');item('basementKey');toast('🔑 地下室鑰匙出現了');})},
- office_locker(){letterPuzzle()},
- crest_mechanism(){if(g.inventory.includes('metalRod')){solve('archiveDoor');discover('archive');item('archiveKey');openModal('校徽暗門',`<div class="paper">你用金屬棒撬動校徽，牆壁發出「喀」的一聲。<br><br>後面竟然是一扇窄門。門牌上沒有名字。</div>`);toast('📁 找到隱藏的檔案室');render()}else toast('需要工具才能撬動。')},
- office_phone(){addFear(6);scare('喂……嬨幽。','☎️')},
- basement_inscription(){openModal('鐵門刻痕',`<div class="paper">「真正的朋友，會記得你沒說出口的害怕。<br>假朋友，只會知道你現在希望聽到什麼。」</div>`);clue('地下室刻字：假朋友只知道你現在想聽什麼')},
- stair_dots(){sequencePuzzle('九點陣','246813',['2','4','6','8','1','3'],'basementDoorCode')},
- stair_tape(){openModal('牆角錄音',`<div class="paper">「如果她叫你走前面，先問她一件只有真正朋友知道的事。」</div>`);clue('錄音：若印潔叫你走前面，先驗證她')},
- inspect_hand(){openModal('印潔的手',`<div class="paper">她的指甲縫裡沒有泥，卻有一種細細的黑灰。<br><br>你在校門的門衛室也見過一模一樣的灰。</div>`);clue('印潔指甲中的黑灰與門衛室的黑灰一致');addFear(4)},
- fake_reveal(){g.flags.fakeSeen=true;addFear(13);scare('嬨幽……妳真的記得我們第一次見面嗎？','👧');setTimeout(()=>goRoom('basement_hall'),900)},
- basement_mirror(){addFear(12);openModal('地下室鏡子',`<div class="paper">鏡中的嬨幽比現實慢三秒。<br><br>當你站著不動時，鏡中的你慢慢舉起一根手指，指向你的身後。<br><br>你轉頭。什麼都沒有。<br>再看鏡子，鏡中的你正在哭。</div>`);clue('地下室鏡子：鏡中的嬨幽慢三秒，且曾指向身後');},
- real_note(){openModal('真正印潔的紙條',`<div class="paper">「嬨幽，如果妳看到這張紙，代表我已經被抓到地下室。<br><br>那個跟妳走的人不是我。<br><br>我最怕黑，所以如果她突然說『我不怕了』，<b>不要信她。</b>」</div>`);clue('真印潔紙條：她一直怕黑；若她突然說不怕，就是假的');addTrust(5)},
- basement_photo(){openModal('牆上照片',`<div class="paper">照片裡的女生臉被刮掉，但衣服上的校徽與你在音樂室照片看到的一模一樣。<br><br>照片年份：<b>1987</b>。</div>`);clue('地下室照片年份又指向 1987')},
- basement_tracks(){openModal('腳印',`<div class="paper">往房間裡的鞋印只有一雙。<br>往出口的鞋印有兩雙。<br><br>其中一雙鞋底是學生制服鞋，另一雙沒有任何鞋紋。</div>`);clue('地下室腳印：只有一人進去，卻有兩個人出來；其中一雙沒有鞋紋')},
- fake_yinjie(){if(!g.flags.truthQuestion){talkNPC();return}g.flags.fakeSeen=true;addFear(14);scare('……藍色貼紙？你怎麼知道？','👁️');setTimeout(()=>toast('她知道你問的問題，但她回答得不像記得。'),900)},
- real_yinjie(){if(!g.flags.realTrustCheck){dialogue('真正的印潔','「嬨幽……是我。我第一次見到妳的時候，給了妳一張藍色貼紙。妳把它貼在手機殼右下角。」',[['相信她',()=>{g.flags.realTrustCheck=true;addTrust(12);clue('真正印潔說出完整驗證：藍色貼紙貼在手機殼右下角');closeDialogue();toast('✅ 你確認了真正的印潔');}],['「妳還記得我當時說什麼？」',()=>{g.flags.realTrustCheck=true;addTrust(16);clue('真正印潔記得第一次見面的細節');closeDialogue();}]])}else toast('印潔正在等你解開最後三層鎖。')},
- power_box(){powerPuzzle()},
- rescue_locker(){rescuePuzzle()},
- vent_note(){item('ventNote');openModal('通風口碎紙',`<div class="paper">你拼出其中一行：<br><br>「真正的出口，不在門上，在你們最先看到的地方。」<br><br>你想到校門的四角與校訓牆。</div>`);clue('通風口碎紙：真正的出口不在門上，在最先看到的地方')},
- fake_final(){addFear(15);dialogue('印潔（？）','「嬨幽，妳可以救她。但妳救的人，真的會是印潔嗎？」',[['「我會自己判斷。」',()=>{addTrust(-3);closeDialogue();}],['「妳知道我第一次送她什麼嗎？」',()=>{closeDialogue();scare('她第一次露出了不屬於印潔的表情。','👁️')}]]);g.flags.fakeSeen=true}
-};
-
-function codeModal(title,len,answer,desc,id,cb){openModal(title,`<div class="paper">${desc}</div><div class="display" id="codeDisplay"></div><div class="keypad">${['1','2','3','4','5','6','7','8','9','⌫','0','✓'].map(k=>`<button class="key" onclick="keypad('${k}')">${k}</button>`).join('')}</div><div class="feedback" id="codeFeedback"></div>`);g.state=g.state||{};g.state.code={len,answer:String(answer).toUpperCase(),id,cb};renderCodeDisplay()}
-function keypad(k){const s=g.state.code;if(!s)return;let v=s.value||'';if(k==='⌫')v=v.slice(0,-1);else if(k==='✓'){checkCodeValue(v);return}else if(v.length<s.len)v+=k;s.value=v;renderCodeDisplay()}
-function renderCodeDisplay(){const x=document.getElementById('codeDisplay');if(x)x.textContent=g.state.code?.value||''}
-function checkCodeValue(v){const s=g.state.code;if(!s)return;if(String(v).toUpperCase()!==s.answer){const f=document.getElementById('codeFeedback');if(f)f.textContent='❌ 不對。還有線索沒有用上。';addFear(2);s.value='';renderCodeDisplay();return}solve(s.id);const cb=s.cb;closeModal();if(cb)cb();toast('🔓 鎖解開了');render()}
-function checkSimple(id,ans,solveId){const v=(document.getElementById(id)?.value||'').trim().toUpperCase();if(v===ans){solve(solveId);closeModal();toast('💡 電源恢復');render()}else{const f=document.getElementById('breakerFb');if(f)f.textContent='❌ 順序錯誤。再看看三條規則。';addFear(3)}}
-function openSeatPuzzle(){openModal('2-A 黑板座位謎題',`<div class="paper">七個名字的筆畫數依序：<br><br>沈恩 16　林禾 13　蘇真 20　周妍 17　許晴 17　葉澄 21　江夏 11<br><br>黑板：「真正的位置，是排序後第 3 個與第 5 個的平均值。再加上最後一張桌子的號碼 4。」<br><br>排序：11、13、16、17、17、20、21 → 第3與第5平均取整為 16，再加最後一張桌子的桌號4，得到 20。</div><div class="code"><input class="digit" id="seatAns" maxlength="3"><button class="btn primary" onclick="checkSeat()">確認</button></div><div class="feedback" id="seatFb">輸入兩位或三位數字。</div>`)}
-function checkSeat(){const v=(document.getElementById('seatAns')?.value||'').trim();if(v==='204'||v==='20'){solve('classKey');item('classKey');closeModal();toast('🗝️ 找到 2-A 鑰匙');render()}else{document.getElementById('seatFb').textContent='❌ 還差一步：第3與第5平均約為 16，最後加上桌號 4。';addFear(2)}}
-function openTubePuzzle(){
- openModal('試管排列',`<div class="paper">請把四支試管排成一列。規則：紅藍不可相鄰；數字小於5只能在偶數位；最後比第一大1。<br><br>目前排列會顯示在下方。點兩支交換。</div><div class="sequence" id="tubeSeq"></div><div style="text-align:center"><button class="btn primary" onclick="checkTubes()">確認排列</button></div><div class="feedback" id="tubeFb"></div>`);g.state.tubes=['R2','B6','Y5','G9'];g.state.pick=null;renderTubes()}
-function renderTubes(){const el=document.getElementById('tubeSeq');if(!el)return;const m={R2:'🔴 R2',B6:'🔵 B6',Y5:'🟡 Y5',G9:'🟢 G9'};el.innerHTML=g.state.tubes.map((x,i)=>`<button class="${g.state.pick===i?'picked':''}" onclick="pickTube(${i})">${m[x]}</button>`).join('')}
-function pickTube(i){if(g.state.pick===null||g.state.pick===undefined)g.state.pick=i;else{const j=g.state.pick;[g.state.tubes[i],g.state.tubes[j]]=[g.state.tubes[j],g.state.tubes[i]];g.state.pick=null}renderTubes()}
-function checkTubes(){const v=g.state.tubes.join(',');if(v==='Y5,R2,G9,B6'){solve('labKey');item('labKey');closeModal();toast('⚗️ 試管排列正確');render()}else{document.getElementById('tubeFb').textContent='❌ 還是不符合規則。試試讓第一支與最後一支相差 1。';addFear(2)}}
-function sequencePuzzle(title,answer,buttons,solveId){openModal(title,`<div class="paper">依照線索，按出正確順序。點擊的數字會依序記錄。</div><div class="sequence" id="seqButtons">${buttons.map(x=>`<button onclick="seqPick('${x}',this)">${x}</button>`).join('')}</div><div class="display" id="seqDisplay"></div><div class="feedback" id="seqFb"></div><div style="text-align:center;margin-top:9px"><button class="btn primary" onclick="checkSequence('${escQ(answer)}','${solveId}')">確認</button> <button class="btn" onclick="resetSequence()">重設</button></div>`);g.state.sequence={picked:[],answer:String(answer),solveId}}
-function seqPick(v,b){g.state.sequence.picked.push(v);b.classList.add('picked');document.getElementById('seqDisplay').textContent=g.state.sequence.picked.join('')}
-function resetSequence(){g.state.sequence.picked=[];document.querySelectorAll('#seqButtons button').forEach(b=>b.classList.remove('picked'));document.getElementById('seqDisplay').textContent=''}
-function checkSequence(answer,id){const v=g.state.sequence.picked.join('');if(v===answer){solve(id);closeModal();toast('🔓 順序正確');render()}else{document.getElementById('seqFb').textContent='❌ 聽起來還不是正確順序。';addFear(2);resetSequence()}}
-function letterPuzzle(){openModal('老師鎖櫃',`<div class="paper">鎖櫃提示：「朋友的第一個承諾。」<br><br>你想起和印潔第一次約定的話：<b>明天也會一起來。</b><br><br>取三個英文關鍵字的首字母。</div><div class="code"><input class="digit" maxlength="1" id="l1"><input class="digit" maxlength="1" id="l2"><input class="digit" maxlength="1" id="l3"><button class="btn primary" onclick="checkLetters()">開鎖</button></div><div class="feedback" id="letterFb">提示：Tomorrow、Together、Again。</div>`)}
-function checkLetters(){const v=[1,2,3].map(i=>document.getElementById('l'+i)?.value.trim().toUpperCase()).join('');if(v==='TTA'){solve('archiveDoor');item('archiveKey');closeModal();toast('📁 找到隱藏檔案室鑰匙');render()}else{document.getElementById('letterFb').textContent='❌ 不對。想想「明天也一起來」的三個關鍵字。';addFear(3)}}
-function powerPuzzle(){openModal('地下室配電箱',`<div class="paper">四個開關：A、B、C、D。<br><br>① A 不是最後。<br>② B 必須在 A 後。<br>③ C 不能第一個。<br>④ D 一定最後。<br><br>輸入順序。</div><div class="code"><input class="digit" id="powerAns" maxlength="4"><button class="btn primary" onclick="checkPower()">送電</button></div><div class="feedback" id="powerFb"></div>`)}
-function checkPower(){const v=(document.getElementById('powerAns').value||'').trim().toUpperCase();if(v==='ABCD'){solve('powerOn');closeModal();toast('💡 地下室燈光恢復');render()}else{document.getElementById('powerFb').textContent='❌ 電流瞬間斷開。想想 D 的位置。';addFear(3)}}
-function rescuePuzzle(){openModal('三層鐵櫃',`<div class="paper">三層鎖分別是：<br><br>▲ 符號鎖：來自 2-A 講桌的三角刮痕<br>↙ 方向鎖：來自校徽「南」<br>38 數字鎖：圖書室的暗櫃計算<br><br>請完成三個步驟。</div><div class="code"><input class="digit" id="r1" maxlength="1"><input class="digit" id="r2" maxlength="1"><input class="digit" id="r3" maxlength="2"><button class="btn primary" onclick="checkRescue()">解鎖</button></div><div class="feedback" id="rescueFb">輸入：△、N、38。</div>`)}
-function checkRescue(){const v1=(document.getElementById('r1').value||'').trim().toUpperCase();const v2=(document.getElementById('r2').value||'').trim().toUpperCase();const v3=(document.getElementById('r3').value||'').trim();if((v1==='△'||v1==='A')&&(v2==='S'||v2==='N')&&v3==='38'){if(!g.flags.realTrustCheck){document.getElementById('rescueFb').textContent='⚠️ 鎖可以開，但你還沒有確認真正的印潔。先調查被綁住的人。';return}if(!g.solved.includes('powerOn')){document.getElementById('rescueFb').textContent='⚡ 配電箱尚未恢復。';return}solve('rescue');closeModal();finishRescue()}else{document.getElementById('rescueFb').textContent='❌ 三層鎖不接受這組答案。';addFear(3)}}
-function finishRescue(){g.finished=true;g.room='ending';goRoom('ending');setTimeout(()=>scare('第一個嬨幽，沒有走出去。','👁️'),800);save(false)}
-function finish(){g.finished=true;save(false);render();openModal('第一階段完成',`<div class="ending"><div><h2>🌘 第一階段完成</h2><p>你救出了真正的印潔，但千嬋學校沒有告訴你全部真相。<br><br>遊戲時間：${timeFmt(g.seconds)}<br>探索線索：${g.clues.length} 個<br>解開謎題：${g.solved.length} 個</p><button class="btn gold" onclick="closeModal()">離開千嬋學校</button></div></div>`) }
-
-function journal(){openModal('嬨幽的筆記',`<div class="note">遊戲時間：${timeFmt(g.seconds)}<br>恐懼：${g.fear}%<br>印潔信任度：${g.trust}%<br>已取得物品：${g.inventory.length}<br>已解謎題：${g.solved.length}</div><h3>線索</h3>${g.clues.length?g.clues.map((c,i)=>`<div style="font-size:12px;color:#aaa59e;line-height:1.7;margin:5px 0">${i+1}. ${esc(c)}</div>`).join(''):'<div class="muted">目前沒有。</div>'}`)}
-function openModal(t,h){document.getElementById('modalTitle').textContent=t;document.getElementById('modalBody').innerHTML=h;document.getElementById('modal').classList.add('show')}
-function closeModal(){document.getElementById('modal').classList.remove('show')}
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function escQ(s){return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'")}
-function toast(msg){const x=document.createElement('div');x.textContent=msg;x.style.cssText='position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:300;background:#11151d;border:1px solid #fff2;padding:11px 15px;border-radius:10px;box-shadow:0 18px 60px #0009;font-size:13px;max-width:90%;text-align:center';document.body.appendChild(x);setTimeout(()=>x.remove(),2400)}
-function scare(words,face){document.getElementById('jumpFace').textContent=face||'👁️';document.getElementById('jumpText').textContent=words;const x=document.getElementById('jumpscare');x.classList.add('show');setTimeout(()=>x.classList.remove('show'),900);playNoise()}
-function startAmbient(){try{audioCtx=audioCtx||new (window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();const osc=audioCtx.createOscillator();ambientGain=audioCtx.createGain();osc.type='sine';osc.frequency.value=45;ambientGain.gain.value=.018;osc.connect(ambientGain).connect(audioCtx.destination);osc.start()}catch(e){}}
-function playNoise(){try{if(!audioCtx)return;const buf=audioCtx.createBuffer(1,audioCtx.sampleRate*.08,audioCtx.sampleRate);const d=buf.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=(Math.random()*2-1)*(1-i/d.length);const src=audioCtx.createBufferSource();const g2=audioCtx.createGain();g2.gain.value=.08;src.buffer=buf;src.connect(g2).connect(audioCtx.destination);src.start()}catch(e){}}
-window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeDialogue()}});document.addEventListener('click',e=>{if(e.target.id==='modal')closeModal();if(e.target.id==='dialogue')closeDialogue()});setInterval(()=>{if(g.started&&!g.finished)save(false)},20000);setInterval(()=>{if(g.started&&!g.finished&&Math.random()<.42){const msgs=[['有人從你眼角走過去。','🚶'],['印潔剛才是不是叫你？','👧'],['你聽見第二組腳步。','👞'],['燈剛才自己熄了一次。','💡']];const m=msgs[Math.floor(Math.random()*msgs.length)];addFear(3);scare(m[0],m[1])}},90000);
-</script>
-</body>
-</html>
+const IMG={ci:svg('ci','n'),cis:svg('ci','s'),cov:svg('ci','n',1),yj:svg('yj','n'),yjs:svg('yj','s'),yjf:svg('yj','f'),sh:svg('sh','n')},$=i=>document.getElementById(i),K='qc-ch1-v5';let S,AC,MG,tv;
+const NEW=()=>({room:'gate',inv:[],cl:[],ok:[],fear:0,trust:50,fl:{},seen:{},tries:{}});
+const IT={k2a:['🔑','2-A 鑰匙'],kLib:['🗝️','體育倉庫鑰匙'],kLab:['⚗️','理化室鑰匙'],kMus:['🎹','音樂室鑰匙'],kBase:['🔑','地下室鑰匙'],kOff:['🔑','辦公室鑰匙']};
+const IDLE=['「你有沒有覺得……有人在看我們？」','「我沒事，真的。你繼續找。」','「慈幽，如果我突然不見了，你要先去找人，不要自己……算了，當我沒說。」','「我手好冷。你的呢？」','「那些失蹤的人，會不會也以為自己只是來探險？」'];
+const RND=['走廊深處傳來很輕的哼歌聲。','你確定剛剛那盞燈，本來是亮著的嗎？','有人在你耳後輕輕說：「慈幽。」','手機震了一下。螢幕上沒有任何通知。','身後有一串腳步聲，你停下來，它也停了。'];
+// 房間資料：nm名稱 a圖示 t開場 o可調查[標籤,內容,線索,驚嚇字,驚嚇臉] p謎題 sp特殊 np印潔對話 go門[目標,需求,文字] e事件[毫秒,字,臉,音效,線索] in印潔進場一句
+const R={
+gate:{nm:'校門',a:'🏫',in:'「我走前面……不對，你走前面好了。」',t:['23:47。慈幽翻過南側圍牆，印潔緊跟在後。草地濕得不自然，鞋底沾上一層細細的黑灰。','門衛室沒有燈，玻璃上卻印著一個剛留下的掌印——是從裡面往外按的。'],
+ o:[['值夜告示','「夜間巡查：北門→西樓→南門，最後一盞燈 23:40 熄滅。鐵門鎖碼＝三處的燈數依序排列，再接上熄燈分鐘數的十位。」','告示：鎖碼＝北門、西樓、南門的燈數，再接熄燈分鐘數的十位（23:40）'],['北門路燈','北門旁的路燈還亮著。你數了一遍：三盞。','北門燈數：3'],['門衛室','值班簿只有一行：「南門的燈壞了，只剩一盞。」玻璃上的掌印，好像又大了一圈。','南門燈數：1','玻璃後面，有東西動了一下。','🖐️']],
+ p:[{l:'鐵門鎖',q:'四位數字鍵盤還有電。輸入密碼：',a:'3514',ok:'gate',h:'慈幽：告示說照「北→西→南」。北門和南門我們都看過了，西樓……印潔剛剛是不是說過什麼？'}],
+ np:{q:'「我先講好，真的看到鬼我一定先跑。……欸，西邊那棟教學樓窗戶全亮著。我數過了，五盞，一盞不多。」',c0:'印潔：西樓亮著五盞燈',ch:[['「那你還來？」','印潔小聲說：「因為你在啊。你一個人來，我會睡不著。」',0,5],['「別怕，我在。」','她把外套拉緊：「你說的喔，不准丟下我。」',0,3]]},
+ go:['lobby','gate','走進校舍'],e:[8000,'門衛室的玻璃上，多了第二個掌印。','🖐️','hit']},
+lobby:{nm:'一樓玄關',a:'🚪',in:'「手機沒訊號了……你的有嗎？」',t:['門在身後輕輕合上。玄關的校訓牆掛著四盞老燈，第二盞一直閃。','配電箱貼著紅標，四個開關：A「記住」、B「同行」、C「回頭」、D「離開」。'],
+ o:[['校訓牆','四個詞刻在燈下：記住、同行、回頭、離開。最後一行小字：「離開，只能在最後。」','配電箱：D（離開）必須在最後'],['鞋印','濕鞋印進，乾鞋印出，兩串在樓梯前重疊。重疊處用粉筆寫著：「先回頭，才能同行。」','規則：C（回頭）要在 B（同行）之前'],['平面圖','被撕走一半的平面圖：玄關→東走廊→2-A→圖書室→理化室→音樂室→辦公室。地下室被塗黑。','路線：東走廊→2-A→圖書室→理化室→音樂室→辦公室']],
+ p:[{l:'配電箱',q:'輸入四個開關的送電順序（例：ABCD）：',a:'ACBD',ok:'power',h:'印潔：校訓牆說誰要最後；鞋印說誰在誰前面；剩下的……我外婆教過我，停電要先「記住」。'}],
+ np:{q:'「慈幽，我外婆說，停電要先『記住』，不然黑暗會先記住你。所以那四個開關……『記住』一定要第一個。」',c0:'印潔：「記住」（A）必須是第一個開關',ch:[['問：「你為什麼堅持今晚要來？」','「因為我生日是十月七號。我想在生日前，證明這裡沒有鬼。」','印潔生日：十月七日（10/07）',4],['「謝謝你提醒我。」','她笑了一下：「對了，你別忘了我生日是十月七號喔，我很認真的。」','印潔生日：十月七日（10/07）',3]]},
+ go:['corridor','power','進入東側走廊'],e:[6000,'配電箱裡，有人在輕輕敲門。','🚪','hit']},
+corridor:{nm:'東側走廊',a:'🕯️',in:'「剛才二樓欄杆邊……有人。」',t:['鎖舌「喀」地一聲，走廊的門自己鎖上。','感應燈一盞一盞亮起，停在一扇沒有門牌的教室前。你注意到旁邊的鞋櫃，有一排格子被紅線綁住。'],
+ o:[['公告欄','社團排名：攝影社1　天文社2　籃球隊3　音樂社4　美術社5。底下紅筆寫：「鞋櫃三格，依序是：最亮的、會跳的、會響的。」','公告欄：社團 攝1 天2 籃3 音4 美5；鞋櫃三格依序＝最亮的、會跳的、會響的'],['濕紙條','飲水機下的濕紙條：「星星不會自己亮，球不會自己跳，鋼琴不會自己響——但這裡的會。」','濕紙條：星星＝天文社、球＝籃球隊、鋼琴＝音樂社'],['走廊鏡面','你抬手，鏡中的你慢了三秒。印潔沒動，鏡中的「印潔」卻笑了一下。','鏡中的印潔，在真人沒動時笑了','你回頭看印潔。她在看鏡子，臉上沒有表情。','😶']],
+ p:[{l:'紅線鞋櫃',q:'三個格子，由左到右輸入三位數字：',a:'432',ok:'locker',i:'k2a',h:'慈幽：三格要對應三個社團的名次。印潔說公告「依序」是從右邊往左邊讀——所以輸入時別弄反。'}],
+ np:{q:'「那張公告，老師都是從右邊往左邊貼的，所以『依序』要從右往左讀。慈幽，你記住。」',c0:'印潔：公告的「依序」是從右往左讀（鞋櫃三格）',ch:[['「你怎麼會知道這種事？」','她愣了一下：「……我好像來過這裡。不對，我沒來過。」',0,-2],['「那就照這個順序試。」','「嗯。剛剛二樓欄杆邊，有個女生……跟我長得很像。」','印潔看見二樓欄杆邊有個和她很像的女生',2]]},
+ go:['classroom','k2a','進入 2-A 教室'],e:[3500,'咚。咚。咚。……現在，在你身後。','👞','steps','腳步聲：三下（咚、咚、咚）']},
+classroom:{nm:'2-A 舊教室',a:'🪑',in:'「這間教室……我不想坐下。」',t:['桌椅全朝向黑板，只有最後一張桌子反方向擺著。','黑板上寫著七個名字與筆畫數。粉筆灰像剛被人擦過。'],
+ o:[['黑板','沈恩16　林禾13　蘇真20　周妍18　許晴17　葉澄21　江夏11。底下一行：「要點名，從這裡開始。」','黑板：沈恩16、林禾13、蘇真20、周妍18、許晴17、葉澄21、江夏11（筆畫）'],['課表','星期四課表：國文／數學／音樂／理化。第五節被人用黑筆寫上：「不要上。」','課表：第五節被禁止'],['最後一張課桌','桌上有支錄音筆。「……被點到的第五個人，把鑰匙留在抽屜。抽屜的鎖，是他名字的筆畫數。」最後三下敲擊聲。','錄音：點名第五個人的筆畫數＝抽屜密碼'],['窗戶','窗外操場多了一盞不該亮的燈。燈下站著一個人影，朝你揮手。','窗外的人影在對你揮手','那個人影，和你一模一樣。','👤']],
+ p:[{l:'課桌抽屜',q:'二位數字鎖：',a:'18',ok:'drawer',i:'kLib',h:'印潔：老師點名是筆畫少的先點。把七個名字排好，找第五個。'}],
+ np:{q:'「點名都是從筆畫少的先點，我以前的班導也這樣。黑板上的名字，可以照這個方式排。」',c0:'印潔：點名順序從筆畫最少排到最多',ch:[['「這間教室，你真的沒來過？」','「……沒有。可是我知道最後一張桌子的抽屜會卡住。」她說完，自己也愣住了。',0,-3],['「別想了，先解題。」','「嗯，好。我陪你。」',0,3]]},
+ go:['gym','kLib','前往體育倉庫'],e:[5000,'黑板上，粉筆自己動了：「妳不該來。」','✍️','hit']},
+library:{nm:'舊圖書室',a:'📚',in:'「你走慢一點……我聽見兩個人的腳步聲。」',t:['圖書室沒有灰塵，只有「剛有人翻過書」的痕跡。','書架後面有呼吸聲，節奏和你們一模一樣。'],
+ o:[['借閱登記簿','《失物招領》7/20 第04頁；《校史》7/12 第18頁；《校歌》7/18 第31頁；《值班手冊》7/14 第07頁。','借閱：失物招領7/20 p04、校史7/12 p18、校歌7/18 p31、值班手冊7/14 p07'],['摺紙','反覆摺過的紙：「每個頁碼，把兩個數字加起來。不要把結果當成日期。」','摺紙：每個頁碼的兩個數字相加'],['書架後方','你探頭——書架後面的縫隙裡，有一隻眼睛。','書架後面有一隻眼睛','它慢慢眨了一下。','👁️']],
+ p:[{l:'暗櫃',q:'四位數字鎖：',a:'9744',ok:'safe',i:'kLab',h:'印潔：借書紀錄要從最舊的日期排起，每個頁碼各自把數字加起來。'}],
+ np:{q:'「借書紀錄要從最舊的日期往最新排——這是圖書室的規矩，我國小就是圖書股長。」',c0:'印潔：借閱紀錄要從日期最早排到最晚',ch:[['握住她的手：「你在發抖。」','「書架後面……有人在跟我們同步呼吸。你聽。」她的手冰得不像活人。',0,6],['「我們一起去看。」','你一動，呼吸聲就停了。印潔小聲說：「它在等你。」',0,0]]},
+ go:['toilet','safe','前往二樓女廁'],e:[5000,'呼吸聲，停在你耳邊。','😶‍🌫️','whisper']},
+lab:{nm:'理化準備室',a:'⚗️',in:'「這裡有股甜味，像醫院。」',t:['玻璃櫃裡擺著四支試管：紅、藍、黃、綠。','實驗記錄只剩幾行字，櫃子深處有一瓶沒有標籤的藥水。'],
+ o:[['實驗記錄','「紅與藍不可相鄰。黃必須在綠的左邊。」','試管：紅藍不相鄰；黃在綠的左邊'],['標本櫃','櫃後有張舊照片，背面寫：「藍色，總是最後被發現。」','照片：藍色試管在最後'],['水槽','排水口卡著錄音帶：「如果有人唱歌，別跟著唱。她只是在確認你是不是你。」','錄音：別跟著歌聲唱'],['無標籤藥水','瓶子裡的液體慢慢轉動，像在看你。你一靠近，玻璃出現裂痕。','藥水對靠近的人有反應','「啪！」玻璃炸開。','💥']],
+ p:[{l:'試管架',q:'由左到右輸入四支試管的顏色代號（R紅 B藍 Y黃 G綠）：',a:'YRGB',ok:'tubes',h:'印潔：先放最後一支，再看紅色不能在哪裡——我不喜歡它先看見我。'}],
+ np:{q:'「慈幽，那瓶紅色的……拜託別放最前面。我不喜歡它先看見我。」',c0:'印潔：紅色試管不要放第一個',ch:[['「這裡有股甜味。」','「像醫院的藥水。你別碰任何瓶子，好嗎？」',0,3],['「別怕，只是瓶子。」','她沒笑，眼睛一直盯著那瓶沒有標籤的藥水。',0,-1]]},
+ go:['nurse','tubes','前往保健室'],e:[6000,'遠處傳來一個很輕的歌聲，唱到一半，停了。','🎵','whisper']},
+music:{nm:'舊音樂教室',a:'🎹',in:'「這首歌……我好像聽過。」',t:['你們踏進音樂室，鋼琴自己響了一個音。','琴蓋上放著四張樂譜卡，背面分別畫著：眼睛、井、月亮、門。'],
+ o:[['樂譜卡','月亮：彈最低的磨損鍵。眼睛：跳過第二個，彈第三個磨損鍵。門：回到第一個磨損鍵。井：彈最遠的磨損鍵。','樂譜卡：月亮＝最低的磨損鍵；眼睛＝第三個磨損鍵；門＝第一個；井＝最遠的'],['琴鍵','八個白鍵裡，磨損最明顯的是第 2、4、5、7 鍵。','磨損琴鍵：2、4、5、7'],['失蹤紀錄','2012：1人　2015：1人　2018：2人。每份紀錄最後都寫著：「先被帶到地下室，再看見另一個自己。」','失蹤：2012年1人、2015年1人、2018年2人'],['窗簾','窗簾後沒有風，卻往外鼓起一個人形。','窗簾後有人形凹痕','簾子被慢慢拉開了。','🪟']],
+ p:[{l:'鋼琴',q:'依樂譜彈出四個音（輸入琴鍵編號 1–8）：',a:'2527',ok:'musicDone',h:'印潔：先看歌的順序，再看磨損的琴鍵，每張卡都在說「第幾個」。'}],
+ np:{q:'「這首歌的順序我記得：先唱月亮，再唱眼睛，然後是門，最後是井。我沒學過，可是我就是記得。」',c0:'印潔：歌的順序＝月亮、眼睛、門、井',ch:[['「千蟬有這首歌嗎？」','「沒有……校史裡沒有。可是我小時候，有人唱給我聽。」','印潔說她小時候聽過校史裡不存在的歌',0],['「別哼了，我會怕。」','她閉上嘴，可旋律仍在響——不是從她嘴裡傳出來的。',0,2]]},
+ go:['radio','musicDone','前往廣播室'],e:[4000,'鋼琴蓋緩緩合上。「砰。」','🎹','piano']},
+office:{nm:'舊教師辦公室',a:'🗃️',in:'「慈幽……你有沒有覺得，我最近怪怪的？」',t:['辦公室像一整夜沒流動過空氣。桌面沒有灰塵，抽屜裡卻全是發黃的紙。','學生名冊上有名字被黑墨水劃掉，其中一個，你看見了兩次。'],
+ o:[['學生名冊','被劃掉的「印潔」，生日欄只剩：「　月　日」。旁註：「鎖櫃＝生日四位數，月在前、日在後。」','名冊：鎖櫃＝印潔生日四位數（月在前、日在後）'],['老師日記','「她會模仿最重要的人。真正的印潔，第一次見面送過慈幽一張藍色貼紙，貼在手機殼右下角。假的只知道你現在想聽什麼。」','驗證：真印潔第一次送慈幽藍色貼紙，貼在手機殼右下角'],['電話','話筒沒接線，卻傳出呼吸聲。接著，有人輕聲說：「喂……慈幽。」','電話裡有人叫你的名字','嘟——嘟——嘟——','☎️']],
+ p:[{l:'鎖櫃',q:'四位數字鎖：',a:'1007',ok:'locker2',i:'kBase',h:'慈幽：名冊說要印潔的生日。她自己……是不是說過？'}],
+ np:{q:'「慈幽，你記得我們第一次見面嗎？我送你的那個東西……是紅色髮圈，對吧？」她笑著，等你點頭。',c0:'辦公室：印潔說第一次送的是「紅色髮圈」',ch:[['點頭：「對，是髮圈。」','她笑得更燦爛了。你卻背脊發涼——你剛剛，是不是點錯頭了？',0,-8],['「……我想不起來。」','她的笑容停了半秒，才說：「沒關係，你累了。」',0,-2]]},
+ go:['basement','kBase','前往地下室'],e:[6000,'所有抽屜，同時「喀」地彈開了一格。','🗄️','hit']},
+gym:{nm:'體育倉庫',a:'🏀',in:'「慈幽……那個女生，她在看我們。」',t:['鐵捲門只開了一半。裡面傳來很輕的敲擊聲，三下，停，三下。','器材籠裡蹲著一個穿制服的女孩，抬頭看你。她的嘴唇動了動，卻沒有任何聲音。'],
+ o:[['籠上的名牌','「2-B　蕭偲涵　16 歲」。名字被人用指甲刮過很多次。','籠中女孩：偲涵，2-B，16 歲'],['器材清單','「跳繩12、籃球8、啞鈴6、跳箱4。」旁註：「鎖碼＝每種器材『剩下』的數量，由多到少排。」','器材清單：跳繩12、籃球8、啞鈴6、跳箱4；鎖碼＝剩下的數量由多到少'],['借出登記簿','「借走：籃球3、跳繩5。」最後一行是剛寫上去的：「沒有人還。」','借出：籃球3、跳繩5'],['跳箱','你拉開最上層，裡面是一雙濕的鞋，鞋尖朝著你。','跳箱裡有一雙濕鞋','鞋子自己轉了半圈。','👟']],
+ p:[{l:'籠鎖',q:'四位數字鎖：',a:'7654',ok:'gymDone',sv:1,h:'印潔：用清單的數量，減掉登記簿借走的，再把剩下的由多排到少。'}],
+ sp:[['籠中的女孩',()=>sihan()]],
+ np:{q:'「慈幽……她好像不是被關在裡面，是一直在等人來。清單、登記簿都要一起看，鎖碼是『剩下的』。」',c0:'印潔：鎖碼要拿清單數量扣掉借走的',ch:[['「我們要救她嗎？」','「……你決定。我會跟著你。」',0,2],['「她看起來不太對勁。」','「我也覺得。可是她看起來，真的很怕。」',0,0]]},
+ go:['library','gymDone','前往圖書室'],e:[4500,'鐵捲門「轟」地落下。籠中的女孩仍在看著你。','🚪','hit']},
+nurse:{nm:'保健室',a:'🛏️',in:'「這裡的床……每張都有人睡過的痕跡。」',t:['保健室的病床全鋪著白布，只有最裡面那張，被單鼓起一個人形。','藥櫃的標籤被撕掉，只剩顏色與數字。'],
+ o:[['病歷表','床1：發燒　床2：失眠　床3：咳嗽　床4：幻聽。','病歷：床1發燒、床2失眠、床3咳嗽、床4幻聽'],['藥單','「發燒給紅色，失眠給藍色，咳嗽給黃色，幻聽給白色。」','藥單：發燒＝紅、失眠＝藍、咳嗽＝黃、幻聽＝白'],['藥櫃','四色藥瓶蓋上的數字：紅3、藍5、黃7、白2。','藥瓶數字：紅3、藍5、黃7、白2'],['鼓起的被單','你掀開被單——裡面是空的，卻還有體溫。一隻冰冷的手，從背後輕輕握住你。','被單下有餘溫','有人握住了你的手。','🤝']],
+ p:[{l:'藥櫃鎖',q:'四位數字鎖：',a:'2753',ok:'nurse',i:'kMus',h:'印潔：要把床號、病、顏色、數字一路連起來。護理阿姨說過，查房是從最後一張床往前走。'}],
+ np:{q:'「護理阿姨說過，查房要從最後一張床往前走，不然病人會醒。慈幽，藥櫃的鎖應該也是那樣讀。」',c0:'印潔：藥櫃要從最後一張床往前讀（床4→床1）',ch:[['「你怎麼記得這些？」','「……我也不知道。好像有人在我耳邊教過我。」',0,-2],['「好，我們照做。」','「嗯。別吵醒她們。」',0,3]]},
+ go:['music','nurse','前往音樂教室'],e:[5000,'最裡面的病床，被單慢慢坐起來了。','🛏️','whisper']},
+radio:{nm:'廣播室',a:'🎙️',in:'「麥克風的紅燈……一直亮著。」',t:['廣播室的麥克風開著，紅燈亮著。擴音器傳出一段很慢的敲擊聲。','唱盤上放著一張沒有標籤的唱片。'],
+ o:[['播音規則','「敲擊暗號：短＝1，長＝3。每一組敲擊代表一個數字，組內數字相加。」','暗號：短＝1、長＝3；每組相加'],['敲擊紀錄','「短短長／長短／短長長」。三組，一組一個數字。','敲擊三組：短短長、長短、短長長'],['唱片','背面刻著：「最後一組，要減 2。」','唱片：最後一組要減 2'],['麥克風','紅燈閃了一下。擴音器傳出你的聲音：「我在你後面。」可你根本沒說話。','麥克風錄到你沒說過的話','「我在你後面。」','🎙️']],
+ p:[{l:'頻道鎖',q:'三位數字：',a:'545',ok:'radio',h:'印潔：每組先相加，再看唱片說最後一組要怎麼處理。'}],
+ np:{q:'「慈幽，暗號要一組一組算，組跟組之間不要加在一起，順序就照紀錄上的。」',c0:'印潔：每組分開算，順序照紀錄（三位數）',ch:[['「你怎麼懂這些？」','「……我不知道。像有人在我腦子裡數。」',0,-2],['「好，我來算。」','「嗯。對了，唱片的背面，你要看。」',0,2]]},
+ go:['hall','radio','前往榮譽走廊'],e:[5000,'擴音器突然大聲播出：「慈幽，你為什麼不回頭？」','📢','hit']},
+toilet:{nm:'二樓女廁',a:'🚽',in:'「我……不想一個人進去。你別走遠喔。」',t:['二樓女廁的燈是壞的，只有最裡面的隔間門縫透出一點紅光。','三間隔間，門上各貼著一張泛黃字條。水龍頭自己滴著水：一滴、一滴、一滴。'],
+ o:[['第一間的字條','「空的那間，是第二間。」','隔間字條①：空的是第二間'],['第二間的字條','「空的不是第二間。」','隔間字條②：空的不是第二間'],['第三間的字條','「空的是第三間。」','隔間字條③：空的是第三間'],['牆上的字','用指甲刻在磁磚上：「三張字條，只有一句是真的。進去之前，先敲門，敲三下。」','牆上字：三張字條只有一句是真的；進去前敲三下'],['洗手台的鏡子','鏡面蒙著水氣。你擦開一塊，裡面映出口紅寫的字：「8　5　□　4」。水氣很快又蓋了回來。','鏡中口紅字：8 5 □ 4（鏡中所見）'],['最裡面的隔間','門縫下有一雙鞋，腳尖朝外。你敲了一下，裡面有人敲了回來。','隔間裡有人回敲','裡面的人，敲了四下。','🚪']],
+ p:[{l:'空的隔間',q:'輸入「空的隔間號碼」＋「敲門次數」（兩位數）：',a:'23',ok:'stall',h:'慈幽：第一間和第二間互相矛盾，所以第三間一定是假的。剩下兩間，要靠印潔說的傳說來排除。'},{l:'鏡子的口紅字',q:'四位數字（把鏡中看到的字還原）：',a:'4258',ok:'mirror',need:['stall'],nt:'鏡子的水氣太厚了。你得先打開那間空的隔間。',h:'印潔：鏡子裡的字左右是反的，要倒過來讀；空格要填你打開的那間隔間的號碼。'}],
+ np:{q:'「我國小就聽過女廁的傳說：最靠門口的那一間，從來不是空的。還有——鏡子裡看到的字是左右反的，要倒過來讀。」',c0:'印潔：最靠門口（第一間）不是空的；鏡中的字要倒過來讀',ch:[['「這種傳說，你怎麼都記得？」','「……我也不想記得。」她小聲說。',0,-1],['「別怕，我就站在門口。」','「你別走遠喔。真的。」',0,4]]},
+ go:['lab','mirror','前往理化準備室'],e:[5000,'水龍頭停了。所有的隔間門，同時「喀」地開了一條縫。','🚪','hit']},
+hall:{nm:'榮譽走廊',a:'🏆',in:'「玻璃櫃裡的倒影……好像比我們多一個人。」',t:['二樓盡頭的長廊掛滿歷屆榮譽榜與獎盃。玻璃櫃的倒影裡，你們多了一個人。','你回頭數了兩次。現實裡，沒有。'],
+ o:[['榮譽榜','「民國76年 2-A　民國85年 2-B　民國94年 2-C　民國__年 2-__」最後一格被刮空。','榮譽榜：76年2-A、85年2-B、94年2-C、下一格空白'],['獎盃底座','三座獎盃的銘牌依序刻著 A、B、C，第四座是空的。字條：「鎖碼＝下一屆年份（民國三位數），接班級字母在字母表中的序號。」','獎盃：鎖碼＝下一屆年份（三位數）＋班級字母的字母表序號'],['失蹤週期紀念牌','「他們每隔相同的年數就會回來。下一次，把西元年寫在暗格裡。」','紀念牌：失蹤事件每隔相同年數；暗格＝下一次發生的西元年'],['玻璃櫃倒影','你揮手，倒影多揮了一次。','玻璃櫃倒影多了一個人','倒影裡的那個人，也在看你。','🪞']],
+ p:[{l:'榮譽榜鎖',q:'四位數字：',a:'1034',ok:'hall1',h:'印潔：年份每一屆增加的數字一樣，班級字母也是一個接一個。'},{l:'獎盃櫃暗格',q:'四位數字（西元年）：',a:'2021',ok:'hall',i:'kOff',need:['hall1'],nt:'暗格被榮譽榜的玻璃擋住了，先解開榮譽榜的鎖。',h:'慈幽：回想音樂室的失蹤紀錄——每隔幾年一次？下一次是哪一年？'}],
+ np:{q:'「慈幽，榮譽榜的年份和班級，都有固定的規律。……每隔幾年就有人不見，這個數字，我好像在哪裡見過。」',c0:'印潔：榮譽榜年份和班級有固定規律；失蹤紀錄也有間隔',ch:[['「規律？」','「就是一直加同樣的數字。」她說。',0,1],['「你在發抖。」','「因為倒影裡……那個人，一直沒有動。」',0,2]]},
+ go:['office','hall','前往教師辦公室'],e:[5500,'玻璃櫃裡的倒影，慢慢轉頭，看向你。','🪞','whisper']},
+basement:{nm:'地下室',a:'🕳️',in:'「慈幽，你先下去，我在後面看門。」',t:['樓梯往下，燈每隔五秒熄一次。前面的「印潔」背對著你。','你突然想起：印潔明明最怕黑，從來不會要你走前面。','走廊盡頭有個被綁在椅子上的女孩，抬頭看你。'],
+ o:[['鐵門刻痕','「真正的朋友，會記得你沒說出口的害怕。假朋友，只會知道你現在想聽什麼。」','地下室刻字：假朋友只知道你現在想聽什麼'],['牆角錄音','沙沙聲後，一個很小的聲音：「先確認她。確認之後，鐵櫃的密碼，問被綁住的我。」','錄音：先識破假印潔，再向被綁住的真印潔問鐵櫃密碼'],['通風口碎紙','你拼起碎紙：「真正的出口不在門上。」背面：「別回頭。」','碎紙：別回頭','別回頭。','🚪']],
+ sp:[['前面的印潔',()=>fakeTalk()],['被綁住的女孩',()=>realTalk()]],
+ p:[{l:'三層鐵櫃',q:'三位數字。真印潔說，是一路上看見的三個數，依序輸入：',a:'343',ok:'end',need:['fake','real'],h:'慈幽：北門有幾盞燈、被帶走的人一共幾個、走廊裡的腳步聲幾下——筆記裡都有。'}],
+ e:[4500,'燈，滅了。黑暗中，有人貼在你耳邊：「我在你後面。」','👧','hit']}};
+function svg(k,m,c){return 'data:image/svg+xml;utf8,'+encodeURIComponent(av(k,m,c))}
+function av(k,m,c){const hr='#16131b',sk=m==='f'?'#d9d3d0':'#f0d3ba',B='M42 262L54 180Q100 156 146 180L158 262Z';let o='',h1='',h2='';
+ if(k==='ci'){h1='<path d="M62 120Q58 66 100 66Q142 66 138 120L146 214Q100 226 54 214Z" fill="'+hr+'"/>';o='<path d="'+B+'" fill="#a3a8b0"/><path d="M82 176L100 200L118 176Z" fill="#74797f"/><rect x="88" y="206" width="24" height="16" rx="4" fill="#3b3144"/>';h2='<path d="M64 124Q66 84 100 80Q134 84 136 124Q122 98 100 100Q78 98 64 124Z"/><path d="M64 120L58 196L78 176Z"/><path d="M136 120L142 196L122 176Z"/>'}
+ if(k==='yj'){h1='<path d="M60 120Q56 62 100 62Q144 62 140 120L150 252L50 252Z" fill="'+hr+'"/>';o='<path d="'+B+'" fill="#ebe5d9"/><path d="M86 174Q100 194 114 174" stroke="#c9c1b2" fill="none" stroke-width="3"/>';h2='<path d="M100 70Q64 76 64 130L58 240L82 226L80 140Q82 98 100 70Z"/><path d="M100 70Q136 76 136 130L142 240L118 226L120 140Q118 98 100 70Z"/>'}
+ if(k==='sh'){h1='<circle cx="100" cy="62" r="13" fill="'+hr+'"/><path d="M64 124Q62 70 100 70Q138 70 136 124L132 150L68 150Z" fill="'+hr+'"/>';o='<defs><clipPath id="q"><path d="'+B+'"/></clipPath></defs><path d="'+B+'" fill="#ececee"/><g clip-path="url(#q)" stroke="#8a8a92" stroke-width="3">'+[190,200,210,220,230,240,250].map(y=>'<path d="M40 '+y+'H160"/>').join('')+'</g><path d="M62 182Q66 160 78 170" stroke="#8a8a92" stroke-width="3" fill="none"/><path d="M100 188V236" stroke="#b9b9bf" stroke-width="1.5"/><path d="M100 244C92 236 94 230 100 234C106 230 108 236 100 244Z" fill="#d9a7a0"/>';h2='<path d="M66 122Q70 90 100 86Q130 90 134 122Q120 104 104 110L98 108Q80 104 66 122Z"/><path d="M68 124L70 168L80 140Z"/><path d="M132 124L130 168L120 140Z"/>'}
+ const e=m==='s'?'<ellipse cx="89" cy="128" rx="4.6" ry="6.2" fill="#14121a"/><ellipse cx="111" cy="128" rx="4.6" ry="6.2" fill="#14121a"/><circle cx="90.5" cy="125.5" r="1.6" fill="#fff"/><circle cx="112.5" cy="125.5" r="1.6" fill="#fff"/><path d="M82 114L95 118M118 114L105 118" stroke="#14121a" stroke-width="2"/><ellipse cx="100" cy="145" rx="3" ry="4" fill="#7a3a40"/>':m==='f'?'<ellipse cx="89" cy="128" rx="5.4" ry="7.5" fill="#000"/><ellipse cx="111" cy="128" rx="5.4" ry="7.5" fill="#000"/><path d="M80 143Q100 160 120 143" stroke="#7d1a2c" stroke-width="2.5" fill="none"/><path d="M84 140L88 144M92 143L94 147M100 144V148M108 143L106 147M116 140L112 144" stroke="#7d1a2c" stroke-width="1.5"/>':'<ellipse cx="89" cy="128" rx="3.4" ry="4.2" fill="#14121a"/><ellipse cx="111" cy="128" rx="3.4" ry="4.2" fill="#14121a"/><path d="M84 118Q89 116 94 118M106 118Q111 116 116 118" stroke="#14121a" stroke-width="1.6" fill="none"/>'+(k==='sh'?'<path d="M95 144H105" stroke="#7a3a40" stroke-width="2"/>':'<path d="M93 143Q100 147 107 143" stroke="#7a3a40" stroke-width="2" fill="none"/>');
+ const bl=m==='f'?'':'<ellipse cx="80" cy="137" rx="6" ry="3" fill="#e9a3a0" opacity=".45"/><ellipse cx="120" cy="137" rx="6" ry="3" fill="#e9a3a0" opacity=".45"/>';
+ const bg=c?'<defs><radialGradient id="g" cx=".5" cy=".4" r=".8"><stop offset="0" stop-color="#4a1020"/><stop offset="1" stop-color="#05060a"/></radialGradient><linearGradient id="bm" x1="0" x2="1"><stop offset="0" stop-color="#fff3c0" stop-opacity=".85"/><stop offset="1" stop-color="#fff3c0" stop-opacity="0"/></linearGradient></defs><rect width="200" height="260" fill="url(#g)"/><circle cx="162" cy="42" r="17" fill="#e9e3cc" opacity=".85"/><path d="M0 260V210H24V190H52V216H80V200H120V220H150V196H178V214H200V260Z" fill="#0a0a10"/><path d="M118 196L200 140V250Z" fill="url(#bm)"/>':'<rect width="200" height="260" fill="#0b0d12"/>';
+ const arm=c?'<path d="M138 192Q158 204 150 218" stroke="#a3a8b0" stroke-width="13" stroke-linecap="round" fill="none"/><rect x="144" y="206" width="22" height="9" rx="3" fill="#555" transform="rotate(-30 150 210)"/>':'';
+ return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260">'+bg+h1+o+arm+'<rect x="91" y="150" width="18" height="24" fill="'+sk+'"/><ellipse cx="100" cy="124" rx="30" ry="34" fill="'+sk+'"/><g fill="'+hr+'">'+h2+'</g>'+e+bl+'</svg>'}
+// ===== 引擎 =====
+const has=k=>S.inv.includes(k)||S.ok.includes(k),pick=a=>a[Math.random()*a.length|0],nm=s=>String(s).replace(/[\s,，、\-]/g,'').toUpperCase();
+function btn(p,t,f,c){const b=document.createElement('button');b.className='b '+(c||'');b.textContent=t;b.onclick=f;p.appendChild(b);return b}
+function clue(t){if(t&&!S.cl.includes(t)){S.cl.push(t);S.fear+=1;toast('🔎 線索已記入筆記')}}
+function toast(m){const x=document.createElement('div');x.textContent=m;x.style.cssText='position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:300;background:#11151d;border:1px solid #fff2;padding:11px 15px;border-radius:10px;font-size:13px;max-width:90%;text-align:center';document.body.appendChild(x);setTimeout(()=>x.remove(),2600)}
+function upd(){S.fear=Math.max(0,Math.min(100,S.fear));S.trust=Math.max(0,Math.min(100,S.trust));$('fb2').style.width=S.fear+'%';const fc=$('face');fc.src=S.fl.fake?IMG.yjf:S.fear>60?IMG.yjs:IMG.yj;fc.className='';document.body.style.setProperty('--f',S.fear);document.body.classList.toggle('hi',S.fear>60);$('cp').classList.toggle('hidden',!S.fl.saved);$('tr').textContent='信任 '+S.trust+'%';$('inv').textContent=S.inv.length?S.inv.map(k=>IT[k].join(' ')).join('　'):'（空）';$('lc').innerHTML=S.cl.slice(-4).reverse().map(c=>'• '+c).join('<br>')||'還沒有線索。';if(S.fear>=72&&!S.fl.f72){S.fl.f72=1;setTimeout(()=>scare('你後面一直有人。','👁️'),400)}try{localStorage.setItem(K,JSON.stringify(S))}catch(e){}}
+function say(t){$('say').textContent=t||''}
+function openM(t,h){$('mt').textContent=t;$('mb').innerHTML=h;$('md').classList.add('show')}function closeM(){$('md').classList.remove('show')}
+function dlg(who,text,ch){clearInterval(tv);const m={'印潔':'yj','印潔（？）':'yjf','真正的印潔':'yj','慈幽':'ci','偲涵':'sh'}[who],im=$('dp');im.style.display=m?'block':'none';if(m)im.src=IMG[m];im.className='';$('who').textContent=who;const d=$('dt');d.textContent='';$('dc').innerHTML='';$('dlg').classList.add('show');let i=0;const L=[...text];tv=setInterval(()=>{d.textContent+=L[i++]||'';if(i>=L.length)clearInterval(tv)},22);ch.forEach(c=>btn($('dc'),c[0],c[1]))}
+function closeD(){clearInterval(tv);$('dlg').classList.remove('show')}
+function notes(){openM('慈幽的筆記','<div style="font-size:13px;color:#aaa59e">'+(S.cl.length?S.cl.map((c,i)=>(i+1)+'. '+c).join('<br>'):'目前沒有線索。')+'</div>')}
+function render(){const r=R[S.room];$('rn').textContent=r.nm;$('art').textContent=r.a;$('tx').innerHTML=r.t.map(x=>'<p>'+x+'</p>').join('');const h=$('hs');h.innerHTML='';r.o.forEach((o,i)=>btn(h,'🔎 '+o[0],()=>look(i)));(r.p||[]).forEach((p,i)=>btn(h,(S.ok.includes(p.ok)?'✅ ':'🔐 ')+p.l,()=>puz(i)));(r.sp||[]).forEach(s=>btn(h,'👁 '+s[0],s[1]));if(r.np)btn(h,'💬 和印潔說話',talk,'p');const d=$('dr');d.innerHTML='';if(r.go){const ok=has(r.go[1]);btn(d,ok?'➡️ '+r.go[2]:'🔒 '+r.go[2]+'（尚未解鎖）',()=>go(r.go[0]),ok?'p':'').disabled=!ok}upd()}
+function look(i){const o=R[S.room].o[i];openM(o[0],'<div class="paper">'+o[1]+'</div>');clue(o[2]);if(o[3])setTimeout(()=>scare(o[3],o[4]),1000);upd()}
+function puz(i){const p=R[S.room].p[i];if(S.ok.includes(p.ok))return toast('這裡已經解開了。');openM(p.l,'<div class="paper">'+p.q+'</div><div style="text-align:center;margin:12px"><input id="in" autocomplete="off"> <button class="b p" onclick="sub('+i+')">確認</button></div><div class="fb" id="fb"></div>')}
+function tryP(p,v){if(p.need&&!p.need.every(k=>S.fl[k]||S.ok.includes(k)))return'need';if(nm(v)!==p.a){S.tries[p.ok]=(S.tries[p.ok]||0)+1;S.fear+=2;return'no'}S.ok.push(p.ok);if(p.i)S.inv.push(p.i);return'ok'}
+function sub(i){const p=R[S.room].p[i],r=tryP(p,$('in').value),f=$('fb');if(r==='ok'){closeM();toast('🔓 解開了');if(p.sv){S.fl.saved=1;S.trust+=5;toast('籠門開了。偲涵跟在你們身後，沒有說話。')}render();if(p.ok==='end')endGame()}else if(r==='need')f.textContent=p.nt||'鎖沒有接受……你還缺少某個確認。';else{f.textContent='❌ 不對（第 '+S.tries[p.ok]+' 次）';upd();if(S.tries[p.ok]%3===0){closeM();dlg('提示',p.h,[['好，我再找找。',closeD]])}}}
+function talk(){const n=R[S.room].np;if(S.seen[S.room])return dlg('印潔',S.trust<30?'「……你是不是不相信我了？」':pick(IDLE),[['好。',closeD]]);clue(n.c0);dlg('印潔',n.q,n.ch.map(c=>[c[0],()=>{S.seen[S.room]=1;S.trust+=c[3];clue(c[2]);dlg('印潔',c[1],[['繼續調查。',()=>{closeD();upd()}]])}]))}
+function fakeTalk(){if(S.fl.fake)return dlg('印潔（？）','「你還是來了。我就知道，你一定會救她。」',[['……',closeD]]);dlg('印潔（？）','「慈幽，你先下去，我在後面看門。」',[['「先回答我：第一次見面，你送我什麼？」',()=>{S.fl.fake=1;S.fear+=10;closeD();scare('你最怕的不是黑，是被丟下。','👧');clue('假印潔被識破：她說得出你沒說過的恐懼');setTimeout(upd,1500)}],['「好，我先下去。」',()=>{S.trust-=5;S.fear+=4;dlg('印潔（？）','「真乖。」她笑了。笑得和印潔一模一樣。',[['再想想……',closeD]]);upd()}]])}
+function realTalk(){if(!S.fl.fake)return dlg('慈幽','前面那個「印潔」還盯著你。要先確認她到底是不是……',[['嗯。',closeD]]);if(S.fl.real)return dlg('真正的印潔','「快，打開鐵櫃。」',[['好。',closeD]]);const a=ok=>()=>{if(ok){S.fl.real=1;S.trust+=15;clue('真印潔：鐵櫃密碼＝北門燈數、失蹤總人數、腳步聲次數（依序）');dlg('真正的印潔','「是你……真的是你。鐵櫃的密碼，是一路上的三個數：北門有幾盞燈、被帶走的人一共幾個、走廊裡的腳步聲幾下。依序輸入。」',[['我記下了。',()=>{closeD();upd()}]])}else{S.trust-=8;S.fear+=5;dlg('真正的印潔','「……不對。你再想想，第一次見面的事。」',[['我再想想。',closeD]]);upd()}};dlg('真正的印潔','「慈幽……是我。你還記得，我第一次見你時，送了你什麼嗎？」',[['「紅色髮圈。」',a(0)],['「藍色貼紙，貼在手機殼右下角。」',a(1)],['「黃色鑰匙圈。」',a(0)]])}
+function go(id){closeD();closeM();S.room=id;S.fear+=id==='basement'?8:2;render();ev()}
+function ev(){const r=R[S.room],e=r.e;say(r.in);if(e&&!S.fl['e'+S.room]){S.fl['e'+S.room]=1;const rm=S.room;setTimeout(()=>{if(S.room!==rm)return;flick();scare(e[1],e[2],e[3]);if(e[4])clue(e[4]);upd()},e[0])}}
+function flick(){const g=$('game');g.classList.add('fl');setTimeout(()=>g.classList.remove('fl'),900)}
+function scare(t,f,s){$('sf').textContent=f||'👁️';$('st').textContent=t;$('sc').classList.add('show');sfx(s||'hit');S.fear+=6;setTimeout(()=>{$('sc').classList.remove('show');upd()},1400)}
+function endGame(){S.done=1;upd();setTimeout(()=>scare('第一個慈幽，沒有走出去。','👁️'),500);setTimeout(()=>openM('第一階段完成','<div class="end"><p>最後一個鎖打開，真正的印潔跌進你懷裡。</p><p>「慈幽……你剛剛，到底跟誰走下來的？」</p><p>你回頭。門口那個「印潔」已經不見了，只剩一串很遠很遠的腳步聲。</p>'+(S.fl.saved?'<p>偲涵站在你們身後，從頭到尾，什麼都沒有說。</p>':'')+'<h1>請期待下一階段！</h1></div>'),2300)}
+function sihan(){if(S.ok.includes('gymDone'))return dlg('偲涵','……',[['嗯。',closeD]]);dlg('偲涵','……（她看著你，嘴唇動了動，沒有聲音。籠門上有一道四位數的鎖。）',[['救她：去解開籠鎖',()=>{closeD();puz(0)}],['丟下她，繼續前進',()=>{S.fl.skip=1;S.ok.push('gymDone');S.trust-=8;S.fear+=6;closeD();render();scare('她沒有哭，也沒有喊。只是一直看著你走遠。','👁️')}],['再看看四周',closeD]])}
+function manual(){upd();toast('💾 已存檔（每次操作也會自動存檔）')}
+function restart(){if(confirm('要清除存檔並重新開始嗎？')){try{localStorage.removeItem(K)}catch(e){}location.reload()}}
+// ===== 音效（Web Audio 即時合成，無需外部音檔）=====
+function nzs(d,v,f){const n=AC.currentTime,b=AC.createBuffer(1,AC.sampleRate*d,AC.sampleRate),a=b.getChannelData(0);for(let i=0;i<a.length;i++)a[i]=Math.random()*2-1;const s=AC.createBufferSource(),fl=AC.createBiquadFilter(),gn=AC.createGain();s.buffer=b;fl.type='bandpass';fl.frequency.value=f;gn.gain.setValueAtTime(v,n);gn.gain.exponentialRampToValueAtTime(.001,n+d);s.connect(fl).connect(gn).connect(MG);s.start(n)}
+function sfx(t){try{if(!AC||!MG.gain.value)return;if(t==='steps'){[0,700,1400].forEach(d=>setTimeout(()=>sfx('step'),d));return}if(t==='hit'){nzs(.7,.9,300);t='boom'}if(t==='whisper')return nzs(2.5,.35,2600);const n=AC.currentTime,o=AC.createOscillator(),gn=AC.createGain(),P={boom:['sine',45,.9,.8],beat:['sine',55,.5,.18],step:['sine',70,.7,.12],piano:['triangle',262,.3,2],ring:['square',880,.06,.5],creak:['sawtooth',90,.05,1.4]}[t];if(!P)return;o.type=P[0];o.frequency.setValueAtTime(P[1],n);if(t==='creak')o.frequency.linearRampToValueAtTime(150,n+1.3);gn.gain.setValueAtTime(P[2],n);gn.gain.exponentialRampToValueAtTime(.001,n+P[3]);o.connect(gn).connect(MG);o.start(n);o.stop(n+P[3])}catch(e){}}
+function startAudio(){try{AC=new(window.AudioContext||window.webkitAudioContext)();MG=AC.createGain();MG.gain.value=.55;MG.connect(AC.destination);const lp=AC.createBiquadFilter();lp.frequency.value=240;lp.connect(MG);[[55,'sawtooth',.05],[58.2,'sawtooth',.05],[110.4,'sine',.05],[233,'sine',.008],[220,'sine',.008]].forEach(a=>{const o=AC.createOscillator(),gn=AC.createGain();o.type=a[1];o.frequency.value=a[0];gn.gain.value=a[2];o.connect(gn).connect(lp);o.start()});const l=AC.createOscillator(),lg=AC.createGain();l.frequency.value=.06;lg.gain.value=110;l.connect(lg).connect(lp.frequency);l.start();(function a(){sfx(Math.random()<.5?'creak':'whisper');setTimeout(a,9000+Math.random()*9000)})();(function h(){if(S.fear>25)sfx('beat');setTimeout(h,1600-S.fear*9)})()}catch(e){}}
+function mute(){if(!MG)return;MG.gain.value=MG.gain.value?0:.55;$('mu').textContent=MG.gain.value?'🔊':'🔇'}
+function begin(m){let o=null;try{o=JSON.parse(localStorage.getItem(K))}catch(e){}if(m!=='c'&&o&&o.cl&&!o.done&&!confirm('這會覆蓋舊進度，確定要開新遊戲嗎？'))return;S=m==='c'&&o&&o.cl?o:NEW();$('title').classList.add('hidden');$('game').classList.remove('hidden');startAudio();render();ev();
+ (function r(){setTimeout(()=>{if(!S.done){flick();sfx('whisper');toast(pick(RND))}r()},45000+Math.random()*45000)})();(function i(){setTimeout(()=>{if(!S.done&&R[S.room].np)say(pick(IDLE));i()},60000)})()}
+$('cov').src=IMG.cov;$('shimg').src=IMG.sh;try{const o=JSON.parse(localStorage.getItem(K));if(o&&o.cl&&!o.done)$('cont').classList.remove('hidden')}catch(e){}
+window.addEventListener('keydown',e=>{if(e.key==='Escape'){closeM();closeD()}});
+</script></body></html>
