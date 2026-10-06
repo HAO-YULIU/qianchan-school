@@ -60,6 +60,8 @@ body{background:radial-gradient(ellipse at 50% 0,#1c0a10,#040405 70%)}
 #tt.on{display:flex;animation:ttf 3.2s forwards}
 @keyframes ttf{70%{opacity:1}100%{opacity:0;visibility:hidden}}
 .ch,.sw{padding:12px 16px}
+#sv{margin:0;padding:2px 10px;font-size:13px}#ts{position:fixed;top:48px;right:12px;z-index:12;color:#9c9;background:#000c;padding:4px 10px;border-radius:6px;font-size:13px;opacity:0;transition:opacity .4s;pointer-events:none}#ctw{margin-top:8px}
+.lo{display:grid;grid-template-columns:repeat(3,72px);gap:6px;justify-content:center;margin:8px 0}.lt{font-size:26px;padding:10px;margin:0}.dl{font-size:24px;padding:12px 20px}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="si" viewBox="0 0 200 300"><path d="M42 80C38 10 162 10 158 80L166 270H34Z" fill="#08080a"/><path d="M62 150H138L146 300H54Z" fill="#171d3a"/><path d="M62 150L100 210 138 150 124 142 100 172 76 142Z" fill="#e8e8ee"/><path d="M100 172l-10 20 10 8 10-8z" fill="#8a1220"/><rect x="40" y="165" width="16" height="100" rx="6" fill="#171d3a"/><rect x="144" y="165" width="16" height="100" rx="6" fill="#171d3a"/><rect x="39" y="258" width="18" height="8" fill="#2a0808"/><circle cx="48" cy="274" r="9" fill="#e2dbd4"/><circle cx="152" cy="274" r="9" fill="#e2dbd4"/><rect x="88" y="120" width="24" height="34" fill="#e2dbd4"/><ellipse cx="100" cy="85" rx="38" ry="46" fill="#e6dfd8"/><path d="M60 80C62 30 138 30 140 80C128 56 112 54 100 60 88 54 72 56 60 80Z" fill="#08080a"/><ellipse cx="85" cy="90" rx="9" ry="11" fill="#fff"/><ellipse cx="115" cy="90" rx="9" ry="11" fill="#fff"/><circle cx="85" cy="92" r="5.5"/><circle cx="115" cy="92" r="5.5"/><path d="M92 122h16" stroke="#7a5a5a" stroke-width="2"/></symbol>
@@ -69,14 +71,14 @@ body{background:radial-gradient(ellipse at 50% 0,#1c0a10,#040405 70%)}
 
 <div id="ag" class="scr on"><h1>⚠ 年齡確認</h1><p>本遊戲含強烈驚嚇、突然巨響、閃爍畫面與恐怖意象。<br>你是否已滿 18 歲？</p><div><button onclick="yes()">我已滿 18 歲</button><button onclick="no()">未滿 18 歲</button></div></div>
 
-<div id="cv" class="scr"><svg viewBox="0 0 200 300"><use href="#si"/></svg><h1>千蟬學校：第二章</h1><p class="sub">她一直都在看著你。<br>一個不會說話的女孩，一條通往校舍更深處的路。這一次，別相信任何指引。</p><div class="cast"><svg viewBox="0 0 200 240"><use href="#yu"/></svg><span>小羽，16 歲。知道的，比他說的多。</span></div><button onclick="start()">踏入校舍</button></div>
+<div id="cv" class="scr"><svg viewBox="0 0 200 300"><use href="#si"/></svg><h1>千蟬學校：第二章</h1><p class="sub">她一直都在看著你。<br>一個不會說話的女孩，一條通往校舍更深處的路。這一次，別相信任何指引。</p><div class="cast"><svg viewBox="0 0 200 240"><use href="#yu"/></svg><span>小羽，16 歲。知道的，比他說的多。</span></div><button onclick="newGame()">踏入校舍</button><div id="ctw"><button id="ct">▶ 繼續遊戲</button><button id="cd">🗑 刪除存檔</button></div></div>
 
-<div id="g" class="scr"><div id="hud"><b id="rt"></b><span id="hp"></span></div><div id="sn"></div><div id="ds"></div><div id="lg"></div><div id="hs"></div><div id="bx"></div><div id="iv"></div></div>
+<div id="g" class="scr"><div id="hud"><b id="rt"></b><button id="sv" onclick="save(1)">💾 存檔</button><span id="hp"></span></div><div id="sn"></div><div id="ds"></div><div id="lg"></div><div id="hs"></div><div id="bx"></div><div id="iv"></div></div>
 
 <div id="dt" class="scr"><h1>你死了</h1><p>錯誤累積了五次。她一直都在看著你。</p><button onclick="start()">全部重新再來</button></div>
 <div id="en" class="scr"><h1>第二章　完</h1><p>偲涵從頭到尾，都在反抗。<br>下一個，是印潔。</p><button onclick="start()">重新遊玩</button></div>
 <div id="sc"><svg viewBox="0 0 200 260"><use href="#gh"/></svg><p id="sct"></p></div>
-<div id="vg"></div><div id="gr"></div><div id="tt"><h1>第二章</h1><p>她一直都在看著你</p></div>
+<div id="vg"></div><div id="gr"></div><div id="ts"></div><div id="tt"><h1>第二章</h1><p>她一直都在看著你</p></div>
 
 <script>
 const $=s=>document.querySelector(s),sl=ms=>new Promise(r=>setTimeout(r,ms));
@@ -87,19 +89,19 @@ function noise(d,v){const a=ac();if(!a)return;const n=Math.floor(a.sampleRate*d)
 function drone(){const a=ac();if(!a)return;[55,58.5].forEach(f=>{const o=a.createOscillator(),g=a.createGain();o.type='sawtooth';o.frequency.value=f;g.gain.value=.025;o.connect(g);g.connect(a.destination);o.start()})}
 async function scare(t,big){$('#sct').textContent=t||'';document.body.classList.add('fl');await sl(450);document.body.classList.remove('fl');$('#sc').style.display='flex';noise(1,.9);tone(80,1,'sawtooth',.45);tone(1700,.6,'square',.12);document.body.classList.add('sk');await sl(big?1500:850);$('#sc').style.display='none';document.body.classList.remove('sk')}
 function hud(){$('#hp').textContent='☠'.repeat(S.w)+'·'.repeat(5-S.w)+' '+S.w+'/5';document.body.style.setProperty('--v',S.w/5)}
-async function bad(m){S.w++;hud();say(m||'錯了。');if(S.w>=5)return die();await scare()}
-async function die(){S.on=0;busy=0;await scare('她抓到你了',1);$('#g').classList.remove('on');$('#dt').classList.add('on')}
+async function bad(m){S.w=Math.min(5,S.w+(S.f.p3&&S.w<4?2:1));hud();save();say(m||'錯了。');if(S.w>=5)return die();await scare()}
+async function die(){S.on=0;busy=0;clr();await scare('她抓到你了',1);$('#g').classList.remove('on');$('#dt').classList.add('on')}
 const tap=()=>new Promise(r=>{const e=$('#lg');e.onclick=()=>{e.onclick=null;r()};$('#lg p').insertAdjacentHTML('beforeend',' ▼')});
 async function say(l){l=[].concat(l);const m=l.length>1;if(m)busy=1;for(let i=0;i<l.length;i++){const x=l[i],a=Array.isArray(x),w=a?x[0]:'',t=a?x[1]:x;$('#lg').innerHTML=(w?`<svg class="pt" viewBox="0 0 200 ${w=='yu'?240:300}"><use href="#${w}"/></svg><b class="nm">${w=='yu'?'小羽':'偲涵'}</b>`:'')+`<p>${t}</p>`;if(i<l.length-1)await tap()}if(m)busy=0}
 const fg=(k,v,m)=>{S.f[k]=v;say(m+'（已記入筆記）');if(!S.f.ij&&['a','b','c','e','g','h'].filter(x=>S.f[x]).length>=3){S.f.ij=1;ij()}};
 function get(n){if(!S.inv.includes(n))S.inv.push(n);iv()}
-function note(){const f=S.f;say('📓 ①走廊：'+(f.a||'？')+'　②圖書室：'+(f.b||'？')+'　③音樂室：'+(f.c||'？')+'　④偲涵：'+(f.e||'？')+'　⑤保健室：'+(f.g||'？')+'　⑥暗房：'+(f.h||'？')+'　鐵門的數字，依序填入。')}
+function note(){const f=S.f;say('📓 ①走廊：'+(f.a||'？')+'　②圖書室：'+(f.b||'？')+'　③音樂室：'+(f.c||'？')+'　④偲涵：'+(f.e||'？')+'　⑤保健室：'+(f.g||'？')+'　⑥暗房：'+(f.h||'？')+'　鐵門的數字，依序填入。'+(f.nm?'　【名字的線索】'+f.nm.join('；'):''))}
 function iv(){const e=$('#iv');e.innerHTML='🎒 選取物品後，再點物件使用<br>';S.inv.forEach(n=>{const b=document.createElement('button');b.textContent=n;b.className=sel==n?'sel':'';b.onclick=()=>{sel=sel==n?null:n;iv()};e.append(b)});const b=document.createElement('button');b.textContent='📓 筆記';b.onclick=note;e.append(b)}
-function render(){const R=RM[S.r];$('#rt').textContent=R.t;$('#ds').textContent=R.d+(Math.random()<.25+S.w*.12?' '+CR[Math.random()*CR.length|0]:'');art();$('#bx').innerHTML='';$('#hs').innerHTML='';R.h().forEach(([n,f])=>{const b=document.createElement('button');b.textContent=n;b.onclick=()=>{if(!busy)f()};$('#hs').append(b)});iv()}
+function render(){const R=RM[S.r];$('#rt').textContent=R.t;$('#ds').textContent=R.d+(Math.random()<.25+S.w*.12?' '+CR[Math.random()*CR.length|0]:'');art();$('#bx').innerHTML='';$('#hs').innerHTML='';R.h().forEach(([n,f])=>{const b=document.createElement('button');b.textContent=n;b.onclick=()=>{if(!busy)f()};$('#hs').append(b)});iv();save()}
 async function go(r){S.r=r;render();if(EN[r]&&!S.f['v'+r]){S.f['v'+r]=1;say(EN[r])}if(r=='cls'&&!S.f.yu){S.f.yu=1;await say([['yu','「不要再探索下去了，你神人喔。」'],'「……你也是學生？」','他沒回答，只問：「妳沒發現這間學校很奇怪嗎？」',['yu','封鎖的教室，每晚門會自己打開。名冊上有不存在的學生。還有一份十幾年前的紀錄，反覆出現同一個名字——偲涵。她的筆記本上，只有一句話：「不是我」。'],'你回頭。走廊上的偲涵，不見了。'])}}
 function ask(ph,ans,ok,msg){$('#bx').innerHTML=`<input id="in" placeholder="${ph}" autocomplete="off"><button id="go">確認</button>`;$('#go').onclick=()=>{if($('#in').value.trim()==ans){$('#bx').innerHTML='';ok()}else bad(msg)}}
-function seq(L,ans,mode,ok){let k=0,run=0;let rp=3;const fr=[262,330,440,587];$('#bx').innerHTML='<div>'+L.map(x=>`<button class="q">${x}</button>`).join('')+'</div>'+(mode=='o'?'':'<button id="pl">▶ 再播放（剩 3 次）</button>');const bs=[...document.querySelectorAll('.q')];
-const pl=async()=>{run=1;k=0;bs.forEach(b=>b.classList.remove('ok'));for(const i of ans){mode=='a'?tone(fr[i],.5):bs[i].classList.add('lit');await sl(500);bs[i].classList.remove('lit');await sl(250)}run=0};
+function seq(L,ans,mode,ok){let k=0,run=0,rp=S.f.p3?1:3;const fr=[262,330,440,587,698],sp=S.f.p3?380:500;$('#bx').innerHTML='<div>'+L.map(x=>`<button class="q">${x}</button>`).join('')+'</div>'+(mode=='o'?'':`<button id="pl">▶ 再播放（剩 ${rp} 次）</button>`);const bs=[...document.querySelectorAll('.q')];
+const pl=async()=>{run=1;k=0;bs.forEach(b=>b.classList.remove('ok'));for(const i of ans){mode=='a'?tone(fr[i],.5):bs[i].classList.add('lit');await sl(sp);bs[i].classList.remove('lit');await sl(sp/2)}run=0};
 if(mode!='o'){$('#pl').onclick=()=>{if(!run&&rp>0){rp--;$('#pl').textContent='▶ 再播放（剩 '+rp+' 次）';pl()}};setTimeout(pl,400)}
 bs.forEach((b,i)=>b.onclick=()=>{if(run)return;if(mode=='a')tone(fr[i],.4);if(i==ans[k]){b.classList.add('ok');if(++k==ans.length){$('#bx').innerHTML='';ok()}}else{k=0;bs.forEach(x=>x.classList.remove('ok'));bad('順序不對。')}})}
 const hint=()=>{const f=S.f;return f.p2?(!f.pw?'配電箱的規則，被拆在兩個地方。地上的紙團，別信。':!f.wc?'女廁的鏡子，左右是反的。塗鴉是假的。':!f.vd?'視聽室。找出第二個畫面裡，多出來的東西。':!f.dd?'宿舍的人，這學期全都往右移了一格，最右邊的換到最左邊。':!f.ch?'體育館。她怕光、追聲音，而且，別回頭。':'303。她把人帶走的順序，日記裡寫了。'):!f.cab?'鏡子裡的東西，左右是反的。桌上那張紙條……太刻意了。':!f.b?'粉筆、空白借書卡。看起來沒用的東西，才危險。':!f.rec?'書脊亮的順序。多看幾次。':!f.c?'鑰匙是開音樂教室的。那裡的謎，用耳朵解。':!f.a?'走廊的公布欄。有些東西，回頭才看得懂。':!f.e?'去找偲涵。看她比劃什麼。':!f.g?'保健室的藥，順序不能錯。規則被拆成兩半，藏在兩個地方。':!f.rm?'那顆電池，門禁盒需要它。':!f.rd?'廣播室。只能聽，而且只能再聽幾次。':!f.h?'暗房需要紅光。你手上，有個沒人在意的小東西。':'鐵門有三層。第二層……想想她筆記本上唯一那句話。第三層，別動。'};
@@ -111,11 +113,15 @@ async function ij(){await sl(3000);while(busy)await sl(500);if(!S.on)return;awai
 async function hide(n,ok){busy=1;let f=1,d=0;$('#bx').innerHTML=`<div class="hd"><i style="animation-duration:${n}s"></i></div>`;say('腳步聲靠近……不要動。什麼都不要碰。');const h=async()=>{if(d)return;d=1;f=0;document.removeEventListener('pointerdown',h,true);await bad('你動了。她轉過頭，看著你。');if(S.on)hide(n,ok)};await sl(300);document.addEventListener('pointerdown',h,true);await sl(n*1000);document.removeEventListener('pointerdown',h,true);if(f){busy=0;$('#bx').innerHTML='';ok&&ok()}}
 const X=(c,a)=>c?[a]:[];
 function sw(L,t,ok){const st=L.map(()=>0);const dr=()=>{$('#bx').innerHTML='<div>'+L.map((x,i)=>`<button class="sw${st[i]?' sel':''}">${x}${st[i]?' ●':''}</button>`).join('')+'</div><button id="cf">確認</button>';document.querySelectorAll('.sw').forEach((b,i)=>b.onclick=()=>{st[i]^=1;dr()});$('#cf').onclick=()=>{if(st.join('')==t){$('#bx').innerHTML='';ok()}else bad('不對。黑暗裡，有什麼東西笑了一聲。')}};dr()}
-async function chase(R,ok){busy=1;for(const [t,o,c] of R){let r=-2;while(r!==c){document.body.classList.add('sk');setTimeout(()=>document.body.classList.remove('sk'),500);say(t);$('#bx').innerHTML='<div class="hd"><i style="animation-duration:5s"></i></div>'+o.map(x=>`<button class="ch">${x}</button>`).join('');r=await new Promise(res=>{const T=setTimeout(()=>res(-1),5000);document.querySelectorAll('.ch').forEach((b,k)=>b.onclick=()=>{clearTimeout(T);res(k)})});if(r!==c){await bad(r<0?'太慢了。她就在你背後。':'死路。她抓住了你的衣角。');if(!S.on)return}}}$('#bx').innerHTML='';busy=0;ok()}
+async function chase(R,ok,ms=5000){busy=1;for(const [t,o,c] of R){let r=-2;while(r!==c){document.body.classList.add('sk');setTimeout(()=>document.body.classList.remove('sk'),500);say(t);$('#bx').innerHTML=`<div class="hd"><i style="animation-duration:${ms/1000}s"></i></div>`+o.map(x=>`<button class="ch">${x}</button>`).join('');r=await new Promise(res=>{const T=setTimeout(()=>res(-1),ms);document.querySelectorAll('.ch').forEach((b,k)=>b.onclick=()=>{clearTimeout(T);res(k)})});if(r!==c){await bad(r<0?'太慢了。她就在你背後。':'死路。她抓住了你的衣角。');if(!S.on)return}}}$('#bx').innerHTML='';busy=0;ok()}
+function dial(W,t,ok){const v=W.map(()=>0);const dr=()=>{$('#bx').innerHTML='<div>'+W.map((w,i)=>`<button class="dl">${w[v[i]]}</button>`).join('')+'</div><button id="cf">確認</button>';document.querySelectorAll('.dl').forEach((b,i)=>b.onclick=()=>{v[i]=(v[i]+1)%W[i].length;dr()});$('#cf').onclick=()=>{if(v.every((x,i)=>x==t[i])){$('#bx').innerHTML='';ok()}else bad('布景發出刺耳的摩擦聲。台下，有人在鼓掌。')}};dr()}
+function lo(g,lim,ok){let s=[...g],m=0;const dr=()=>{$('#bx').innerHTML='<div class="lo">'+s.map(v=>`<button class="lt${v?' sel':''}">${v?'💡':'⬛'}</button>`).join('')+`</div><p>步數 ${m}/${lim}</p>`;document.querySelectorAll('.lt').forEach((b,i)=>b.onclick=()=>{[i,i%3?i-1:-1,i%3<2?i+1:-1,i-3,i+3].forEach(j=>{if(j>=0&&j<9)s[j]^=1});m++;if(s.every(v=>v)){$('#bx').innerHTML='';return ok()}if(m>=lim){s=[...g];m=0;bad('水下的燈，全部熄滅了。')}dr()})};dr()}
+function jug(ok,lim){let a=0,b=0,m=0;const dr=()=>{$('#bx').innerHTML=`<p>🧪 A 瓶 ${a}/5　B 瓶 ${b}/3　步數 ${m}/${lim}</p>`+['倒滿 A','倒滿 B','A→B','B→A','倒空 A','倒空 B'].map(x=>`<button class="jg">${x}</button>`).join('');document.querySelectorAll('.jg').forEach((x,i)=>x.onclick=()=>{if(i==0)a=5;if(i==1)b=3;if(i==2){const t=Math.min(a,3-b);a-=t;b+=t}if(i==3){const t=Math.min(b,5-a);b-=t;a+=t}if(i==4)a=0;if(i==5)b=0;m++;if(a==4){$('#bx').innerHTML='';return ok()}if(m>=lim){a=b=m=0;bad('試劑潑了一地。有什麼東西，從地上爬了起來。')}dr()})};dr()}
+const rid=s=>{(S.f.nm=S.f.nm||[]).push(s)};
 function card(a,b){const e=$('#tt');e.querySelector('h1').textContent=a;e.querySelector('p').textContent=b;e.classList.remove('on');void e.offsetWidth;e.classList.add('on')}
 async function act2(){S.f.p2=1;await say(['你推開右門。出口就在前方——','可那不是出口。是一道向下的樓梯，深得看不見底。','偲涵站在最上面一階，不肯再往前。她遞來另一張紙：「她在下面。」',['yu','下面是地下室。紀錄裡寫過——所有被纏上的人，最後都被帶去那裡。'],'身後的燈，一盞一盞，熄滅了。']);busy=1;card('第二夜','她在下面');await sl(3300);busy=0;go('hall')}
 const RM={
-hall:{t:'走廊',d:'冷光燈忽明忽滅。盡頭的鐵門寫著「禁止進入」，鎖上有六格數字，下面還有一行空格。',h:()=>{const f=S.f;return[
+hall:{t:'走廊',get d(){return S.f.p3?'走廊的燈全變成了紅色。公布欄上多了一張新的照片——是你，站在這個走廊裡，背對著鏡頭。':'冷光燈忽明忽滅。盡頭的鐵門寫著「禁止進入」，鎖上有六格數字，下面還有一行空格。'},h:()=>{const f=S.f;return[
 ['📋 公布欄',()=>f.rec?fg('a',6,'紅筆圈住值日表上的數字：「6」。方才你明明看過這裡，它並不在那裡。'):say('過期的值日表與泛黃的合照。有人用紅筆寫了四個字：「別回頭看」。')],
 ['👧 偲涵',()=>{if(f.e)return say('偲涵站著，眼睛沒有眨。她指向鐵門。');say('她不說話。你一靠近，她抬手朝三個方向比劃——看清楚她的順序。');seq(['⬅','⬆','➡'],[1,0,2,1],'v',()=>fg('e',3,'她在你面前緩緩舉起三根手指，停了三秒。「3」。她的眼睛，沒有眨。'))}],
 ['🚪 廢棄教室',()=>go('cls')],['🚪 圖書室',()=>go('lib')],
@@ -123,7 +129,7 @@ hall:{t:'走廊',d:'冷光燈忽明忽滅。盡頭的鐵門寫著「禁止進入
 ['🚪 保健室',()=>go('med')],
 [f.rm?'📻 廣播室':'🔒 廣播室',()=>f.rm?go('rad'):sel=='🔋 電池'?(f.rm=1,say('電池裝進門禁盒。紅燈亮起，鎖「喀」地開了。'),go('rad')):say('門禁盒沒有電。')],
 ['🎞 暗房',()=>go('dk')],
-['⛓ 鐵門',()=>{if(f.p2)return say('鐵門敞開著，後面什麼都沒有了。');if(!(f.a&&f.b&&f.c&&f.e&&f.g&&f.h))return say('六格數字，你的筆記還缺碎片。');say('第一層：六格數字。');ask('六位數字',''+f.a+f.b+f.c+f.e+f.g+f.h,()=>{say('第一層鬆開了。下方的空格亮起：「她唯一寫下的話」。');ask('輸入那句話','不是我',()=>{hide(9,()=>{say('腳步聲遠去，鐵鏈鬆脫。');go('old');oldIntro()})},'沒有反應……鎖後面傳來指甲刮門的聲音。')},'數字不對。')}],...X(f.p2,['🔻 地下室',()=>go('base')]),...X(f.pw,['🚻 女廁',()=>go('wc')]),...X(f.wc,[f.av?'🎬 視聽室':'🔒 視聽室',()=>f.av?go('av'):sel=='🪪 學生證'?(f.av=1,say('刷卡機「嗶」了一聲。門開了。'),go('av')):say('刷卡機亮著紅燈。需要一張證件。')]),...X(f.vd,[f.dm?'🛏 女宿舍':'🔒 女宿舍',()=>f.dm?go('dm'):(say('三位數字鎖。'),ask('三位數字','404',()=>{f.dm=1;go('dm')},'鎖紋風不動。'))]),...X(f.dd,[f.gy?'🏟 體育館':'🔒 體育館',()=>f.gy?go('gym'):sel=='🔑 體育館鑰匙'?(f.gy=1,say('鐵鏈落下。體育館裡，傳來籃球彈地的聲音。'),go('gym')):say('大門被鐵鏈鎖著。')]),...X(f.ch,[f.r3?'🪑 303教室':'🔒 303教室',()=>f.r3?go('r303'):sel=='🗝 303鑰匙'?(f.r3=1,say('門牌上的 303，慢慢變成了別的數字，又變回來。'),go('r303')):say('門牌寫著 303。門縫裡，沒有光。')]),['💬 問小羽',()=>say([['yu',hint()]])]]}},
+['⛓ 鐵門',()=>{if(f.p2)return say('鐵門敞開著，後面什麼都沒有了。');if(!(f.a&&f.b&&f.c&&f.e&&f.g&&f.h))return say('六格數字，你的筆記還缺碎片。');say('第一層：六格數字。');ask('六位數字',''+f.a+f.b+f.c+f.e+f.g+f.h,()=>{say('第一層鬆開了。下方的空格亮起：「她唯一寫下的話」。');ask('輸入那句話','不是我',()=>{hide(9,()=>{say('腳步聲遠去，鐵鏈鬆脫。');go('old');oldIntro()})},'沒有反應……鎖後面傳來指甲刮門的聲音。')},'數字不對。')}],...X(f.p2,['🔻 地下室',()=>go('base')]),...X(f.pw,['🚻 女廁',()=>go('wc')]),...X(f.wc,[f.av?'🎬 視聽室':'🔒 視聽室',()=>f.av?go('av'):sel=='🪪 學生證'?(f.av=1,say('刷卡機「嗶」了一聲。門開了。'),go('av')):say('刷卡機亮著紅燈。需要一張證件。')]),...X(f.vd,[f.dm?'🛏 女宿舍':'🔒 女宿舍',()=>f.dm?go('dm'):(say('三位數字鎖。'),ask('三位數字','404',()=>{f.dm=1;go('dm')},'鎖紋風不動。'))]),...X(f.dd,[f.gy?'🏟 體育館':'🔒 體育館',()=>f.gy?go('gym'):sel=='🔑 體育館鑰匙'?(f.gy=1,say('鐵鏈落下。體育館裡，傳來籃球彈地的聲音。'),go('gym')):say('大門被鐵鏈鎖著。')]),...X(f.ch,[f.r3?'🪑 303教室':'🔒 303教室',()=>f.r3?go('r303'):sel=='🗝 303鑰匙'?(f.r3=1,say('門牌上的 303，慢慢變成了別的數字，又變回來。'),go('r303')):say('門牌寫著 303。門縫裡，沒有光。')]),...X(f.p3,['🏛 校長室',()=>go('pr')]),...X(f.pr,[f.ar?'🎨 美術教室':'🔒 美術教室',()=>f.ar?go('art'):sel=='🗝 美術教室鑰匙'?(f.ar=1,go('art')):say('門鎖著。')]),...X(f.art,[f.mgu?'🧊 太平間':'🔒 太平間',()=>f.mgu?go('mg'):sel=='🔑 太平間鑰匙'?(f.mgu=1,go('mg')):say('冷氣從門縫漏出來。門鎖著。')]),...X(f.mgd,['🌿 後花園',()=>go('gd')]),...X(f.gd,[f.gu0?'🛰 守衛室':'🔒 守衛室',()=>f.gu0?go('gu'):sel=='🗝 守衛室鑰匙'?(f.gu0=1,go('gu')):say('門鎖著。窗裡的螢幕，一直在閃。')]),...X(f.gu,[f.au0?'🎭 禮堂':'🔒 禮堂',()=>f.au0?go('au'):sel=='🔑 禮堂鑰匙'?(f.au0=1,go('au')):say('禮堂的大門鎖著。裡面，有人在鼓掌。')]),...X(f.au,[f.po0?'🏊 游泳池':'🔒 游泳池',()=>f.po0?go('po'):sel=='🔑 游泳池鑰匙'?(f.po0=1,go('po')):say('鐵門後，傳來水滴的聲音。')]),...X(f.po,[f.lb0?'🧪 實驗室':'🔒 實驗室',()=>f.lb0?go('lab'):sel=='🔑 實驗室鑰匙'?(f.lb0=1,go('lab')):say('實驗室的門縫裡，透出綠色的光。')]),...X(f.wl,[f.rfu?'🌙 天台':'🔒 天台',()=>f.rfu?go('rf'):sel=='🗝 天台鑰匙'?(f.rfu=1,go('rf')):say('通往天台的鐵門，鏽得很厲害。')]),['💬 問小羽',()=>say([['yu',f.p3?h3():hint()]])]]}},
 cls:{t:'廢棄教室',d:'倒塌的課桌椅。黑板被擦得很乾淨，只剩粉筆灰。角落有一面裂開的穿衣鏡，和一個三位數鎖的鐵櫃。',h:()=>{const f=S.f;return[
 ['🧾 桌上的紙條',()=>say('皺掉的紙條：「鐵櫃密碼 417。別問，相信我。」字跡很新。')],
 ['🪞 穿衣鏡',()=>{say('鏡面裂痕後浮出一行字。鏡中世界，左右是相反的。');$('#bx').innerHTML='<div style="font-size:44px;letter-spacing:.3em;transform:scaleX(-1);color:#b22;text-align:center">416</div>'}],
@@ -184,52 +190,11 @@ r303:{t:'303教室',d:'最後一間教室。黑板上空無一物，二十幾張
 ['🪑 四張打開的課桌',()=>{say('桌上刻著名字。照她「帶走他們」的順序，依序坐下。');seq(['林','陳','王','偲涵'],[0,2,1,3],'o',()=>fin())}],
 ['📝 黑板',()=>say('粉筆字：「她不是在找替身。她是在找，願意回頭的人。」')],
 ['💬 問小羽',()=>say([['yu',hint()]])]]}}};
-async function oldIntro(){await say(['鐵門之後，是一棟從未出現過的舊校舍。','印潔已經走了進去，一扇門在她身後落下，將你們隔開。',['si','偲涵站在你面前。她抬起頭，嘴型慢慢重複同一個動作——「快、走」。'],'燈全滅了。黑暗裡，傳來很多人緩慢靠近的腳步聲。']);await sl(1800);await scare('',1);say([['yu','牆上的符號……紀錄裡寫過順序。快！']])}
-async function end(r){if(!r)return bad('門後，有人在等你。');act2()}
-async function fin(){busy=1;S.on=0;await say(['黑板上的名字一個個亮起，最後停在「偲涵」。','你終於明白。這間學校真正的出口，從來就不存在。','偲涵站在門口。眼神一點一點變得空洞，身體不自然地抽動。',['yu','離她遠一點！'],'她走向高處。你抓住她的手。她第一次流下眼淚，一直搖頭，嘴型無聲：「對不起」。','下一秒，那個東西徹底控制了她。偲涵消失在黑暗裡。','她不說話，是它不允許。她跟著你，是想警告你。她從頭到尾，都在反抗。','筆記本的最後一頁，浮現一行原本不存在的字：「下一個，是印潔。」','你猛然回頭。印潔站在你身後——她的眼睛，已經不是原本的樣子了。']);await sl(2500);busy=0;await scare('她一直都在看著你',1);$('#g').classList.remove('on');$('#en').classList.add('on')}
-function yes(){ac();$('#ag').classList.remove('on');$('#cv').classList.add('on')}
-function no(){$('#ag').innerHTML='<h1>抱歉</h1><p>未滿 18 歲，無法遊玩。</p>'}
-async function start(){['cv','dt','en'].forEach(i=>$('#'+i).classList.remove('on'));S={r:'hall',inv:[],f:{},w:0,on:1};sel=null;busy=0;$('#g').classList.add('on');$('#tt').classList.remove('on');void $('#tt').offsetWidth;$('#tt').classList.add('on');hud();if(!dr){dr=1;drone()}render();say(['地下室的門在身後關上。慈幽扶著印潔，終於走回了走廊。','「……等等。」印潔停下腳步。「有人在叫我。聲音，和妳一模一樣。」',['si','走廊盡頭，那個女生又站在那裡。'],'是她。第一章裡，她也是這樣，一句話都沒說，只是盯著你們。眼睛，幾乎沒有眨。','她抬起手，指向校舍深處。然後，不見了。','「她好像知道些什麼……」「正因為這樣，才更可怕。」'])}
-(function hb(){if(S&&S.on&&A){tone(50,.18,'sine',.3);setTimeout(()=>tone(45,.14,'sine',.22),200)}setTimeout(hb,1900-(S?S.w:0)*300)})();
-setInterval(()=>{if(S&&S.on&&!busy&&Math.random()<.25+S.w*.1)scare()},25000);
-  ====== 第三批：存檔系統 + 地獄關卡 ======
-   用法：整段複製，貼在 index.html 檔案最底部、「結束 script」那行的正上方。不用改其他地方。 */
-const SK='cs2_save';
-const ts=document.createElement('div');ts.style.cssText='position:fixed;top:48px;right:12px;z-index:12;color:#9c9;background:#000c;padding:4px 10px;border-radius:6px;font-size:13px;opacity:0;transition:opacity .4s;pointer-events:none';document.body.append(ts);
-const toast=t=>{ts.textContent=t;ts.style.opacity=1;setTimeout(()=>ts.style.opacity=0,1600)};
-function save(m){try{if(!S||!S.on||busy){m&&toast('現在不能存檔');return}localStorage.setItem(SK,JSON.stringify({r:S.r,inv:S.inv,f:S.f,w:S.w}));m&&toast('💾 已存檔')}catch(e){}}
-function load(){let d;try{d=JSON.parse(localStorage.getItem(SK))}catch(e){}if(!d)return;if(!RM[d.r])d.r='hall';['cv','dt','en'].forEach(i=>$('#'+i).classList.remove('on'));S={r:d.r,inv:d.inv||[],f:d.f||{},w:d.w||0,on:1};sel=null;busy=0;$('#g').classList.add('on');hud();if(!dr){dr=1;drone()}render();say('（已讀取存檔。她，一直在等你回來。）')}
-$('#hp').insertAdjacentHTML('beforebegin','<button id="sv" style="margin:0;padding:2px 10px;font-size:13px">💾 存檔</button>');$('#sv').onclick=()=>save(1);
-$('#cv').insertAdjacentHTML('beforeend','<div id="ctw"><button id="ct">▶ 繼續遊戲</button><button id="cd">🗑 刪除存檔</button></div>');
-const rf5=()=>{$('#ctw').style.display=localStorage.getItem(SK)?'':'none'};rf5();
-$('#ct').onclick=()=>{ac();load()};$('#cd').onclick=()=>{localStorage.removeItem(SK);rf5()};
-const _render=render;render=function(){_render();save()};
-setInterval(()=>save(),4000);addEventListener('pagehide',()=>save());document.addEventListener('visibilitychange',()=>{if(document.hidden)save()});
-const _die=die;die=async function(){localStorage.removeItem(SK);return _die()};
-/* 地獄規則：第三夜開始，每次犯錯算兩次；聽音與記憶只剩 1 次重播，節奏更快 */
-bad=async function(m){S.w=Math.min(5,S.w+(S.f.p3&&S.w<4?2:1));hud();save();say(m||'錯了。');if(S.w>=5)return die();await scare()};
-function seq(L,ans,mode,ok){let k=0,run=0,rp=S.f.p3?1:3;const fr=[262,330,440,587,698],sp=S.f.p3?380:500;$('#bx').innerHTML='<div>'+L.map(x=>`<button class="q">${x}</button>`).join('')+'</div>'+(mode=='o'?'':`<button id="pl">▶ 再播放（剩 ${rp} 次）</button>`);const bs=[...document.querySelectorAll('.q')];
-const pl=async()=>{run=1;k=0;bs.forEach(b=>b.classList.remove('ok'));for(const i of ans){mode=='a'?tone(fr[i],.5):bs[i].classList.add('lit');await sl(sp);bs[i].classList.remove('lit');await sl(sp/2)}run=0};
-if(mode!='o'){$('#pl').onclick=()=>{if(!run&&rp>0){rp--;$('#pl').textContent='▶ 再播放（剩 '+rp+' 次）';pl()}};setTimeout(pl,400)}
-bs.forEach((b,i)=>b.onclick=()=>{if(run)return;if(mode=='a')tone(fr[i],.4);if(i==ans[k]){b.classList.add('ok');if(++k==ans.length){$('#bx').innerHTML='';ok()}}else{k=0;bs.forEach(x=>x.classList.remove('ok'));bad('順序不對。')}})}
-async function chase(R,ok,ms=5000){busy=1;for(const [t,o,c] of R){let r=-2;while(r!==c){document.body.classList.add('sk');setTimeout(()=>document.body.classList.remove('sk'),500);say(t);$('#bx').innerHTML=`<div class="hd"><i style="animation-duration:${ms/1000}s"></i></div>`+o.map(x=>`<button class="ch">${x}</button>`).join('');r=await new Promise(res=>{const T=setTimeout(()=>res(-1),ms);document.querySelectorAll('.ch').forEach((b,k)=>b.onclick=()=>{clearTimeout(T);res(k)})});if(r!==c){await bad(r<0?'太慢了。她就在你背後。':'死路。她抓住了你的衣角。');if(!S.on)return}}}$('#bx').innerHTML='';busy=0;ok()}
-setInterval(()=>{if(S&&S.on&&S.f.p3&&!busy&&Math.random()<.35)scare()},15000);
-/* 第三夜：劇情接口（解開 303 之後不再結束，改進入第三夜） */
-async function act3(){S.f.p3=1;await say(['黑板上的名字一個個亮起，最後停在「偲涵」。','然後，字跡開始滲血。第四個名字下面，浮現了第五個——','「慈幽」。',['si','偲涵站在門口。她的嘴型，一遍又一遍：「十七年。十七年。十七年。」'],['yu','……校長室。紀錄裡提過，每隔十七年，她醒一次。答案在那裡。快去！']]);busy=1;card('第三夜','十七年');await sl(3300);busy=0;go('hall')}
-fin=async function(){if(S.f.p3)return ending();return act3()};
-async function ending(){busy=1;S.on=0;localStorage.removeItem(SK);await say([['si','偲涵回過頭。她的眼神，一點一點變得空洞，身體不自然地抽動。'],['yu','離她遠一點！'],'她走向欄杆。你抓住她的手。她第一次流下眼淚，一直搖頭，嘴型無聲：「對不起」。','下一秒，那個東西徹底控制了她。偲涵翻過欄杆，消失在黑暗裡。','她不說話，是它不允許。她跟著你，是想警告你。她從頭到尾，都在反抗。','十七年前，也是這樣。十七年後，也是這樣。','筆記本的最後一頁，浮現一行原本不存在的字：「下一個，是印潔。」','你猛然回頭。印潔站在你身後——她的眼睛，已經不是原本的樣子了。']);await sl(2500);busy=0;await scare('她一直都在看著你',1);$('#g').classList.remove('on');$('#en').classList.add('on')}
-const h3=()=>{const f=S.f;return !f.pr?'十七年。算一算，她醒過幾次。撕掉的那一頁，別信。':!f.art?'畫要依牠的一生來掛：從土裡出生，回到土裡。':!f.mgd?'兩張紙條就夠了。護理師的警告……也許是故意的。':!f.gd?'蟬鳴只叫一輪。你只有一次重聽的機會。':'她怕光，追聲音。還有——別回頭。'};
-Object.assign(TH,{pr:['#2a1a10','#0a0604','🏛'],art:['#1a2a3a','#04080c','🖼'],mg:['#10242a','#020808','🧊'],gd:['#142010','#030804','🪱'],rf:['#1a1424','#04020a','🌙']});
-Object.assign(EN,{pr:'校長室的桌上，放著一杯還冒著熱氣的茶。……是誰剛剛泡的？',art:'五雙眼睛，同時轉了過來。',mg:'冷。冷得你的呼吸，在空中結成了字。',gd:'一千隻蟬蛻，同時發出細碎的聲音，像有人在你耳邊笑。',rf:'風很大。你背後的鐵門，被什麼東西，輕輕地帶上了。'});
-const _hh=RM.hall.h,_hd=RM.hall.d;
-Object.defineProperty(RM.hall,'d',{get:()=>S&&S.f&&S.f.p3?'走廊的燈全變成了紅色。公布欄上多了一張新的照片——是你，站在這個走廊裡，背對著鏡頭。':_hd});
-RM.hall.h=()=>{const f=S.f,a=_hh();if(!f.p3)return a;return a.filter(x=>x[0]!='💬 問小羽').concat(
-X(1,['🏛 校長室',()=>go('pr')]),
-X(f.pr,[f.ar?'🎨 美術教室':'🔒 美術教室',()=>f.ar?go('art'):sel=='🗝 美術教室鑰匙'?(f.ar=1,go('art')):say('門鎖著。')]),
-X(f.art,[f.mgu?'🧊 太平間':'🔒 太平間',()=>f.mgu?go('mg'):sel=='🔑 太平間鑰匙'?(f.mgu=1,go('mg')):say('冷氣從門縫漏出來。門鎖著。')]),
-X(f.mgd,['🌿 後花園',()=>go('gd')]),
-X(f.gd,[f.rfu?'🌙 天台':'🔒 天台',()=>f.rfu?go('rf'):sel=='🗝 天台鑰匙'?(f.rfu=1,go('rf')):say('通往天台的鐵門，鏽得很厲害。')]),
-[['💬 問小羽',()=>say([['yu',h3()]])]])};
+
+/* ===== 第三夜：十七年（校長室 / 美術教室 / 太平間 / 後花園 / 天台） ===== */
+Object.assign(TH,{pr:['#2a1a10','#0a0604','🏛'],art:['#1a2a3a','#04080c','🖼'],mg:['#10242a','#020808','🧊'],gd:['#142010','#030804','🪱'],rf:['#1a1424','#04020a','🌙'],gu:['#102418','#020a06','📺'],au:['#2a1020','#0a0408','🎭'],po:['#103a46','#02080c','🏊'],lab:['#143a20','#020a04','🧪'],wl:['#1a1208','#050302','🕳']});
+Object.assign(EN,{pr:'校長室的桌上，放著一杯還冒著熱氣的茶。……是誰剛剛泡的？',art:'五雙眼睛，同時轉了過來。',mg:'冷。冷得你的呼吸，在空中結成了字。',gd:'一千隻蟬蛻，同時發出細碎的聲音，像有人在你耳邊笑。',rf:'風很大。你背後的鐵門，被什麼東西，輕輕地帶上了。',gu:'九個螢幕同時閃了一下。每一個畫面裡，都是你的背影。',au:'掌聲。從四面八方傳來。可是座位上，一個人也沒有。',po:'池底的黑水，慢慢地，往你的方向，流了過來。',lab:'玻璃罐裡的若蟲，一隻一隻，轉過頭來。',wl:'你聽見很多人，在很遠的地方，同時吸了一口氣。'});
+const h3=()=>{const f=S.f;return !f.pr?'十七年。算一算，她醒過幾次。撕掉的那一頁，別信。':!f.art?'畫要依牠的一生來掛：從土裡出生，回到土裡。':!f.mgd?'兩張紙條就夠了。護理師的警告……也許是故意的。':!f.gd?'蟬鳴只叫一輪。你只有一次重聽的機會。':!f.gu?'守衛室。她只出現在「除了 1 和自己，沒有別的朋友」的螢幕上。':!f.au?'三幕戲：沉睡、鳴叫、死去。對應的是季節。':!f.po?'按一盞燈，上下左右跟著變。從角落想起。':!f.lb?'兩個量杯。先倒滿哪一個，再倒進另一個？':!f.wl?'三個字。姓、名、最後一個字——筆記裡都有。別信名冊上的那一個。':'她怕光，追聲音。還有——別回頭。'};
 RM.pr={t:'校長室',d:'厚重的木桌，牆上掛著歷任校長的畫像。其中一幅，被人用黑布蓋住了。保險箱嵌在牆裡，是三位數字鎖。',h:()=>{const f=S.f;return[
 ['📖 校長日誌',()=>say('「她每隔十七年醒來一次，至今三次。最近一次，是民國 125 年。」……那是今年。')],
 ['🗓 牆上的日曆',()=>say('日曆停在民國 125 年。上一頁被撕掉了，碎紙上寫著：「108」。')],
@@ -247,11 +212,60 @@ RM.mg={t:'太平間',d:'冷氣從抽屜縫裡漏出來。八個冰櫃，編號 1
 ['🧊 冰櫃',()=>{if(f.mgd)return say('5 號櫃是空的。');say('八個冰櫃。她在哪一個？有人在你身後，站著。不要動。');hide(6,()=>seq(['1','2','3','4','5','6','7','8'],[4],'o',()=>{f.mgd=1;get('💍 偲涵的名牌');say(['5 號櫃自己滑了出來。裡面是一個十六歲女孩的遺體。','她的左手腕上，有一圈黑色的指痕。名牌上寫著：「偲涵」，日期是十七年前。','……可是，今天早上，偲涵還站在你面前。'])}))}],
 ['↩ 走廊',()=>go('hall')]]}};
 RM.gd={t:'後花園',d:'滿地都是蟬蛻。一千隻空殼，每一隻都張著背，像在尖叫。老樹下，有一口被石板蓋住的井。',h:()=>{const f=S.f;return[
-['🌳 老樹',()=>{if(f.gd)return say('蟬聲停了。整座花園，安靜得像剛死過一次。');say('蟬開始叫了。這一次，牠們只叫一輪。仔細聽。');seq(['🪱 低','🪱 中','🪱 高','🪱 尖','🪱 啞'],[2,0,4,3,1,1,4,0,3],'a',()=>{f.gd=1;get('🗝 天台鑰匙');say('蟬聲驟停。老樹上掉下一隻蟬蛻——裡面，塞著一把鑰匙。')})}],
-['🕳 被石板蓋住的井',()=>say('井裡傳來指甲刮石壁的聲音。你把名牌握緊了。……不要往下看。')],
+['🌳 老樹',()=>{if(f.gd)return say('蟬聲停了。整座花園，安靜得像剛死過一次。');say('蟬開始叫了。這一次，牠們只叫一輪。仔細聽。');seq(['🪱 低','🪱 中','🪱 高','🪱 尖','🪱 啞'],[2,0,4,3,1,1,4,0,3],'a',()=>{f.gd=1;get('🗝 守衛室鑰匙');say('蟬聲驟停。老樹上掉下一隻蟬蛻——裡面，塞著一把鑰匙，和一張紙條：「名字，不是她的。去守衛室，查名冊。」');setTimeout(()=>card('第四夜','名字'),2200)})}],
+['🕳 被石板蓋住的井',()=>f.wo?go('wl'):!f.lb?say('井裡傳來指甲刮石壁的聲音。石板紋風不動。……不要往下看。'):sel=='🧪 試劑'?(f.wo=1,say('試劑淋上石板，石板發出嘶嘶聲，裂開了。井下，有一道梯子。'),go('wl')):say('石板紋風不動。也許，需要什麼東西，把它融開。')],
 ['↩ 走廊',()=>go('hall')]]}};
 RM.rf={t:'天台',d:'風很大。欄杆外是一整片黑，像沒有地面。偲涵背對著你，站在邊緣。',h:()=>{const f=S.f;return[
 ['🧍 偲涵',async()=>{if(f.rfd)return say('她還站在欄杆邊。');f.rfd=1;await say([['si','（她背對著你。肩膀，在發抖。）'],'你一步一步靠近。她沒有回頭。','身後的鐵門，「砰」地關上。']);hide(10,()=>chase([['左邊的探照燈亮著，右邊是一片黑。',['⬅ 左邊','➡ 右邊'],0],['腳邊有一塊碎玻璃。她追著聲音走。',['踢開碎玻璃','小心跨過去'],0],['三條路：水塔、樓梯間、通風井。只有樓梯間的燈是亮的。',['水塔','樓梯間','通風井'],1],['背後有人，用你的聲音叫你。',['回頭','不要回頭'],1],['前面是死路。唯一的鐵梯，一踩就會嘎吱作響。',['爬上去','躲在水塔後面'],1],['印潔的聲音：「慈幽，過來，我這邊安全。」印潔就站在你右手邊，一句話也沒說。',['走向聲音','不要理它'],1],['地上有兩個影子。一個是你的，另一個，慢了半拍。',['低頭看','別看，繼續跑'],1],['偲涵就在欄杆邊。她的手，伸向你。',['握住她的手','退後一步'],0]],()=>{say('你抓住了她的手。');setTimeout(()=>fin(),1800)},2600))}],
 ['↩ 走廊',()=>go('hall')]]}};
 
+/* ===== 第四夜：名字（守衛室 / 禮堂 / 游泳池 / 實驗室 / 井底） ===== */
+RM.gu={t:'守衛室',d:'牆上有九個小螢幕，全是雪花，編號 1 到 9。值班日誌攤開在桌上，旁邊是一本每一頁都被撕掉了名字的名冊。',h:()=>{const f=S.f;return[
+['📒 值班日誌',()=>say(['「每隔十七年，校方會挑一個學生，替她戴上『偲涵』的名牌。因為，她只回應這個名字。」','最後一行字寫得很小：「她只出現在，除了 1 和自己之外，沒有別的朋友的螢幕上。」'])],
+['📋 名冊',()=>say('十七年前：偲涵（已故）。十七年後：偲涵。兩頁之間夾著一張新紙條：「本名：沈雨涵。」——墨跡還是濕的。')],
+['🗒 桌邊的紙條',()=>say('「她只在單數編號的螢幕上出現。」……字跡，和名冊上的那張一模一樣。')],
+['📺 九個螢幕',()=>{if(f.gu)return say('九個螢幕靜了下來。');say('選出她現在出現的螢幕。');sw(['📺1','📺2','📺3','📺4','📺5','📺6','📺7','📺8','📺9'],'011010100',()=>{f.gu=1;rid('姓：兩棵樹，站在一起，一動也不動。');get('🔑 禮堂鑰匙');say(['九個螢幕同時亮起。其中四個畫面裡，那個沒有臉的人，轉過頭來。','螢幕背面掉出一把鑰匙，和一張紙條：「她的姓：兩棵樹，站在一起，一動也不動。」（已記入筆記）']);setTimeout(()=>scare('',0),3000)})}],
+['↩ 走廊',()=>go('hall')]]}};
+RM.au={t:'禮堂',d:'空蕩蕩的禮堂。舞台的布幕只拉開一半，三個旋轉布景立在台上。第一排的座位，全都被人坐過——椅面是溫的。',h:()=>{const f=S.f;return[
+['📜 節目單',()=>say('「第一幕：牠在地下沉睡的季節。第二幕：牠爬出土、開始鳴叫的季節。第三幕：牠死去的季節。」')],
+['🎫 門口的海報',()=>say('海報：「春・夏・秋——校慶快樂！」……這是校慶，不是這齣戲。')],
+['🎭 三個旋轉布景',()=>{if(f.au)return say('布景停住了。幕後，有一雙腳。');say('布幕在動。不要動。');hide(7,()=>{say('腳步聲遠去。轉動布景，演完這一齣戲。');dial([['春','夏','秋','冬'],['春','夏','秋','冬'],['春','夏','秋','冬']],[3,1,2],()=>{f.au=1;rid('名：言字旁，右邊一個「五」，一個「口」。');get('🔑 游泳池鑰匙');say('布幕全部落下。台上只剩一張椅子，椅背上掛著鑰匙，和一張紙條：「她的名：言字旁，右邊一個『五』，一個『口』。」（已記入筆記）')})})}],
+['↩ 走廊',()=>go('hall')]]}};
+RM.po={t:'游泳池',d:'池水早就乾了，池底積著一層發黑的水。九盞水下燈排成三乘三，有的亮著，有的熄了。',h:()=>{const f=S.f;return[
+['📌 池邊的告示',()=>say('「按一盞燈，它和上下左右的燈，會一起反轉。」下面有人補了一行：「只准按 5 次。超過，她就上來。」')],
+['💡 九盞水下燈',()=>{if(f.po)return say('九盞燈全亮著。池底，有什麼東西，慢慢沉了下去。');say('讓九盞燈，全部亮起來。');lo([0, 0, 1, 1, 1, 0, 0, 1, 1],5,()=>{f.po=1;get('🔑 實驗室鑰匙');say('九盞燈全亮的瞬間，水裡伸出一隻手，抓住了池邊——又鬆開了。排水孔裡，卡著一把鑰匙。');setTimeout(()=>scare('',0),2500)})}],
+['↩ 走廊',()=>go('hall')]]}};
+RM.lab={t:'實驗室',d:'玻璃罐裡泡著一排排蟬的若蟲，標籤上的日期，全是十七的倍數。桌上有兩個沒有刻度的量杯：A 容量 5，B 容量 3。',h:()=>{const f=S.f;return[
+['🏷 罐子上的標籤',()=>say('「要讓她安靜，得先讓她『喝』下，恰好 4 單位的試劑。」')],
+['🧫 一排若蟲標本',()=>{say('所有的若蟲，同時轉向了你。');setTimeout(()=>scare('',0),1200)}],
+['🧪 兩個量杯',()=>{if(f.lb)return say('量杯是空的。');say('只能倒，不能估。A 瓶容量 5，B 瓶容量 3，要在 A 瓶裡得到恰好 4。');jug(()=>{f.lb=1;rid('最後一個字：虫字旁，右邊是「單」。');get('🧪 試劑');say(['試劑開始冒泡，慢慢變成透明。罐子背面貼著一張紙條：「她的最後一個字：虫字旁，右邊是『單』。」（已記入筆記）','你回頭。印潔站在玻璃罐前，用手指，在罐子上慢慢寫著什麼。寫的是——「下一個」。'])},7)}],
+['↩ 走廊',()=>go('hall')]]}};
+RM.wl={t:'井底',d:'井底乾涸。四面牆上嵌滿了蟬蛻，每一隻的背上，都裂著一道口。正中間的石臺刻著一行字：「請說出她的名字」。',h:()=>{const f=S.f;return[
+['📖 牆上的刻痕',()=>say(['「十七年前，他們把一個女孩關進這裡，為了讓蟬不再叫。」','「她沒有死。她只是，不能再說話了。」','「每過十七年，他們就再選一個孩子，替她開口。」'])],
+['🗣 說出她的名字',()=>{if(f.wl)return say('井底很安靜。一千隻眼睛，都閉上了。');say('三個字。說錯，她會記住你。');ask('她的本名（三個字）','林語蟬',()=>{say('牆上的蟬蛻一隻一隻裂開。一千個聲音，同時叫出了那個名字。');hide(8,()=>chase([['蟬蛻開始一隻一隻從牆上剝落，發出細碎的聲音。她追著聲音。',['站著不動','拔腿狂奔'],0],['梯子在晃，每爬一階，就響一聲。',['慢慢爬，一階一階','一次跨兩階，衝上去'],0],['井壁上有兩個凹洞。左邊的洞裡有光，右邊的洞裡是黑的。',['左洞','右洞'],0],['背後有人用印潔的聲音，哭著說：「慈幽，救我。」',['回頭','爬上去，不要回頭'],1],['井口就在頭頂。她的手，從下面抓住了你的腳踝。',['用力踢','把鞋踢掉，繼續爬'],1]],()=>{f.wl=1;get('🗝 天台鑰匙');say('你爬出井口。天空是紅色的。手裡，多了一把通往天台的鑰匙。')},3000))},'井底傳來一聲長長的嘆息。她不認得這個名字。')}],
+['↩ 後花園',()=>go('gd')]]}};
+
+async function oldIntro(){await say(['鐵門之後，是一棟從未出現過的舊校舍。','印潔已經走了進去，一扇門在她身後落下，將你們隔開。',['si','偲涵站在你面前。她抬起頭，嘴型慢慢重複同一個動作——「快、走」。'],'燈全滅了。黑暗裡，傳來很多人緩慢靠近的腳步聲。']);await sl(1800);await scare('',1);say([['yu','牆上的符號……紀錄裡寫過順序。快！']])}
+async function end(r){if(!r)return bad('門後，有人在等你。');act2()}
+async function act3(){S.f.p3=1;await say(['黑板上的名字一個個亮起，最後停在「偲涵」。','然後，字跡開始滲血。第四個名字下面，浮現了第五個——','「慈幽」。',['si','偲涵站在門口。她的嘴型，一遍又一遍：「十七年。十七年。十七年。」'],['yu','……校長室。紀錄裡提過，每隔十七年，她醒一次。答案在那裡。快去！']]);busy=1;card('第三夜','十七年');await sl(3300);busy=0;go('hall')}
+async function fin(){if(S.f.p3)return ending();return act3()}
+async function ending(){busy=1;S.on=0;clr();await say([['si','偲涵回過頭。她的眼神，一點一點變得空洞，身體不自然地抽動。'],['yu','離她遠一點！'],'她走向欄杆。你抓住她的手。她第一次流下眼淚，一直搖頭，嘴型無聲：「對不起」。','然後，她的嘴型換了。三個字。你認得——林、語、蟬。','下一秒，那個東西徹底控制了她。偲涵翻過欄杆，消失在黑暗裡。','她不說話，是它不允許。她跟著你，是想警告你。她從頭到尾，都在反抗。','十七年前，也是這樣。十七年後，也是這樣。','筆記本的最後一頁，浮現一行原本不存在的字：「下一個，是印潔。」','你猛然回頭。印潔站在你身後——她的眼睛，已經不是原本的樣子了。']);await sl(2500);busy=0;await scare('她一直都在看著你',1);$('#g').classList.remove('on');$('#en').classList.add('on')}
+function yes(){ac();$('#ag').classList.remove('on');$('#cv').classList.add('on')}
+function no(){$('#ag').innerHTML='<h1>抱歉</h1><p>未滿 18 歲，無法遊玩。</p>'}
+async function start(){['cv','dt','en'].forEach(i=>$('#'+i).classList.remove('on'));S={r:'hall',inv:[],f:{},w:0,on:1};sel=null;busy=0;$('#g').classList.add('on');$('#tt').classList.remove('on');void $('#tt').offsetWidth;$('#tt').classList.add('on');hud();if(!dr){dr=1;drone()}render();say(['地下室的門在身後關上。慈幽扶著印潔，終於走回了走廊。','「……等等。」印潔停下腳步。「有人在叫我。聲音，和妳一模一樣。」',['si','走廊盡頭，那個女生又站在那裡。'],'是她。第一章裡，她也是這樣，一句話都沒說，只是盯著你們。眼睛，幾乎沒有眨。','她抬起手，指向校舍深處。然後，不見了。','「她好像知道些什麼……」「正因為這樣，才更可怕。」'])}
+
+/* ===== 存檔系統（自動存檔 / 手動存檔 / 繼續遊戲） ===== */
+const SK='cs2_save';
+const toast=t=>{const e=$('#ts');e.textContent=t;e.style.opacity=1;setTimeout(()=>e.style.opacity=0,1600)};
+function save(m){try{if(!S||!S.on||busy){m&&toast('現在不能存檔');return}localStorage.setItem(SK,JSON.stringify({r:S.r,inv:S.inv,f:S.f,w:S.w}));m&&toast('💾 已存檔')}catch(e){}}
+function clr(){try{localStorage.removeItem(SK)}catch(e){}}
+function load(){let d;try{d=JSON.parse(localStorage.getItem(SK))}catch(e){}if(!d)return;if(!RM[d.r])d.r='hall';['cv','dt','en'].forEach(i=>$('#'+i).classList.remove('on'));S={r:d.r,inv:d.inv||[],f:d.f||{},w:d.w||0,on:1};sel=null;busy=0;$('#g').classList.add('on');hud();if(!dr){dr=1;drone()}render();say('（已讀取存檔。她，一直在等你回來。）')}
+function newGame(){let h=0;try{h=localStorage.getItem(SK)}catch(e){}if(h&&!confirm('開始新遊戲會覆蓋目前的存檔，確定嗎？'))return;start()}
+const rf5=()=>{let h=0;try{h=localStorage.getItem(SK)}catch(e){}$('#ctw').style.display=h?'':'none'};rf5();
+$('#ct').onclick=()=>{ac();load()};$('#cd').onclick=()=>{clr();rf5()};
+setInterval(()=>save(),4000);addEventListener('pagehide',()=>save());document.addEventListener('visibilitychange',()=>{if(document.hidden)save()});
+setInterval(()=>{if(S&&S.on&&S.f.p3&&!busy&&Math.random()<.35)scare()},15000);
+
+(function hb(){if(S&&S.on&&A){tone(50,.18,'sine',.3);setTimeout(()=>tone(45,.14,'sine',.22),200)}setTimeout(hb,1900-(S?S.w:0)*300)})();
+setInterval(()=>{if(S&&S.on&&!busy&&Math.random()<.25+S.w*.1)scare()},25000);
 </script></body></html>
