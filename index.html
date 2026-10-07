@@ -3,330 +3,1159 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>千蟬學校：第一章｜第柒門</title>
 <style id="sd-hide">body{visibility:hidden}</style>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;900&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
 <style>
+:root{--bg:#050807;--panel:#0e1615;--line:#26352f;--teal:#86aa9f;--text:#e6e0d4;--muted:#8e9a95;--red:#b3141f;--gold:#c9a255}
 *{box-sizing:border-box}
-html,body{margin:0;height:100%;background:#040405;color:#d6d1c8;font:16px/1.75 "Noto Serif TC","Songti TC",serif;overflow:hidden}
-body{padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
-button{font:inherit;color:#d6d1c8;background:#111116;border:1px solid #3a3a46;border-radius:6px;padding:9px 13px;margin:4px;cursor:pointer}
-button:active,button.lit{background:#8a1220;color:#fff}
-button.sel{border-color:#d33;box-shadow:0 0 10px #d33}
-button.ok{border-color:#4a4}
-input{font:inherit;background:#0b0b0e;color:#eee;border:1px solid #555;border-radius:6px;padding:9px;width:55%}
-h1{letter-spacing:.18em;color:#c22;margin:.3em 0;text-shadow:0 0 14px #600}
-.scr{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;overflow:auto}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--text);font:16px/1.7 "Noto Serif TC","Songti TC",serif;overflow:hidden;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
+button{font:inherit;color:var(--text);background:#152120;border:1px solid #34473f;border-radius:8px;padding:9px 14px;cursor:pointer;touch-action:manipulation}
+button:hover{border-color:var(--teal)}
+button:disabled{opacity:.4;cursor:default}
+.btn-red{background:var(--red);border-color:#d0303a;color:#fff}
+.btn-gold{background:transparent;border-color:#7a6332;color:var(--gold)}
+.big{font-size:19px;padding:12px 34px;letter-spacing:.2em}
+.scr{position:fixed;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;overflow:auto}
 .scr.on{display:flex}
-#cv>svg{width:min(52vw,210px);height:auto;filter:drop-shadow(0 0 22px #700)}
-.sub{max-width:30em;color:#a99}
-.cast{display:flex;align-items:center;gap:10px;margin:10px;font-size:14px;color:#988}
-.cast svg{width:46px;height:55px}
-#g{justify-content:flex-start;align-items:stretch;text-align:left}
-#hud{display:flex;justify-content:space-between;color:#c44;font-weight:700}
-#ds{color:#968;margin:6px 0}
-#lg{min-height:6em;margin:8px 0;padding:10px;border-left:3px solid #8a1220;background:#0a0a0d;cursor:pointer}
-.pt{float:left;width:56px;height:68px;margin:0 10px 0 0}
-#iv{margin-top:auto;padding-top:8px;border-top:1px solid #222;font-size:14px}
-#vg{position:fixed;inset:0;pointer-events:none;background:radial-gradient(transparent 28%,#000 125%);opacity:calc(.35 + var(--v,0)*.65);z-index:5}
-#sc{position:fixed;inset:0;background:#000;display:none;align-items:center;justify-content:center;z-index:9}
-#sc svg{height:92vh;width:auto;animation:zm .25s ease-out forwards}
-#sc p{position:absolute;bottom:5%;margin:0;color:#d00;font-size:26px;letter-spacing:.3em}
-@keyframes zm{from{transform:scale(.25)}to{transform:scale(1.15)}}
-@keyframes fl{0%,100%{opacity:1}20%{opacity:.05}40%{opacity:.9}60%{opacity:0}80%{opacity:.6}}
-@keyframes sk{25%{transform:translate(-14px,8px)}50%{transform:translate(12px,-10px)}75%{transform:translate(-8px,-6px)}}
-body.fl .scr.on{animation:fl .45s}
-body.sk .scr.on,body.sk #sc{animation:sk .1s 8}
-#g>*{flex:none}
-body{background:radial-gradient(ellipse at 50% 0,#1c0a10,#040405 70%)}
-#cv{background:radial-gradient(circle at 50% 35%,#3a0710,#040405 62%)}
-#cv h1{font-size:34px;font-weight:900;animation:lt 5s infinite}
-#cv>svg{animation:br 6s ease-in-out infinite}
-@keyframes br{50%{transform:translateY(-6px) scale(1.02)}}
-#sn{position:relative;height:150px;margin:8px 0;border:1px solid #2a1a1a;border-radius:10px;overflow:hidden;background:linear-gradient(var(--c1,#1a2433),var(--c2,#06080c));box-shadow:inset 0 0 40px #000}
-#sn:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 115%,rgba(255,225,170,.22),transparent 62%),repeating-linear-gradient(90deg,transparent 0 58px,rgba(0,0,0,.4) 58px 62px);animation:lt 4s infinite}
-#sn:after{content:"";position:absolute;left:-50%;bottom:0;width:200%;height:60px;background:radial-gradient(ellipse,rgba(200,200,210,.2),transparent 70%);animation:fog 14s linear infinite}
-#sn .pr{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);font-size:78px;filter:saturate(.3) drop-shadow(0 0 14px #000);opacity:.8}
-#sn svg{position:absolute;bottom:0;height:125px;width:auto;opacity:0;filter:brightness(0) drop-shadow(0 0 5px #a00);animation:pk 6s 1.2s forwards;z-index:2}
-@keyframes lt{0%,100%{opacity:1}7%{opacity:.35}9%{opacity:1}52%{opacity:.25}54%{opacity:1}}
-@keyframes fog{to{transform:translateX(50%)}}
-@keyframes pk{0%,55%{opacity:0}62%,80%{opacity:.75}100%{opacity:0}}
-#gr{position:fixed;inset:0;pointer-events:none;z-index:6;opacity:.1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");animation:gn .5s steps(3) infinite}
+h1,h2,h3{margin:.2em 0;font-weight:900}
+
+/* 年齡確認 / 死亡 / 結局 */
+#ag h1,#dead h1,#end h1{color:var(--red);letter-spacing:.2em;text-shadow:0 0 18px #600}
+#ag p,#dead p,#end p{max-width:30em;color:#b9b0a6}
+.etime{font-size:24px;color:var(--gold);letter-spacing:.1em;margin:6px 0 14px}
+.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:8px 0}
+
+/* 標題畫面 */
+#title{flex-direction:row;gap:40px;background:radial-gradient(ellipse at 30% 40%,#14211f,#030505 70%)}
+.tposter{max-height:88vh;aspect-ratio:848/1264;height:88vh;border-radius:6px;overflow:hidden;box-shadow:0 0 60px #000,0 0 0 1px #1e2b28;flex:none}
+.tposter img{width:100%;height:100%;object-fit:cover;display:block}
+.tside{max-width:440px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.tbrand{color:var(--gold);letter-spacing:.4em;font-size:13px}
+.tt{font-size:clamp(46px,8vw,84px);letter-spacing:.12em;color:#efeae0;margin:0;line-height:1.1;text-shadow:3px 3px 0 #6d0b12,0 0 30px rgba(160,10,20,.45)}
+.ten{font-size:12px;letter-spacing:.25em;color:#9fb1aa}
+.tchap{font-size:20px;color:var(--red);letter-spacing:.3em;margin-top:6px}
+.tag{color:#b9b0a6;margin:4px 0}
+#who{color:var(--gold);font-size:14px;margin:0;min-height:1.4em}
+.cast{display:flex;gap:10px;margin:6px 0 10px}
+.cast div{font-size:12px;color:var(--muted)}
+.cast svg{width:64px;height:85px;display:block;border-radius:6px;background:#0c1312;border:1px solid #22302c}
+#ctw{display:flex;gap:8px}
+
+/* 遊戲畫面 */
+#game{justify-content:flex-start;padding:0;background:#030505}
+#top{width:min(100vw,1100px);display:flex;align-items:center;gap:10px;padding:6px 10px;font-size:14px;flex:none}
+#loc{flex:1;text-align:left;color:var(--teal);letter-spacing:.08em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#tm{color:var(--gold);font-variant-numeric:tabular-nums}
+#hp{color:var(--red);letter-spacing:1px;font-size:13px}
+#top button{padding:3px 9px;font-size:15px}
+#sw{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center}
+#scene{position:relative;width:min(100vw,1100px,calc((100dvh - 236px)*1.6));aspect-ratio:16/10;overflow:hidden;background:#000;transition:opacity .35s}
+#scene.fade{opacity:0}
+#scene.turn{animation:turn .5s}
+@keyframes turn{50%{transform:scaleX(.02);filter:brightness(0)}}
+#art{position:absolute;inset:0;width:100%;height:100%}
+#spots{position:absolute;inset:0}
+.hs{position:absolute;background:transparent;border:0;padding:0;margin:0;border-radius:8px;z-index:2}
+.hs .lb{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);white-space:nowrap;font-size:12px;padding:2px 8px;border-radius:99px;background:rgba(0,0,0,.65);color:#dfe8e3;opacity:0;transition:opacity .2s;pointer-events:none}
+.hs:hover{outline:1px dashed rgba(200,230,215,.25)}
+.hs:hover .lb{opacity:1}
+.hs.ex .lb{opacity:.9;background:rgba(10,30,24,.8);border:1px solid #3d6b5c;color:#bfe3d4}
+#fl{position:absolute;inset:0;pointer-events:none;z-index:3;background:radial-gradient(circle at var(--x,50%) var(--y,55%),rgba(255,240,200,.06) 0,transparent var(--r,110px),rgba(0,0,0,.5) calc(var(--r,110px)*1.5),rgba(0,0,0,var(--d,.9)) calc(var(--r,110px)*2.6))}
+#stage{position:absolute;left:1%;bottom:0;height:86%;z-index:5;pointer-events:none;opacity:0;transform:translateY(10px);transition:opacity .3s,transform .3s;filter:drop-shadow(0 0 24px #000)}
+#stage.on{opacity:1;transform:none}
+#stage svg{height:100%;width:auto;display:block}
+#turnb{position:absolute;right:10px;bottom:10px;z-index:6;font-size:13px;padding:5px 12px;background:rgba(0,0,0,.6)}
+#sname{position:absolute;left:12px;top:8px;z-index:6;font-size:12px;letter-spacing:.2em;color:#9cc;opacity:.75;pointer-events:none}
+#shadow{position:absolute;bottom:18%;height:55%;z-index:4;opacity:0;pointer-events:none}
+#shadow.go{animation:pass 2.6s ease-in-out}
+@keyframes pass{0%{left:-20%;opacity:0}30%,70%{opacity:.8}100%{left:110%;opacity:0}}
+#dlg{width:min(100vw,1100px);min-height:108px;display:flex;gap:12px;padding:10px 14px;background:linear-gradient(#0c1413,#060909);border-top:1px solid var(--line);cursor:pointer;text-align:left;flex:none}
+#dp{width:62px;height:82px;flex:none;border-radius:6px;overflow:hidden;background:#0b1110;border:1px solid #1f2c29}
+#dp:empty{display:none}
+#dp svg{width:100%;height:100%;display:block}
+#dt{flex:1;min-width:0}
+#dn{display:block;font-size:13px;color:#d0525a;letter-spacing:.15em;min-height:1.2em}
+#dx{margin:0;font-size:17px;line-height:1.7}
+.nx{font-style:normal;color:var(--red);margin-left:6px;animation:bl 1s infinite}
+@keyframes bl{50%{opacity:.2}}
+#inv{width:min(100vw,1100px);display:flex;align-items:center;gap:8px;padding:6px 12px 10px;flex:none}
+#items{flex:1;display:flex;gap:6px;overflow-x:auto;overflow-y:hidden;scrollbar-width:none;min-height:56px;align-items:center}
+#items:empty::before{content:'（還沒有任何物品）';color:#4c5a55;font-size:13px}
+.it{width:54px;height:54px;padding:3px;flex:none;background:#0e1716;border:1px solid #2a3934;position:relative}
+.it svg{width:100%;height:100%}
+.it.sel{border-color:var(--gold);box-shadow:0 0 12px rgba(201,162,85,.6)}
+.it.new{animation:nw 1.2s 2}
+@keyframes nw{50%{box-shadow:0 0 18px #c9a255}}
+#exam{font-size:13px;padding:6px 10px}
+#itn{font-size:12px;color:var(--gold);min-width:5em;text-align:right}
+
+/* 面板 */
+#modal{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.84);display:none;align-items:center;justify-content:center;padding:12px}
+#modal.on{display:flex}
+#mbox{background:linear-gradient(#111b1a,#0a1110);border:1px solid #2e413a;border-radius:12px;padding:16px 18px;width:min(580px,96vw);max-height:94vh;overflow:auto;text-align:center;box-shadow:0 0 40px #000}
+#mbox h3{color:#d9d2c4;letter-spacing:.15em;font-size:19px}
+.pd{color:#b9b0a6;font-size:15px;margin:6px 0 10px}
+.mx{margin-top:12px}
+.paper{background:#e8dfcb;color:#2b231b;font:20px/1.85 "LXGW WenKai TC","Noto Serif TC",serif;padding:18px 22px;border-radius:2px;text-align:left;box-shadow:0 8px 20px #000,inset 0 0 40px rgba(120,90,40,.25);transform:rotate(-1deg);margin:8px auto;max-width:460px;position:relative}
+.paper.wet .ink{color:#7d0a10;text-shadow:0 0 1px #a00,0 3px 4px rgba(130,0,0,.45);filter:blur(.3px)}
+.paper.wet::after{content:'';position:absolute;right:16%;top:40%;width:4px;height:60px;background:linear-gradient(#7d0a10,transparent);border-radius:2px}
+.wettag{display:inline-block;font-size:12px;color:#e88;border:1px solid #733;border-radius:99px;padding:0 8px;margin-top:6px}
+
+/* 鎖 */
+.padlock{position:relative;width:230px;margin:24px auto 12px;transition:transform .1s}
+.shackle{width:140px;height:100px;border:18px solid #b4b8bc;border-bottom:0;border-radius:70px 70px 0 0;margin:0 auto -8px;transition:transform .45s;box-shadow:inset 0 3px 0 #e6e9ec}
+.padlock.open .shackle{transform:translateY(-30px)}
+.lbody{background:linear-gradient(160deg,#e2c169,#a07c2c 60%,#7a5c1c);border-radius:16px;padding:18px 12px;box-shadow:inset 0 2px 0 #f6e2a2,0 8px 18px #000}
+.lbody.steel{background:linear-gradient(160deg,#9aa1a6,#5d6368 60%,#3b4044);box-shadow:inset 0 2px 0 #d0d6da,0 8px 18px #000}
+.wheels{display:flex;gap:6px;justify-content:center}
+.wh{display:flex;flex-direction:column;align-items:center;gap:3px}
+.wh button{padding:0 12px;font-size:12px;background:#2a2116;border-color:#5a4520;line-height:22px}
+.wv{background:#121212;border-radius:6px;width:44px;padding:2px 0;font:700 24px/1.3 "Noto Serif TC";color:#f2f2f2;box-shadow:inset 0 0 12px #000}
+.wv span{display:block;font-size:13px;color:#5d5d5d;line-height:1.2}
+.shake{animation:shk .35s}
+@keyframes shk{25%{transform:translateX(-8px)}50%{transform:translateX(8px)}75%{transform:translateX(-4px)}}
+.dknob{width:90px;height:90px;border-radius:50%;margin:6px auto;background:radial-gradient(circle at 40% 35%,#e8eaec,#7d8388 70%);box-shadow:0 4px 10px #000,inset 0 -4px 8px rgba(0,0,0,.4);transition:transform .12s}
+.dpad{display:grid;grid-template-columns:repeat(3,56px);grid-template-rows:repeat(3,44px);gap:4px;justify-content:center;margin:8px 0}
+.dpad button{padding:0;font-size:20px}
+.safe{width:250px;height:230px;margin:10px auto;background:linear-gradient(#3b4144,#1b1f22);border-radius:12px;position:relative;box-shadow:inset 0 0 0 7px #2b3033,0 8px 20px #000}
+.dial{position:absolute;left:50%;top:45%;width:128px;height:128px;margin:-64px;border-radius:50%;background:radial-gradient(circle at 45% 40%,#4a4a4a,#0d0d0d 70%);box-shadow:0 0 0 7px #5a5f62,0 0 0 9px #222,0 6px 12px #000;transition:transform .07s}
+.dial::after{content:'';position:absolute;left:50%;top:7px;width:5px;height:18px;margin-left:-2.5px;background:#d8d8d8;border-radius:2px}
+.dial::before{content:'';position:absolute;inset:38px;border-radius:50%;background:radial-gradient(#666,#222);box-shadow:0 2px 4px #000}
+.handle{position:absolute;right:16px;top:50%;width:14px;height:60px;margin-top:-30px;background:linear-gradient(90deg,#999,#555);border-radius:6px}
+.clockw{margin:4px auto;display:block}
+.bottles{display:flex;gap:10px;justify-content:center;margin:12px 0}
+.bottles button{background:none;border:0;padding:0;position:relative}
+.bottles svg{width:54px;height:110px}
+.bottles b{position:absolute;top:-6px;left:50%;transform:translateX(-50%);background:var(--gold);color:#111;border-radius:99px;width:22px;height:22px;font-size:13px;line-height:22px}
+.lockers{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin:10px 0}
+.lockers button{aspect-ratio:3/4;padding:0;font-size:11px;background:linear-gradient(#69716f,#454c4a);border-color:#2c3230;color:#ddd;display:flex;align-items:flex-start;justify-content:center;padding-top:3px}
+.lockers button.op{background:#111;color:#555}
+.piano{display:flex;justify-content:center;gap:3px;margin:14px 0;position:relative}
+.piano button{width:46px;height:150px;background:linear-gradient(#f6f3ea,#d9d4c6);border:1px solid #888;border-radius:0 0 6px 6px;padding:0;color:#555;font-size:12px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px}
+.piano button.lit{background:linear-gradient(#ffd27a,#d39b2a);box-shadow:0 0 18px #e0a030}
+.shelf{background:linear-gradient(#3a2618,#22160d);padding:8px 6px 0;border-radius:4px;margin:8px 0}
+.shelf .sr{display:flex;gap:2px;align-items:flex-end;justify-content:center;border-bottom:10px solid #4a3020;margin-bottom:8px;height:118px}
+.shelf button{writing-mode:vertical-rl;padding:6px 0;width:32px;font-size:12px;border-radius:2px;color:#e9e2cc;border:1px solid #0006}
+.shelf button.wet{box-shadow:inset 0 -30px 18px -10px rgba(40,0,0,.6);filter:saturate(1.3) brightness(.85)}
+.card{position:relative;width:300px;height:180px;margin:10px auto;background:#efe9da;border-radius:4px;box-shadow:0 6px 16px #000;color:#333;text-align:left;padding:14px 18px;font:18px/1.7 "LXGW WenKai TC",serif}
+.card canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;border-radius:4px}
+.glass{width:100%;max-width:440px;aspect-ratio:4/3;margin:8px auto;border-radius:6px;position:relative;overflow:hidden;background:radial-gradient(#2a3a3c,#0b1112);border:6px solid #2b2b2b}
+.knk{position:absolute;font:900 34px "Noto Serif TC";color:#e9e3d6;text-shadow:0 0 12px #9cf;opacity:0;animation:kn .5s forwards}
+@keyframes kn{0%{opacity:1;transform:scale(1.6)}100%{opacity:0;transform:scale(1)}}
+.wall{width:100%;max-width:460px;height:200px;margin:8px auto;border-radius:8px;background:radial-gradient(#3c4844,#141a18);display:flex;align-items:center;justify-content:center;font:900 64px "LXGW WenKai TC",serif;color:#c9d3cf;text-shadow:0 0 8px #000;letter-spacing:.25em}
+.wall span{display:inline-block;transform:scaleX(-1);opacity:0;animation:wr 1.4s forwards}
+@keyframes wr{to{opacity:.9}}
+.tbar{height:8px;background:#222;border-radius:4px;overflow:hidden;margin:10px 0}
+.tbar i{display:block;height:100%;width:100%;background:var(--red);transform-origin:left;animation:tb linear forwards}
+@keyframes tb{to{transform:scaleX(0)}}
+.ch{display:block;width:100%;margin:6px 0;padding:12px}
+.kpd{width:250px;margin:10px auto}.kdisp{display:flex;gap:6px;justify-content:center;margin-bottom:10px}.kdisp i{width:42px;height:50px;border:1px solid #3b4d46;border-radius:6px;font:700 26px/50px "Noto Serif TC";font-style:normal;background:#070b0a;color:#e6e0d4}
+.kgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.kgrid button{font-size:20px;padding:10px}
+.pick{display:grid;gap:8px;margin:10px 0}.pick button{padding:10px;font-size:15px;line-height:1.5;text-align:left}
+.brk{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;max-width:320px;margin:10px auto;background:#151815;padding:4px}
+.brk button{height:40px;padding:0;border-radius:2px;background:linear-gradient(#5d5a52,#3f3d37);border-color:#222;font-size:13px;color:#ffd}
+.brk button.ok{background:linear-gradient(#a8873e,#6d5420)}.row .sel{border-color:var(--gold);color:var(--gold)}
+.photo{position:relative;max-width:420px;margin:8px auto}.photo .cover{position:absolute;inset:0;background:#2a1d12;display:flex;align-items:center;justify-content:center;color:#b9a888;font:20px "LXGW WenKai TC";opacity:0;transition:opacity .8s;padding:20px;text-align:center}
+.poem{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;max-width:380px;margin:10px auto}.poem button{padding:6px 0;font:22px "LXGW WenKai TC";background:#e8dfcb;color:#2b231b;border-color:#b9ab8a}.poem button.on{background:#c9a255}
+.fad{display:flex;justify-content:center;gap:14px;margin:12px 0}.fad label{display:flex;flex-direction:column;align-items:center;font-size:12px;color:#aaa;gap:4px}
+.fad input{writing-mode:vertical-lr;direction:rtl;height:130px;width:28px;accent-color:#c9a255}
+.climb{display:grid;grid-template-columns:repeat(4,58px);gap:5px;justify-content:center;margin:10px 0}.climb button{height:46px;padding:0;background:#2a2620;border-color:#3d362b}.climb button.ok{background:#6d5420;border-color:#c9a255}
+.nlist{text-align:left;font-size:14px;max-height:52vh;overflow:auto}
+.nlist div{border-bottom:1px dashed #2a3833;padding:8px 2px}
+.nlist b{color:#cfc6b5}
+.nlist .w{color:#d77}
+.frags{display:flex;gap:10px;justify-content:center;margin:8px 0;font-size:18px}
+.frags span{border:1px solid #3b4d46;border-radius:6px;padding:4px 10px;min-width:56px}
+
+/* 全螢幕效果 */
+#hide{position:fixed;inset:0;z-index:30;background:radial-gradient(#0b0505,#000 70%);display:none;flex-direction:column;align-items:center;justify-content:center;color:#a33;letter-spacing:.4em;font-size:28px}
+#hide.on{display:flex}
+#hide small{font-size:14px;color:#777;letter-spacing:.1em;margin-top:10px}
+#hide .tbar{width:60vw;max-width:360px}
+#sc{position:fixed;inset:0;z-index:40;background:#000;display:none;align-items:center;justify-content:center}
+#sc.on{display:flex}
+#sc svg{height:96vh;width:auto;animation:zm .22s ease-out forwards}
+#sc p{position:absolute;bottom:6%;margin:0;color:#d00;font-size:28px;letter-spacing:.35em}
+@keyframes zm{from{transform:scale(.3)}to{transform:scale(1.15)}}
+body.sk #game,body.sk #sc{animation:skk .09s 8}
+@keyframes skk{25%{transform:translate(-12px,7px)}50%{transform:translate(10px,-9px)}75%{transform:translate(-7px,-5px)}}
+#card{position:fixed;inset:0;z-index:35;background:#000;display:none;flex-direction:column;align-items:center;justify-content:center;color:var(--red);letter-spacing:.35em}
+#card.on{display:flex;animation:cf 3.4s forwards}
+#card h1{font-size:40px}#card p{color:#9a8f86;letter-spacing:.2em}
+@keyframes cf{0%{opacity:0}15%,75%{opacity:1}100%{opacity:0;visibility:hidden}}
+#vg{position:fixed;inset:0;pointer-events:none;z-index:8;background:radial-gradient(transparent 40%,rgba(60,0,0,var(--v,0)) 120%)}
+#gr{position:fixed;inset:0;pointer-events:none;z-index:9;opacity:.08;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");animation:gn .5s steps(3) infinite}
 @keyframes gn{33%{transform:translate(-6px,4px)}66%{transform:translate(5px,-5px)}}
-#hs{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:6px}
-#hs button{margin:0;text-align:left;background:linear-gradient(#18181f,#0d0d11)}
-#lg{background:linear-gradient(90deg,#14090c,#0a0a0d);border-radius:0 8px 8px 0;font-size:17px}
-#lg p{margin:2px 0}.nm{display:block;font-size:12px;color:#c66}
-.hd{height:10px;background:#222;border-radius:5px;overflow:hidden;margin:10px 0}.hd i{display:block;height:100%;background:#b11;width:0;animation:hdb linear forwards}
-@keyframes hdb{to{width:100%}}
-#tt{position:fixed;inset:0;z-index:8;display:none;align-items:center;justify-content:center;flex-direction:column;background:#000;color:#c22;letter-spacing:.3em;text-align:center}
-#tt.on{display:flex;animation:ttf 3.2s forwards}
-@keyframes ttf{70%{opacity:1}100%{opacity:0;visibility:hidden}}
-.ch,.sw{padding:12px 16px}
-#sv{margin:0;padding:2px 10px;font-size:13px}#ts{position:fixed;top:48px;right:12px;z-index:12;color:#9c9;background:#000c;padding:4px 10px;border-radius:6px;font-size:13px;opacity:0;transition:opacity .4s;pointer-events:none}#ctw{margin-top:8px}
-.lo{display:grid;grid-template-columns:repeat(3,72px);gap:6px;justify-content:center;margin:8px 0}.lt{font-size:26px;padding:10px;margin:0}.dl{font-size:24px;padding:12px 20px}
-#eg{background:#000;z-index:7}#eg svg{width:min(60vw,240px);height:auto;opacity:0;transition:opacity 2s;filter:drop-shadow(0 0 24px #0cc)}#egp{font-size:20px;letter-spacing:.2em;color:#9dd;min-height:3em}
-.cast4{display:flex;gap:12px;margin:10px;justify-content:center}.cast4 div{font-size:12px;color:#988}.cast4 svg{width:56px;height:67px;display:block;margin:0 auto 2px}
-#tm{color:#c9a255;font-weight:700;letter-spacing:.05em}
-#who{color:#c9a255;font-size:14px;margin:4px 0}
-.lobby{background:transparent;border-color:#5a4a2a;color:#c9a255}
-.etime{font-size:22px;color:#c9a255;letter-spacing:.1em;margin:4px 0 10px}
+#ts{position:fixed;top:46px;left:50%;transform:translateX(-50%);z-index:50;background:#000c;color:#cfe;padding:5px 14px;border-radius:99px;font-size:14px;opacity:0;transition:opacity .3s;pointer-events:none}
+.flick{animation:fk 5s infinite}
+@keyframes fk{0%,100%{opacity:1}6%{opacity:.2}8%{opacity:1}53%{opacity:.3}55%{opacity:1}}
+@media (max-width:760px){
+ #title{flex-direction:column;gap:10px;justify-content:flex-start}
+ .tposter{height:34vh;max-height:none}
+ .tt{font-size:44px}
+ #dx{font-size:15px}
+ #dlg{min-height:96px}
+}
 </style></head><body>
-<svg width="0" height="0" style="position:absolute"><defs>
-<symbol id="ci" viewBox="0 0 200 240"><path d="M36 240C38 186 50 132 48 96C46 38 154 38 152 96C150 132 162 186 164 240Z" fill="#1b1413"/><rect x="88" y="126" width="24" height="42" fill="#ecd8cb"/><path d="M14 240C18 192 54 174 80 168H120C146 174 182 192 186 240Z" fill="#dcd9de"/><path d="M80 168L100 198 120 168 111 164 100 180 89 164Z" fill="#c9c5cd"/><path d="M48 108C42 158 44 204 50 236L70 236C66 194 64 152 66 112Z" fill="#1b1413"/><path d="M152 108C158 158 156 204 150 236L130 236C134 194 136 152 134 112Z" fill="#1b1413"/><ellipse cx="100" cy="94" rx="39" ry="47" fill="#f1e0d3"/><path d="M60 94C58 40 142 40 140 94C136 72 122 62 100 64 78 62 64 72 60 94Z" fill="#1b1413"/><path d="M66 82C72 70 86 66 94 74M134 82C128 70 114 66 106 74" fill="none" stroke="#3a2e2c" stroke-width="3" stroke-linecap="round"/><ellipse cx="84" cy="100" rx="5" ry="6" fill="#241a18"/><ellipse cx="116" cy="100" rx="5" ry="6" fill="#241a18"/><path d="M93 123Q100 128 107 123" fill="none" stroke="#b27272" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="73" cy="113" rx="8" ry="4" fill="#e8b0a6" opacity=".5"/><ellipse cx="127" cy="113" rx="8" ry="4" fill="#e8b0a6" opacity=".5"/></symbol>
-<symbol id="yu" viewBox="0 0 200 240"><path d="M6 240C10 184 46 170 76 164H124C154 170 190 184 194 240Z" fill="#17171c"/><path d="M76 164L100 200 124 164 112 160 100 180 88 160Z" fill="#0e0e12"/><path d="M90 166Q100 206 110 166" fill="none" stroke="#b9bcc6" stroke-width="2"/><circle cx="100" cy="198" r="3" fill="#b9bcc6"/><rect x="172" y="214" width="14" height="4" fill="#e8e8ee"/><g transform="rotate(-9 100 150)"><rect x="88" y="126" width="24" height="38" fill="#e6d6ca"/><ellipse cx="100" cy="92" rx="39" ry="47" fill="#eadbcf"/><path d="M56 98C44 24 156 24 144 98C146 72 130 58 112 62 94 54 70 62 62 80 58 86 56 92 56 98Z" fill="#0c0c10"/><path d="M60 84C62 74 70 66 82 62" fill="none" stroke="#3a4d7a" stroke-width="4" stroke-linecap="round"/><path d="M78 102h13M109 102h13" stroke="#17171c" stroke-width="3" stroke-linecap="round"/><path d="M95 124h10" stroke="#b07a7a" stroke-width="2.5" stroke-linecap="round"/></g></symbol>
-<symbol id="yj" viewBox="0 0 200 240"><path d="M34 240C36 186 48 132 46 96C44 34 156 34 154 96C152 132 164 186 166 240Z" fill="#0f0d0e"/><rect x="88" y="126" width="24" height="42" fill="#f2e2d7"/><path d="M14 240C18 192 54 174 80 168H120C146 174 182 192 186 240Z" fill="#f4f2f0"/><path d="M80 168Q100 186 120 168" fill="none" stroke="#d8d4d0" stroke-width="3"/><path d="M30 208C60 216 140 216 170 208M24 226C60 234 140 234 176 226" fill="none" stroke="#e4e0dc" stroke-width="2"/><path d="M46 108C40 160 42 206 48 236L68 236C64 194 62 152 64 112Z" fill="#0f0d0e"/><path d="M154 108C160 160 158 206 152 236L132 236C136 194 138 152 136 112Z" fill="#0f0d0e"/><ellipse cx="100" cy="95" rx="39" ry="47" fill="#f5e6db"/><path d="M100 46C66 48 54 76 58 112C60 80 80 60 100 58 120 60 140 80 142 112 146 76 134 48 100 46Z" fill="#0f0d0e"/><ellipse cx="84" cy="101" rx="5.5" ry="6.5" fill="#1e1614"/><ellipse cx="116" cy="101" rx="5.5" ry="6.5" fill="#1e1614"/><path d="M93 124Q100 129 107 124" fill="none" stroke="#c07a80" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="72" cy="114" rx="8" ry="4" fill="#f0a8a8" opacity=".55"/><ellipse cx="128" cy="114" rx="8" ry="4" fill="#f0a8a8" opacity=".55"/></symbol>
-<symbol id="si" viewBox="0 0 200 240"><clipPath id="cpsi"><path d="M12 240C18 196 52 176 80 170H130C160 176 190 196 192 240Z"/></clipPath><circle cx="100" cy="30" r="17" fill="#0b0a0d"/><path d="M58 96C54 40 146 40 142 96L140 120 60 120Z" fill="#0b0a0d"/><rect x="88" y="126" width="24" height="42" fill="#e9dfd8"/><path d="M12 240C18 196 52 176 80 170H130C160 176 190 196 192 240Z" fill="#efedef"/><g clip-path="url(#cpsi)" stroke="#a0a0a8" stroke-width="5"><path d="M0 190H200M0 204H200M0 218H200M0 232H200"/></g><path d="M40 192C52 176 70 170 82 168L100 196 62 214Z" fill="#ece0d6"/><path d="M62 188l-18 16M62 188l-6 22" stroke="#8c8c94" stroke-width="4" stroke-linecap="round" fill="none"/><path d="M84 166Q100 218 116 166" fill="none" stroke="#c8ccd4" stroke-width="2"/><path d="M100 212l-5-7 5-5 5 5z" fill="#d9a0a0"/><ellipse cx="100" cy="96" rx="38" ry="47" fill="#ece3dc"/><path d="M62 92C60 48 140 48 138 92C134 72 120 64 100 68 80 64 66 72 62 92Z" fill="#0b0a0d"/><path d="M78 72v20M90 68v22M110 68v22M122 72v20" stroke="#0b0a0d" stroke-width="2.5"/><ellipse cx="85" cy="101" rx="9" ry="11" fill="#fff"/><ellipse cx="115" cy="101" rx="9" ry="11" fill="#fff"/><circle cx="86" cy="103" r="5.5"/><circle cx="116" cy="103" r="5.5"/><path d="M92 125h16" stroke="#8a6a6a" stroke-width="2"/></symbol>
-<symbol id="by" viewBox="0 0 200 240"><path d="M28 240C14 192 28 142 40 110C24 46 176 46 160 110C172 142 186 192 172 240Z" fill="#2b1b14"/><path d="M40 150Q30 172 42 192T40 232M160 150Q170 172 158 192T160 232" fill="none" stroke="#45291d" stroke-width="5"/><rect x="88" y="126" width="24" height="42" fill="#e2d6cf"/><path d="M34 240C38 198 62 178 84 172H116C138 178 162 198 166 240Z" fill="#8fd6cc"/><path d="M84 172Q100 190 116 172" fill="none" stroke="#6bb4aa" stroke-width="3"/><g fill="#f3df7a"><circle cx="70" cy="206" r="3"/><circle cx="98" cy="218" r="3"/><circle cx="128" cy="204" r="3"/><circle cx="150" cy="226" r="3"/><circle cx="54" cy="228" r="3"/></g><g stroke="#e0d4cc" stroke-width="5" stroke-linecap="round" fill="none"><path d="M36 196L44 160M44 160l-14-16M44 160l-5-22M44 160l4-22M44 160l12-16M164 196L156 160M156 160l14-16M156 160l5-22M156 160l-4-22M156 160l-12-16"/></g><ellipse cx="100" cy="96" rx="39" ry="47" fill="#ddd2cb"/><path d="M58 100C46 38 154 38 142 100C140 76 126 62 108 68 92 60 68 68 62 86Z" fill="#2b1b14"/><path d="M62 100C60 110 62 116 66 120M138 100C140 110 138 116 134 120" fill="none" stroke="#2b1b14" stroke-width="5"/><ellipse cx="84" cy="102" rx="9" ry="12"/><ellipse cx="116" cy="102" rx="9" ry="12"/><circle cx="86" cy="98" r="2" fill="#fff"/><circle cx="118" cy="98" r="2" fill="#fff"/><path d="M86 126Q100 138 114 126" fill="none" stroke="#6a3a3a" stroke-width="3" stroke-linecap="round"/><path d="M72 134v14M128 138v12M100 150v10" stroke="#8fc8d8" stroke-width="3" stroke-linecap="round"/></symbol>
-<symbol id="sh" viewBox="0 0 200 300"><path d="M100 20C70 20 62 50 66 78C54 110 46 190 40 290H160C154 190 146 110 134 78C138 50 130 20 100 20Z"/></symbol>
-<symbol id="gh" viewBox="0 0 200 260"><path d="M20 0H180L196 260H4Z"/><ellipse cx="100" cy="125" rx="56" ry="84" fill="#cfd1c6"/><path d="M44 90C50 20 150 20 156 90C130 60 70 60 44 90Z"/><ellipse cx="76" cy="108" rx="17" ry="27"/><ellipse cx="124" cy="108" rx="17" ry="27"/><circle cx="76" cy="112" r="3" fill="#fff"/><circle cx="124" cy="112" r="3" fill="#fff"/><path d="M66 172Q100 262 134 172Q100 196 66 172Z"/><path d="M76 178l5 14 6-12 6 16 7-14 7 16 6-12 6 14 4-10" fill="none" stroke="#ddd" stroke-width="3"/><path d="M50 120l-6 60M150 120l6 60" stroke="#600" stroke-width="2"/></symbol>
+
+<svg id="defs" width="0" height="0" style="position:absolute"><defs>
+<filter id="bl1"><feGaussianBlur stdDeviation="1"/></filter>
+<filter id="bl2"><feGaussianBlur stdDeviation="2"/></filter>
+<filter id="bl3"><feGaussianBlur stdDeviation="3"/></filter>
+<filter id="bl4"><feGaussianBlur stdDeviation="4.5"/></filter>
+<filter id="bl8"><feGaussianBlur stdDeviation="8"/></filter>
 </defs></svg>
 
-<div id="ag" class="scr on"><h1>⚠ 年齡確認</h1><p>本遊戲含強烈驚嚇、突然巨響、閃爍畫面與恐怖意象。<br>你是否已滿 18 歲？</p><div><button onclick="yes()">我已滿 18 歲</button><button onclick="no()">未滿 18 歲</button></div></div>
+<div id="ag" class="scr on"><h1>⚠ 年齡確認</h1><p>本遊戲含強烈驚嚇、突然巨響、閃爍畫面與恐怖意象。<br>建議戴上耳機，在安靜的地方遊玩。<br>你是否已滿 18 歲？</p><div class="row"><button class="btn-red" onclick="ageOk()">我已滿 18 歲</button><button onclick="ageNo()">未滿 18 歲</button></div></div>
 
-<div id="cv" class="scr"><svg viewBox="0 0 200 240"><use href="#si"/></svg><h1>千蟬學校：第一章</h1><p id="who"></p><p class="sub">在永無止境的蟬鳴中……你能活著出去嗎？<br>一個不會說話的女孩，一條通往校舍更深處的路。別相信任何指引。</p><div class="cast4"><div><svg viewBox="0 0 200 240"><use href="#ci"/></svg>慈幽</div><div><svg viewBox="0 0 200 240"><use href="#yu"/></svg>小羽</div><div><svg viewBox="0 0 200 240"><use href="#yj"/></svg>印潔</div><div><svg viewBox="0 0 200 240"><use href="#si"/></svg>偲涵</div></div><button onclick="newGame()">踏入校舍</button><div id="ctw"><button id="ct">▶ 繼續遊戲</button><button id="cd">🗑 刪除存檔</button></div><button class="lobby" onclick="toLobby()">← 回到第柒門大廳</button></div>
+<div id="title" class="scr">
+ <div class="tposter"><img src="https://umlnwzpmjxktfzjvcbts.supabase.co/storage/v1/object/public/covers/qianchan-school.jpg" alt="千蟬學校"></div>
+ <div class="tside">
+  <div class="tbrand">第柒門　原創線上密室</div>
+  <h1 class="tt">千蟬學校</h1>
+  <div class="ten">ESCAPE FROM THE THOUSAND CICADAS SCHOOL</div>
+  <div class="tchap">第一章・她不說話</div>
+  <p id="who"></p>
+  <p class="tag">在永無止境的蟬鳴中……你能活著出去嗎？</p>
+  <div class="cast" id="cast"></div>
+  <button class="btn-red big" id="bNew">踏入校舍</button>
+  <div id="ctw"><button id="bCont">▶ 繼續遊戲</button><button id="bDel">刪除存檔</button></div>
+  <button class="btn-gold" onclick="toLobby()">← 回到第柒門大廳</button>
+ </div>
+</div>
 
-<div id="g" class="scr"><div id="hud"><b id="rt"></b><span id="tm">⏱ 00:00</span><button id="sv" onclick="save(1)">💾 存檔</button><span id="hp"></span></div><div id="sn"></div><div id="ds"></div><div id="lg"></div><div id="hs"></div><div id="bx"></div><div id="iv"></div></div>
+<div id="game" class="scr">
+ <header id="top"><span id="loc"></span><span id="tm">⏱ 00:00</span><span id="hp"></span><button id="bNote" title="筆記">📓</button><button id="bHint" title="提示">💭</button><button id="bMenu" title="選單">☰</button></header>
+ <div id="sw"><div id="scene">
+  <svg id="art" viewBox="0 0 800 500" preserveAspectRatio="none"></svg>
+  <div id="spots"></div>
+  <svg id="shadow" viewBox="0 0 100 300"><path d="M50 10C30 10 26 40 30 60C20 90 14 180 10 300H90C86 180 80 90 70 60C74 40 70 10 50 10Z" fill="#000" opacity=".85"/></svg>
+  <div id="fl"></div>
+  <div id="stage"></div>
+  <button id="turnb">↩ 回頭</button>
+  <div id="sname"></div>
+ </div></div>
+ <div id="dlg"><div id="dp"></div><div id="dt"><b id="dn"></b><p id="dx"></p></div></div>
+ <div id="inv"><div id="items"></div><span id="itn"></span><button id="exam" disabled>🔍 檢查</button></div>
+</div>
 
-<div id="dt" class="scr"><h1>你死了</h1><p id="dtp"></p><button onclick="retry()">回到這一夜</button><button onclick="newGame()">從頭開始</button></div>
-<div id="en" class="scr"><h1>第一章　完</h1><p id="enp">偲涵從頭到尾，都在反抗。</p><div id="ent" class="etime"></div><button onclick="start()">重新遊玩</button><button id="enr" style="display:none" onclick="retry()">回到最後一夜</button><button class="lobby" onclick="toLobby()">回到大廳看排行榜</button></div>
-<div id="eg" class="scr"><svg viewBox="0 0 200 240"><use href="#by"/></svg><p id="egp"></p><button id="egb" style="display:none" onclick="ch3()">進入第二章</button><button class="lobby" onclick="toLobby()">回到大廳</button></div>
-<div id="sc"><svg viewBox="0 0 200 260"><use href="#gh"/></svg><p id="sct"></p></div>
-<div id="vg"></div><div id="gr"></div><div id="ts"></div><div id="tt"><h1>第一章</h1><p>她一直都在看著你</p></div>
+<div id="dead" class="scr"><h1>她抓到你了</h1><p id="deadp"></p><div class="row"><button class="btn-red" onclick="revive()">復活（逃脫時間 +10 分鐘）</button><button onclick="toTitle()">回到標題</button></div></div>
+<div id="timeout" class="scr"><h1 style="color:var(--red);letter-spacing:.2em">時間到了</h1><p style="max-width:30em;color:#b9b0a6">一百二十分鐘過去了。<br>天亮之前，你沒能走出千蟬學校。<br>蟬聲裡，多了一個你的聲音。<br><br>……一切，都要從頭開始。</p><div class="row"><button class="btn-red" onclick="newGame()">從頭再來</button><button class="btn-gold" onclick="toLobby()">回到大廳</button></div></div>
+<div id="end" class="scr"><h1 id="endh"></h1><p id="endp"></p><div id="endt" class="etime"></div><div class="row"><button id="endr" onclick="retry()">回到最後一幕</button><button onclick="toTitle()">回到標題</button><button class="btn-gold" onclick="toLobby()">回到大廳看排行榜</button></div></div>
+<div id="egg" class="scr"><div id="eggv" style="width:min(50vw,220px);opacity:0;transition:opacity 2s"></div><p id="eggp" style="font-size:20px;letter-spacing:.2em;color:#9dd;min-height:3em"></p><div class="row"><button id="eggb" style="display:none" onclick="ch2()">進入第二章</button><button class="btn-gold" onclick="toLobby()">回到大廳</button></div></div>
+
+<div id="modal"><div id="mbox"></div></div>
+<div id="hide"><div id="hidet">別動。</div><div class="tbar"><i id="hideb"></i></div><small id="hides">不要碰螢幕。連呼吸都不要。</small></div>
+<div id="sc"><svg viewBox="0 0 300 400"><use href="#P-her-scream"/></svg><p id="sct"></p></div>
+<div id="card"><h1></h1><p></p></div>
+<div id="vg"></div><div id="gr"></div><div id="ts"></div>
 
 <script>
-const $=s=>document.querySelector(s),sl=ms=>new Promise(r=>setTimeout(r,ms));
-let A,S,sel,busy=0,dr=0;const MAXW=12;
-function ac(){if(!A)try{A=new(window.AudioContext||window.webkitAudioContext)()}catch(e){}if(A&&A.state=='suspended')A.resume();return A}
-function tone(f,d=.4,ty='sine',v=.2){const a=ac();if(!a)return;const o=a.createOscillator(),g=a.createGain();o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(v,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+d);o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+d)}
-function noise(d,v){const a=ac();if(!a)return;const n=Math.floor(a.sampleRate*d),b=a.createBuffer(1,n,a.sampleRate),x=b.getChannelData(0);for(let i=0;i<n;i++)x[i]=Math.random()*2-1;const s=a.createBufferSource(),g=a.createGain();s.buffer=b;g.gain.setValueAtTime(v,a.currentTime);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+d);s.connect(g);g.connect(a.destination);s.start()}
-function drone(){const a=ac();if(!a)return;const f=a.createBiquadFilter(),m=a.createGain();f.type='lowpass';f.frequency.value=420;m.gain.value=.9;f.connect(m);m.connect(a.destination);
-[[55,'sine',.05],[82.4,'triangle',.025],[58.3,'sine',.045],[110,'sine',.012]].forEach(([fr,ty,v])=>{const o=a.createOscillator(),g=a.createGain();o.type=ty;o.frequency.value=fr;g.gain.value=v;o.connect(g);g.connect(f);o.start()});
-const l=a.createOscillator(),lg=a.createGain();l.frequency.value=.07;lg.gain.value=140;l.connect(lg);lg.connect(f.frequency);l.start();
-const nb=a.createBuffer(1,a.sampleRate*2,a.sampleRate),d=nb.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;const ns=a.createBufferSource(),nf=a.createBiquadFilter(),ng=a.createGain();ns.buffer=nb;ns.loop=true;nf.type='bandpass';nf.frequency.value=220;nf.Q.value=.6;ng.gain.value=.018;ns.connect(nf);nf.connect(ng);ng.connect(a.destination);ns.start();
-const bl=[196,207.7,233,277];(function b(){setTimeout(()=>{if(S&&S.on)tone(bl[Math.random()*bl.length|0],5,'sine',.035);b()},5000+Math.random()*9000)})()}
-async function scare(t,big){$('#sct').textContent=t||'';document.body.classList.add('fl');await sl(450);document.body.classList.remove('fl');$('#sc').style.display='flex';noise(1,.9);tone(80,1,'sawtooth',.45);tone(1700,.6,'square',.12);document.body.classList.add('sk');await sl(big?1500:850);$('#sc').style.display='none';document.body.classList.remove('sk')}
-function hud(){$('#hp').textContent='❤ '+(MAXW-S.w)+' / '+MAXW;document.body.style.setProperty('--v',S.w/MAXW)}
-async function bad(m){S.w=Math.min(MAXW,S.w+(S.f.p3&&S.w<MAXW-1?2:1));hud();save();say(m||'錯了。');if(S.w>=MAXW)return die();await scare()}
-async function die(){S.on=0;busy=0;dsave();await scare('她抓到你了',1);$('#dtp').textContent='生命耗盡了。她把你，拖回了「'+NN[S.ck?S.ck.n:1]+'」的開始。';$('#g').classList.remove('on');$('#dt').classList.add('on')}
-const tap=()=>new Promise(r=>{const e=$('#lg');e.onclick=()=>{e.onclick=null;r()};$('#lg p').insertAdjacentHTML('beforeend',' ▼')});
-const NM={ci:'慈幽',yu:'小羽',yj:'印潔',si:'偲涵',by:'邦瑜'};
-async function say(l){l=[].concat(l);const m=l.length>1;if(m)busy=1;for(let i=0;i<l.length;i++){const x=l[i],a=Array.isArray(x),w=a?x[0]:'',t=a?x[1]:x;$('#lg').innerHTML=(w?`<svg class="pt" viewBox="0 0 200 240"><use href="#${w}"/></svg><b class="nm">${NM[w]}</b>`:'')+`<p>${t}</p>`;if(i<l.length-1)await tap()}if(m)busy=0}
-const fg=(k,v,m)=>{S.f[k]=v;say(m+'（已記入筆記）');if(!S.f.ij&&['a','b','c','e','g','h'].filter(x=>S.f[x]).length>=3){S.f.ij=1;ij()}};
-function get(n){if(!S.inv.includes(n))S.inv.push(n);iv()}
-function note(){const f=S.f;say('📓 ①走廊：'+(f.a||'？')+'　②圖書室：'+(f.b||'？')+'　③音樂室：'+(f.c||'？')+'　④偲涵：'+(f.e||'？')+'　⑤保健室：'+(f.g||'？')+'　⑥暗房：'+(f.h||'？')+'　鐵門的數字，依序填入。'+(f.nm?'　【名字的線索】'+f.nm.join('；'):''))}
-function iv(){const e=$('#iv');e.innerHTML='🎒 選取物品後，再點物件使用<br>';S.inv.forEach(n=>{const b=document.createElement('button');b.textContent=n;b.className=sel==n?'sel':'';b.onclick=()=>{sel=sel==n?null:n;iv()};e.append(b)});const b=document.createElement('button');b.textContent='📓 筆記';b.onclick=note;e.append(b)}
-function render(){const R=RM[S.r];$('#rt').textContent=R.t;$('#ds').textContent=R.d+(Math.random()<.25+S.w*.03?' '+CR[Math.random()*CR.length|0]:'');art();$('#bx').innerHTML='';$('#hs').innerHTML='';R.h().forEach(([n,f])=>{const b=document.createElement('button');b.textContent=n;b.onclick=()=>{if(!busy)f()};$('#hs').append(b)});iv();save()}
-async function go(r){S.r=r;render();if(EN[r]&&!S.f['v'+r]){S.f['v'+r]=1;say(EN[r])}if(r=='cls'&&!S.f.yu){S.f.yu=1;await say([['yu','「不要再探索下去了，你神人喔。」'],['ci','「……你也是學生？」'],'他沒回答，只問：「妳沒發現這間學校很奇怪嗎？」',['yu','封鎖的教室，每晚門會自己打開。名冊上有不存在的學生。還有一份十幾年前的紀錄，反覆出現同一個名字——偲涵。她的筆記本上，只有一句話：「不是我」。'],'你回頭。走廊上的偲涵，不見了。'])}}
-function ask(ph,ans,ok,msg){$('#bx').innerHTML=`<input id="in" placeholder="${ph}" autocomplete="off"><button id="go">確認</button>`;$('#go').onclick=()=>{if($('#in').value.trim()==ans){$('#bx').innerHTML='';ok()}else bad(msg)}}
-function seq(L,ans,mode,ok){let k=0,run=0,rp=S.f.p3?1:3;const fr=[262,330,440,587,698],sp=S.f.p3?380:500;$('#bx').innerHTML='<div>'+L.map(x=>`<button class="q">${x}</button>`).join('')+'</div>'+(mode=='o'?'':`<button id="pl">▶ 再播放（剩 ${rp} 次）</button>`);const bs=[...document.querySelectorAll('.q')];
-const pl=async()=>{run=1;k=0;bs.forEach(b=>b.classList.remove('ok'));for(const i of ans){mode=='a'?tone(fr[i],.5):bs[i].classList.add('lit');await sl(sp);bs[i].classList.remove('lit');await sl(sp/2)}run=0};
-if(mode!='o'){$('#pl').onclick=()=>{if(!run&&rp>0){rp--;$('#pl').textContent='▶ 再播放（剩 '+rp+' 次）';pl()}};setTimeout(pl,400)}
-bs.forEach((b,i)=>b.onclick=()=>{if(run)return;if(mode=='a')tone(fr[i],.4);if(i==ans[k]){b.classList.add('ok');if(++k==ans.length){$('#bx').innerHTML='';ok()}}else{k=0;bs.forEach(x=>x.classList.remove('ok'));bad('順序不對。')}})}
-const hint=()=>{const f=S.f;return f.p2?(!f.pw?'配電箱的規則，被拆在兩個地方。地上的紙團，別信。':!f.wc?'女廁的鏡子，左右是反的。塗鴉是假的。':!f.vd?'視聽室。找出第二個畫面裡，多出來的東西。':!f.dd?'宿舍的人，這學期全都往右移了一格，最右邊的換到最左邊。':!f.ch?'體育館。她怕光、追聲音，而且，別回頭。':'303。她把人帶走的順序，日記裡寫了。'):!f.cab?'鏡子裡的東西，左右是反的。桌上那張紙條……太刻意了。':!f.b?'粉筆、空白借書卡。看起來沒用的東西，才危險。':!f.rec?'書脊亮的順序。多看幾次。':!f.c?'鑰匙是開音樂教室的。那裡的謎，用耳朵解。':!f.a?'走廊的公布欄。有些東西，回頭才看得懂。':!f.e?'去找偲涵。看她比劃什麼。':!f.g?'保健室的藥，順序不能錯。規則被拆成兩半，藏在兩個地方。':!f.rm?'那顆電池，門禁盒需要它。':!f.rd?'廣播室。只能聽，而且只能再聽幾次。':!f.h?'暗房需要紅光。你手上，有個沒人在意的小東西。':'鐵門有三層。第二層……想想她筆記本上唯一那句話。第三層，別動。'};
-const TH={hall:['#1c2736','#06080c','🚪'],cls:['#2a2a1c','#080806','🪞'],lib:['#2a1c14','#0a0604','📚'],mus:['#1c1c34','#05050c','🎹'],med:['#1c3030','#050c0c','🩺'],rad:['#33201c','#0c0605','📻'],dk:['#3a0808','#0a0000','📷'],old:['#14141a','#000','🏚'],base:['#14201a','#020604','🕳'],wc:['#1c2c30','#040a0c','🚻'],av:['#20203a','#04040c','🎬'],dm:['#2c1c2c','#0a040a','🛏'],gym:['#2c2a1c','#0a0904','🏀'],r303:['#1a1a1a','#000','🪑']};
-const CR=['牆上的影子，多了一個。','你聽見背後有人在呼吸。','天花板上，有東西慢慢爬過。','燈閃了一下。她，離你近了一步。','有人在很遠的地方，叫著你的名字。'];
-const EN={lib:'書架的縫隙裡，有一雙眼睛。你轉頭——什麼都沒有。',mus:'節拍器「答、答、答」。你忽然發現，它的節奏，和你的心跳一樣。',med:'門一推開，消毒水的味道裡混著鐵鏽味。病床上的被單，是整個房間裡唯一在動的東西。',rad:'麥克風的線一路垂到地上，像是有人剛剛拖著它離開。',dk:'牆上掛著晾乾的相紙。每一張，都是全黑的。',base:'樓梯盡頭，是一間沒有窗的地下室。你的腳步聲，比你慢了半拍。',wc:'水龍頭自己開了。滴答。所有隔間的門，都是關著的。',av:'螢幕亮了。畫面裡的走廊，和你剛剛走過的一模一樣。',dm:'四張床，三張鋪得整整齊齊。第四張的被子，還留著人形的凹陷。',gym:'籃球聲停了。空氣裡有股潮濕的味道，像剛有人從水裡爬出來。',r303:'303。這間教室，在這棟樓的平面圖上並不存在。'};
-function art(){const t=TH[S.r],e=$('#sn');e.style.cssText=`--c1:${t[0]};--c2:${t[1]}`;e.innerHTML=`<span class="pr">${t[2]}</span>`+(S.w>2||Math.random()<.5?`<svg viewBox="0 0 200 300" style="left:${10+Math.random()*70|0}%"><use href="#sh"/></svg>`:'')+(S.w>6?`<svg viewBox="0 0 200 300" style="right:${5+Math.random()*60|0}%"><use href="#sh"/></svg>`:'')}
-async function ij(){await sl(3000);while(busy)await sl(500);if(!S.on)return;await say(['你回頭。印潔站在走廊盡頭，面對著牆壁，一動也不動。','「印潔？」她沒有回答。她的頭，緩緩地，轉了過來——']);await sl(1500);await scare();say('她對你笑了一下，又恢復成平常的樣子。「怎麼了？」那個笑，不是印潔的。')}
-async function hide(n,ok){busy=1;let f=1,d=0;$('#bx').innerHTML=`<div class="hd"><i style="animation-duration:${n}s"></i></div>`;say('腳步聲靠近……不要動。什麼都不要碰。');const h=async()=>{if(d)return;d=1;f=0;document.removeEventListener('pointerdown',h,true);await bad('你動了。她轉過頭，看著你。');if(S.on)hide(n,ok)};await sl(300);document.addEventListener('pointerdown',h,true);await sl(n*1000);document.removeEventListener('pointerdown',h,true);if(f){busy=0;$('#bx').innerHTML='';ok&&ok()}}
-const X=(c,a)=>c?[a]:[];
-function sw(L,t,ok){const st=L.map(()=>0);const dr=()=>{$('#bx').innerHTML='<div>'+L.map((x,i)=>`<button class="sw${st[i]?' sel':''}">${x}${st[i]?' ●':''}</button>`).join('')+'</div><button id="cf">確認</button>';document.querySelectorAll('.sw').forEach((b,i)=>b.onclick=()=>{st[i]^=1;dr()});$('#cf').onclick=()=>{if(st.join('')==t){$('#bx').innerHTML='';ok()}else bad('不對。黑暗裡，有什麼東西笑了一聲。')}};dr()}
-async function chase(R,ok,ms=5000){busy=1;for(const [t,o,c] of R){let r=-2;while(r!==c){document.body.classList.add('sk');setTimeout(()=>document.body.classList.remove('sk'),500);say(t);$('#bx').innerHTML=`<div class="hd"><i style="animation-duration:${ms/1000}s"></i></div>`+o.map(x=>`<button class="ch">${x}</button>`).join('');r=await new Promise(res=>{const T=setTimeout(()=>res(-1),ms);document.querySelectorAll('.ch').forEach((b,k)=>b.onclick=()=>{clearTimeout(T);res(k)})});if(r!==c){await bad(r<0?'太慢了。她就在你背後。':'死路。她抓住了你的衣角。');if(!S.on)return}}}$('#bx').innerHTML='';busy=0;ok()}
-function dial(W,t,ok){const v=W.map(()=>0);const dr=()=>{$('#bx').innerHTML='<div>'+W.map((w,i)=>`<button class="dl">${w[v[i]]}</button>`).join('')+'</div><button id="cf">確認</button>';document.querySelectorAll('.dl').forEach((b,i)=>b.onclick=()=>{v[i]=(v[i]+1)%W[i].length;dr()});$('#cf').onclick=()=>{if(v.every((x,i)=>x==t[i])){$('#bx').innerHTML='';ok()}else bad('布景發出刺耳的摩擦聲。台下，有人在鼓掌。')}};dr()}
-function lo(g,lim,ok){let s=[...g],m=0;const dr=()=>{$('#bx').innerHTML='<div class="lo">'+s.map(v=>`<button class="lt${v?' sel':''}">${v?'💡':'⬛'}</button>`).join('')+`</div><p>步數 ${m}/${lim}</p>`;document.querySelectorAll('.lt').forEach((b,i)=>b.onclick=()=>{[i,i%3?i-1:-1,i%3<2?i+1:-1,i-3,i+3].forEach(j=>{if(j>=0&&j<9)s[j]^=1});m++;if(s.every(v=>v)){$('#bx').innerHTML='';return ok()}if(m>=lim){s=[...g];m=0;bad('水下的燈，全部熄滅了。')}dr()})};dr()}
-function jug(ok,lim){let a=0,b=0,m=0;const dr=()=>{$('#bx').innerHTML=`<p>🧪 A 瓶 ${a}/5　B 瓶 ${b}/3　步數 ${m}/${lim}</p>`+['倒滿 A','倒滿 B','A→B','B→A','倒空 A','倒空 B'].map(x=>`<button class="jg">${x}</button>`).join('');document.querySelectorAll('.jg').forEach((x,i)=>x.onclick=()=>{if(i==0)a=5;if(i==1)b=3;if(i==2){const t=Math.min(a,3-b);a-=t;b+=t}if(i==3){const t=Math.min(b,5-a);b-=t;a+=t}if(i==4)a=0;if(i==5)b=0;m++;if(a==4){$('#bx').innerHTML='';return ok()}if(m>=lim){a=b=m=0;bad('試劑潑了一地。有什麼東西，從地上爬了起來。')}dr()})};dr()}
-const rid=s=>{(S.f.nm=S.f.nm||[]).push(s)};
-function card(a,b){const e=$('#tt');e.querySelector('h1').textContent=a;e.querySelector('p').textContent=b;e.classList.remove('on');void e.offsetWidth;e.classList.add('on')}
-async function act2(){S.f.p2=1;await say(['你推開右門。出口就在前方——','可那不是出口。是一道向下的樓梯，深得看不見底。','偲涵站在最上面一階，不肯再往前。她遞來另一張紙：「她在下面。」',['yu','下面是地下室。紀錄裡寫過——所有被纏上的人，最後都被帶去那裡。'],'身後的燈，一盞一盞，熄滅了。']);busy=1;card('第二夜','她在下面');await sl(3300);busy=0;ckpt(2);go('hall')}
-const RM={
-hall:{t:'走廊',get d(){return S.f.p5?'走廊是反的。左邊的門牌在右邊，右邊的燈在左邊。一面巨大的鏡子，取代了公布欄。':S.f.p3?'走廊的燈全變成了紅色。公布欄上多了一張新的照片——是你，站在這個走廊裡，背對著鏡頭。':'冷光燈忽明忽滅。盡頭的鐵門寫著「禁止進入」，鎖上有六格數字，下面還有一行空格。'},h:()=>{const f=S.f;if(f.p5)return[['🪞 鏡之間',()=>go('mr')],...X(f.mr,['🔻 封印室',()=>go('sl')]),...X(f.sl,['🚪 校門口',()=>go('gt')]),['💬 問小羽',()=>say([['yu',h5()]])]];return[
-['📋 公布欄',()=>f.rec?fg('a',6,'紅筆圈住值日表上的數字：「6」。方才你明明看過這裡，它並不在那裡。'):say('過期的值日表與泛黃的合照。有人用紅筆寫了四個字：「別回頭看」。')],
-['👧 偲涵',()=>{if(f.e)return say('偲涵站著，眼睛沒有眨。她指向鐵門。');say('她不說話。你一靠近，她抬手朝三個方向比劃——看清楚她的順序。');seq(['⬅','⬆','➡'],[1,0,2,1],'v',()=>fg('e',3,'她在你面前緩緩舉起三根手指，停了三秒。「3」。她的眼睛，沒有眨。'))}],
-['🚪 廢棄教室',()=>go('cls')],['🚪 圖書室',()=>go('lib')],
-[f.mu?'🚪 音樂教室':'🔒 音樂教室',()=>f.mu?go('mus'):sel=='🔑 銅鑰匙'?(f.mu=1,say('鑰匙轉動，門開了。'),go('mus')):say('門鎖著。')],
-['🚪 保健室',()=>go('med')],
-[f.rm?'📻 廣播室':'🔒 廣播室',()=>f.rm?go('rad'):sel=='🔋 電池'?(f.rm=1,say('電池裝進門禁盒。紅燈亮起，鎖「喀」地開了。'),go('rad')):say('門禁盒沒有電。')],
-['🎞 暗房',()=>go('dk')],
-['⛓ 鐵門',()=>{if(f.p2)return say('鐵門敞開著，後面什麼都沒有了。');if(!(f.a&&f.b&&f.c&&f.e&&f.g&&f.h))return say('六格數字，你的筆記還缺碎片。');say('第一層：六格數字。');ask('六位數字',''+f.a+f.b+f.c+f.e+f.g+f.h,()=>{say('第一層鬆開了。下方的空格亮起：「她唯一寫下的話」。');ask('輸入那句話','不是我',()=>{hide(9,()=>{say('腳步聲遠去，鐵鏈鬆脫。');go('old');oldIntro()})},'沒有反應……鎖後面傳來指甲刮門的聲音。')},'數字不對。')}],...X(f.p2,['🔻 地下室',()=>go('base')]),...X(f.pw,['🚻 女廁',()=>go('wc')]),...X(f.wc,[f.av?'🎬 視聽室':'🔒 視聽室',()=>f.av?go('av'):sel=='🪪 學生證'?(f.av=1,say('刷卡機「嗶」了一聲。門開了。'),go('av')):say('刷卡機亮著紅燈。需要一張證件。')]),...X(f.vd,[f.dm?'🛏 女宿舍':'🔒 女宿舍',()=>f.dm?go('dm'):(say('三位數字鎖。'),ask('三位數字','404',()=>{f.dm=1;go('dm')},'鎖紋風不動。'))]),...X(f.dd,[f.gy?'🏟 體育館':'🔒 體育館',()=>f.gy?go('gym'):sel=='🔑 體育館鑰匙'?(f.gy=1,say('鐵鏈落下。體育館裡，傳來籃球彈地的聲音。'),go('gym')):say('大門被鐵鏈鎖著。')]),...X(f.ch,[f.r3?'🪑 303教室':'🔒 303教室',()=>f.r3?go('r303'):sel=='🗝 303鑰匙'?(f.r3=1,say('門牌上的 303，慢慢變成了別的數字，又變回來。'),go('r303')):say('門牌寫著 303。門縫裡，沒有光。')]),...X(f.p3,['🏛 校長室',()=>go('pr')]),...X(f.pr,[f.ar?'🎨 美術教室':'🔒 美術教室',()=>f.ar?go('art'):sel=='🗝 美術教室鑰匙'?(f.ar=1,go('art')):say('門鎖著。')]),...X(f.art,[f.mgu?'🧊 太平間':'🔒 太平間',()=>f.mgu?go('mg'):sel=='🔑 太平間鑰匙'?(f.mgu=1,go('mg')):say('冷氣從門縫漏出來。門鎖著。')]),...X(f.mgd,['🌿 後花園',()=>go('gd')]),...X(f.gd,[f.gu0?'🛰 守衛室':'🔒 守衛室',()=>f.gu0?go('gu'):sel=='🗝 守衛室鑰匙'?(f.gu0=1,go('gu')):say('門鎖著。窗裡的螢幕，一直在閃。')]),...X(f.gu,[f.au0?'🎭 禮堂':'🔒 禮堂',()=>f.au0?go('au'):sel=='🔑 禮堂鑰匙'?(f.au0=1,go('au')):say('禮堂的大門鎖著。裡面，有人在鼓掌。')]),...X(f.au,[f.po0?'🏊 游泳池':'🔒 游泳池',()=>f.po0?go('po'):sel=='🔑 游泳池鑰匙'?(f.po0=1,go('po')):say('鐵門後，傳來水滴的聲音。')]),...X(f.po,[f.lb0?'🧪 實驗室':'🔒 實驗室',()=>f.lb0?go('lab'):sel=='🔑 實驗室鑰匙'?(f.lb0=1,go('lab')):say('實驗室的門縫裡，透出綠色的光。')]),...X(f.wl,[f.rfu?'🌙 天台':'🔒 天台',()=>f.rfu?go('rf'):sel=='🗝 天台鑰匙'?(f.rfu=1,go('rf')):say('通往天台的鐵門，鏽得很厲害。')]),['💬 問小羽',()=>say([['yu',f.p3?h3():hint()]])]]}},
-cls:{t:'廢棄教室',d:'倒塌的課桌椅。黑板被擦得很乾淨，只剩粉筆灰。角落有一面裂開的穿衣鏡，和一個三位數鎖的鐵櫃。',h:()=>{const f=S.f;return[
-['🧾 桌上的紙條',()=>say('皺掉的紙條：「鐵櫃密碼 417。別問，相信我。」字跡很新。')],
-['🪞 穿衣鏡',()=>{say('鏡面裂痕後浮出一行字。鏡中世界，左右是相反的。');$('#bx').innerHTML='<div style="font-size:44px;letter-spacing:.3em;transform:scaleX(-1);color:#b22;text-align:center">416</div>'}],
-['🗄 鐵櫃',()=>{if(f.cab)return say('櫃子已經空了。');say('三位數鎖。');ask('三位數字','416',()=>{f.cab=1;get('✏️ 粉筆');get('🔑 銅鑰匙');say('櫃裡只有半截粉筆和一把銅鑰匙。粉筆？這種東西有什麼用。')},'鎖紋風不動。')}],
-['💬 問小羽',()=>say([['yu',hint()]])],['↩ 走廊',()=>go('hall')]]}},
-lib:{t:'圖書室',d:'書架東倒西歪，書脊上刻著符號：○ △ □ ☆。櫃台上放著一張空白借書卡。',h:()=>{const f=S.f;return[
-['📚 書架',()=>{if(f.rec)return say('暗格已經打開。');say('指尖碰到書脊，它們依序亮起。記住順序。');seq(['○','△','□','☆'],[1,3,0,2,1,3,0],'v',()=>{f.rec=1;say(['暗格彈開，裡面是十幾年前的校內紀錄。','「被纏上的人，先『看見』她，再『聽見』她，最後被她『叫出名字』。每一個，最後都把別人帶去同一個地方。」','……等一下。剛才的公布欄，是不是哪裡不對？'])})}],
-['🪪 借書卡',()=>f.b?say('卡片上的壓痕：「8」。'):sel=='✏️ 粉筆'?fg('b',8,'你把粉筆橫著刷過卡面，壓痕浮現：「8」。'):say('一張空白的借書卡。什麼都沒有。')],
-['↩ 走廊',()=>go('hall')]]}},
-mus:{t:'音樂教室',d:'黑色鋼琴。琴蓋下有三個音鍵：低、中、高。節拍器自己在走，沒有人碰它。',h:()=>{const f=S.f;return[
-['🎹 鋼琴',()=>{if(f.c)return say('琴蓋內側刻著「4」。');say('琴蓋彈起。這次不能看，只能聽。');seq(['🔔 低','🔔 中','🔔 高','🔔 尖'],[1,3,0,2,3,1],'a',()=>fg('c',4,'最後一個音落下，琴蓋內側浮出刻字：「4」。'))}],
-['↩ 走廊',()=>go('hall')]]}},
-old:{t:'舊校舍',d:'沒有燈。牆上刻著三個符號。盡頭有兩扇門。',h:()=>{const f=S.f;return[
-['🧱 牆上的符號',()=>{if(f.o)return say('符號已依序亮起。');say('順序。她被纏上的順序。');seq(['📛 名字','👁 看見','👂 聽見'],[1,2,0],'o',()=>{f.o=1;say('牆後的鎖打開了。偲涵遞來一張紙：「不要相信我」。她指向左邊的門，手在發抖。')})}],
-['⬅ 左門（偲涵指的方向）',()=>f.o?end(0):say('門鎖著。')],['➡ 右門',()=>f.o?end(1):say('門鎖著。')],
-['💬 問小羽',()=>say([['yu','她的手在抖。想想她寫給你的那句話。']])],['🗂 散落的檔案',()=>say(['一疊發黃的檔案，每一頁，都是一個十六歲的學生。','每一頁的最後一行，都是同一句：「她把她們，帶來了這裡。」','最後一頁貼著今天的日期。名字被刮掉了——那個筆跡，你認得。'])]]}},
-med:{t:'保健室',d:'消毒水的味道裡，混著別的氣味。病床的簾子拉了一半，五個藥瓶排在藥櫃上：🔴 🟡 🔵 ⚪ 🟢。',h:()=>{const f=S.f;return[
-['🛏 病床',()=>{if(f.bd)return say('被單平整，床單上有一個人形的水漬。');f.bd=1;say('被單隆起。它慢慢坐了起來。不要動。');hide(7,()=>say('被單落下，床上什麼也沒有。枕邊有張字條：「綠色，永遠第一個。」'))}],
-['📄 病歷',()=>say('偲涵的病歷。服藥順序：「藍先於紅，紅先於黃，白最後。」最下面有人用鉛筆補了一行：「別信藥櫃上的貼紙。」')],
-['🏷 藥櫃貼紙',()=>say('貼紙寫著：「白、紅、藍、黃、綠」。字跡工整得不像人寫的。')],
-['💊 藥瓶',()=>{if(f.g)return say('藥櫃的暗格已經打開了。');say('依序拿起藥瓶。拿錯，她會知道。');seq(['🔴','🟡','🔵','⚪','🟢'],[4,2,0,1,3],'o',()=>{get('🔋 電池');fg('g',7,'暗格彈開：一顆電池，和貼在櫃底的標籤——「7」。')})}],
-['↩ 走廊',()=>go('hall')]]}},
-rad:{t:'廣播室',d:'麥克風、卡帶機，和一台佈滿灰塵的控制台。所有的指示燈，都在看著你。',h:()=>{const f=S.f;return[
-['📼 卡帶機',()=>{if(f.rd)return say('卡帶已經轉完了。');say('按下播放。這次沒有字幕，只有聲音。');seq(['🔈 低','🔈 中','🔈 高','🔈 尖'],[2,0,3,1,1,3,0],'a',()=>{f.rd=1;say(['卡帶轉完了。廣播忽然自己響起——','「慈幽。妳為什麼不回頭。」那是印潔的聲音。可是印潔，就站在你旁邊，根本沒有開口。']);setTimeout(()=>scare('',0),4000)})}],
-['🎛 控制台',()=>f.rd?(get('🔴 小燈泡'),say('指示燈底下卡著一顆紅色的小燈泡，大概是壞掉的。')):say('控制台上貼著紙條：「順序，聽三次才算真的。」……沒有人說過，那是真的。')],
-['↩ 走廊',()=>go('hall')]]}},
-dk:{t:'暗房',d:'沒有光。顯影盤裡泡著五張相紙，牆上的燈座空著，靜靜地對著你。',h:()=>{const f=S.f;return[
-['💡 燈座',()=>f.lt?say('紅光亮著。相紙上，有東西正在浮現。'):sel=='🔴 小燈泡'?(f.lt=1,say('燈泡旋進燈座，竟然亮了。紅光裡，相紙上的影像一張張浮現。')):say('燈座是空的。黑暗裡，你聽見自己以外的呼吸聲。')],
-['🖼 相紙',()=>{if(!f.lt)return say('一片漆黑，什麼都看不到。');if(f.h)return say('相紙背面的數字：「2」。');say('五張同一條走廊的照片，每一張都有時間。照她出現的順序排。');seq(['📷 03:14 她在你背後','📷 03:09 她在走廊盡頭','📷 03:17 她貼著鏡頭','📷 03:12 她在教室門口','📷 03:20 照片裡沒有她'],[1,3,0,2,4],'o',async()=>{fg('h',2,'最後一張，沒有她。因為她，已經站在你身後。相紙背面的數字：「2」。');await sl(1500);scare('她在你背後',1)})}],
-['↩ 走廊',()=>go('hall')]]}},
-base:{t:'地下室',d:'潮濕的水泥味。配電箱的門半開著，六個開關：A B C D E F。遠處，有東西在滴水。',h:()=>{const f=S.f;return[
-['🧰 舊工具箱',()=>{if(S.inv.includes('🧷 保險絲'))return say('工具箱空了。');get('🧷 保險絲');say('一顆燒黑的保險絲。看起來早就壞了。你還是收了起來。')}],
-['🏷 配電箱貼紙',()=>say('「A、E 絕對不能開。C 必須開。」')],
-['📝 牆上的紙',()=>say('「B 與 D 同時開，或同時關。F 與 C 一樣。至少四個開關是亮的。」')],
-['🧾 地上的紙團',()=>say('皺巴巴的紙團：「全部打開就好了。」墨跡是濕的。')],
-['⚡ 配電箱',()=>{if(f.pw)return say('電力恢復了。頭頂的燈，管不了黑暗。');if(sel!='🧷 保險絲')return say('配電箱缺一顆保險絲。');say('保險絲居然還能用。接著，是六個開關。');sw(['A','B','C','D','E','F'],'011101',()=>{f.pw=1;say('燈一盞一盞亮起。樓上，傳來沖水聲。');setTimeout(()=>scare(),2500)})}],
-['↩ 走廊',()=>go('hall')]]}},
-wc:{t:'女廁',d:'水龍頭一滴、一滴。五間隔間的門全關著，洗手台的鏡子上，有人用口紅寫了字。',h:()=>{const f=S.f;return[
-['🪞 洗手台的鏡子',()=>{say('口紅寫的字，只有在鏡子裡才讀得通。');$('#bx').innerHTML='<div style="font-size:40px;letter-spacing:.3em;transform:scaleX(-1);color:#b22;text-align:center">24153</div>'}],
-['✍ 隔間門上的塗鴉',()=>say('「照順序敲 1 2 3 4 5，她就會開門。」字是新的，墨還沒乾。')],
-['🚪 五間隔間',()=>{if(f.wc)return say('最後一間的門開著，裡面空了。');say('門縫底下，有一雙腳。它在動。不要動。');hide(6,()=>{say('腳步聲遠去。照鏡子裡的順序，敲門。');seq(['①','②','③','④','⑤'],[2,4,0,3,1],'o',()=>{get('🪪 學生證');f.wc=1;say('最後一間的門，吱呀一聲開了。水箱上放著一張學生證——照片上是偲涵。你確定，那不是她現在的臉。')})})}],
-['↩ 走廊',()=>go('hall')]]}},
-av:{t:'視聽室',d:'投影機自己轉了起來。螢幕上是這間學校的走廊——監視器畫面。有人一直站在畫面的角落。',h:()=>{const f=S.f;return[
-['📹 監視器畫面',()=>{if(f.vd)return say('畫面停在她的臉上。字幕：「女宿舍。404。」');say('A 畫面：🚪🪟🚪🪞🚪🪟🚪🚪。B 畫面是同一條走廊，三十秒後。選出 B 裡多出來的東西。');sw(['🚪','🪟','🚪','🪞','👁','🪟','🧍','🚪'],'00001010',()=>{f.vd=1;say(['畫面凍結。被你選出的兩個東西，同時轉過頭，看向鏡頭。','字幕浮現：「女宿舍。404。」']);setTimeout(()=>scare('',1),3500)})}],
-['🎞 沒有標籤的錄影帶',()=>say('畫面全是雪花，只有一句旁白，反覆、低低地說：「不是我。不是我。不是我。」')],
-['↩ 走廊',()=>go('hall')]]}},
-dm:{t:'女宿舍',d:'四張上下鋪，四個鐵櫃。每張床上都放著一件制服，只有一件是濕的，水一滴一滴落在地板上。',h:()=>{const f=S.f;return[
-['📋 上學期床位表',()=>say('「櫃一：林　櫃二：陳　櫃三：王　櫃四：偲涵」')],
-['📔 床頭的紙條',()=>say('「這學期大家都往右移了一格，最右邊的人，換到最左邊。」')],
-['🧥 濕的制服',()=>say('名牌被撕掉了。水滴在地板上，拼成一個字：「快」。')],
-['🗄 四個鐵櫃',()=>{if(f.dd)return say('櫃子空了。');say('哪一個，是偲涵現在的櫃子？');seq(['櫃一','櫃二','櫃三','櫃四'],[0],'o',()=>{get('🔑 體育館鑰匙');f.dd=1;say(['櫃門打開。裡面是偲涵的日記，和一把寫著「體育館」的鑰匙。','日記最後一頁：「她帶走的順序，是林、王、陳。下一個，是我。我想說，可是我一開口，它就會用力。」'])})}],
-['↩ 走廊',()=>go('hall')]]}},
-gym:{t:'體育館',d:'空蕩蕩的球場。籃球在黑暗中彈著，一下、一下，越來越近。出口只有一個，在球場的另一端。',h:()=>{const f=S.f;return[
-['📋 記分板',()=>say('比分停在 0：1。時間欄只剩三個字：「她來了」。')],
-['🏃 穿過球場',async()=>{if(f.ch)return say('球場安靜了。你的腿，還在發抖。');await say(['籃球聲停了。','……有什麼東西，從球場另一端，朝你衝過來。']);chase([['兩條路：左邊的日光燈在閃，右邊一片漆黑。她怕光。',['⬅ 左邊','➡ 右邊'],0],['腳邊有一顆球。她追著聲音走。',['抱著球跑','把球踢向反方向'],1],['三扇門：器材室、更衣室、消防門。只有消防門上的警示燈亮著。',['器材室','更衣室','消防門'],2],['你剛跑過的路上，她正在爬回來。',['停下來，回頭看','別回頭，繼續跑'],1],['前面是死路。牆上有個通風口，欄杆鬆了。',['爬進通風口','撞開前面的門'],0],['出口就在眼前。背後有人叫你的名字——是印潔的聲音。',['回頭','不要回頭'],1]],()=>{get('🗝 303鑰匙');f.ch=1;say('你撞開出口。身後，什麼都沒有。地上有一把鑰匙，鑰匙圈上寫著：303。')})}],
-['↩ 走廊',()=>go('hall')]]}},
-r303:{t:'303教室',d:'最後一間教室。黑板上空無一物，二十幾張課桌，只有四張的抽屜是開著的。',h:()=>{const f=S.f;return[
-['🪑 四張打開的課桌',()=>{say('桌上刻著名字。照她「帶走他們」的順序，依序坐下。');seq(['林','陳','王','偲涵'],[0,2,1,3],'o',()=>fin())}],
-['📝 黑板',()=>say('粉筆字：「她不是在找替身。她是在找，願意回頭的人。」')],
-['💬 問小羽',()=>say([['yu',hint()]])]]}}};
-
-/* ===== 第三夜：十七年（校長室 / 美術教室 / 太平間 / 後花園 / 天台） ===== */
-Object.assign(TH,{pr:['#2a1a10','#0a0604','🏛'],art:['#1a2a3a','#04080c','🖼'],mg:['#10242a','#020808','🧊'],gd:['#142010','#030804','🪱'],rf:['#1a1424','#04020a','🌙'],gu:['#102418','#020a06','📺'],au:['#2a1020','#0a0408','🎭'],po:['#103a46','#02080c','🏊'],lab:['#143a20','#020a04','🧪'],wl:['#1a1208','#050302','🕳'],mr:['#101830','#02040a','🪞'],sl:['#1a1a1a','#000','⛓'],gt:['#2a2a38','#05050a','🚪'],fl:['#6a6a80','#1a1a24','🤍']});
-Object.assign(EN,{pr:'校長室的桌上，放著一杯還冒著熱氣的茶。……是誰剛剛泡的？',art:'五雙眼睛，同時轉了過來。',mg:'冷。冷得你的呼吸，在空中結成了字。',gd:'一千隻蟬蛻，同時發出細碎的聲音，像有人在你耳邊笑。',rf:'風很大。你背後的鐵門，被什麼東西，輕輕地帶上了。',gu:'九個螢幕同時閃了一下。每一個畫面裡，都是你的背影。',au:'掌聲。從四面八方傳來。可是座位上，一個人也沒有。',po:'池底的黑水，慢慢地，往你的方向，流了過來。',lab:'玻璃罐裡的若蟲，一隻一隻，轉過頭來。',wl:'你聽見很多人，在很遠的地方，同時吸了一口氣。',mr:'每一面鏡子裡的你，都比你慢了半拍。',sl:'你從沒來過這裡，卻覺得一切都很熟悉。鐵床上的鍊子，是鬆的。',gt:'門外的白，亮得讓人想哭。',fl:'白色的牆上，有兩個人影，和你的，一模一樣。'});
-const h3=()=>{const f=S.f;return !f.pr?'十七年。算一算，她醒過幾次。撕掉的那一頁，別信。':!f.art?'畫要依牠的一生來掛：從土裡出生，回到土裡。':!f.mgd?'兩張紙條就夠了。護理師的警告……也許是故意的。':!f.gd?'蟬鳴只叫一輪。你只有一次重聽的機會。':!f.gu?'守衛室。她只出現在「除了 1 和自己，沒有別的朋友」的螢幕上。':!f.au?'三幕戲：沉睡、鳴叫、死去。對應的是季節。':!f.po?'按一盞燈，上下左右跟著變。從角落想起。':!f.lb?'兩個量杯。先倒滿哪一個，再倒進另一個？':!f.wl?'三個字。姓、名、最後一個字——筆記裡都有。別信名冊上的那一個。':'她怕光，追聲音。還有——別回頭。'};
-RM.pr={t:'校長室',d:'厚重的木桌，牆上掛著歷任校長的畫像。其中一幅，被人用黑布蓋住了。保險箱嵌在牆裡，是三位數字鎖。',h:()=>{const f=S.f;return[
-['📖 校長日誌',()=>say('「她每隔十七年醒來一次，至今三次。最近一次，是民國 125 年。」……那是今年。')],
-['🗓 牆上的日曆',()=>say('日曆停在民國 125 年。上一頁被撕掉了，碎紙上寫著：「108」。')],
-['🖼 蓋著黑布的畫像',()=>{say('你掀開黑布。畫像裡的人，沒有臉。');setTimeout(()=>scare('',0),1500)}],
-['🗄 保險箱',()=>{if(f.pr)return say('保險箱空了。');say('「她第一次醒來，是哪一年？」');ask('三位數字','091',()=>{f.pr=1;get('🗝 美術教室鑰匙');say(['箱子裡是一把鑰匙，和一張泛黃的照片：十七年前的畢業合照。','每個人的臉都被劃掉了。只有最角落的女孩沒有——她的眼睛，直直地看著鏡頭。那是偲涵。'])},'箱子裡傳來一聲低低的笑。')}],
-['↩ 走廊',()=>go('hall')]]}};
-RM.art={t:'美術教室',d:'五、六幅未乾的畫靠在牆邊，每一幅，畫的都是同一種生物。畫裡的眼睛，都在看你。',h:()=>{const f=S.f;return[
-['📜 牆上的字',()=>say('「從土裡出生，回到土裡。」下面的署名，被刮掉了。')],
-['🖼 六幅畫',()=>{if(f.art)return say('畫都掛好了。每一雙眼睛，都轉向了你。');say('標題都被塗掉了。依牠的一生，把畫掛好。');seq(['🦗 掛著的空殼','🥚 土裡的卵','🕳 墜回土裡','🪲 爬出地面','🪰 樹上鳴叫','🐛 地底的若蟲'],[1,5,3,0,4,2],'o',()=>{f.art=1;get('🔑 太平間鑰匙');say('最後一幅畫的畫框裂開，掉出一把冰冷的鑰匙。所有的眼睛，同時閉上了。')})}],
-['↩ 走廊',()=>go('hall')]]}};
-RM.mg={t:'太平間',d:'冷氣從抽屜縫裡漏出來。八個冰櫃，編號 1 到 8。登記簿的最後一頁，被撕掉了。',h:()=>{const f=S.f;return[
-['📒 登記簿',()=>say('「偲涵——不在 1 號、2 號。編號比 4 大。」')],
-['🏷 冰櫃上的便條',()=>say('「她的編號是奇數。」下面又補了一行：「不是 7。」')],
-['🧾 護理師的紙條',()=>say('「別開 5 號。」字跡發抖。……那是真的，還是她想讓你以為是真的？')],
-['🧊 冰櫃',()=>{if(f.mgd)return say('5 號櫃是空的。');say('八個冰櫃。她在哪一個？有人在你身後，站著。不要動。');hide(6,()=>seq(['1','2','3','4','5','6','7','8'],[4],'o',()=>{f.mgd=1;get('💍 偲涵的名牌');say(['5 號櫃自己滑了出來。裡面是一個十六歲女孩的遺體。','她的左手腕上，有一圈黑色的指痕。名牌上寫著：「偲涵」，日期是十七年前。','……可是，今天早上，偲涵還站在你面前。'])}))}],
-['↩ 走廊',()=>go('hall')]]}};
-RM.gd={t:'後花園',d:'滿地都是蟬蛻。一千隻空殼，每一隻都張著背，像在尖叫。老樹下，有一口被石板蓋住的井。',h:()=>{const f=S.f;return[
-['🌳 老樹',()=>{if(f.gd)return say('蟬聲停了。整座花園，安靜得像剛死過一次。');say('蟬開始叫了。這一次，牠們只叫一輪。仔細聽。');seq(['🪱 低','🪱 中','🪱 高','🪱 尖','🪱 啞'],[2,0,4,3,1,1,4,0,3],'a',()=>{f.gd=1;get('🗝 守衛室鑰匙');say('蟬聲驟停。老樹上掉下一隻蟬蛻——裡面，塞著一把鑰匙，和一張紙條：「名字，不是她的。去守衛室，查名冊。」');ckpt(4);setTimeout(()=>card('第四夜','名字'),2200)})}],
-['🕳 被石板蓋住的井',()=>f.wo?go('wl'):!f.lb?say('井裡傳來指甲刮石壁的聲音。石板紋風不動。……不要往下看。'):sel=='🧪 試劑'?(f.wo=1,say('試劑淋上石板，石板發出嘶嘶聲，裂開了。井下，有一道梯子。'),go('wl')):say('石板紋風不動。也許，需要什麼東西，把它融開。')],
-['↩ 走廊',()=>go('hall')]]}};
-RM.rf={t:'天台',d:'風很大。欄杆外是一整片黑，像沒有地面。偲涵背對著你，站在邊緣。',h:()=>{const f=S.f;return[
-['🧍 偲涵',async()=>{if(f.rfd)return say('她還站在欄杆邊。');f.rfd=1;await say([['si','（她背對著你。肩膀，在發抖。）'],'你一步一步靠近。她沒有回頭。','身後的鐵門，「砰」地關上。']);hide(10,()=>chase([['左邊的探照燈亮著，右邊是一片黑。',['⬅ 左邊','➡ 右邊'],0],['腳邊有一塊碎玻璃。她追著聲音走。',['踢開碎玻璃','小心跨過去'],0],['三條路：水塔、樓梯間、通風井。只有樓梯間的燈是亮的。',['水塔','樓梯間','通風井'],1],['背後有人，用你的聲音叫你。',['回頭','不要回頭'],1],['前面是死路。唯一的鐵梯，一踩就會嘎吱作響。',['爬上去','躲在水塔後面'],1],['印潔的聲音：「慈幽，過來，我這邊安全。」印潔就站在你右手邊，一句話也沒說。',['走向聲音','不要理它'],1],['地上有兩個影子。一個是你的，另一個，慢了半拍。',['低頭看','別看，繼續跑'],1],['偲涵就在欄杆邊。她的手，伸向你。',['握住她的手','退後一步'],0]],()=>{say('你抓住了她的手。');setTimeout(()=>fin(),1800)},2600))}],
-['↩ 走廊',()=>go('hall')]]}};
-
-/* ===== 第四夜：名字（守衛室 / 禮堂 / 游泳池 / 實驗室 / 井底） ===== */
-RM.gu={t:'守衛室',d:'牆上有九個小螢幕，全是雪花，編號 1 到 9。值班日誌攤開在桌上，旁邊是一本每一頁都被撕掉了名字的名冊。',h:()=>{const f=S.f;return[
-['📒 值班日誌',()=>say(['「每隔十七年，校方會挑一個學生，替她戴上『偲涵』的名牌。因為，她只回應這個名字。」','最後一行字寫得很小：「她只出現在，除了 1 和自己之外，沒有別的朋友的螢幕上。」'])],
-['📋 名冊',()=>say('十七年前：偲涵（已故）。十七年後：偲涵。兩頁之間夾著一張新紙條：「本名：沈雨涵。」——墨跡還是濕的。')],
-['🗒 桌邊的紙條',()=>say('「她只在單數編號的螢幕上出現。」……字跡，和名冊上的那張一模一樣。')],
-['📺 九個螢幕',()=>{if(f.gu)return say('九個螢幕靜了下來。');say('選出她現在出現的螢幕。');sw(['📺1','📺2','📺3','📺4','📺5','📺6','📺7','📺8','📺9'],'011010100',()=>{f.gu=1;rid('姓：兩棵樹，站在一起，一動也不動。');get('🔑 禮堂鑰匙');say(['九個螢幕同時亮起。其中四個畫面裡，那個沒有臉的人，轉過頭來。','螢幕背面掉出一把鑰匙，和一張紙條：「她的姓：兩棵樹，站在一起，一動也不動。」（已記入筆記）']);setTimeout(()=>scare('',0),3000)})}],
-['↩ 走廊',()=>go('hall')]]}};
-RM.au={t:'禮堂',d:'空蕩蕩的禮堂。舞台的布幕只拉開一半，三個旋轉布景立在台上。第一排的座位，全都被人坐過——椅面是溫的。',h:()=>{const f=S.f;return[
-['📜 節目單',()=>say('「第一幕：牠在地下沉睡的季節。第二幕：牠爬出土、開始鳴叫的季節。第三幕：牠死去的季節。」')],
-['🎫 門口的海報',()=>say('海報：「春・夏・秋——校慶快樂！」……這是校慶，不是這齣戲。')],
-['🎭 三個旋轉布景',()=>{if(f.au)return say('布景停住了。幕後，有一雙腳。');say('布幕在動。不要動。');hide(7,()=>{say('腳步聲遠去。轉動布景，演完這一齣戲。');dial([['春','夏','秋','冬'],['春','夏','秋','冬'],['春','夏','秋','冬']],[3,1,2],()=>{f.au=1;rid('名：言字旁，右邊一個「五」，一個「口」。');get('🔑 游泳池鑰匙');say('布幕全部落下。台上只剩一張椅子，椅背上掛著鑰匙，和一張紙條：「她的名：言字旁，右邊一個『五』，一個『口』。」（已記入筆記）')})})}],
-['↩ 走廊',()=>go('hall')]]}};
-RM.po={t:'游泳池',d:'池水早就乾了，池底積著一層發黑的水。九盞水下燈排成三乘三，有的亮著，有的熄了。',h:()=>{const f=S.f;return[
-['📌 池邊的告示',()=>say('「按一盞燈，它和上下左右的燈，會一起反轉。」下面有人補了一行：「只准按 5 次。超過，她就上來。」')],
-['💡 九盞水下燈',()=>{if(f.po)return say('九盞燈全亮著。池底，有什麼東西，慢慢沉了下去。');say('讓九盞燈，全部亮起來。');lo([0, 0, 1, 1, 1, 0, 0, 1, 1],5,()=>{f.po=1;get('🔑 實驗室鑰匙');say('九盞燈全亮的瞬間，水裡伸出一隻手，抓住了池邊——又鬆開了。排水孔裡，卡著一把鑰匙。');setTimeout(()=>scare('',0),2500)})}],
-['↩ 走廊',()=>go('hall')]]}};
-RM.lab={t:'實驗室',d:'玻璃罐裡泡著一排排蟬的若蟲，標籤上的日期，全是十七的倍數。桌上有兩個沒有刻度的量杯：A 容量 5，B 容量 3。',h:()=>{const f=S.f;return[
-['🏷 罐子上的標籤',()=>say('「要讓她安靜，得先讓她『喝』下，恰好 4 單位的試劑。」')],
-['🧫 一排若蟲標本',()=>{say('所有的若蟲，同時轉向了你。');setTimeout(()=>scare('',0),1200)}],
-['🧪 兩個量杯',()=>{if(f.lb)return say('量杯是空的。');say('只能倒，不能估。A 瓶容量 5，B 瓶容量 3，要在 A 瓶裡得到恰好 4。');jug(()=>{f.lb=1;rid('最後一個字：虫字旁，右邊是「單」。');get('🧪 試劑');say(['試劑開始冒泡，慢慢變成透明。罐子背面貼著一張紙條：「她的最後一個字：虫字旁，右邊是『單』。」（已記入筆記）','你回頭。印潔站在玻璃罐前，用手指，在罐子上慢慢寫著什麼。寫的是——「下一個」。'])},7)}],
-['↩ 走廊',()=>go('hall')]]}};
-RM.wl={t:'井底',d:'井底乾涸。四面牆上嵌滿了蟬蛻，每一隻的背上，都裂著一道口。正中間的石臺刻著一行字：「請說出她的名字」。',h:()=>{const f=S.f;return[
-['📖 牆上的刻痕',()=>say(['「十七年前，他們把一個女孩關進這裡，為了讓蟬不再叫。」','「她沒有死。她只是，不能再說話了。」','「每過十七年，他們就再選一個孩子，替她開口。」'])],
-['🗣 說出她的名字',()=>{if(f.wl)return say('井底很安靜。一千隻眼睛，都閉上了。');say('三個字。說錯，她會記住你。');ask('她的本名（三個字）','林語蟬',()=>{say('牆上的蟬蛻一隻一隻裂開。一千個聲音，同時叫出了那個名字。');hide(8,()=>chase([['蟬蛻開始一隻一隻從牆上剝落，發出細碎的聲音。她追著聲音。',['站著不動','拔腿狂奔'],0],['梯子在晃，每爬一階，就響一聲。',['慢慢爬，一階一階','一次跨兩階，衝上去'],0],['井壁上有兩個凹洞。左邊的洞裡有光，右邊的洞裡是黑的。',['左洞','右洞'],0],['背後有人用印潔的聲音，哭著說：「慈幽，救我。」',['回頭','爬上去，不要回頭'],1],['井口就在頭頂。她的手，從下面抓住了你的腳踝。',['用力踢','把鞋踢掉，繼續爬'],1]],()=>{f.wl=1;get('🗝 天台鑰匙');say('你爬出井口。天空是紅色的。手裡，多了一把通往天台的鑰匙。')},3000))},'井底傳來一聲長長的嘆息。她不認得這個名字。')}],
-['↩ 後花園',()=>go('gd')]]}};
-
-/* ===== 第五夜：反轉（鏡之間 / 封印室 / 校門口）真相：印潔就是「她」 ===== */
-const h5=()=>{const f=S.f;return !f.mr?'鏡子裡，左右是反的。先把上排「倒過來」看。':!f.sl?'解開封印，要反著來。回想美術教室裡，牠的一生。':'在鏡子裡，她怕的是黑，追的是安靜。該回頭的時候，回頭。最後的最後……別回頭。'};
-RM.mr={t:'鏡之間',d:'一整條走廊的鏡子。每一面，都映出你，和你身後那個沒有臉的人。鏡子裡的世界，左右是反的。',h:()=>{const f=S.f;return[
-['📜 鏡面上的字',()=>say('「在鏡子裡，一切都是反的：她怕的是黑，不是光。她追的是安靜，不是聲音。要活下去，得學會，在該回頭的時候回頭。」')],
-['🧾 鏡框上的便條',()=>say('「選出上排和下排，『位置相同』卻長得不同的。」——墨跡很舊，像是十七年前寫的。')],
-['🪞 六面鏡子',()=>{if(f.mr)return say('鏡面靜止了。有一隻手，貼在玻璃的另一頭。');say('上排是真實的六件東西：🕯 📖 🔔 🗝 🪟 🚪。下排，是它們在鏡子裡的樣子——左右顛倒。選出下排裡，不對勁的鏡子。');sw(['🚪','🪟','👁','🔔','🧍','🕯'],'001010',()=>{f.mr=1;say(['兩面鏡子同時碎了。','碎片後面，有一隻手，正在拍打玻璃。是印潔的手——真正的那一個。']);setTimeout(()=>scare('',0),2500)})}],
-['↩ 走廊',()=>go('hall')]]}};
-RM.sl={t:'封印室',d:'地下室最深處，一間沒有門牌的房間。一張鐵床，上面纏著鐵鍊。鍊子是從裡面鎖上的。牆上貼滿了十七年的日期。',h:()=>{const f=S.f;return[
-['⛓ 鐵鍊',()=>say('鎖孔，在裡面。有人，是自己把自己鎖進來的。')],
-['📅 牆上的日期',()=>say(['一排一排的日期，全是十七的倍數。最底下，是兩個月前的一行：','「我聽見有人，在很遠的地方，叫我的名字。聲音，和慈幽，一模一樣。」'])],
-['🔓 六個蟬形的鎖扣',()=>{if(f.sl)return say('鎖扣全都鬆開了。牆後，是空的。');say('每個鎖扣，刻著牠一生的樣子。要解開封印，得反著來。');seq(['🦗 掛著的空殼','🥚 土裡的卵','🕳 墜回土裡','🪲 爬出地面','🪰 樹上鳴叫','🐛 地底的若蟲'],[2,4,0,3,5,1],'o',()=>{f.sl=1;ckpt(5);say(['牆壁裂開。裡面坐著一個人——蜷縮著，眼睛閉著。是真正的印潔。',['yj','「慈幽……妳為什麼，現在才來？」'],'她的手，是熱的。可是，走廊的盡頭，有一個和她一模一樣的人，正在笑。'])})}],
-['↩ 走廊',()=>go('hall')]]}};
-RM.gt={t:'校門口',d:'鐵門敞開著，門外是一片白。身後，走廊的另一頭，另一個「印潔」安靜地笑著，一動也不動。',h:()=>{const f=S.f;return[
-['🏃 衝向校門',async()=>{if(f.gt)return;f.gt=1;await say(['你牽起真正的印潔的手，朝校門跑去。','身後，所有的燈，同時熄滅。']);hide(6,()=>chase([['兩條路：左邊的日光燈亮著，右邊一片漆黑。在鏡子裡，一切都是反的。',['⬅ 左邊','➡ 右邊'],1],['地上有一顆球。在鏡子裡，她追的是安靜。',['踢開它，製造聲響','輕輕繞過去'],1],['三扇門：樓梯間、禮堂、廁所。只有廁所的燈，是暗的。',['樓梯間','禮堂','廁所'],2],['背後有人叫你的名字。這一次，不一樣。',['回頭','不要回頭'],0],['前面是死路。鐵梯一踩就響。她追的是安靜。',['爬上去','躲在梯子後面'],0],['校門口，假的印潔朝你伸出手。',['握住她的手','退後一步'],1]],()=>{busy=1;say('校門就在三步之外。身後，有人輕輕叫了你的名字。');$('#bx').innerHTML='<button id="c0">回頭看她</button><button id="c1">不要回頭，走出去</button>';$('#c0').onclick=()=>fin5(0);$('#c1').onclick=()=>fin5(1)},2600))}],
-['↩ 走廊',()=>go('hall')]]}};
-
-async function oldIntro(){await say(['鐵門之後，是一棟從未出現過的舊校舍。','印潔已經走了進去，一扇門在她身後落下，將你們隔開。',['si','偲涵站在你面前。她抬起頭，嘴型慢慢重複同一個動作——「快、走」。'],'燈全滅了。黑暗裡，傳來很多人緩慢靠近的腳步聲。']);await sl(1800);await scare('',1);say([['yu','牆上的符號……紀錄裡寫過順序。快！']])}
-async function end(r){if(!r)return bad('門後，有人在等你。');act2()}
-async function act3(){S.f.p3=1;await say(['黑板上的名字一個個亮起，最後停在「偲涵」。','然後，字跡開始滲血。第四個名字下面，浮現了第五個——','「慈幽」。',['si','偲涵站在門口。她的嘴型，一遍又一遍：「十七年。十七年。十七年。」'],['yu','……校長室。紀錄裡提過，每隔十七年，她醒一次。答案在那裡。快去！']]);busy=1;card('第三夜','十七年');await sl(3300);busy=0;ckpt(3);go('hall')}
-async function fin(){if(S.f.p3)return ending();return act3()}
-async function ending(){busy=1;await say([['si','偲涵回過頭。她的眼神，一點一點變得空洞，身體不自然地抽動。'],['yu','離她遠一點！'],'她走向欄杆。你抓住她的手。她第一次流下眼淚，一直搖頭，嘴型無聲：「對不起」。','然後，她的嘴型換了。三個字。你認得——林、語、蟬。','下一秒，那個東西徹底控制了她。偲涵翻過欄杆，消失在黑暗裡。','她不說話，是它不允許。她跟著你，是想警告你。她從頭到尾，都在反抗。','筆記本的最後一頁，浮現一行原本不存在的字：「下一個，是印潔。」','你猛然回頭。印潔站在你身後——她的眼睛，已經不是原本的樣子了。','「謝謝妳。」印潔開口了。這是整個夜晚，她第一次說話——用的，是你自己的聲音。',['yj','「替我把名字，說完了。」'],['yu','……從她在校門外說「有人在叫我」的那一刻起，站在妳身邊的，就已經不是印潔了。'],'你終於明白。偲涵最後那三個字，不是對你說的。她看著的，是你身後的人。',['yj','「妳以為，是妳在解開這間學校？是我，在讓妳解開。」'],['yj','「那一行字，是我寫的。下一個，是印潔——真正的那一個。她還在下面，等著替我開口。」'],'她消失了。走廊裡，所有的燈，開始倒著閃爍。世界，翻轉了。']);await sl(2500);busy=0;await scare('她一直都在看著你',1);S.f.p5=1;busy=1;card('第五夜','反轉');await sl(3300);busy=0;ckpt(5);go('hall')}
-async function fin5(g){if(g)return act6();busy=1;S.on=0;await say(['你回頭了。','她等的，就是這一刻。「願意回頭的人」。','手裡的名牌，一點一點，燒成了灰。你想喊印潔的名字，卻發現——自己，已經發不出聲音了。','從今天起，由妳，替她開口。']);await sl(2500);busy=0;await scare('偲涵',1);$('#en h1').textContent='結局 B：新的偲涵';$('#ent').textContent='';$('#enp').innerHTML='名牌在你的手裡，化成了灰。<br>從今天起，由妳，替她開口。';$('#enr').style.display='';$('#g').classList.remove('on');$('#en').classList.add('on')}
-async function act6(){busy=1;await say(['你沒有回頭。你牽著印潔，一步，一步，跨出了校門。','門外的光，很白。白得，像一整面牆。','你低頭，看著牽著的手——不知道什麼時候，變成了兩隻。',['yj','「恭喜。妳破了我的規則。十七年來，從來沒有人，在最後，沒有回頭。」'],['yj','「所以，這一次——我換一個玩法。」']]);await sl(1500);busy=0;await scare();S.f.p6=1;busy=1;card('最終夜','大結局');await sl(3300);busy=0;ckpt(6,'fl');go('fl')}
-async function finale(){busy=1;const secs=S.t||0;S.on=0;clr();if(window.SD)SD.clear(S.rid,secs);await say(['「蟬、語、林。」你倒著，把她的名字，還給了她。','假的印潔，發出一聲長長的、不像人的尖叫。整面白牆，一片一片剝落——像十七年來，所有的蟬蛻，同時碎了。','她的臉，一點一點，變回了很久以前的樣子。一個十六歲的女孩，渾身是水，眼睛，是濕的。','「……謝謝。」她說。這是十七年來，她第一次，用自己的聲音。','然後，她閉上眼睛，像蟬蛻一樣，輕輕地，碎成了灰。',['yj','「慈幽……我們，出來了。」'],'真正的印潔，緊緊握著你的手。她的手，是熱的。','鐘樓敲了十二下。十七年的蟬鳴，停了。']);await sl(2500);busy=0;$('#en h1').textContent='第一章　大結局';$('#enp').innerHTML='十七年的蟬鳴，停了。<br>……可是，真的結束了嗎？';$('#ent').textContent='逃脫時間 '+fmt(secs);$('#enr').style.display='none';$('#g').classList.remove('on');$('#en').classList.add('on');setTimeout(egg,7000)}
-async function egg(){const e=$('#eg'),p=$('#egp'),v=$('#eg svg');if(!$('#en').classList.contains('on'))return;v.style.opacity=0;$('#egb').style.display='none';e.classList.add('on');p.textContent='（彩蛋）';await sl(2000);p.textContent='井壁的最深處，刻著一個，比「林語蟬」更舊的名字。';await sl(4000);v.style.opacity=1;p.textContent='邦瑜。';await sl(2500);p.textContent='她才是，第一個，被關進去的人。';await sl(3800);await scare('邦瑜',1);p.innerHTML='第二章：邦瑜<br><small>（敬請期待）</small>';$('#egb').style.display=''}
-function ch3(){$('#egp').innerHTML='第二章：邦瑜<br>製作中，敬請期待。';const b=$('#egb');b.textContent='回到標題';b.onclick=()=>location.reload()}
-function yes(){ac();$('#ag').classList.remove('on');$('#cv').classList.add('on')}
-function no(){$('#ag').innerHTML='<h1>抱歉</h1><p>未滿 18 歲，無法遊玩。</p>'}
-async function start(){['cv','dt','en','eg'].forEach(i=>$('#'+i).classList.remove('on'));S={r:'hall',inv:[],f:{},w:0,on:1,t:0,rid:null};const me=S;if(window.SD)SD.begin().then(id=>{me.rid=id;save()});sel=null;busy=0;$('#g').classList.add('on');card('第一章','她一直都在看著你');hud();if(!dr){dr=1;drone()}ckpt(1);render();say(['暑假的最後一個晚上。蟬，叫得像要把整座城市吞掉。','千蟬學校，十七年前就廢校了。沒有人說得出原因。',['yj','「慈幽，妳聽。」印潔停在生鏽的校門外。「有人在裡面叫我的名字。聲音……和妳一模一樣。」'],'你們翻過圍牆。身後的校門，「喀」地一聲，自己鎖上了。',['si','走廊盡頭，站著一個穿制服的女生。她一句話都沒說，只是盯著你們。眼睛，幾乎沒有眨。'],'她抬起手，指向校舍深處。然後，不見了。','「她好像知道些什麼……」「正因為這樣，才更可怕。」'])}
-
-/* ===== 最終夜：大結局（白色的校門） ===== */
-RM.fl={t:'白色的校門',d:'門外是一整面白牆。兩個印潔，並排站在你面前，一模一樣，連笑的樣子都一樣。其中一個，是真的。',h:()=>{const f=S.f;return[
-['📜 牆上的刻字',()=>say('「要讓她再度沉睡，不是呼喚她。是把她的名字，倒著，還給她。」')],
-['🧾 被撕下的一頁',()=>say('「再說一次她的名字，她就會永遠睡去。」……這一頁，是用口紅寫的。')],
-['✋ 牽左邊的手',()=>say('冰的。像剛從井裡撈出來。她對你笑著，一動也不動。')],
-['✋ 牽右邊的手',()=>{f.fl1=1;say('熱的。在發抖。她用只有你聽得見的聲音說：「慈幽……別回頭。」')}],
-['🗣 倒著說她的名字',()=>{if(!f.fl1)return say('先確定，哪一個，才是真的印潔。');if(f.fl2)return;f.fl2=1;say('另一個印潔的笑，一點一點，裂開了。不要動。');hide(8,()=>{f.fl2=0;ask('她的名字（倒著說）','蟬語林',()=>finale(),'說的方向，不對。她笑了。')})}],
-['💬 問小羽',()=>say([['yu',!f.fl1?'手。看看誰的手，是熱的。':'要把名字，倒著還給她。三個字，倒過來。']])]]}};
-
-/* ===== 存檔系統（自動存檔 / 手動存檔 / 繼續遊戲） ===== */
-const SK='cs1_save';
-const toast=t=>{const e=$('#ts');e.textContent=t;e.style.opacity=1;setTimeout(()=>e.style.opacity=0,1600)};
-function save(m){try{if(!S||!S.on||busy){m&&toast('現在不能存檔');return}localStorage.setItem(SK,JSON.stringify({r:S.r,inv:S.inv,f:S.f,w:S.w,ck:S.ck,t:S.t,rid:S.rid}));m&&toast('💾 已存檔')}catch(e){}}
-function clr(){try{localStorage.removeItem(SK)}catch(e){}}
-const NN=['','第一夜','第二夜','第三夜','第四夜','第五夜','最終夜'];
-function ckpt(n,r){S.ck={r:r||'hall',inv:[...S.inv],f:JSON.parse(JSON.stringify(S.f)),n:n};save()}
-function dsave(){try{if(S.ck)localStorage.setItem(SK,JSON.stringify({r:S.ck.r,inv:S.ck.inv,f:S.ck.f,w:0,ck:S.ck,t:S.t,rid:S.rid}))}catch(e){}}
-function retry(){const c=S.ck;if(!c)return start();['cv','dt','en'].forEach(i=>$('#'+i).classList.remove('on'));S={r:c.r,inv:[...c.inv],f:JSON.parse(JSON.stringify(c.f)),w:0,on:1,ck:c,t:S.t||0,rid:S.rid||null};sel=null;busy=0;$('#g').classList.add('on');hud();render();say('（回到「'+NN[c.n]+'」的開始。你還活著——暫時。）')}
-function load(){let d;try{d=JSON.parse(localStorage.getItem(SK))}catch(e){}if(!d)return;if(!RM[d.r])d.r='hall';['cv','dt','en'].forEach(i=>$('#'+i).classList.remove('on'));S={r:d.r,inv:d.inv||[],f:d.f||{},w:d.w||0,on:1,ck:d.ck||null,t:d.t||0,rid:d.rid||null};sel=null;busy=0;$('#g').classList.add('on');hud();if(!dr){dr=1;drone()}render();say('（已讀取存檔。她，一直在等你回來。）')}
-function newGame(){let h=0;try{h=localStorage.getItem(SK)}catch(e){}if(h&&!confirm('開始新遊戲會覆蓋目前的存檔，確定嗎？'))return;start()}
-const rf5=()=>{let h=0;try{h=localStorage.getItem(SK)}catch(e){}$('#ctw').style.display=h?'':'none'};rf5();
-$('#ct').onclick=()=>{ac();load()};$('#cd').onclick=()=>{clr();rf5()};
-setInterval(()=>save(),4000);addEventListener('pagehide',()=>save());document.addEventListener('visibilitychange',()=>{if(document.hidden)save()});
-setInterval(()=>{if(S&&S.on&&S.f.p3&&!busy&&Math.random()<.35)scare()},15000);
-
-(function hb(){if(S&&S.on&&A){tone(50,.18,'sine',.3);setTimeout(()=>tone(45,.14,'sine',.22),200)}setTimeout(hb,1900-(S?S.w:0)*100)})();
-setInterval(()=>{if(S&&S.on&&!busy&&Math.random()<.25+S.w*.04)scare()},25000);
-
-/* ===== 第柒門：計時 / 回大廳 ===== */
-const LOBBY='https://hao-yuliu.github.io/escape-room/';
+/* ================= 基本 ================= */
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)],sl=ms=>new Promise(r=>setTimeout(r,ms));
+const LOBBY='https://hao-yuliu.github.io/escape-room/',SK='qc1_v3_save',MAXHP=8,LIMIT=7200;
+let S=null,busy=0,sel=null,snd=true,onTitle=true;
+const NM={ci:'慈幽',yj:'印潔',yu:'小羽',si:'偲涵',her:'？？？'};
 const fmt=s=>{const h=s/3600|0,m=(s%3600)/60|0,x=s%60,p=n=>String(n).padStart(2,'0');return(h?h+':'+p(m):p(m))+':'+p(x)};
-setInterval(()=>{if(S&&S.on&&!document.hidden){S.t=(S.t||0)+1;$('#tm').textContent='⏱ '+fmt(S.t)}},1000);
+function toast(t){const e=$('#ts');e.textContent=t;e.style.opacity=1;clearTimeout(e._t);e._t=setTimeout(()=>e.style.opacity=0,1800)}
+function show(id){$$('.scr').forEach(e=>e.classList.remove('on'));$('#'+id).classList.add('on');onTitle=id!=='game'}
 function toLobby(){save();location.href=LOBBY}
-// 連線失敗時（12 秒內沒有完成登入檢查），讓玩家可以回大廳
-setTimeout(()=>{const h=document.getElementById('sd-hide');if(h&&!window.SD){h.remove();document.body.innerHTML='<div class="scr on"><h1>連線失敗</h1><p>無法確認你的角色，請重新整理，或回到大廳重新進入。</p><button onclick="location.reload()">重新整理</button><button onclick="location.href=LOBBY">回到大廳</button></div>'}},12000);
+
+/* ================= 音效 ================= */
+let A=null,master=null,cic=null,drn=null;
+function ac(){if(!A){try{A=new(window.AudioContext||window.webkitAudioContext)();master=A.createGain();master.connect(A.destination)}catch(e){}}if(A&&A.state==='suspended')A.resume();return A}
+function tone(f,d=.4,ty='sine',v=.2,w=0){const a=ac();if(!a||!snd)return;const t=a.currentTime+w,o=a.createOscillator(),g=a.createGain();o.type=ty;o.frequency.value=f;g.gain.setValueAtTime(.0001,t);g.gain.linearRampToValueAtTime(v,t+.01);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(master);o.start(t);o.stop(t+d+.05)}
+function nz(d=.3,v=.3,f=1000,q=1,w=0){const a=ac();if(!a||!snd)return;const t=a.currentTime+w,n=Math.floor(a.sampleRate*d),b=a.createBuffer(1,n,a.sampleRate),x=b.getChannelData(0);for(let i=0;i<n;i++)x[i]=Math.random()*2-1;const s=a.createBufferSource(),fl=a.createBiquadFilter(),g=a.createGain();s.buffer=b;fl.type='bandpass';fl.frequency.value=f;fl.Q.value=q;g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.001,t+d);s.connect(fl);fl.connect(g);g.connect(master);s.start(t)}
+const click=()=>{nz(.025,.5,3200,2);tone(2000,.02,'square',.02);navigator.vibrate&&navigator.vibrate(4)};
+const clunk=()=>{nz(.18,.7,380,1);tone(110,.25,'square',.12)};
+const knock=(w=0)=>{nz(.09,1,240,1.4,w);tone(85,.14,'sine',.55,w)};
+const steps=()=>{for(let i=0;i<4;i++)nz(.08,.22,520,.8,i*.28)};
+const whisper=()=>nz(1.4,.09,1500,.6);
+function piano(i,d=1){const f=[261.6,293.7,329.6,349.2,392,440,493.9][i];tone(f,d,'triangle',.28);tone(f*2,d*.5,'sine',.05)}
+function ambient(){const a=ac();if(!a||cic)return;
+ const n=a.createBuffer(1,a.sampleRate*2,a.sampleRate),d=n.getChannelData(0);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;
+ const s=a.createBufferSource();s.buffer=n;s.loop=true;const bp=a.createBiquadFilter();bp.type='bandpass';bp.frequency.value=4600;bp.Q.value=3.5;
+ const am=a.createGain();am.gain.value=.5;const l=a.createOscillator();l.frequency.value=46;const lg=a.createGain();lg.gain.value=.5;l.connect(lg);lg.connect(am.gain);
+ const sw=a.createOscillator(),sg=a.createGain();sw.frequency.value=.11;sg.gain.value=500;sw.connect(sg);sg.connect(bp.frequency);
+ cic=a.createGain();cic.gain.value=0;s.connect(bp);bp.connect(am);am.connect(cic);cic.connect(master);s.start();l.start();sw.start();
+ const f=a.createBiquadFilter();f.type='lowpass';f.frequency.value=380;drn=a.createGain();drn.gain.value=.8;f.connect(drn);drn.connect(master);
+ [[55,'sine',.05],[82.4,'triangle',.022],[58.3,'sine',.04]].forEach(([fr,ty,v])=>{const o=a.createOscillator(),g=a.createGain();o.type=ty;o.frequency.value=fr;g.gain.value=v;o.connect(g);g.connect(f);o.start()});
+ (function hb(){if(S&&S.on&&S.hp<=2&&snd){tone(52,.18,'sine',.35);tone(46,.14,'sine',.25,.22)}setTimeout(hb,S&&S.hp<=1?850:1200)})();
+ (function bell(){setTimeout(()=>{if(S&&S.on&&snd)tone([196,207.7,233,277][Math.random()*4|0],5,'sine',.03);bell()},6000+Math.random()*9000)})()}
+function cicada(v){if(cic&&A)cic.gain.setTargetAtTime(snd?v:0,A.currentTime,.8)}
+
+/* ================= 狀態 / 存檔 ================= */
+function fresh(){return{sc:'gate',view:'f',inv:[],f:{frag:{},nm:{}},hp:MAXHP,t:0,rid:null,notes:[],ck:null,on:1,act:'序章',deaths:0,hints:0}}
+function save(force){try{if(!S||!S.on||(busy&&!force))return;localStorage.setItem(SK,JSON.stringify(S))}catch(e){}}
+function clr(){try{localStorage.removeItem(SK)}catch(e){}}
+function hasSave(){try{return!!localStorage.getItem(SK)}catch(e){return false}}
+function ckpt(){const c=JSON.parse(JSON.stringify(S));c.ck=null;S.ck=c;save(1)}
+function tmText(){const e=$('#tm');e.textContent='⏱ '+fmt(S.t)+' / 120:00';e.style.color=S.t>=LIMIT-600?'#ff5a5a':''}
+function hud(){$('#hp').textContent='●'.repeat(Math.max(0,S.hp))+'○'.repeat(MAXHP-Math.max(0,S.hp));tmText();document.documentElement.style.setProperty('--v',(MAXHP-S.hp)/MAXHP*.8)}
+setInterval(()=>{if(S&&S.on&&!onTitle&&!document.hidden){S.t++;tmText();checkTime()}},1000);
+/* 120 分鐘時間到：宣告失敗，存檔清除，全部重來 */
+function checkTime(){if(S&&S.on&&S.t>=LIMIT){timeUp();return true}return false}
+function timeUp(){busy=0;tapR=null;closePanels();S.on=0;cicada(0);if(window.SD)SD.fail(S.rid,S.t,S.deaths||0,S.hints||0);clr();show('timeout')}
+setInterval(()=>save(),5000);addEventListener('pagehide',()=>save(1));
+
+/* ================= 對話 ================= */
+let tapR=null;
+$('#dlg').addEventListener('pointerdown',()=>tapR&&tapR());
+$('#scene').addEventListener('pointerdown',()=>tapR&&tapR());
+function mood(w,m){return m||({ci:'ci-fear',yj:S&&S.f.poss?'yj-poss':'yj-calm',yu:'yu-calm',si:'si-calm',her:'her-scream'})[w]}
+const use=(k,cls='')=>`<svg viewBox="0 0 300 400" class="${cls}"><use href="#P-${k}"/></svg>`;
+function line(L){
+ if(typeof L==='string'){$('#dp').innerHTML='';$('#dn').textContent='';$('#stage').classList.remove('on');return L}
+ const [w,t,m]=L,k=mood(w,m);$('#dp').innerHTML=use(k);$('#dn').textContent=NM[w];$('#stage').innerHTML=use(k);$('#stage').classList.add('on');return t}
+async function typeT(t){const el=$('#dx');el.textContent='';let done=false;tapR=()=>{done=true};for(const c of t){if(done)break;el.textContent+=c;await sl(24)}el.textContent=t;tapR=null}
+const waitTap=()=>new Promise(r=>{tapR=()=>{tapR=null;r()}});
+async function say(L){busy++;L=[].concat(L);for(const x of L){const t=line(x);await typeT(t);$('#dx').insertAdjacentHTML('beforeend','<i class="nx">▼</i>');await waitTap()}$('#dx .nx')?.remove();$('#stage').classList.remove('on');busy=Math.max(0,busy-1)}
+function msg(t){tapR=null;line(t);$('#dx').textContent=t}
+
+/* ================= 物品 ================= */
+const IT={
+ k_nurse:{n:'保健室鑰匙',i:'key',d:'一把舊鑰匙，標籤寫著「保健室」。從掛鐘裡掉出來的。'},
+ k_class:{n:'三年二班鑰匙',i:'key',d:'鑰匙圈上的塑膠牌寫著「3-2」。'},
+ bulb:{n:'紅色小燈泡',i:'bulb',d:'一顆紅色的小燈泡。燈絲看起來斷了……應該早就不能用了吧。'},
+ chalk:{n:'半截粉筆',i:'chalk',d:'白色粉筆，只剩半截。'},
+ roll:{n:'點名簿',i:'roll',d:'三年二班的點名簿。最後一頁：「17 號　偲涵」，後面的字被用力劃掉了。'},
+ nb:{n:'偲涵的筆記本',i:'book',d:'整本筆記本，每一頁都只寫了同一句話：「不是我。」最後一頁的字，寫得很用力，筆尖把紙都劃破了。'},
+ shell:{n:'蟬蛻',i:'shell',d:'一隻完整的蟬蛻。背上裂開一道口子。'},
+ k_shutter:{n:'鐵捲門鑰匙',i:'key',d:'很小的鑰匙，標籤：「樓梯　鐵捲門」。'},
+ tape:{n:'錄音帶',i:'tape',d:'卡帶標籤：「最後一次廣播　108.7.17」。'},
+ k_prin:{n:'校長室鑰匙',i:'key',d:'沉甸甸的黃銅鑰匙。'},
+ photo:{n:'泛黃的合照',i:'photo',d:'民國七十四年的合照。所有人的臉都被劃掉了，只有角落一個女孩沒有。背面寫著：「她的姓：兩棵樹，站在一起，一動也不動。」'},
+ k_garden:{n:'後花園鑰匙',i:'key',d:'鑰匙上纏著一圈乾掉的水草。'},
+ pliers:{n:'生鏽的鐵鉗',i:'pliers',d:'警衛亭裡的鐵鉗。鉗口還很利。'},
+ fork:{n:'音叉',i:'fork',d:'一支銀色的音叉，刻著「A　440」。敲一下，會發出很純的「嗡——」。'},
+ mkey:{n:'藥櫃小鑰匙',i:'key',d:'冰得黏手的小鑰匙。標籤：「藥櫃」。'},
+ sid:{n:'偲涵的學生證',i:'card',d:'三年二班　17 號　偲涵。照片上的她，嘴角被人用紅筆畫上了一條線。背面用原子筆寫著：「密碼是我的座號，寫兩次。」'},
+ rope:{n:'紅繩',i:'rope',d:'一條編得很細的紅繩，打著一個舊式的結。是印潔奶奶給她的那一條。……它怎麼會在樹洞裡？'}
+};
+const has=k=>S.inv.includes(k);
+function get(k,quiet){if(!has(k))S.inv.push(k);renderInv(k);if(!quiet)toast('獲得：'+IT[k].n)}
+function take(k){S.inv=S.inv.filter(x=>x!==k);if(sel===k)sel=null;renderInv()}
+function renderInv(nw){const e=$('#items');e.innerHTML='';S.inv.forEach(k=>{const b=document.createElement('button');b.className='it'+(sel===k?' sel':'')+(nw===k?' new':'');b.title=IT[k].n;b.innerHTML=icon(IT[k].i);b.onclick=()=>{sel=sel===k?null:k;renderInv();if(sel)msg('（選取了「'+IT[k].n+'」。點畫面上的東西來使用，或按「檢查」仔細看。）')};e.append(b)});$('#itn').textContent=sel?IT[sel].n:'';$('#exam').disabled=!sel}
+$('#exam').onclick=()=>{if(sel&&!busy)examine(sel)};
+
+/* ================= 筆記 ================= */
+function note(k,t,x,wet){if(S.notes.some(n=>n.k===k))return;S.notes.push({k,t,x,wet:!!wet});toast('📓 已記入筆記')}
+$('#bNote').onclick=()=>{if(busy)return;const fr=[1,2,3,4].map(i=>`<span>${'①②③④'[i-1]} ${S.f.frag[i]??'？'}</span>`).join('');
+ const nm=S.f.nm,np=[nm.a?'姓：'+nm.a:'',nm.b?'名：'+nm.b:'',nm.c?'最後一字：'+nm.c:''].filter(Boolean).join('<br>');
+ panel('筆記',`${S.f.fragSeen?`<div class="pd">蓋著編號的數字碎片</div><div class="frags">${fr}</div>`:''}${np?`<p class="pd">關於「她」的名字：<br>${np}</p>`:''}<div class="nlist">${S.notes.length?S.notes.slice().reverse().map(n=>`<div><b>${n.t}</b>${n.wet?' <span class="w">（墨跡是濕的）</span>':''}<br>${n.x}</div>`).join(''):'<div>還沒有記下任何線索。</div>'}</div>`)};
+
+/* ================= 面板 ================= */
+function panel(title,body,mount,o={}){return new Promise(res=>{const m=$('#modal');m.classList.add('on');busy++;
+ $('#mbox').innerHTML=(title?`<h3>${title}</h3>`:'')+`<div class="mb">${body}</div>`+(o.noClose?'':`<button class="mx">${o.closeText||'離開'}</button>`);
+ let fin=false;const done=v=>{if(fin)return;fin=true;m.classList.remove('on');busy=Math.max(0,busy-1);res(v)};
+ $('#mbox .mx')&&($('#mbox .mx').onclick=()=>done(false));mount&&mount($('#mbox .mb'),done)})}
+function closePanels(){$('#modal').classList.remove('on');$('#hide').classList.remove('on')}
+function doc(k,title,text,wet,extra=''){note(k,title,text,wet);return panel(title,`<div class="paper ${wet?'wet':''}"><span class="ink">${text.replace(/\n/g,'<br>')}</span></div>${wet?'<div class="wettag">墨跡還沒乾</div>':''}${extra}`)}
+function confirmP(t){return new Promise(r=>panel('',`<p class="pd">${t}</p><div class="row"><button class="btn-red" id="cy">確定</button><button id="cn">取消</button></div>`,(el,done)=>{el.querySelector('#cy').onclick=()=>{done(1);r(true)};el.querySelector('#cn').onclick=()=>{done(0);r(false)}},{noClose:true}))}
+
+/* ================= 受傷 / 驚嚇 ================= */
+async function scare(t='',big){busy++;$('#sct').textContent=t;$('#sc').classList.add('on');nz(1,1,700,.3);tone(70,1,'sawtooth',.4);tone(1500,.5,'square',.08);document.body.classList.add('sk');navigator.vibrate&&navigator.vibrate(300);await sl(big?1500:850);$('#sc').classList.remove('on');document.body.classList.remove('sk');busy=Math.max(0,busy-1)}
+async function hurt(m,n=1){S.hp-=n;hud();msg(m);save(1);if(S.hp<=0)return die();await scare()}
+function die(){busy=0;tapR=null;closePanels();S.on=0;S.deaths=(S.deaths||0)+1;S.hp=0;save(1);S.on=0;
+ $('#deadp').innerHTML=`你被拖進了黑暗裡。<br>復活會讓你回到「${SC[S.sc].name}」，進度都還在——<br>但逃脫時間 <b style="color:#ff6a6a">+10 分鐘</b>。`;show('dead');cicada(0)}
+/* 死亡後復活：原地、進度保留、+10 分鐘 */
+function revive(){S.t+=600;S.hp=MAXHP;S.on=1;busy=0;sel=null;tapR=null;show('game');hud();renderInv();render();cicada(SC[S.sc].out?.14:.05);save(1);if(checkTime())return;
+ msg(`（你在「${SC[S.sc].name}」醒了過來。逃脫時間 +10 分鐘。）`);if(SC[S.sc].again)SC[S.sc].again()}
+function retry(){const c=S.ck;if(!c){newGame();return}const t=S.t,rid=S.rid;S=JSON.parse(JSON.stringify(c));S.ck=c;S.t=t;S.rid=rid;S.hp=MAXHP;S.on=1;busy=0;sel=null;show('game');hud();renderInv();render();cicada(SC[S.sc].out?.14:.05);msg('（回到這一幕的開始。你還活著——暫時。）');save(1);if(SC[S.sc].again)SC[S.sc].again()}
+function card(a,b){const e=$('#card');e.querySelector('h1').textContent=a;e.querySelector('p').textContent=b;e.classList.remove('on');void e.offsetWidth;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),3500);return sl(3300)}
+
+/* ================= 計時選擇 / 躲藏 / 追逐 ================= */
+function timed(text,opts,ms){return new Promise(r=>panel('',`<p class="pd" style="font-size:18px;color:#e6e0d4">${text}</p><div class="tbar"><i style="animation-duration:${ms}ms"></i></div>${opts.map((o,i)=>`<button class="ch" data-i="${i}">${o}</button>`).join('')}`,(el,done)=>{const T=setTimeout(()=>{done();r(-1)},ms);el.querySelectorAll('.ch').forEach(b=>b.onclick=()=>{clearTimeout(T);done();r(+b.dataset.i)})},{noClose:true}))}
+async function chase(steps,ms=4200){for(const [t,o,c] of steps){let r;do{document.body.classList.add('sk');setTimeout(()=>document.body.classList.remove('sk'),400);nz(.4,.4,300,.5);r=await timed(t,o,ms);if(r!==c){await hurt(r<0?'太慢了。她就在你背後。':'錯了。冰冷的手指，擦過你的後頸。');if(!S.on)return false}}while(r!==c)}return true}
+function hide(sec,text='別動。',sub='不要碰螢幕。連呼吸都不要。'){return new Promise(async res=>{const h=$('#hide');busy++;
+ const run=()=>new Promise(r=>{$('#hidet').textContent=text;$('#hides').textContent=sub;const b=$('#hideb');b.style.animation='none';void b.offsetWidth;b.style.animation=`tb ${sec}s linear forwards`;h.classList.add('on');let ok=true;
+  const f=()=>{ok=false;cleanup();r(false)};const cleanup=()=>{clearTimeout(T);h.removeEventListener('pointerdown',f);document.removeEventListener('keydown',f)};
+  setTimeout(()=>{h.addEventListener('pointerdown',f);document.addEventListener('keydown',f)},350);
+  const steps=setInterval(()=>{if(!h.classList.contains('on'))return clearInterval(steps);nz(.1,.2,400,.8)},1300);
+  const T=setTimeout(()=>{cleanup();clearInterval(steps);r(ok)},sec*1000)});
+ while(true){const ok=await run();h.classList.remove('on');if(ok)break;await hurt('你動了。她轉過頭，看著你。');if(!S.on)return}
+ busy=Math.max(0,busy-1);res(true)})}
+</script>
+
+<script>
+/* ================= 角色立繪（半寫實） ================= */
+const CH={
+ ci:{skin:['#f8e6d8','#ecc9b2','#c18e74'],hair:['#4a3c36','#17110f','#050303'],iris:['#8a6448','#2c1a10'],st:'bangs',of:'hoodie',lip:['#d79a92','#b8706b'],fem:1},
+ yj:{skin:['#fae7da','#efcdb6','#c8957a'],hair:['#6b4a34','#2c1c12','#0d0705'],iris:['#9a6e4e','#381f12'],st:'pony',of:'sailor',lip:['#de928c','#c06d69'],fem:1},
+ yu:{skin:['#f2dac7','#deb89e','#ad7c62'],hair:['#3a3a44','#121216','#020203'],iris:['#62503e','#1d130c'],st:'boy',of:'gakuran',lip:['#c99087','#a5706a'],fem:0},
+ si:{skin:['#f1f4f2','#d4dbd8','#929e9b'],hair:['#2a2f31','#0a0c0d','#000'],iris:['#7b8284','#2c3133'],st:'wet',of:'old',lip:['#b9b0b2','#958a8c'],fem:1},
+ her:{skin:['#cfd6ca','#98a494','#566354'],hair:['#1b1e1b','#060706','#000'],iris:['#f2f2ea','#8c8c86'],st:'ghost',of:'dress',lip:['#5e4a4c','#3a2a2c'],fem:1}
+};
+const MD={
+ 'ci-fear':{e:{h:14,g:[-2,0]},b:'up',m:'fear'},
+ 'ci-calm':{e:{h:12},b:'n',m:'calm'},
+ 'yj-calm':{e:{h:12,g:[1,0]},b:'n',m:'smile'},
+ 'yj-poss':{e:{h:13,t:'pin'},b:'down',m:'grin'},
+ 'yu-calm':{e:{h:10.5,g:[1,1]},b:'n',m:'flat'},
+ 'si-calm':{e:{h:12,t:'dull'},b:'sad',m:'shut'},
+ 'her-scream':{e:{h:19,t:'white'},b:'up',m:'scream'}
+};
+const FACE='M100 168C98 118 120 92 150 92C180 92 202 118 200 168C200 206 186 236 164 250C157 255 143 255 136 250C114 236 100 206 100 168Z';
+function eye(cx,cy,fl,e,P,k,c){const h=e.h,w=15,t=e.t||'n',gx=(e.g?e.g[0]:0)*fl,gy=e.g?e.g[1]:0;
+ const sh=`M${-w} 0Q-5 ${-h} 3 ${-h*.9}Q11 ${-h*.62} ${w} 1Q3 ${h*.56} ${-w} 0Z`;
+ let s=`<g transform="translate(${cx} ${cy}) scale(${fl} 1)"><clipPath id="${P}c${k}"><path d="${sh}"/></clipPath>`;
+ s+=`<ellipse cx="0" cy="-2" rx="${w+6}" ry="${h*.9+5}" fill="${c.skin[2]}" opacity=".28" filter="url(#bl3)"/>`;
+ const scl=t==='white'?'#f2f2ea':t==='pin'?'#e9e2dc':t==='dull'?'#dfe2e0':'#f6f2ec';
+ s+=`<path d="${sh}" fill="${scl}"/><g clip-path="url(#${P}c${k})">`;
+ if(t==='white'){s+=`<circle cx="${gx}" cy="${gy-1}" r="2.2" fill="#111"/>`}
+ else{const r=t==='pin'?7.5:7.6;s+=`<circle cx="${gx}" cy="${gy-1.5}" r="${r}" fill="url(#${P}i)"/><circle cx="${gx}" cy="${gy-1.5}" r="${r}" fill="none" stroke="#120b08" stroke-width="1.3" opacity=".7"/>`;
+  s+=`<circle cx="${gx}" cy="${gy-1.5}" r="${t==='pin'?1.4:3.4}" fill="#070404"/>`;
+  if(t!=='dull')s+=`<circle cx="${gx-2.6*fl}" cy="${gy-4.4}" r="1.9" fill="#fff" opacity=".9"/><circle cx="${gx+2.4*fl}" cy="${gy+1.2}" r=".9" fill="#fff" opacity=".6"/>`}
+ s+=`<ellipse cx="0" cy="${-h*.95}" rx="${w+3}" ry="${h*.55}" fill="#3a2016" opacity=".32"/></g>`;
+ s+=`<path d="M${-w-1} 1Q-5 ${-h-1.6} 3 ${-h*.9-1.3}Q11 ${-h*.62-1} ${w+2} 0" fill="none" stroke="#1a0f0b" stroke-width="${c.fem?2.8:2.2}" stroke-linecap="round"/>`;
+ if(c.fem)s+=`<path d="M${w+1} 0l5 -3.5M${w-2} ${-h*.45}l4.5 -4.5M${w-6} ${-h*.75}l3 -4.5" stroke="#1a0f0b" stroke-width="1.2" stroke-linecap="round"/>`;
+ s+=`<path d="M${-w+2} ${-h-3.5}Q-4 ${-h-8} 4 ${-h-7}Q12 ${-h-5} ${w} ${-h*.3-4}" fill="none" stroke="#7a4f40" stroke-width="1" opacity=".5"/>`;
+ s+=`<path d="M${-w+3} 2Q2 ${h*.64} ${w-1} 2" fill="none" stroke="#86584a" stroke-width=".9" opacity=".5"/>`;
+ if(t==='dull'||t==='white'||t==='pin')s+=`<ellipse cx="1" cy="${h*.62+4}" rx="${w-1}" ry="4" fill="#4a3a52" opacity=".3" filter="url(#bl2)"/>`;
+ return s+'</g>'}
+function brows(b,c){const col=c.hair[1];const L={n:'M113 154Q126 146 142 150L141 154Q127 151 114 158Z',up:'M113 153Q127 150 142 144L142 149Q128 154 114 157Z',down:'M113 149Q127 150 142 156L141 159Q127 155 114 153Z',sad:'M113 156Q127 152 142 147L142 151Q128 156 114 159Z'}[b];
+ return `<path d="${L}" fill="${col}" opacity=".88"/><path d="${L}" fill="${col}" opacity=".88" transform="translate(300 0) scale(-1 1)"/>`}
+function mouth(m,c){const [l1,l2]=c.lip;switch(m){
+ case'fear':return`<path d="M137 229Q150 222 163 229Q161 243 150 245Q139 243 137 229Z" fill="#3b1414"/><path d="M141 229Q150 227 159 229L158 232Q150 231 142 232Z" fill="#eee6df"/><path d="M135 229Q143 223 150 226Q157 223 165 229" fill="none" stroke="${l2}" stroke-width="2.4"/><path d="M139 241Q150 249 161 241" fill="none" stroke="${l1}" stroke-width="2.6" opacity=".8"/>`;
+ case'smile':return`<path d="M134 229Q150 236 166 229Q150 233 134 229Z" fill="${l2}"/><path d="M137 230Q150 241 163 230Q150 234 137 230Z" fill="${l1}"/><path d="M133 228Q150 236 167 228" fill="none" stroke="#7a403c" stroke-width="1.3"/><ellipse cx="150" cy="235" rx="5" ry="1.6" fill="#fff" opacity=".25"/>`;
+ case'grin':return`<path d="M128 226Q150 244 172 226Q150 236 128 226Z" fill="#2a0e0e"/><path d="M128 226Q150 244 172 226" fill="none" stroke="${l2}" stroke-width="2"/>`;
+ case'scream':return`<path d="M126 222Q150 208 174 222Q180 268 150 280Q120 268 126 222Z" fill="#100505"/><path d="M126 222Q150 208 174 222" fill="none" stroke="${l2}" stroke-width="3"/>`;
+ case'shut':return`<path d="M137 231Q150 229 163 231" fill="none" stroke="${l2}" stroke-width="2.2" stroke-linecap="round"/><path d="M140 232Q150 238 160 232" fill="none" stroke="${l1}" stroke-width="2.4" opacity=".7"/>`;
+ default:return`<path d="M136 230Q143 226 150 228Q157 226 164 230Q150 233 136 230Z" fill="${l2}"/><path d="M139 231Q150 239 161 231Q150 234 139 231Z" fill="${l1}"/><path d="M136 230Q150 233 164 230" fill="none" stroke="#6b3f3a" stroke-width="1.1"/>`}}
+function hairBack(st,P){const f=`fill="url(#${P}h)"`;return{
+ bangs:`<path d="M90 160Q84 82 150 74Q216 82 210 160Q216 250 238 344Q196 358 150 352Q104 358 62 344Q84 250 90 160Z" ${f}/>`,
+ pony:`<path d="M96 162Q92 84 150 78Q208 84 204 162Q206 196 196 214L104 214Q94 196 96 162Z" ${f}/><path d="M192 116Q240 140 232 226Q226 286 244 334Q206 312 202 254Q198 200 184 150Z" ${f}/>`,
+ boy:`<path d="M96 170Q90 90 150 82Q210 90 204 170Q198 142 190 132L110 132Q102 142 96 170Z" ${f}/>`,
+ wet:`<path d="M88 160Q82 80 150 72Q218 80 212 160Q218 262 232 382Q190 392 150 384Q110 392 68 382Q82 262 88 160Z" ${f}/>`,
+ ghost:`<path d="M66 170Q56 66 150 56Q244 66 234 170Q250 280 256 400L44 400Q50 280 66 170Z" ${f}/>`}[st]}
+function hairFront(st,P,c){const f=`fill="url(#${P}h)"`,hl=c.hair[0];const strands=(a)=>a.map(d=>`<path d="${d}" fill="none" stroke="${hl}" stroke-width="1.3" opacity=".35"/>`).join('');return{
+ bangs:`<path d="M99 152Q96 94 150 88Q204 94 201 152L195 158L188 146L180 159L170 147L162 160L151 148L141 160L132 147L123 159L114 146L106 158Z" ${f}/><path d="M100 140Q90 200 97 262Q101 304 90 344L111 344Q119 292 114 240Q110 190 113 150Z" ${f}/><path d="M200 140Q210 200 203 262Q199 304 210 344L189 344Q181 292 186 240Q190 190 187 150Z" ${f}/>`+strands(['M126 92Q112 120 110 150','M174 92Q190 120 192 150','M150 88Q146 120 148 150','M104 170Q98 230 100 300','M196 170Q202 230 200 300']),
+ pony:`<path d="M99 160Q94 90 152 84Q208 90 203 152Q190 116 158 110Q138 132 116 134Q102 142 99 160Z" ${f}/><path d="M199 138Q208 182 201 220L194 220Q199 182 190 146Z" ${f}/>`+strands(['M120 100Q140 92 176 100','M110 130Q130 118 156 112']),
+ boy:`<path d="M97 162Q92 88 150 82Q208 88 203 162L197 150L190 160L183 140L172 156L164 136L154 154L146 134L136 154L128 138L120 158L112 142L104 160Z" ${f}/>`+strands(['M130 90Q122 110 124 140','M168 90Q178 110 176 140']),
+ wet:`<path d="M98 150Q95 92 150 86Q205 92 202 150L199 190L191 160L185 200L177 157L170 176L161 150L149 172L141 151L132 182L124 156L116 194L110 158L104 184Z" ${f}/><path d="M100 140Q88 210 96 290Q100 340 86 384L110 384Q118 330 114 260Q110 200 114 150Z" ${f}/><path d="M200 140Q212 210 204 290Q200 340 214 384L190 384Q182 330 186 260Q190 200 186 150Z" ${f}/>`+strands(['M133 168Q128 210 134 246','M171 162Q176 200 168 238'].map(x=>x))+`<path d="M128 200l0 14M170 214l0 10" stroke="#cfe" stroke-width="1" opacity=".35"/>`,
+ ghost:`<path d="M86 150Q88 76 150 70Q212 76 214 150Q216 260 222 400L180 400Q178 300 180 230Q181 180 177 122L159 120Q155 180 157 230Q159 300 157 400L78 400Q84 260 86 150Z" ${f}/>`+strands(['M110 90Q96 200 100 380','M200 90Q206 200 204 380','M150 70Q140 100 152 120'])}[st]}
+function outfit(of,P){switch(of){
+ case'hoodie':return`<path d="M22 400Q30 316 104 294Q128 286 150 298Q172 286 196 294Q270 316 278 400Z" fill="url(#${P}o)"/><path d="M134 262L150 300L140 306Z M166 262L150 300L160 306Z" fill="#6d5a5a"/><path d="M136 270l8 18M164 270l-8 18" stroke="#3b2c2e" stroke-width="2"/><path d="M102 296Q108 266 134 258L150 300L166 258Q192 266 198 296Q178 320 150 318Q122 320 102 296Z" fill="#aeb2ab" stroke="#8b8f88" stroke-width="2"/><path d="M140 314L136 364M160 314L164 364" stroke="#e8e8e2" stroke-width="2.4"/><rect x="133" y="362" width="6" height="12" rx="2" fill="#9a9d96"/><rect x="161" y="362" width="6" height="12" rx="2" fill="#9a9d96"/><g fill="#5d5a50" opacity=".28" filter="url(#bl2)"><ellipse cx="80" cy="360" rx="14" ry="8"/><ellipse cx="226" cy="340" rx="10" ry="6"/><ellipse cx="190" cy="380" rx="16" ry="6"/></g><path d="M60 340Q70 330 84 336M212 360Q224 350 238 356" stroke="#7c7f78" stroke-width="2" fill="none" opacity=".6"/>`;
+ case'sailor':return`<path d="M22 400Q30 318 104 296L150 310L196 296Q270 318 278 400Z" fill="url(#${P}o)"/><path d="M104 296L150 344L196 296Q236 304 258 332L150 366L42 332Q64 304 104 296Z" fill="#1d2944"/><path d="M58 330L150 360L242 330" fill="none" stroke="#e9ecf0" stroke-width="2.5"/><path d="M150 344L136 356L142 372L150 360L158 372L164 356Z" fill="#b3202a"/><circle cx="150" cy="352" r="5" fill="#8f1820"/>`;
+ case'gakuran':return`<path d="M22 400Q30 316 104 294L150 304L196 294Q270 316 278 400Z" fill="url(#${P}o)"/><path d="M126 262L174 262L178 300L150 310L122 300Z" fill="#141826"/><path d="M126 264L174 264" stroke="#e8e8e8" stroke-width="3"/><path d="M150 310L150 400" stroke="#0a0d16" stroke-width="2"/><circle cx="150" cy="332" r="5" fill="#c9a255"/><circle cx="150" cy="370" r="5" fill="#c9a255"/>`;
+ case'old':return`<path d="M22 400Q30 316 104 294L150 310L196 294Q270 316 278 400Z" fill="url(#${P}o)"/><path d="M104 294L150 330L130 342Z M196 294L150 330L170 342Z" fill="#c9ccc8"/><path d="M142 330L150 372L158 330Z" fill="#2e3440"/><g fill="#6b7570" opacity=".35" filter="url(#bl3)"><ellipse cx="90" cy="360" rx="26" ry="12"/><ellipse cx="210" cy="380" rx="22" ry="14"/><ellipse cx="160" cy="390" rx="18" ry="8"/></g>`;
+ default:return`<path d="M22 400Q34 312 104 292L150 302L196 292Q266 312 278 400Z" fill="url(#${P}o)"/><g fill="#2a2420" opacity=".45" filter="url(#bl3)"><ellipse cx="110" cy="350" rx="24" ry="12"/><ellipse cx="200" cy="370" rx="20" ry="16"/></g>`}}
+const OC={hoodie:['#d4d7d0','#9a9e97'],sailor:['#f4f4f0','#c9ccd0'],gakuran:['#283048','#141a2a'],old:['#e9ebe7','#a9b0ac'],dress:['#c9ccc2','#6f746c']};
+function portrait(key){const [id]=key.split('-'),c=CH[id],md=MD[key],P='p'+key.replace('-',''),sk=c.skin,hr=c.hair,oc=OC[c.of];
+ let s=`<defs><radialGradient id="${P}s" cx=".46" cy=".36" r=".72"><stop offset="0" stop-color="${sk[0]}"/><stop offset=".6" stop-color="${sk[1]}"/><stop offset="1" stop-color="${sk[2]}"/></radialGradient>
+ <linearGradient id="${P}h" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" stop-color="${hr[0]}"/><stop offset=".4" stop-color="${hr[1]}"/><stop offset="1" stop-color="${hr[2]}"/></linearGradient>
+ <radialGradient id="${P}i" cx=".45" cy=".4" r=".6"><stop offset="0" stop-color="${c.iris[0]}"/><stop offset=".72" stop-color="${c.iris[1]}"/><stop offset="1" stop-color="#0b0605"/></radialGradient>
+ <linearGradient id="${P}o" x1="0" y1="0" x2=".2" y2="1"><stop offset="0" stop-color="${oc[0]}"/><stop offset="1" stop-color="${oc[1]}"/></linearGradient></defs>`;
+ s+=`<g${id==='si'?' opacity=".93"':''}>`+hairBack(c.st,P);
+ s+=`<path d="M133 232L131 296Q150 308 169 296L167 232Z" fill="url(#${P}s)"/><ellipse cx="150" cy="250" rx="16" ry="8" fill="${sk[2]}" opacity=".8" filter="url(#bl3)"/>`;
+ s+=outfit(c.of,P);
+ s+=`<ellipse cx="101" cy="176" rx="8" ry="15" fill="${sk[1]}"/><ellipse cx="199" cy="176" rx="8" ry="15" fill="${sk[1]}"/>`;
+ s+=`<path d="${FACE}" fill="url(#${P}s)"/>`;
+ s+=`<path d="M184 116Q206 168 197 210Q187 240 164 251Q186 220 190 168Z" fill="${sk[2]}" opacity=".38" filter="url(#bl4)"/><path d="M104 150Q150 166 196 150L196 164Q150 178 104 164Z" fill="${sk[2]}" opacity=".3" filter="url(#bl3)"/>`;
+ if(id!=='si'&&id!=='her')s+=`<ellipse cx="123" cy="202" rx="13" ry="7" fill="#e8958a" opacity=".25" filter="url(#bl4)"/><ellipse cx="177" cy="202" rx="13" ry="7" fill="#e8958a" opacity=".25" filter="url(#bl4)"/>`;
+ s+=brows(md.b,c)+eye(128,173,-1,md.e,P,'L',c)+eye(172,173,1,md.e,P,'R',c);
+ s+=`<path d="M147 180Q143 198 141 210" stroke="${sk[2]}" stroke-width="3.2" fill="none" opacity=".45" filter="url(#bl2)"/><path d="M140 212Q150 219 160 212" stroke="${sk[2]}" stroke-width="2.2" fill="none" opacity=".65" filter="url(#bl1)"/><ellipse cx="144.5" cy="214" rx="2.7" ry="1.5" fill="#5e352c" opacity=".55"/><ellipse cx="155.5" cy="214" rx="2.7" ry="1.5" fill="#5e352c" opacity=".55"/><ellipse cx="151" cy="204" rx="3" ry="5" fill="#fff" opacity=".2"/><ellipse cx="150" cy="222" rx="9" ry="2.5" fill="${sk[2]}" opacity=".3" filter="url(#bl1)"/>`;
+ s+=mouth(md.m,c);
+ if(id==='her')s+=`<path d="M120 196l6 14 -3 10M182 200l-5 12 4 12M140 248l4 16" stroke="#2c3a2c" stroke-width="1.2" fill="none" opacity=".7"/>`;
+ s+=hairFront(c.st,P,c);
+ if(id==='si'||id==='her')s+=`<g stroke="#d8eef0" stroke-width="1.2" opacity=".45"><path d="M118 300v18M196 320v14M104 260v12M210 280v16"/></g>`;
+ return s+'</g>'}
+function buildPortraits(){const d=$('#defs defs');let s='';for(const k in MD)s+=`<symbol id="P-${k}" viewBox="0 0 300 400">${portrait(k)}</symbol>`;d.insertAdjacentHTML('beforeend',s)}
+
+/* ================= 物品圖示 ================= */
+function icon(t){const b=c=>`<svg viewBox="0 0 48 48">${c}</svg>`;switch(t){
+ case'key':return b('<circle cx="15" cy="24" r="8" fill="none" stroke="#c9a255" stroke-width="4"/><path d="M23 24h18M35 24v6M40 24v5" stroke="#c9a255" stroke-width="4" stroke-linecap="round"/><rect x="6" y="34" width="14" height="8" rx="2" fill="#e8e0c8"/>');
+ case'bulb':return b('<path d="M24 6a11 11 0 0 1 7 19.5V31H17v-5.5A11 11 0 0 1 24 6Z" fill="#b3202a" opacity=".9"/><path d="M20 22l4-6 4 6" stroke="#300" fill="none" stroke-width="1.5"/><rect x="17" y="31" width="14" height="9" fill="#9a9a9a"/><path d="M17 34h14M17 37h14" stroke="#666"/>');
+ case'chalk':return b('<rect x="8" y="20" width="30" height="9" rx="3" fill="#f2f0e8" transform="rotate(-25 24 24)"/><path d="M33 13l5-2" stroke="#ddd" stroke-width="3"/>');
+ case'roll':return b('<rect x="9" y="7" width="30" height="35" rx="2" fill="#2f4b78"/><rect x="13" y="12" width="22" height="6" fill="#e8e0c8"/><path d="M13 24h22M13 29h22M13 34h16" stroke="#9fb3d4"/>');
+ case'book':return b('<rect x="10" y="7" width="28" height="35" rx="2" fill="#e9e3d2"/><path d="M15 15h18M15 21h18M15 27h18M15 33h12" stroke="#7a1a1a" stroke-width="1.4"/><rect x="10" y="7" width="4" height="35" fill="#b3202a"/>');
+ case'shell':return b('<path d="M24 8c8 0 12 7 11 15-1 9-5 16-11 18-6-2-10-9-11-18-1-8 3-15 11-15Z" fill="#9a6a34"/><path d="M24 10v28M18 18c3 3 9 3 12 0M17 26c4 3 10 3 14 0" stroke="#5a3a18" stroke-width="1.5" fill="none"/><path d="M24 9l-2 12h4Z" fill="#2a1a0a"/>');
+ case'tape':return b('<rect x="5" y="12" width="38" height="24" rx="3" fill="#2a2a2a"/><rect x="10" y="16" width="28" height="8" fill="#e8e0c8"/><circle cx="16" cy="29" r="4" fill="#ddd"/><circle cx="32" cy="29" r="4" fill="#ddd"/>');
+ case'photo':return b('<rect x="6" y="9" width="36" height="30" fill="#efe6cf"/><rect x="9" y="12" width="30" height="21" fill="#8a7458"/><g fill="#3a2c1c"><circle cx="15" cy="20" r="2.5"/><circle cx="22" cy="20" r="2.5"/><circle cx="29" cy="20" r="2.5"/><circle cx="35" cy="22" r="2.5" fill="#d8c8a0"/></g><path d="M12 19l6 2M19 19l6 2M26 19l6 2" stroke="#000"/>');
+ case'pliers':return b('<path d="M14 40L26 22M34 40L22 22" stroke="#8a4a2a" stroke-width="5" stroke-linecap="round"/><path d="M22 22l-4-14 6 6 6-6-4 14" fill="#7a7f84"/><circle cx="24" cy="22" r="3" fill="#444"/>');
+ case'fork':return b('<path d="M18 6v18a6 6 0 0 0 12 0V6" fill="none" stroke="#d9dde0" stroke-width="4"/><path d="M24 30v14" stroke="#d9dde0" stroke-width="4"/><circle cx="24" cy="44" r="3" fill="#aaa"/>');
+ case'card':return b('<rect x="5" y="11" width="38" height="26" rx="3" fill="#dfe7ea"/><rect x="9" y="15" width="11" height="14" fill="#9aa6aa"/><circle cx="14.5" cy="20" r="3" fill="#444"/><path d="M24 18h15M24 23h12M24 28h14" stroke="#556" stroke-width="2"/><path d="M12 25h5" stroke="#c00" stroke-width="1.5"/>');
+ case'rope':return b('<path d="M8 30c6-14 12 6 18-6s10 8 14-4" fill="none" stroke="#c4202a" stroke-width="3.5" stroke-linecap="round"/><circle cx="24" cy="26" r="4" fill="#9a1820"/>');
+ default:return b('<circle cx="24" cy="24" r="12" fill="#888"/>')}}
+</script>
+
+<script>
+/* ================= 場景繪圖工具 ================= */
+let seed=1;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+function dk(h,k){const n=parseInt(h.slice(1),16),f=v=>Math.round(v*k);return'#'+[n>>16,(n>>8)&255,n&255].map(v=>f(v).toString(16).padStart(2,'0')).join('')}
+const T=(x,y,t,sz=14,fill='#ccc',ex='')=>`<text x="${x}" y="${y}" font-size="${sz}" fill="${fill}" font-family="Noto Serif TC,serif" text-anchor="middle" ${ex}>${t}</text>`;
+const HW=(x,y,t,sz=18,fill='#ddd',ex='')=>`<text x="${x}" y="${y}" font-size="${sz}" fill="${fill}" font-family="LXGW WenKai TC,serif" text-anchor="middle" ${ex}>${t}</text>`;
+function grime(x0,y0,w,h,n=14){let s='<g filter="url(#bl8)" opacity=".55">';for(let i=0;i<n;i++)s+=`<ellipse cx="${x0+rnd()*w}" cy="${y0+rnd()*h}" rx="${8+rnd()*34}" ry="${6+rnd()*22}" fill="${rnd()<.75?'#0b0f0e':'#a9c0b6'}" opacity="${.25+rnd()*.5}"/>`;return s+'</g>'}
+function drips(x,y,n=4,col='#2a1a14'){let s='';for(let i=0;i<n;i++){const xx=x+rnd()*60,l=20+rnd()*60;s+=`<path d="M${xx} ${y}v${l}" stroke="${col}" stroke-width="${1+rnd()*2}" opacity=".5"/>`}return s}
+/* 房間（一點透視） */
+function roomBox(o={},sd=3){seed=sd;const w=o.wall||'#56695f',l=o.low||'#2e423a',f=o.floor||'#1c201e',c=o.ceil||'#121716',sw=dk(w,.68),sl=dk(l,.68);
+ let s=`<rect width="800" height="500" fill="#000"/><polygon points="0,-8 800,-8 660,70 140,70" fill="${c}"/>
+ <polygon points="140,70 660,70 660,370 140,370" fill="${w}"/><polygon points="140,250 660,250 660,370 140,370" fill="${l}"/>
+ <polygon points="0,-8 140,70 140,370 0,453" fill="${sw}"/><polygon points="0,269 140,250 140,370 0,453" fill="${sl}"/>
+ <polygon points="800,-8 660,70 660,370 800,453" fill="${sw}"/><polygon points="800,269 660,250 660,370 800,453" fill="${sl}"/>
+ <polygon points="0,453 140,370 660,370 800,453 800,500 0,500" fill="${f}"/>`;
+ for(let x=140;x<=660;x+=52)s+=`<line x1="${x}" y1="370" x2="${400+(x-400)*1.84}" y2="500" stroke="#000" stroke-opacity=".35"/>`;
+ [384,402,428,462].forEach(y=>s+=`<line x1="0" y1="${y}" x2="800" y2="${y}" stroke="#000" stroke-opacity=".3"/>`);
+ s+=`<path d="M140 250H660M0 269L140 250M800 269L660 250" stroke="#0007" stroke-width="3"/>`+grime(140,70,520,300)+grime(0,40,140,380,5)+grime(660,40,140,380,5)+drips(200,250,5)+drips(520,250,4);
+ if(o.lamp!==0)s+=`<g class="flick"><rect x="330" y="24" width="140" height="7" rx="3" fill="#d6ece4"/><rect x="300" y="14" width="200" height="30" fill="#d6ece4" opacity=".14" filter="url(#bl8)"/></g>`;
+ return s}
+/* 房間側牆上的門（hr：高度比例） */
+function sideDoor(side,x1,x2,hr=.8){const top=x=>side==='L'?70-(140-x)*78/140:70-(x-660)*78/140,bot=x=>side==='L'?370+(140-x)*83/140:370+(x-660)*83/140,dt=x=>bot(x)-hr*(bot(x)-top(x));
+ const p=[[x1,bot(x1)],[x1,dt(x1)],[x2,dt(x2)],[x2,bot(x2)]];const ys=p.map(q=>q[1]);return{pts:p.map(q=>q.join(',')).join(' '),r:[x1,Math.min(...ys),x2-x1,Math.max(...ys)-Math.min(...ys)]}}
+/* 走廊 */
+function cTop(x){return-20+x*210/340}function cBot(x){return 520-x*230/340}
+function cDoor(side,x1,x2,hr=.74){const f=x=>side==='L'?x:800-x;const dt=x=>cBot(x)-hr*(cBot(x)-cTop(x));const p=[[f(x1),cBot(x1)],[f(x1),dt(x1)],[f(x2),dt(x2)],[f(x2),cBot(x2)]];const xs=p.map(q=>q[0]),ys=p.map(q=>q[1]);return{pts:p.map(q=>q.join(',')).join(' '),r:[Math.min(...xs),Math.min(...ys),Math.max(...xs)-Math.min(...xs),Math.max(...ys)-Math.min(...ys)],c:[(Math.min(...xs)+Math.max(...xs))/2,Math.min(...ys)]}}
+function doorArt(d,label,o={}){const col=o.col||'#4a3624';let s=`<polygon points="${d.pts}" fill="${col}" stroke="#140c06" stroke-width="3"/>`;
+ if(o.open)s=`<polygon points="${d.pts}" fill="#020303" stroke="#140c06" stroke-width="3"/>`;
+ if(o.boards)s+=`<g stroke="#6b5136" stroke-width="9"><line x1="${d.r[0]}" y1="${d.r[1]+d.r[3]*.3}" x2="${d.r[0]+d.r[2]}" y2="${d.r[1]+d.r[3]*.5}"/><line x1="${d.r[0]}" y1="${d.r[1]+d.r[3]*.65}" x2="${d.r[0]+d.r[2]}" y2="${d.r[1]+d.r[3]*.45}"/></g>`;
+ if(label){const fs=Math.max(9,Math.min(15,d.r[2]/5));s+=`<rect x="${d.c?d.c[0]-fs*2.6:d.r[0]+d.r[2]/2-fs*2.6}" y="${d.r[1]-fs*1.6}" width="${fs*5.2}" height="${fs*1.4}" fill="#e7e2d4" stroke="#333"/>`+T(d.c?d.c[0]:d.r[0]+d.r[2]/2,d.r[1]-fs*.5,label,fs,'#222')}
+ return s}
+function corridor(o={},sd=5){seed=sd;const w=o.wall||'#56695f',l=o.low||'#2e423a',sw=dk(w,.72),sl=dk(l,.72);
+ const wy=x=>cBot(x)-.4*(cBot(x)-cTop(x));
+ let s=`<rect width="800" height="500" fill="#000"/><polygon points="0,-20 340,190 460,190 800,-20" fill="#111615"/>
+ <polygon points="0,-20 340,190 340,290 0,520" fill="${sw}"/><polygon points="0,${wy(0)} 340,${wy(340)} 340,290 0,520" fill="${sl}"/>
+ <polygon points="800,-20 460,190 460,290 800,520" fill="${sw}"/><polygon points="800,${wy(0)} 460,${wy(340)} 460,290 800,520" fill="${sl}"/>
+ <polygon points="0,520 340,290 460,290 800,520" fill="${o.floor||'#1b1f1d'}"/><rect x="340" y="190" width="120" height="100" fill="${dk(w,.5)}"/>`;
+ for(let i=0;i<9;i++){const x=i*100;s+=`<line x1="${400+(x-400)*.3}" y1="290" x2="${x}" y2="520" stroke="#000" stroke-opacity=".3"/>`}
+ [[60,.6],[180,.75],[280,.9]].forEach(([x,k])=>{const y=cTop(x)+18*k;s+=`<g class="flick"><rect x="${400-(400-x)*.55}" y="${y}" width="${(400-x)*1.1}" height="${7*k}" rx="3" fill="#d6ece4" opacity="${k}"/></g>`});
+ s+=grime(0,40,340,420,8)+grime(460,40,340,420,8)+drips(60,300,4)+drips(620,300,4)+`<rect x="372" y="196" width="56" height="16" fill="#0e6b3e"/>`+T(400,208,'安全門',10,'#bff5d4');
+ return s}
+/* 時鐘 */
+function clockFace(m,hands=true){let s='<circle r="100" fill="#ebe6d8" stroke="#2b2b2b" stroke-width="7"/><circle r="92" fill="none" stroke="#cfc7b2" stroke-width="2"/>';
+ for(let i=0;i<60;i++){const a=i*6,big=i%5===0;s+=`<line x1="0" y1="${big?-86:-90}" x2="0" y2="-95" stroke="#222" stroke-width="${i===0?7:big?3.5:1.2}" transform="rotate(${a})"/>`}
+ s+='<rect x="-6" y="-80" width="12" height="7" fill="#222"/>';
+ if(hands){const ma=(m%60)*6,ha=(m/60)*30;s+=`<line x1="0" y1="10" x2="0" y2="-52" stroke="#111" stroke-width="8" stroke-linecap="round" transform="rotate(${ha})"/><line x1="0" y1="14" x2="0" y2="-80" stroke="#111" stroke-width="4.5" stroke-linecap="round" transform="rotate(${ma})"/>`}
+ return s+'<circle r="6" fill="#111"/><circle r="100" fill="url(#cg)" opacity=".25"/>'}
+/* 道具 */
+const P={
+ mirror:(x,y,w,h,inner='')=>`<rect x="${x-8}" y="${y-8}" width="${w+16}" height="${h+16}" rx="4" fill="#2b1d13" stroke="#120a05" stroke-width="2"/><rect x="${x}" y="${y}" width="${w}" height="${h}" fill="url(#mg)"/>${inner}<path d="M${x+10} ${y+h*.7}L${x+w*.7} ${y+10}M${x+20} ${y+h*.85}L${x+w-6} ${y+30}" stroke="#fff" stroke-opacity=".08" stroke-width="10"/><rect x="${x+w/2-34}" y="${y-26}" width="68" height="16" fill="#8a6a2a"/>`+T(x+w/2,y-14,'正 衣 冠',11,'#1a1208'),
+ board:(x,y,w,h)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#6b4c2e" stroke="#2a1a0c" stroke-width="5"/><rect x="${x+10}" y="${y+10}" width="40" height="52" fill="#ddd6c4" transform="rotate(-4 ${x+30} ${y+36})"/><rect x="${x+58}" y="${y+8}" width="38" height="46" fill="#e4dfcf" transform="rotate(3 ${x+77} ${y+31})"/><rect x="${x+100}" y="${y+14}" width="30" height="40" fill="#cfc4a8" transform="rotate(-2 ${x+115} ${y+34})"/><path d="M${x+104} ${y+24}h20M${x+104} ${y+32}h16" stroke="#8d0d14" stroke-width="3"/><path d="M${x+112} ${y+54}v26" stroke="#7d0a10" stroke-width="2"/><rect x="${x+20}" y="${y+66}" width="56" height="24" fill="#e9e3d2"/>`,
+ shutter:(x,y,w,h,open)=>open?`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#020303"/><path d="${[0,1,2,3,4,5].map(i=>`M${x+10} ${y+h-10-i*30}h${w-20}`).join('')}" stroke="#2a2f2d" stroke-width="5"/><rect x="${x}" y="${y}" width="${w}" height="14" fill="#5b615e"/>`:`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#5f6663"/><path d="${Array.from({length:h/9|0},(_,i)=>`M${x} ${y+i*9+6}h${w}`).join('')}" stroke="#3a403e" stroke-width="2"/><rect x="${x+w/2-10}" y="${y+h-26}" width="20" height="14" fill="#2a2e2c"/>`,
+ window:(x,y,w,h,moon)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#0a1418" stroke="#2b2b28" stroke-width="6"/>${moon?`<circle cx="${x+w*.7}" cy="${y+h*.3}" r="10" fill="#d9e2d6" opacity=".8"/>`:''}<path d="M${x+w/2} ${y}v${h}M${x} ${y+h/2}h${w}" stroke="#2b2b28" stroke-width="5"/>`,
+ desk:(x,y,w=90,s=1)=>`<polygon points="${x},${y} ${x+w},${y} ${x+w+8*s},${y+16*s} ${x-8*s},${y+16*s}" fill="#7a5a36"/><rect x="${x-8*s}" y="${y+16*s}" width="${w+16*s}" height="${6*s}" fill="#4a341e"/><path d="M${x-2*s} ${y+22*s}v${34*s}M${x+w+2*s} ${y+22*s}v${34*s}" stroke="#555" stroke-width="${4*s}"/><rect x="${x+6*s}" y="${y+22*s}" width="${w-12*s}" height="${16*s}" fill="#3a2a18"/>`,
+ lockers:(x,y,cols,rows,cw,ch)=>{let s='';for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const n=r*cols+c+1,xx=x+c*cw,yy=y+r*ch;s+=`<rect x="${xx}" y="${yy}" width="${cw-3}" height="${ch-3}" fill="${n===17&&S.f.locker?'#0a0a0a':'#5d6563'}" stroke="#2c3230"/><path d="M${xx+6} ${yy+8}h${cw-15}M${xx+6} ${yy+12}h${cw-15}" stroke="#3a403e"/>`+T(xx+cw/2-1,yy+ch-8,n,10,'#ddd')}return s},
+ shelf:(x,y,w,h,sd)=>{seed=sd;let s=`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="#3b2617" stroke="#1a0f08" stroke-width="4"/>`;const rows=5,rh=h/rows;for(let r=0;r<rows;r++){let xx=x+6;while(xx<x+w-10){const bw=7+rnd()*9,bh=rh*(.55+rnd()*.35);s+=`<rect x="${xx}" y="${y+r*rh+rh-bh-4}" width="${bw}" height="${bh}" fill="${['#5a2a22','#2a3a4a','#3a4a2a','#6a5a3a','#3a2a3a','#7a6a5a'][rnd()*6|0]}"${rnd()<.12?` transform="rotate(${-8-rnd()*10} ${xx} ${y+r*rh+rh-4})"`:''}/>`;xx+=bw+1}s+=`<rect x="${x}" y="${y+r*rh+rh-4}" width="${w}" height="5" fill="#24160c"/>`}return s},
+ bottle:(x,y,c,sc=1)=>`<g transform="translate(${x} ${y}) scale(${sc})"><rect x="-4" y="-34" width="8" height="8" fill="#222"/><path d="M-4 -26h8v4q8 4 8 12v26h-24v-26q0-8 8-12Z" fill="${c}" opacity=".88"/><path d="M-8 -6v18" stroke="#fff" stroke-opacity=".3" stroke-width="2"/><rect x="-9" y="0" width="18" height="10" fill="#efe9d8" opacity=".85"/></g>`,
+ safe:(x,y,w,h)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="6" fill="#2d3336" stroke="#111" stroke-width="3"/><circle cx="${x+w/2}" cy="${y+h/2}" r="${Math.min(w,h)/4}" fill="#111" stroke="#666" stroke-width="3"/><rect x="${x+w-14}" y="${y+h/2-14}" width="6" height="28" fill="#888"/>`,
+ shells:(x,y,w,h,n,sd)=>{seed=sd;let s='';for(let i=0;i<n;i++){const xx=x+rnd()*w,yy=y+rnd()*h,r=2+rnd()*3;s+=`<ellipse cx="${xx}" cy="${yy}" rx="${r}" ry="${r*1.4}" fill="${['#7a5228','#5a3a18','#9a6a34'][rnd()*3|0]}" transform="rotate(${rnd()*180} ${xx} ${yy})"/>`}return s},
+ si:(x,y,w,op=.95)=>`<use href="#P-si-calm" x="${x}" y="${y}" width="${w}" height="${w*4/3}" opacity="${op}"/>`
+};
+const SDEFS=`<defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4b5c63"/><stop offset=".5" stop-color="#1e292e"/><stop offset="1" stop-color="#36454b"/></linearGradient><radialGradient id="cg"><stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000"/></radialGradient><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#04080a"/><stop offset="1" stop-color="#18292b"/></linearGradient><radialGradient id="wellg" cx=".5" cy=".3" r=".7"><stop offset="0" stop-color="#3d4a44"/><stop offset="1" stop-color="#050706"/></radialGradient></defs>`;
+/* 室外：校門 / 後花園共用 */
+function outside(sd){seed=sd;let s=`<rect width="800" height="500" fill="url(#sky)"/><circle cx="660" cy="74" r="24" fill="#dbe3d8"/><circle cx="660" cy="74" r="80" fill="#dbe3d8" opacity=".07" filter="url(#bl8)"/>`;for(let i=0;i<40;i++)s+=`<circle cx="${rnd()*800}" cy="${rnd()*180}" r="${rnd()*1.2}" fill="#fff" opacity="${rnd()*.5}"/>`;return s}
+function tree(x,y,s=1){return`<path d="M${x} ${y}c-6-80 4-150-10-230M${x-4} ${y-150}c-30-30-70-40-110-30M${x-6} ${y-180}c40-30 80-30 110-10M${x-8} ${y-220}c-20-30-10-60 10-80" stroke="#0b100d" stroke-width="${14*s}" fill="none" stroke-linecap="round"/><path d="M${x} ${y}c-6-80 4-150-10-230" stroke="#0b100d" stroke-width="${26*s}" fill="none"/><g fill="#08100c" opacity=".95"><ellipse cx="${x-60}" cy="${y-250}" rx="110" ry="60"/><ellipse cx="${x+60}" cy="${y-230}" rx="90" ry="50"/><ellipse cx="${x-10}" cy="${y-290}" rx="90" ry="45"/></g>`}
+</script>
+
+<script>
+/* ================= 場景引擎 ================= */
+const SC={};
+const cur=()=>{const sc=SC[S.sc];return S.view==='b'&&sc.back?sc.back:sc};
+function render(){const sc=SC[S.sc],v=cur();
+ $('#art').innerHTML=SDEFS+v.art();
+ const sp=$('#spots');sp.innerHTML='';
+ v.spots().forEach(s=>{const b=document.createElement('button');b.className='hs'+(s.to||s.ex?' ex':'');const [x,y,w,h]=s.r;b.style.cssText=`left:${x/8}%;top:${y/5}%;width:${w/8}%;height:${h/5}%`;b.innerHTML=`<span class="lb">${s.l}</span>`;b.onclick=e=>{e.stopPropagation();act(s)};sp.append(b)});
+ $('#loc').textContent=S.act+'｜'+sc.name;$('#sname').textContent=(sc.area||'')+'・'+sc.name+(S.view==='b'?'（背後）':'');
+ $('#turnb').style.display=sc.back?'':'none';$('#turnb').textContent=S.view==='b'?'↪ 轉回前方':'↩ 回頭';
+ $('#fl').style.setProperty('--d',sc.dark??.9);hud();renderInv()}
+async function act(s){if(busy)return;ac();
+ if(sel){const u=s.u&&s.u[sel];if(u){const k=sel;sel=null;renderInv();await u(k);save();return}msg('這裡用不到「'+IT[sel].n+'」。');sel=null;renderInv();return}
+ if(s.to){const b=s.need&&s.need();if(b)return msg(b);return go(s.to)}
+ await s.a();save()}
+async function go(id){busy++;$('#scene').classList.add('fade');steps();await sl(400);S.sc=id;S.view='f';render();cicada(SC[id].out?.14:.05);$('#scene').classList.remove('fade');await sl(250);busy=Math.max(0,busy-1);
+ const sc=SC[id];if(!S.f['v_'+id]){S.f['v_'+id]=1;if(sc.first)await sc.first();else msg(sc.desc||'')}else msg(sc.desc||'');if(sc.enter&&S.on)await sc.enter();save()}
+$('#turnb').onclick=async e=>{e.stopPropagation();if(busy)return;const sc=SC[S.sc];if(!sc.back)return;busy++;whisper();$('#scene').classList.add('turn');await sl(250);S.view=S.view==='b'?'f':'b';render();await sl(260);$('#scene').classList.remove('turn');busy=Math.max(0,busy-1);
+ const v=cur();if(S.view==='b'&&v.first&&!S.f['vb_'+S.sc]){S.f['vb_'+S.sc]=1;await v.first()}else msg(v.desc||'')};
+(()=>{const sc=$('#scene');const mv=e=>{const r=sc.getBoundingClientRect();sc.style.setProperty('--x',(e.clientX-r.left)+'px');sc.style.setProperty('--y',(e.clientY-r.top)+'px')};sc.addEventListener('pointermove',mv);sc.addEventListener('pointerdown',mv);
+ const rs=()=>sc.style.setProperty('--r',Math.max(70,sc.clientWidth*.13)+'px');addEventListener('resize',rs);setTimeout(rs,50);new ResizeObserver(rs).observe(sc)})();
+setInterval(()=>{if(S&&S.on&&!busy&&!onTitle&&SC[S.sc].hall&&Math.random()<.3){const e=$('#shadow');e.classList.remove('go');void e.offsetWidth;e.classList.add('go');whisper()}},20000);
+
+/* ================= 序章：校門口 ================= */
+SC.gate={name:'校門口',area:'校外',out:1,dark:.88,
+ art:()=>{let s=outside(7)+`<polygon points="100,140 400,96 700,140" fill="#0a1110"/><rect x="110" y="140" width="580" height="210" fill="#0e1716"/>`;
+  for(let r=0;r<3;r++)for(let c=0;c<10;c++){const lit=r===0&&c===6;s+=`<rect x="${140+c*55}" y="${170+r*55}" width="34" height="34" fill="${lit?'#4a1216':'#152120'}" stroke="#070b0b" stroke-width="2"/>`;if(lit)s+=`<rect x="${125+c*55}" y="155" width="64" height="64" fill="#b11" opacity=".2" filter="url(#bl8)"/>`}
+  s+=`<rect x="300" y="104" width="200" height="28" fill="#1b2524" stroke="#0a0f0e"/>`+T(400,124,'千蟬國民中學',18,'#8a9c95')+`<rect y="350" width="800" height="150" fill="#090d0c"/>`+tree(60,430);
+  s+=`<rect x="0" y="300" width="248" height="118" fill="#2c312e"/><rect x="552" y="300" width="248" height="118" fill="#2c312e"/>`;
+  for(let y=312;y<418;y+=14)s+=`<path d="M0 ${y}H248M552 ${y}H800" stroke="#1a1e1c" stroke-width="2"/>`;
+  s+=`<rect x="238" y="236" width="24" height="182" fill="#3a3f3c"/><rect x="538" y="236" width="24" height="182" fill="#3a3f3c"/><rect x="262" y="258" width="276" height="8" fill="#3d423f"/><rect x="262" y="392" width="276" height="8" fill="#3d423f"/>`;
+  for(let x=272;x<536;x+=18)s+=`<path d="M${x} 250V412" stroke="#4b504d" stroke-width="4"/><path d="M${x-4} 254l4-12 4 12Z" fill="#4b504d"/>`;
+  s+=`<path d="M330 322Q400 352 470 322M335 340Q400 360 465 336" stroke="#6d6c64" stroke-width="5" fill="none" stroke-dasharray="9 4"/><rect x="389" y="340" width="24" height="28" rx="3" fill="#6d5226"/><path d="M393 340v-8a8 8 0 0 1 16 0v8" stroke="#888" stroke-width="3" fill="none"/>`;
+  if(S.f.ivy)s+=`<rect x="652" y="352" width="66" height="44" fill="#030303"/><path d="M652 352h66M652 370h20M690 382h28" stroke="#1a1e1c" stroke-width="3"/>`;
+  s+=`<g fill="#15241a">${S.f.ivy?'<ellipse cx="620" cy="350" rx="30" ry="40"/><ellipse cx="760" cy="360" rx="34" ry="44"/>':'<ellipse cx="660" cy="345" rx="50" ry="40"/><ellipse cx="710" cy="372" rx="52" ry="40"/><ellipse cx="640" cy="390" rx="36" ry="26"/>'}</g>`;
+  s+=`<rect x="44" y="262" width="126" height="156" fill="#2a3230" stroke="#111" stroke-width="3"/><polygon points="36,262 107,236 178,262" fill="#1c2220"/><rect x="58" y="282" width="98" height="56" fill="#0d1517" stroke="#3a403e" stroke-width="3"/>`+T(107,316,'21:42',16,'#d22','font-family="monospace"')+`<rect x="70" y="352" width="34" height="26" fill="#4a3a20" stroke="#111"/><circle cx="96" cy="365" r="3" fill="#c9a255"/>`+T(107,256,'警衛室',10,'#aaa');
+  return s+`<rect y="418" width="800" height="82" fill="#070a09"/>`},
+ spots:()=>[
+  {r:[245,236,310,180],l:'校門',a:()=>msg('鐵門上纏著好幾圈鐵鍊，掛鎖早就鏽死了。……鏽，是從裡面往外長的。')},
+  {r:[290,100,220,40],l:'校名牌',a:()=>{note('gate','校名牌下的刻字','有人用指甲刻了一行小字：「聽見有人叫你，不要回頭。」');msg('校名牌下面，有人用指甲刻了一行小字：「聽見有人叫你，不要回頭。」')}},
+  {r:[455,160,64,64],l:'亮著的窗',a:()=>msg('二樓有一扇窗透出暗紅色的光。你盯著它看——窗簾，動了一下。')},
+  {r:[40,236,140,182],l:'警衛室',a:async()=>{if(S.f.booth)return msg('鑰匙箱開著，裡面已經空了。');if(await boothPanel()){S.f.booth=1;get('pliers');await say(['鑰匙箱「喀」地彈開。裡面沒有鑰匙，只有一把生鏽的鐵鉗。','箱子的內側，用指甲刻滿了同一個字：「數」。'])}}},
+  {r:[610,310,160,100],l:S.f.ivy?'圍牆':'藤蔓',a:climb,u:{pliers:async()=>{if(S.f.ivy)return msg('藤蔓已經剪開了。');S.f.ivy=1;render();msg('你用鐵鉗剪斷藤蔓。後面的磚頭有好幾塊鬆了——有些敲起來，好像是空心的。')}}}],
+ first:async()=>{await say(['暑假的最後一個晚上。蟬，叫得像要把整座城市吞掉。','千蟬國中，十七年前就廢校了。大人們從來不提原因。',['yj','「慈幽，妳聽。」'],['yj','「有人在裡面叫我的名字。」她頓了一下，「……聲音，跟妳一模一樣。」'],['ci','「我又沒有叫妳。」'],['yj','「我知道。所以，我才想進去看看。」'],['yj','她摸了摸左手腕上的紅繩。「奶奶說，戴著它，叫我名字的東西就碰不到我。我都綁在左手。」'],'你握緊手電筒。校門上，纏著生鏽的鐵鍊。']);note('rope0','印潔的紅繩','奶奶給的紅繩，她說「我都綁在左手」。');msg('（點擊畫面上的東西來調查。在畫面上拖曳或點擊，手電筒會照向那裡。）')}};
+async function climb(){if(!S.f.ivy)return msg('藤蔓纏得又密又緊，徒手根本扯不開。');
+ if(!S.f.bricks){if(!await bricksPanel())return;S.f.bricks=1;await say(['你踩著空心磚，一階一階爬了上去。',['yj','「我先上去，再拉妳。」'],'印潔翻過了牆頭。你還差一點——','牆頭的黑暗裡，同時伸下來三隻手。'])}
+ if(!await handsPanel())return;
+ await say(['你抓住那隻手。好冰。','印潔把你拉了上去。你們落在校園裡。身後「喀啦」一聲。','校門上的鐵鍊，自己又收緊了一圈。',['ci','「……印潔，我們好像出不去了。」'],['yj','「沒關係。」她看著校舍，輕輕地說，「反正，她在等我們。」']]);
+ S.act='一、蟬鳴';await card('一、蟬鳴','她一直都在看著你');await go('lobby');ckpt()}
+
+/* ================= 一、蟬鳴：穿堂 ================= */
+SC.lobby={name:'穿堂',area:'一樓',dark:.86,desc:'穿堂。正衣冠鏡、沒有指針的掛鐘，和一面公布欄。',
+ art:()=>{let s=roomBox({wall:'#5b6d64',low:'#2c4038'},11);
+  s+=P.shutter(150,160,120,210,S.f.shutter)+`<rect x="176" y="134" width="68" height="20" fill="#0e6b3e"/>`+T(210,149,'樓梯',12,'#cff5df');
+  s+=`<g transform="translate(305 125) scale(.25)">${clockFace(S.f.clock?565:0,!!S.f.clock)}</g>`;
+  s+=P.mirror(340,100,120,246,S.f.siM?P.si(350,150,100,.75):`<ellipse cx="400" cy="300" rx="30" ry="60" fill="#0c1215" opacity=".6"/>`);
+  s+=P.board(500,120,140,100)+T(570,236,'公 布 欄',11,'#bbb');
+  const d=sideDoor('R',690,772,.8);s+=`<polygon points="${d.pts}" fill="#020303" stroke="#2a2a2a" stroke-width="4"/>`;return s},
+ spots:()=>{const d=sideDoor('R',690,772,.8);return[
+  {r:[150,160,120,210],l:'樓梯鐵捲門',ex:1,a:()=>S.f.shutter?go('hall2'):S.f.shKey?openShutter():msg('鐵捲門拉下來鎖著，上面貼著「樓梯」。鎖孔很小，底部還扣著一個三位數的掛鎖。'),u:{k_shutter:openShutter}},
+  {r:[279,99,52,52],l:'掛鐘',a:async()=>{if(S.f.clock)return msg('掛鐘停在九點二十五分。');if(await clockPanel()){S.f.clock=1;render();get('k_nurse');await say(['指針停在九點二十五分的瞬間，鐘面「喀」地彈開一道縫。','裡面掉出一把鑰匙，標籤寫著：「保健室」。'])}}},
+  {r:[330,90,140,265],l:'正衣冠鏡',a:mirrorPanel},
+  {r:[496,116,148,108],l:'公布欄',a:boardPanel},
+  {r:d.r,l:'一樓走廊 →',to:'hall1'},
+  {r:[0,440,170,60],l:'↓ 校門',ex:1,a:()=>msg('校門被鐵鍊鎖死了。你拉了一下——鐵鍊，又收緊了一點。')}]},
+ back:{desc:'你回頭。大門的玻璃外是一片黑。門上方，也掛著一個鐘。',
+  art:()=>{let s=roomBox({wall:'#5b6d64',low:'#2c4038'},12)+`<rect x="290" y="150" width="220" height="220" fill="#0c1416" stroke="#2b2b28" stroke-width="8"/><path d="M400 150v220" stroke="#2b2b28" stroke-width="6"/><rect x="292" y="152" width="216" height="216" fill="#4a6a6a" opacity=".08"/>`;
+   s+=`<rect x="150" y="170" width="120" height="196" fill="#2a1d13" stroke="#120a05" stroke-width="4"/><rect x="158" y="178" width="104" height="180" fill="#9fb8b4" opacity=".15"/><path d="M158 238h104M158 298h104" stroke="#3a2a1a" stroke-width="4"/>`;
+   [[172,230],[204,230],[236,230],[188,290],[220,290]].forEach(([x,y],i)=>s+=`<path d="M${x-8} ${y-30}h16l-3 12q-5 6-5 10h0q0-4-5-10Z" fill="${i===2&&S.f.trophy?'#333':'#c9a255'}"/><rect x="${x-7}" y="${y-8}" width="14" height="8" fill="#5a4020"/>`);
+   return s+`<g transform="translate(400 110) scale(.25)">${clockFace(0,false)}</g>`},
+  spots:()=>[{r:[290,150,220,220],l:'大門',a:async()=>{if(!S.f.clock)return msg('玻璃門外是一片黑。玻璃上，有一個從外面按上來的手印——很小，像小孩子的。');await fogPanel()}},
+   {r:[150,170,120,196],l:'獎盃櫃',a:async()=>{if(S.f.trophy)return msg('假的獎盃拿走了，櫃子裡空了一格。');if(await trophyPanel()){S.f.trophy=1;render();get('fork');await say(['你拿起那座民國一〇〇年的獎盃。它輕得不對勁。','底座是空心的。裡面塞著一支銀色的音叉，刻著「A　440」。','……一〇〇年，她根本沒有醒來。'])}}},
+   {r:[372,82,56,56],l:'掛鐘',a:()=>{note('clock2','穿堂背後的鐘','大門上方的鐘也沒有指針。……那鏡子裡有指針的鐘，是哪裡來的？');msg('這個鐘也沒有指針。……那鏡子裡那個有指針的鐘，是哪裡來的？')}}]},
+ first:async()=>{S.f.siM=1;render();await say(['穿堂。正對大門的是一面整身的「正衣冠鏡」，旁邊的掛鐘，沒有指針。','鏡子裡，你看見自己、看見印潔——還有第三個人，站在你們中間。',['ci','「……！」'],'你猛然轉頭。身旁什麼都沒有。',['si','（再看向鏡子，她還在。穿著舊制服，濕透的頭髮貼在臉上。她沒有開口，只是抬起手，指了指旁邊的掛鐘。）'],'下一秒，鏡子裡只剩下你們兩個。',['yj','「慈幽……她剛剛，是不是在看我？」']]);S.f.siM=0;render();msg('（右下角可以「回頭」看身後。上方 📓 是筆記，💭 可以問提示。）')}};
+async function openShutter(){if(!S.f.shKey){take('k_shutter');S.f.shKey=1;clunk();msg('鑰匙轉開了。但鐵捲門底部，還扣著一個三位數的掛鎖。');await sl(600)}
+ if(!await dialLock('鐵捲門・掛鎖','<p class="pd">鐵捲門底部扣著一個三位數掛鎖。鎖上用指甲刻著：「<b>她寫給你的數字</b>」。</p>',[DG,DG,DG],['7','1','6']))return;
+ S.f.shutter=1;clunk();render();
+ await say(['鑰匙轉了半圈，鐵捲門「嘩啦啦」地自己捲了上去。','樓梯一路往上，黑得看不見盡頭。',['yj','「慈幽。」印潔站在第一階，背對著你，「妳剛剛，有叫我嗎？」'],['ci','「……沒有。」'],['yj','「喔。」她輕輕笑了一下，「那就是，她在叫我。」']]);
+ S.act='二、無聲';await card('二、無聲','她不會說話，但她從來沒有騙過人');await go('hall2');ckpt()}
+function boardPanel(){note('b1','校規第十七條','在校內聽見有人叫你的名字，絕對不要回頭。');note('b4','校規第十八條','夜間停電時，請站在還亮著的燈下，不要出聲，也不要回頭。');note('b2','值日生表','本週值日生：三年二班　17 號。');note('b3','公布欄上的紅色紙條','時間，就照鏡子裡看到的撥。',true);
+ return panel('公布欄',`<div class="paper"><span class="ink">校規第十七條：<br>在校內聽見有人叫你的名字，絕對不要回頭。<br>校規第十八條：<br>夜間停電時，請站在還亮著的燈下，<br>不要出聲，也不要回頭。</span></div><div class="paper" style="transform:rotate(1.5deg)"><span class="ink">本週值日生：三年二班　17 號</span></div><div class="paper wet"><span class="ink">時間，就照鏡子裡看到的撥。</span></div><div class="wettag">最後一張的墨跡還沒乾</div>`)}
+
+/* ================= 一樓走廊 ================= */
+const H1={n:cDoor('L',40,140),c:cDoor('R',40,140)};
+SC.hall1={name:'一樓走廊',area:'一樓',hall:1,dark:.9,desc:'一樓走廊。日光燈一閃一閃。',
+ art:()=>corridor({},21)+doorArt(H1.n,'保健室',{open:S.f.nurseOpen})+doorArt(H1.c,'三年二班',{open:S.f.classOpen})+`<rect x="372" y="218" width="56" height="72" fill="#3a2a1a" stroke="#120a05" stroke-width="3"/>${S.f.gardenOpen?'<rect x="376" y="222" width="48" height="68" fill="#020303"/>':S.f.boards?'':`<path d="M372 230l56 6M372 248l56-4M372 264l56 6M372 280l56-5" stroke="#6b5136" stroke-width="6"/>`}`+T(400,214,'後花園',9,'#bbb')+`<polygon points="210,${cBot(210)} 210,${cBot(210)-60} 250,${cBot(250)-52} 250,${cBot(250)}" fill="#8a9590"/>`+(S.f.boOn?`<rect width="800" height="500" fill="#000" opacity=".75"/><ellipse cx="400" cy="300" rx="70" ry="160" fill="#d6ece4" opacity=".12"/>`:''),
+ spots:()=>[
+  {r:H1.n.r,l:'保健室',a:()=>S.f.nurseOpen?go('nurse'):msg('保健室的門鎖著。'),u:{k_nurse:async()=>{take('k_nurse');S.f.nurseOpen=1;clunk();render();await sl(400);go('nurse')}}},
+  {r:H1.c.r,l:'三年二班',a:()=>S.f.classOpen?go('class'):msg('三年二班的門上掛著一個舊掛鎖。門縫裡，有人在小聲地數數。'),u:{k_class:async()=>{if(!S.f.blackout)return msg('鑰匙插進去，卻轉不動。門的另一邊，有什麼東西頂著。');take('k_class');S.f.classOpen=1;clunk();render();await sl(400);go('class')}}},
+  {r:[368,206,64,86],l:'後花園',a:()=>S.f.gardenOpen?go('garden'):msg(S.f.boards?'木板拆掉了。門還鎖著。':'通往後花園的門釘著四塊木板，每一塊都刻著一個圖案。徒手拔不下來。'),
+   u:{pliers:async()=>{if(S.f.boards)return msg('木板已經拆掉了。');if(await boardsPanel()){S.f.boards=1;render();msg('四塊木板都拔下來了。門鎖還在。')}},k_garden:async()=>{if(!S.f.boards)return msg('木板還釘著，鑰匙插不進去。');take('k_garden');S.f.gardenOpen=1;clunk();render();await sl(400);go('garden')}}},
+  {r:[204,cBot(250)-62,52,70],l:'飲水機',a:async()=>{if(S.f.ftn)return msg('排水孔通了。飲水機安靜下來。');if(await fountainPanel()){S.f.ftn=1;get('sid');await say(['溫水流進排水孔。咕嚕、咕嚕——','排水孔的蓋子浮了起來。下面卡著一張泡爛的學生證。','「三年二班　17 號　偲涵」。照片上的她，嘴角被人用紅筆畫上了一條線。'])}}},
+  {r:[300,440,200,60],l:'↓ 穿堂',to:'lobby'}],
+ enter:async()=>{if(S.f.meds&&!S.f.blackout)await blackout()}};
+SC.hall1.again=SC.hall1.enter;
+
+/* ================= 保健室 ================= */
+const MEDS=[['紅','#a3242b'],['黃','#caa22a'],['藍','#2d508c'],['白','#e6e6de'],['綠','#3f7a4a']];
+SC.nurse={name:'保健室',area:'一樓',dark:.86,desc:'消毒水的味道裡，混著一股鐵鏽味。',
+ art:()=>{let s=roomBox({wall:'#62736d',low:'#3b4c47'},31)+`<path d="M150 110H390" stroke="#888" stroke-width="3"/><path d="M152 112q10 110 0 220M175 112q10 110 0 220M200 112q-8 110 0 220M225 112q8 110 0 220" stroke="#8fa89c" stroke-width="24" opacity=".55"/>`;
+  s+=`<rect x="190" y="300" width="200" height="16" fill="#c9cfc8"/><rect x="190" y="316" width="200" height="40" fill="#556"/><rect x="198" y="286" width="54" height="18" rx="6" fill="#e6e6de"/>`;
+  if(!S.f.hid)s+=`<path d="M260 300q40-50 90 0Z" fill="#dfe4dd"/>`;else s+=`<ellipse cx="300" cy="306" rx="40" ry="6" fill="#4a5a5a" opacity=".6"/>`;
+  s+=`<rect x="470" y="110" width="150" height="190" fill="#3a2a1a" stroke="#1a0f08" stroke-width="4"/><rect x="478" y="118" width="134" height="174" fill="#9fb8b4" opacity=".22"/><path d="M478 170h134M478 230h134" stroke="#2a1a0c" stroke-width="4"/>`;
+  MEDS.forEach((m,i)=>s+=P.bottle(492+i*26,224,m[1],.8));
+  s+=`<rect x="556" y="246" width="54" height="34" fill="#ddd4bd" transform="rotate(4 583 263)"/><path d="M562 256h40M562 266h30" stroke="#8d0d14" stroke-width="3"/><path d="M590 280v18" stroke="#7d0a10" stroke-width="2"/>`;
+  s+=P.desk(600,340,110,1)+`<rect x="625" y="330" width="46" height="12" fill="#d8cfae" transform="rotate(-6 648 336)"/><rect x="418" y="332" width="44" height="34" rx="4" fill="#ccc"/><circle cx="440" cy="345" r="9" fill="#fff" stroke="#333"/>`;
+  s+=`<rect x="396" y="120" width="56" height="74" fill="#e6dfcf"/><path d="M402 136h44M402 148h40M402 160h44M402 172h30" stroke="#555" stroke-width="2"/><path d="M402 182l10-6 10-8 10-6 10-10" stroke="#b3202a" stroke-width="2" fill="none"/>`;
+  s+=`<rect x="24" y="326" width="96" height="116" rx="6" fill="#c9cdc8" stroke="#555" stroke-width="3"/><path d="M30 360h84" stroke="#888" stroke-width="2"/><rect x="100" y="368" width="6" height="28" fill="#777"/><rect x="40" y="336" width="40" height="16" fill="#111"/>`+T(60,349,'－－－',10,'#3f3');return s},
+ spots:()=>[
+  {r:[150,260,250,110],l:'病床',a:bedEvent},
+  {r:[470,110,150,140],l:'藥櫃',a:()=>S.f.meds?msg('藥櫃的暗格已經空了。'):S.f.cab?medsFlow():msg('藥櫃的玻璃門上了鎖。鎖孔上結了一層薄薄的霜。'),u:{mkey:async()=>{take('mkey');S.f.cab=1;clunk();msg('玻璃門開了。');await sl(500);medsFlow()}}},
+  {r:[550,240,68,48],l:'藥櫃上的貼紙',a:()=>doc('sticker','藥櫃上的貼紙','服藥順序：\n白、紅、藍、黃、綠。',true)},
+  {r:[600,320,120,50],l:'病歷',a:()=>doc('chart','病歷（三年二班 17 號　偲涵）','主訴：「有人在我腦子裡說話。她一直叫我的名字。」\n她說喉嚨好冷，只肯喝溫水。\n醫囑：藍色，要在紅色之前吃。\n黃色，要緊接在紅色之後。')},
+  {r:[390,114,68,86],l:'體溫紀錄表',a:()=>doc('temp','體溫紀錄表（偲涵）','第一天 36.8\n第二天 36.1\n第三天 35.4\n第四天 34.7\n第五天 ＿＿.＿\n「第五天，她就不會冷了。」')},
+  {r:[20,320,106,126],l:'小冰箱',a:async()=>{if(S.f.fridge)return msg('冰箱裡空空的，只剩一層霜。');if(await fridgePanel()){S.f.fridge=1;get('mkey');await say(['冰箱門彈開，一股冷氣撲在你臉上。','裡面沒有藥，只有一把結了霜的小鑰匙，標籤寫著「藥櫃」。','冷凍庫的霜上，有人用手指寫著：「好冷」。'])}}},
+  {r:[410,322,60,50],l:'體重計',a:async()=>{if(S.f.scale)return msg('體重計的指針停在 0。');S.f.scale=1;await say(['你站上體重計。指針慢慢轉動，停住——','是你體重的兩倍。','你低頭。腳邊的影子，有兩個頭。']);scare()}},
+  {r:[0,440,170,60],l:'← 走廊',to:'hall1'}]};
+async function medsFlow(){if(await medsPanel()){S.f.meds=1;S.f.frag[3]=1;S.f.fragSeen=1;get('k_class');get('bulb');note('frag3','數字碎片 ③','保健室藥櫃暗格裡蓋著的章：「③　1」');
+ await say(['五個藥瓶都拿起來的瞬間，藥櫃底板「喀」地鬆開了。','暗格裡有一把鑰匙，塑膠牌寫著「3-2」；還有一顆紅色的小燈泡，燈絲是斷的。','暗格底部，有人用藍色印泥蓋了一個章：「③　1」。'])}}
+async function bedEvent(){if(!S.f.hid){await say(['病床的被單底下，隆起了一個人形。','它，慢慢地坐了起來。','……不要動。']);await hide(8);if(!S.on)return;S.f.hid=1;render();await say(['被單「啪」地塌了下去。床上什麼都沒有。','枕頭底下，露出一角紙條。']);return}
+ if(!S.f.pillow){S.f.pillow=1;return doc('pillow','枕頭下的紙條','綠色，永遠第一個。\n白色，永遠最後。')}
+ msg('被單上留著一個人形的水漬。')}
+
+/* ================= 三年二班 ================= */
+SC.class={name:'三年二班',area:'一樓',dark:.86,desc:'三年二班。偲涵還坐在靠窗的位置。',
+ art:()=>{let s=roomBox({wall:'#58695f',low:'#30453c'},41)+`<rect x="186" y="88" width="428" height="138" fill="#4a341e"/><rect x="194" y="96" width="412" height="122" fill="#1f3328"/>`+HW(300,150,'她面對著你。',20,'#cfd6c8','opacity=".8"')+HW(520,170,'不要回頭',28,'#8d0d14')+`<path d="M490 176v34M512 178v22M540 174v40" stroke="#7d0a10" stroke-width="2"/>`;
+  s+=P.desk(340,250,120,1.3)+`<rect x="382" y="284" width="36" height="18" fill="#7b7f84" stroke="#333"/><circle cx="400" cy="293" r="5" fill="#ccc"/>`;
+  s+=`<polygon points="680,140 780,121 780,292 680,269" fill="#0b1820" stroke="#2b2b28" stroke-width="5"/><path d="M730 130V282M680 205L780 206" stroke="#2b2b28" stroke-width="4"/><circle cx="752" cy="160" r="9" fill="#d9e2d6" opacity=".6"/>`;
+  s+=P.si(575,222,96)+P.desk(560,340,110,1);
+  [[170,330],[290,330],[410,330]].forEach(([x,y])=>s+=P.desk(x,y,90,1));[[30,420],[250,420],[470,420]].forEach(([x,y])=>s+=P.desk(x,y,140,1.4));
+  const d=sideDoor('L',30,110,.78);return s+`<polygon points="${d.pts}" fill="#3a2a1a" stroke="#120a05" stroke-width="3"/>`},
+ spots:()=>[
+  {r:[186,88,428,138],l:'黑板',a:async()=>{note('bb1','黑板上的白色粉筆字','「她面對著你。」');note('bb2','黑板上的紅色字','「不要回頭」——字還在往下滴。',true);await panel('黑板',`<svg viewBox="0 0 420 130" style="width:100%;background:#1f3328;border:8px solid #4a341e">${HW(120,62,'她面對著你。',26,'#dfe3d6')}${HW(310,82,'不要回頭',34,'#8d0d14')}<path d="M276 92v30M300 94v22M334 90v34" stroke="#7d0a10" stroke-width="2"/></svg><p class="pd">白色的粉筆字已經很舊了，像是寫了很多年。<br>紅色的字……還在往下滴。</p>`)}},
+  {r:[330,248,140,64],l:'講桌抽屜',a:async()=>{if(S.f.drawer)return msg('抽屜已經空了。');if(await dirPanel()){S.f.drawer=1;get('roll');get('chalk');note('roll','點名簿','最後一頁：「17 號　偲涵」，後面的字被用力劃掉了。');await say(['方向鎖「喀」地彈開。','抽屜裡有一本點名簿，和半截粉筆。','點名簿的最後一頁：「17 號　偲涵」。後面的字，被人用力劃掉了。'])}}},
+  {r:[568,220,110,150],l:'偲涵',a:siGesture},
+  {r:[160,326,340,60],l:'課桌',a:()=>msg('課桌上刻滿了字。「蟬好吵」「蟬好吵」「蟬好吵」……刻到最後一張桌子，變成了「她好吵」。')},
+  {r:[680,110,100,180],l:'窗戶',a:()=>msg('窗外是後花園。滿樹都是蟬蛻，在月光下，像一千隻張開的手。')},
+  {r:sideDoor('L',30,110,.78).r,l:'← 走廊',to:'hall1'}],
+ back:{desc:'教室後面是一整排置物櫃，上面掛著一張班級合照。',
+  art:()=>{let s=roomBox({wall:'#58695f',low:'#30453c'},42)+`<rect x="150" y="214" width="500" height="150" fill="#2a302e"/>`+P.lockers(158,220,10,3,48,46);
+   return s+`<rect x="330" y="104" width="140" height="92" fill="#3a2a1a"/><rect x="338" y="112" width="124" height="76" fill="#8a7458"/>`+Array.from({length:12},(_,i)=>`<circle cx="${352+(i%6)*19}" cy="${136+(i/6|0)*26}" r="6" fill="#3a2c1c"/>`).join('')},
+  spots:()=>[{r:[156,218,484,142],l:'置物櫃',a:async()=>{if(S.f.locker)return msg('17 號的櫃子開著，裡面已經空了。');if(!S.f.l17){if(!await lockerPanel())return;S.f.l17=1;msg('17 號的櫃門上，扣著一個兩位數的掛鎖。')}
+    if(await dialLock('17 號置物櫃・掛鎖','<p class="pd">兩位數的小掛鎖。鎖上貼著一張小小的貼紙：一個蟬蛻的圖案。</p>',[DG,DG],['3','2'])){S.f.locker=1;render();get('nb');get('shell');note('nb','偲涵的筆記本','每一頁都只寫了同一句話：「不是我。」');await say(['17 號的櫃門，「嘎」地一聲開了。','裡面只有一本筆記本，和一隻完整的蟬蛻。','筆記本的每一頁，都只寫了同一句話——「不是我」。'])}}},
+   {r:[330,104,140,92],l:'班級合照',a:photoEvent}]},
+ first:async()=>{await say(['三年二班。課桌椅排得整整齊齊，像是明天還有人要來上課。','教室最後一排，坐著一個男生。',['yu','「不要再往裡面走了。」'],['ci','「你是誰？你也是偷跑進來的？」'],['yu','「我叫小羽。……我在這裡，很久了。」'],['yu','「這間學校，每過十七年就會醒來一次。今年，剛好十七年。」'],['yu','「想出去的話，記住兩件事。第一，濕的字是她寫的。她寫的字、她借別人的嘴說的話——全都是反的，全都是謊。」'],['yu','「第二，偲涵不會說話。但她從來沒有騙過人。」'],['ci','「偲涵……？」'],'你順著他的視線看過去。靠窗的位置上，坐著鏡子裡的那個女生。','你再轉回來——最後一排，已經沒有人了。']);note('yu1','小羽說的話','濕的字是她寫的。她寫的字、她借別人的嘴說的話，全都是反的、全都是謊。偲涵不會說話，但她從來沒有騙過人。')}};
+async function siGesture(){await say([['si','（她慢慢抬起頭，看著你。然後，舉起了手——）']]);
+ await panel('偲涵的手勢',`<div class="glass" style="aspect-ratio:3/2"><svg viewBox="0 0 300 200" style="width:100%;height:100%"><use href="#P-si-calm" x="90" y="8" width="120" height="160"/></svg><div id="gs" style="position:absolute;bottom:8px;left:0;right:0;font-size:17px;color:#e6e0d4;text-shadow:0 0 6px #000,0 0 6px #000"></div></div><p class="pd">她面對著你，一個手勢、一個手勢地比給你看。</p>`,async el=>{const G=['指向天花板','指向「她自己的」右邊','又一次，指向「她自己的」右邊','指向地板','指向「她自己的」左邊'];
+  for(let i=0;i<G.length;i++){await sl(1100);const g=el.querySelector('#gs');if(!g)return;g.textContent=(i+1)+'．'+G[i];tone(220+i*40,.4,'sine',.05)}await sl(1400);const g=el.querySelector('#gs');if(g)g.textContent='她放下手，看向講桌的抽屜。'});
+ note('si1','偲涵的手勢','她面對著你比劃：天花板 →「她的」右 →「她的」右 → 地板 →「她的」左。然後看向講桌的抽屜。')}
+async function photoEvent(){if(S.f.photo1){if(!await confirmP('再看一次照片嗎？<br><small>每多看一次，照片裡的她就離鏡頭近一點。（-1 生命）</small>'))return;await hurt('照片裡，偲涵的臉離鏡頭更近了。');if(!S.on)return}
+ await photoMemory();
+ if(S.f.photo1)return;S.f.photo1=1;note('photo1','三年二班合照（民國 108 年）','偲涵站在第二排靠窗。她旁邊的男生……是小羽。十七年前的小羽。');
+ await say(['照片下面寫著：「民國一〇八年　三年二班　畢業紀念」。','第二排最靠窗的，是偲涵。她沒有笑。','她旁邊站著一個男生，手搭在她的肩上。','……是小羽。','跟剛剛在教室後面說話的那個人，一模一樣。十七年了，他一點都沒有變。'])}
+</script>
+
+<script>
+/* ================= 二、無聲：二樓走廊 ================= */
+const H2={l:cDoor('L',40,140),m:cDoor('L',200,262),r:cDoor('R',40,140)};
+SC.hall2={name:'二樓走廊',area:'二樓',hall:1,dark:.9,desc:'二樓走廊。蟬聲從敞開的窗戶灌進來。',
+ art:()=>corridor({wall:'#5d6560',low:'#3a3330'},51)+doorArt(H2.l,'圖書室')+doorArt(H2.m,'音樂教室')+doorArt(H2.r,'廣播室',{col:'#3a3f44'})+`<rect x="370" y="214" width="60" height="76" fill="#4a2f1c" stroke="#120a05" stroke-width="3"/>${S.f.prinOpen?'<rect x="374" y="218" width="52" height="72" fill="#020303"/>':'<circle cx="420" cy="254" r="3" fill="#c9a255"/>'}`+T(400,210,'校長室',9,'#bbb'),
+ spots:()=>[{r:H2.l.r,l:'圖書室',to:'library'},{r:H2.m.r,l:'音樂教室',to:'music'},
+  {r:H2.r.r,l:'廣播室',a:()=>S.f.radioOpen?go('radio'):msg('廣播室的門上裝著一台刷卡機，紅燈亮著。'),u:{sid:async()=>{if(await readerPanel()){S.f.radioOpen=1;clunk();render();msg('綠燈亮了。');await sl(500);go('radio')}}}},
+  {r:[366,204,68,88],l:'校長室',a:()=>S.f.prinOpen?go('prin'):S.f.prinKey?prinDoor():msg('校長室。門上的鎖很新，鑰匙孔周圍有一圈指甲的刮痕。門把下面，還有一個三格的字鎖。'),u:{k_prin:async()=>{take('k_prin');S.f.prinKey=1;clunk();msg('鑰匙轉開了。還剩門把下面的字鎖。');await sl(500);prinDoor()}}},
+  {r:[300,440,200,60],l:'↓ 一樓',to:'lobby'}],
+ first:async()=>{await say(['二樓。走廊的窗戶全開著，蟬聲灌進來，大得像有人貼著你的耳朵在叫。',['yj','「慈幽，妳有沒有發現……」印潔停下腳步，「這裡的蟬，從來都不停。」'],['yj','「牠們在叫一個名字。」'],'話還沒說完，成千上萬隻蟬從窗外湧了進來。','牠們追著聲音飛。']);
+  await hide(12,'別出聲。','蟬群貼著你的臉飛過去。牠們追著聲音。');if(!S.on)return;S.f.swarm=1;await say(['蟬群飛走了。走廊的地上，落滿了翅膀。'])},
+ again:async()=>{if(!S.f.swarm)await SC.hall2.first()}};
+async function prinDoor(){if(await prinDoorLock()){S.f.prinOpen=1;clunk();render();await say('字鎖「喀」地彈開。門，自己往裡面滑開了一道縫。');go('prin')}}
+
+/* ================= 圖書室 ================= */
+SC.library={name:'圖書室',area:'二樓',dark:.88,desc:'圖書室。書架東倒西歪。',
+ art:()=>{let s=roomBox({wall:'#4f5c54',low:'#34413b'},61)+P.shelf(160,100,140,260,1)+P.shelf(330,100,140,260,2)+P.shelf(500,100,140,260,3);
+  s+=`<rect x="90" y="360" width="300" height="16" fill="#6a4a2c"/><rect x="100" y="376" width="280" height="60" fill="#3a2818"/><rect x="214" y="350" width="60" height="16" fill="${S.f.card?'#e8e2d0':'#f2eee2'}" transform="rotate(-5 244 358)"/>`;
+  return s+`<rect x="600" y="340" width="100" height="90" fill="#1f3a2a" stroke="#0a140e" stroke-width="3"/><rect x="620" y="350" width="60" height="8" fill="#000"/>`+T(650,395,'還書',14,'#bcd')},
+ spots:()=>[
+  {r:[200,340,90,36],l:'借書卡',a:()=>msg(S.f.card?'借書卡上浮出了字：「借閱人 17 號　索書號 595.7」。':'一張空白的借書卡。用指尖摸，卡面有一點一點的凹痕——像是有人在上一張卡用力寫過字。'),u:{chalk:async()=>{if(S.f.card)return msg('已經塗過了。');if(await scratchPanel()){S.f.card=1;render();note('card','借書卡上的壓痕','借閱人：17 號。索書號：595.7。書名被劃掉了。')}}}},
+  {r:[156,96,488,268],l:'書架',a:async()=>{if(S.f.poem)return msg('書架上空了一格。');
+   if(!S.f.book){if(!S.f.card)return msg('幾千本書，書背上都貼著索書號。不知道要找哪一本。');if(!await shelfPanel())return;S.f.book=1;S.f.frag[1]=0;S.f.fragSeen=1;
+    note('book','《十七年蟬》','卵在樹枝上孵化；若蟲落進土裡，在地底活十七年；爬出地面羽化時，留下空殼（蟬蛻），變成成蟲，只鳴叫一個夏天就死去。');note('frag1','數字碎片 ①','《十七年蟬》最後一頁的章：「①　0」');
+    await say(['《十七年蟬》。','「卵在樹枝上孵化。若蟲落進土裡，在地底活十七年。」','「牠爬出地面羽化的時候，會留下一個空殼——蟬蛻。成蟲只鳴叫一個夏天，然後死去。」','書的最後一頁，蓋著一個藍色的章：「①　0」。','扉頁上印著一首詩，書裡還夾著兩張書籤。'])}
+   if(await poemPanel()){S.f.poem=1;S.f.nm.b='言字旁，右邊一個「五」，一個「口」';note('nm2','書籤指出的三個字','言、五、口——合起來，是她的「名」。');await say(['言、五、口。','三個字在你腦子裡，慢慢拼成了一個字。','……那是她的「名」。'])}}},
+  {r:[600,338,100,94],l:'還書箱',a:async()=>{if(S.f.rbox)return msg('還書箱很安靜。');S.f.rbox=1;await say(['還書箱裡，有一本書在動。','咚。咚。像有人在裡面，用指節敲著封面。','你沒有打開它。']);knock();knock(.5);knock(1)}},
+  {r:[0,440,170,60],l:'← 走廊',to:'hall2'}],
+ first:()=>say(['圖書室。書架東倒西歪，地上散落著發黃的書頁。','借還書的櫃台上，放著一張空白的借書卡。'])};
+
+/* ================= 音樂教室 ================= */
+SC.music={name:'音樂教室',area:'二樓',dark:.88,desc:'音樂教室。節拍器還在擺。',
+ art:()=>{let s=roomBox({wall:'#4c5762',low:'#2e3842'},71)+P.window(180,100,120,110,1)+P.window(500,100,120,110,0);
+  s+=`<rect x="320" y="196" width="210" height="150" fill="#0c0c0e" stroke="#000" stroke-width="3"/><rect x="330" y="256" width="190" height="22" fill="#e9e5d8"/>`+Array.from({length:18},(_,i)=>`<path d="M${340+i*10.5} 256v22" stroke="#555"/>`).join('')+Array.from({length:12},(_,i)=>`<rect x="${343+i*15}" y="256" width="6" height="13" fill="#111"/>`).join('');
+  s+=`<path d="M470 194l12-36 12 36Z" fill="#5a3a22"/><path d="M482 190l${S.f.piano?0:8}-30" stroke="#ccc" stroke-width="2"/>`;
+  return s+`<path d="M630 360v-110M610 250h40" stroke="#333" stroke-width="5"/><rect x="606" y="226" width="48" height="30" fill="#ddd4bd"/>`},
+ spots:()=>[
+  {r:[320,196,210,150],l:'鋼琴',a:async()=>{if(S.f.piano)return msg('琴蓋內側刻著字。鋼琴，安靜了。');if(!S.f.tuned)return msg('你按下琴鍵——每一個音都走了調，像有人在哭。');if(await pianoPanel()){S.f.piano=1;S.f.nm.c='虫字旁，右邊是「單」';render();
+   note('piano','琴蓋內側的刻痕','「最後一個字：虫字旁，右邊是『單』。」');
+   await say(['最後一個音落下，琴蓋自己「碰」地闔上。','再掀開時，琴蓋內側多了一行刻痕：','「最後一個字：虫字旁，右邊是『單』。」'])}},
+   u:{fork:async()=>{if(S.f.tuned)return msg('鋼琴已經調好音了。');if(await tunePanel()){S.f.tuned=1;await say(['你把第三根弦轉緊。','整台鋼琴，忽然「嗡」地一聲，自己調準了。','琴鍵，輕輕地動了一下。'])}}}},
+  {r:[462,152,44,46],l:'節拍器',a:async()=>{if(S.f.metro)return msg('節拍器停了。底座的章還在。');if(await rhythmPanel()){S.f.metro=1;S.f.frag[2]=7;S.f.fragSeen=1;note('frag2','數字碎片 ②','節拍器底座的章：「②　7」');await say(['最後一拍敲完，節拍器停了。','擺錘的底座上，蓋著一個藍色的章：「②　7」。'])}}},
+  {r:[600,222,62,140],l:'樂譜架',a:()=>doc('stand','樂譜架上的紙條','她只會彈五個音。\n記住五個就夠了。',true)},
+  {r:[0,440,170,60],l:'← 走廊',to:'hall2'}],
+ first:()=>say(['音樂教室。黑色的鋼琴，琴蓋開著。','節拍器自己在擺動——答、答、答。','沒有人碰它。'])};
+
+/* ================= 廣播室 ================= */
+SC.radio={name:'廣播室',area:'二樓',dark:.9,desc:'廣播室。',
+ art:()=>{let s=roomBox({wall:'#3f474b',low:'#283034',lamp:0},81);
+  s+=`<rect x="216" y="120" width="368" height="176" fill="#1a2224" stroke="#0a0c0d" stroke-width="8"/><rect x="224" y="128" width="352" height="160" fill="${S.f.power?'#2c3a36':'#050707'}"/>`;
+  if(S.f.power)s+=`<rect x="224" y="128" width="352" height="160" fill="#9fc" opacity=".05"/>`+P.si(352,138,96,.82);
+  s+=`<path d="M240 140l60 120M500 136l50 100" stroke="#fff" stroke-opacity=".06" stroke-width="14"/>`;
+  s+=`<rect x="356" y="82" width="88" height="28" rx="4" fill="${S.f.power?'#c0141e':'#3a2a2a'}" stroke="#111" stroke-width="2"/>`+T(400,101,'ON AIR',14,S.f.power?'#ffe':'#666')+(S.f.power?`<rect x="340" y="70" width="120" height="52" fill="#f22" opacity=".25" filter="url(#bl8)"/>`:'');
+  s+=`<polygon points="90,330 610,330 640,420 60,420" fill="#2a2e31" stroke="#111" stroke-width="3"/>`;
+  for(let i=0;i<12;i++)s+=`<rect x="${120+i*36}" y="342" width="6" height="40" fill="#111"/><rect x="${116+i*36}" y="${350+(i*7)%26}" width="14" height="8" fill="#aaa"/><circle cx="${123+i*36}" cy="398" r="4" fill="${S.f.power&&i%3===0?'#3f3':'#333'}"/>`;
+  return s+`<rect x="250" y="400" width="70" height="14" fill="#111"/>`+P.safe(640,330,120,110)},
+ spots:()=>[
+  {r:[350,76,100,40],l:'ON AIR 燈',a:()=>msg(S.f.power?'「ON AIR」亮著紅光。':'牆上的「ON AIR」燈罩裡，燈泡不見了。控制台的電源線，和這盞燈串在一起。'),u:{bulb:async()=>{take('bulb');S.f.power=1;clunk();render();
+   await say(['你把那顆「壞掉」的燈泡旋了上去。','……「ON AIR」亮了。','控制台跟著醒過來，指示燈一個接一個亮起。','隔音玻璃的另一邊，錄音間的燈也亮了。','偲涵，站在裡面。'])}}},
+  {r:[216,120,368,176],l:'錄音間',a:()=>S.f.power?knockPanel():msg('隔音玻璃後面一片漆黑。你好像看到，有一張臉貼在玻璃上。')},
+  {r:[70,330,560,90],l:'控制台',a:()=>msg(!S.f.power?'控制台沒有電。':S.f.tape?'卡帶已經放完了。':'控制台上有一個卡帶座。'),u:{tape:playTape}},
+  {r:[640,330,120,110],l:'保險箱',a:async()=>{if(S.f.rsafe)return msg('保險箱空了。');if(await blindPanel()){S.f.rsafe=1;get('tape');get('k_prin');await say(['把手「喀」地一聲轉開了。','保險箱裡有一卷錄音帶，標籤寫著：「最後一次廣播　108.7.17」。','還有一把沉甸甸的黃銅鑰匙。'])}}},
+  {r:[0,440,170,60],l:'← 走廊',to:'hall2'}],
+ first:()=>say(['廣播室。沒有窗，空氣很悶。','控制台上積滿灰塵，牆上的「ON AIR」燈罩是空的。','隔音玻璃的另一邊，是一間更小的錄音間。裡面一片漆黑。'])};
+async function playTape(){if(!S.f.power)return msg('控制台沒有電。');
+ if(!S.f.faders){msg('你把錄音帶放進去——喇叭只傳出刺耳的雜音。也許要先把音量推桿調好。');await sl(400);if(!await fadersPanel())return;S.f.faders=1}
+ take('tape');S.f.tape=1;
+ await say(['喀。卡帶開始轉動。沙沙的雜訊裡，傳出一個男人的聲音——','「民國一〇八年，七月十七日。三年二班，十七號，偲涵。」','「從今天起，由妳，替她開口。」','很長的一段沉默。只有一個女孩，很淺、很淺的呼吸聲。','然後，她用盡力氣，擠出了三個字——','「不、是、我。」','卡帶停了。','廣播喇叭卻自己響了起來：「慈幽。妳為什麼不回頭？」','那是印潔的聲音。可是印潔就站在你旁邊，嘴巴，一動也沒動。']);
+ await scare();await say([['yj','「……怎麼了？妳的臉色好難看。」']]);note('tape','最後一次廣播','民國 108 年 7 月 17 日，偲涵被選上「替她開口」。她只說了三個字：「不、是、我。」');
+ S.act='三、十七年';await card('三、十七年','她每十七年，醒來一次');ckpt();msg('（校長室的鑰匙，在你手上。）')}
+
+/* ================= 校長室 ================= */
+SC.prin={name:'校長室',area:'二樓',dark:.86,desc:'校長室。桌上的茶，還冒著熱氣。',
+ art:()=>{let s=roomBox({wall:'#5a4a3c',low:'#3b2e24'},91);
+  [270,340,410,480].forEach((x,i)=>{s+=`<rect x="${x}" y="90" width="52" height="66" fill="#2a1a0e" stroke="#c9a255" stroke-width="2"/>`+(i===2&&!S.f.cloth?`<path d="M${x-4} 86h60l-6 80h-48Z" fill="#050505"/>`:`<circle cx="${x+26}" cy="116" r="12" fill="#6a5a48"/><path d="M${x+10} 150q16-20 32 0" fill="#3a2e24"/>`)});
+  s+=`<rect x="168" y="108" width="72" height="92" fill="#e6dfcf"/><rect x="168" y="108" width="72" height="18" fill="#b3202a"/>`+T(204,122,'125年7月',11,'#fff')+T(204,170,'17',34,'#222');
+  s+=P.safe(556,180,96,96)+`<rect x="230" y="276" width="340" height="18" fill="#5a3a20"/><rect x="246" y="294" width="308" height="80" fill="#3a2414"/>`;
+  s+=`<rect x="296" y="262" width="62" height="16" fill="#3a2a5a"/><rect x="398" y="264" width="40" height="14" fill="#d8cfb8" transform="rotate(5 418 271)"/><path d="M404 270h26" stroke="#8d0d14" stroke-width="2"/>`;
+  s+=`<rect x="248" y="268" width="40" height="16" rx="4" fill="#111"/><path d="M244 266q24-14 48 0" stroke="#111" stroke-width="7" fill="none"/><circle cx="268" cy="276" r="6" fill="#555"/>`;
+  return s+`<rect x="478" y="258" width="22" height="18" rx="3" fill="#ddd"/><path d="M484 252q4-8 0-14M492 252q4-8 0-14" stroke="#ccc" stroke-width="1.5" fill="none" opacity=".6"/>`},
+ spots:()=>[
+  {r:[266,82,130,80],l:'歷任校長',a:portraitsPanel},
+  {r:[478,82,66,80],l:'第四任校長',a:()=>msg('第四任校長的相框裡，是一張空白的椅子。銘牌寫著：民國一二五年就任。……就是今年。')},
+  {r:[244,262,44,24],l:'電話',a:()=>S.f.phone?msg('聽筒裡只剩水聲。'):S.f.psafe?phoneEvent():msg('一台老式撥盤電話。聽筒裡只有沙沙的雜音。')},
+  {r:[290,256,74,28],l:'校長日誌',a:async()=>{if(!S.f.diary){if(!await diaryLock())return;S.f.diary=1;clunk()}return showDiary()}},
+  {r:[392,258,56,28],l:'便條',a:()=>doc('memo','桌上的便條','她第一次醒來，是民國一〇八年。',true)},
+  {r:[470,240,40,40],l:'茶杯',a:()=>msg('茶還冒著熱氣。杯緣有一圈淡淡的口紅印——和印潔今天擦的顏色，一模一樣。')},
+  {r:[164,104,80,100],l:'日曆',a:()=>{note('cal','校長室的日曆','民國一二五年七月。日期被一格一格打叉，停在十七號——今天。');msg('牆上的日曆：民國一二五年，七月。日期一格一格被打了叉，停在十七號。……今天，就是七月十七日。')}},
+  {r:[404,82,64,80],l:'被蓋住的照片',a:async()=>{if(S.f.cloth)return msg('照片裡的人，沒有臉。');S.f.cloth=1;render();await say(['你掀開黑布。','照片裡的人，沒有臉。']);scare()}},
+  {r:[552,176,104,104],l:'保險箱',a:async()=>{if(S.f.psafe)return msg('保險箱空了。');if(await dialLock('保險箱','<p class="pd">三個數字的轉盤鎖。鎖面上刻著一行小字：「她第一次醒來的那一年」。</p>',[DG,DG,DG],['0','9','1'],'steel')){S.f.psafe=1;S.f.frag[4]=7;S.f.nm.a='兩棵樹，站在一起，一動也不動';get('photo');
+   note('frag4','數字碎片 ④','合照背面的章：「④　7」');note('nm1','合照背面','「她的姓：兩棵樹，站在一起，一動也不動。」');
+   await say(['保險箱裡只有一張泛黃的合照。','民國七十四年。所有人的臉都被劃掉了，只有角落一個女孩沒有——她的眼睛，直直地看著鏡頭。','照片背面寫著：「她的姓：兩棵樹，站在一起，一動也不動。」','下面蓋著一個章：「④　7」。'])}}},
+  {r:[0,440,170,60],l:'← 走廊',to:'hall2'}],
+ first:()=>say(['校長室。厚重的木桌，牆上掛著歷任校長的照片。其中一張，被黑布蓋住了。','桌上有一杯茶，還冒著熱氣。','……這間學校，十七年沒有人了。'])};
+
+function showDiary(){return doc('diary','校長日誌','民國七十四年，七月十七日。\n我們把她關進了後花園的井裡，為了讓蟬不再叫。\n她沒有死。她只是，不能再說話了。\n她每過十七年，就會醒來一次。每一次，都要一個孩子替她開口。\n\n（最後一頁的筆跡，和前面不一樣。）\n民國一二五年。她已經醒來第三次了。\n要讓她再睡去，不是喚她——是把她的名字，倒著，還給她。')}
+
+/* ================= 四、名字：後花園 ================= */
+const DG=['0','1','2','3','4','5','6','7','8','9'];
+SC.garden={name:'後花園',area:'校園',out:1,dark:.88,desc:'後花園。滿地都是蟬蛻。',
+ art:()=>{let s=outside(101)+`<rect y="230" width="800" height="270" fill="#0b120e"/><rect x="0" y="180" width="800" height="70" fill="#141c19"/>`+tree(170,420,1.1)+P.shells(0,330,800,170,260,7)+P.shells(140,200,60,200,40,8);
+  s+=`<ellipse cx="540" cy="330" rx="110" ry="30" fill="#2a2f2c"/><rect x="430" y="330" width="220" height="80" fill="#3a3f3c"/><ellipse cx="540" cy="410" rx="110" ry="24" fill="#2a2f2c"/>`;
+  for(let i=0;i<5;i++)s+=`<path d="M${436+i*44} 334v74" stroke="#2a2e2c" stroke-width="3"/>`;
+  s+=S.f.well?`<ellipse cx="540" cy="330" rx="96" ry="24" fill="#000"/>`:`<ellipse cx="540" cy="326" rx="104" ry="26" fill="#55605a"/><path d="M450 320Q540 360 630 320M470 334Q540 300 612 336" stroke="#777" stroke-width="5" fill="none" stroke-dasharray="8 4"/><rect x="${S.f.w1?'-99':'500'}" y="336" width="20" height="24" rx="3" fill="#7d8388"/><rect x="${S.f.w2?'-99':'530'}" y="340" width="20" height="24" rx="3" fill="#a07c2c"/><rect x="560" y="336" width="20" height="24" rx="3" fill="#3a3a3a"/>`;
+  return s+`<rect x="690" y="196" width="60" height="50" fill="#d8cfb8" transform="rotate(4 720 221)"/><path d="M700 212h40M700 224h30" stroke="#8d0d14" stroke-width="3"/>`},
+ spots:()=>[
+  {r:[430,290,220,130],l:'古井',a:wellLocks},
+  {r:[110,180,120,250],l:'老榕樹',a:async()=>{if(S.f.tree)return tabletPanel();if(await treePanel()){S.f.tree=1;get('rope');await say(['樹洞的鎖彈開了。','裡面塞著一條紅繩——是印潔的。她明明一直綁在左手上。','紅繩底下壓著一塊石片，上面刻著字。']);await tabletPanel();await say([['yj','「慈幽，妳在看什麼？」'],'印潔站在你身後。她的左手腕上，空空的。'])}}},
+  {r:[680,190,80,64],l:'牆上的紙條',a:()=>doc('gnote','牆上的紙條','要讓她永遠睡去，\n就再喊一次她的名字。',true)},
+  {r:[260,400,140,80],l:'蟬蛻',a:()=>{whisper();msg('一千隻空殼。每一隻都張著背，像在尖叫。你蹲下來——有幾隻，還是溫的。')}},
+  {r:[0,440,150,60],l:'← 走廊',to:'hall1'}],
+ first:async()=>{S.act='四、名字';await card('四、名字','說出她的名字');ckpt();render();await say(['後花園。滿地都是蟬蛻，踩上去，像踩碎很多很多小小的骨頭。','老榕樹下，一口古井被石板蓋住。石板上，鎖著三道鎖。',['yj','「慈幽。」印潔站在井邊，聲音很輕，「她就在下面。」'],['yj','「她說，她好想再聽一次，有人叫她的名字。」']])}};
+const W1=['森','休','林','沐','木'],W2=['話','誤','語','悟','吾'],W3=['嬋','禪','單','蟬','彈'];
+/* ================= 終、不要回頭：井底 ================= */
+SC.well={name:'井底',area:'地下',dark:.84,desc:'井底。',
+ art:()=>{let s=`<rect width="800" height="500" fill="url(#wellg)"/><ellipse cx="400" cy="60" rx="150" ry="40" fill="#cfe0da" opacity=".25" filter="url(#bl8)"/>`+P.shells(0,0,800,500,500,13);
+  for(let i=0;i<14;i++)s+=`<path d="M${i*60} 0Q${i*60+20} 250 ${i*60-10} 500" stroke="#000" stroke-opacity=".35" stroke-width="3" fill="none"/>`;
+  if(!S.f.chase)s+=`<path d="M400 230c-22 0-30 22-28 44-10 30-16 120-18 226h92c-2-106-8-196-18-226 2-22-6-44-28-44Z" fill="#e6e6e0" opacity=".85"/><path d="M372 270c-6-50 62-50 56 0-2 40 6 80 8 130h-72c2-50 10-90 8-130Z" fill="#1a1210"/>`;
+  return s},
+ spots:()=>[],
+ first:()=>wellScene()};
+SC.gateEnd={name:'校門口',area:'校外',out:1,dark:.8,desc:'',art:()=>SC.gate.art(),spots:()=>[],first:()=>finalScene()};
+const NW=['林','語','蟬','森','話','嬋'];
+function nameLock(){return panel('把名字還給她',`<p class="pd">她站在你面前，等著你開口。</p><div class="padlock"><div class="lbody steel"><div class="wheels">${[0,1,2].map(i=>`<div class="wh"><button class="up">▲</button><div class="wv"></div><button class="dn">▼</button></div>`).join('')}</div></div></div><button class="btn-red" id="say">說出口</button>`,(el,done)=>{const v=[3,3,3];
+ const draw=()=>el.querySelectorAll('.wh').forEach((w,i)=>w.querySelector('.wv').innerHTML=`<span>${NW[(v[i]+5)%6]}</span><b>${NW[v[i]]}</b><span>${NW[(v[i]+1)%6]}</span>`);
+ el.querySelectorAll('.wh').forEach((w,i)=>{w.querySelector('.up').onclick=()=>{v[i]=(v[i]+5)%6;click();draw()};w.querySelector('.dn').onclick=()=>{v[i]=(v[i]+1)%6;click();draw()}});draw();
+ el.querySelector('#say').onclick=async()=>{const s=v.map(x=>NW[x]).join('');if(s==='蟬語林')return done('rev');if(s==='林語蟬')return done('fwd');el.querySelector('.padlock').classList.add('shake');setTimeout(()=>el.querySelector('.padlock')?.classList.remove('shake'),400);await hurt('她歪著頭看你。「那不是我的名字。」')}},{noClose:true})}
+</script>
+
+<script>
+/* ================= 終、不要回頭：井底 ================= */
+async function wellScene(){S.act='終、不要回頭';if(!S.f.wellTold)ckpt();render();
+ if(!S.f.wellTold){
+  await say(['井底很冷。石壁上嵌滿了蟬蛻，每一隻的背都裂開著。','印潔站在井的正中央，背對著你。',['ci','「印潔……？」']]);
+  S.f.poss=1;await say([['yj','「謝謝妳，慈幽。」'],'那是你的聲音。從印潔的嘴裡，說出了你的聲音。',['yj','「謝謝妳，替我把名字，一個字、一個字找回來。」'],'她轉過身。那雙眼睛，已經不是印潔的了。',['yu','「從她在校門外說『有人在叫我』開始——」'],['yu','「站在妳身邊的，就已經不是印潔了。」'],['si','（偲涵出現在你身邊。她看了你一眼，伸出手指，在潮濕的井壁上，一筆一筆地寫字。）']]);
+  await panel('偲涵寫下的字',`<div class="wall" id="ww"><span style="animation-delay:.3s">蟬</span><span style="animation-delay:1.4s">語</span><span style="animation-delay:2.5s">林</span></div><p class="pd" id="wp">她寫得很慢。每一個字，都是反的。</p>`,async el=>{await sl(5500);const w=el.querySelector('#ww');if(!w)return;w.style.transition='opacity 1.2s';w.style.opacity=0;const p=el.querySelector('#wp');if(p)p.textContent='井壁上的水流下來，把字沖掉了。'});
+  await say([['yu','「她要妳記住那個順序。」'],'「她」張開了嘴。井壁上的一千隻蟬蛻，同時發出尖叫。','燈，全滅了。','鐵梯「哐」地一聲，斷成了兩截。']);await scare('',1);S.f.wellTold=1;S.f.chase=1;render();save(1)}
+ if(!S.f.climbed){if(!await climbPanel()||!S.on)return;S.f.climbed=1;save(1);await say('你的手指終於摸到了井口的石沿。')}
+ const ok=await chase([
+  ['你爬出井口。腳邊全是蟬蛻，一踩就會碎裂作響。',['踩著蟬蛻衝過去','沿著石板，一步一步走'],1],
+  ['偲涵站在花園門口，指向右邊。左邊傳來印潔的聲音：「慈幽，這邊！」',['往偲涵指的右邊','往印潔的聲音'],0],
+  ['一樓走廊的燈全滅了。手電筒在你手裡閃了兩下。',['打開手電筒，照亮前方','關掉手電筒，摸黑前進'],0],
+  ['走廊中間，躺著一支掉落的粉筆。她就在你身後三步。',['把粉筆往反方向丟出去','撿起粉筆握在手裡'],0],
+  ['「慈幽。」有人在身後叫你。是你自己的聲音。',['回頭','不要回頭，繼續跑'],1],
+  ['穿堂。正衣冠鏡裡，她就站在你的「右」後方——伸手可及。鏡中所見，皆為反影。',['往右邊的大門跑','往左邊的大門跑'],0],
+  ['大門鎖著。門上的掛鐘，沒有指針。玻璃外，偲涵用手指在霧氣上寫了一個字：「↓」。',['用力撞開大門','蹲下來，從門下的縫鑽出去'],1]],3800);
+ if(!ok||!S.on)return;await go('gateEnd')}
+SC.well.first=wellScene;SC.well.again=wellScene;
+
+/* ================= 終：校門口 ================= */
+async function finalScene(){
+ if(!S.f.named){await say(['你衝出校舍。校門就在眼前——鐵鍊，鬆開了。','可是她，已經站在門口。穿著印潔的臉。',['yj','「妳替我把名字找回來了。」'],['yj','「現在，叫我。」']]);
+  while(true){const r=await nameLock();if(!S.on)return;if(r==='rev')break;await hurt('她笑了。「再叫一次。」——井底的一千隻蟬，同時醒了過來。',2);if(!S.on)return}
+  S.f.named=1;save(1);await say(['「蟬、語、林。」你倒著，把她的名字還給了她。','她發出一聲長長的、不像人的尖叫。','尖叫聲停了。'])}
+ if(!S.f.yjOk){while(!S.f.yjOk){if(!await twoYj()){if(!S.on)return;continue}S.f.yjOk=1}
+  take('rope');S.f.poss=0;save(1);await say(['你把紅繩綁在她的左手腕上。','另一個印潔，像一張被水泡爛的紙，慢慢地塌了下去。','你懷裡的印潔，身體是熱的。'])}
+ await say(['你扶著她，走向校門。一步。兩步。','身後，有人輕輕叫了你的名字。','「慈幽。」','是印潔的聲音。可是印潔，就在你懷裡。']);
+ let r=await timed('「慈幽……回頭看我。」',['回頭','不要回頭，走出去'],6000);
+ if(r<0){await say('聲音又叫了一次，更近了。冰冷的呼吸，貼在你的後頸上。');r=await timed('「慈幽。」',['回頭','不要回頭，走出去'],4000);if(r<0)r=0}
+ return r===0?badEnd():trueEnd()}
+SC.gateEnd.first=finalScene;SC.gateEnd.again=finalScene;
+</script>
+
+<script>
+/* ================= 謎題與鎖 ================= */
+function shakeEl(e){if(!e)return;e.classList.remove('shake');void e.offsetWidth;e.classList.add('shake')}
+/* 轉輪密碼鎖（數字／文字） */
+function dialLock(title,desc,wheels,ans,style=''){return panel(title,`${desc}<div class="padlock"><div class="shackle"></div><div class="lbody ${style}"><div class="wheels">${wheels.map(()=>`<div class="wh"><button class="up">▲</button><div class="wv"></div><button class="dn">▼</button></div>`).join('')}</div></div></div><button class="btn-red" id="pull">拉開鎖</button>`,(el,done)=>{
+ const v=wheels.map(()=>0),L=i=>wheels[i].length;
+ const draw=()=>el.querySelectorAll('.wh').forEach((w,i)=>{const W=wheels[i];w.querySelector('.wv').innerHTML=`<span>${W[(v[i]+L(i)-1)%L(i)]}</span><b>${W[v[i]]}</b><span>${W[(v[i]+1)%L(i)]}</span>`});
+ el.querySelectorAll('.wh').forEach((w,i)=>{w.querySelector('.up').onclick=()=>{v[i]=(v[i]+L(i)-1)%L(i);click();draw()};w.querySelector('.dn').onclick=()=>{v[i]=(v[i]+1)%L(i);click();draw()}});draw();
+ el.querySelector('#pull').onclick=async()=>{if(v.every((x,i)=>wheels[i][x]===ans[i])){el.querySelector('.padlock').classList.add('open');clunk();await sl(800);done(true)}else{shakeEl(el.querySelector('.padlock'));nz(.15,.4,900,2);await hurt('鎖紋風不動。黑暗裡，有什麼東西笑了一聲。')}}})}
+
+/* 掛鐘 */
+function clockPanel(){return panel('掛鐘','<p class="pd">鐘面沒有指針。背後有一個旋鈕——你一轉，玻璃後面竟慢慢浮出了指針。</p><svg class="clockw" viewBox="-110 -110 220 220" width="210" height="210"></svg><div class="row"><button data-d="-60">⟲ 1 小時</button><button data-d="-5">⟲ 5 分</button><button data-d="5">5 分 ⟳</button><button data-d="60">1 小時 ⟳</button></div><button class="btn-red" id="ok">放開旋鈕</button>',(el,done)=>{
+ let m=0;const draw=()=>el.querySelector('svg').innerHTML=clockFace(m,true);draw();
+ el.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{m=(m+ +b.dataset.d+720)%720;click();draw()});
+ el.querySelector('#ok').onclick=async()=>{if(m===565){clunk();await sl(500);done(true)}else{shakeEl(el.querySelector('svg'));await hurt('指針「喀」地一聲彈回十二點。鐘裡，傳出一聲很輕的笑。');m=0;draw()}}})}
+
+/* 正衣冠鏡 */
+function mirrorPanel(){note('mirror','正衣冠鏡','鏡框下緣刻著：「鏡中所見，皆為反影。」鏡子裡，你身後的牆上掛著一個「有指針」的鐘（鐘面沒有數字）。');
+ const first=!S.f.mirror;S.f.mirror=1;
+ return panel('正衣冠鏡',`<svg viewBox="0 0 240 340" style="width:min(240px,70vw);display:block;margin:auto"><rect x="0" y="0" width="240" height="340" fill="#2b1d13"/><rect x="12" y="12" width="216" height="316" fill="url(#mg2)"/><defs><linearGradient id="mg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3e4f55"/><stop offset=".5" stop-color="#172126"/><stop offset="1" stop-color="#2c3a40"/></linearGradient></defs>
+  <rect x="40" y="150" width="160" height="178" fill="#0d1416" opacity=".7"/><g transform="translate(120 82) scale(-.42 .42)">${clockFace(565,true)}</g>
+  <ellipse cx="120" cy="250" rx="34" ry="62" fill="#070a0b"/><circle cx="120" cy="190" r="22" fill="#070a0b"/><g id="msi" opacity="0">${'<use href="#P-si-calm" x="150" y="150" width="90" height="120"/>'}</g>
+  <path d="M20 300L200 20M40 330L228 60" stroke="#fff" stroke-opacity=".06" stroke-width="16"/></svg>
+  <p class="pd">鏡框下緣刻著一行字：「<b>鏡中所見，皆為反影。</b>」<br>鏡子裡，你身後的牆上掛著一個鐘——它有指針。</p>`,async el=>{if(!first)return;await sl(1500);const g=el.querySelector('#msi');if(!g)return;g.style.transition='opacity 1.2s';g.setAttribute('opacity','.85');whisper();await sl(1600);if(el.querySelector('#msi'))el.querySelector('#msi').setAttribute('opacity','0')})}
+
+/* 藥瓶順序 */
+function bottleSVG(c){return`<svg viewBox="0 0 54 110"><rect x="19" y="4" width="16" height="12" fill="#222"/><path d="M19 16h16v8q14 6 14 22v58H5V46q0-16 14-22Z" fill="${c}" opacity=".9"/><path d="M11 48v44" stroke="#fff" stroke-opacity=".3" stroke-width="4"/><rect x="9" y="58" width="36" height="22" fill="#efe9d8" opacity=".9"/></svg>`}
+function medsPanel(){return panel('藥櫃',`<p class="pd">玻璃門內側寫著：「依序服用，錯了，她會知道。」<br>依照正確的順序，點擊藥瓶。</p><div class="bottles">${MEDS.map((m,i)=>`<button data-i="${i}">${bottleSVG(m[1])}</button>`).join('')}</div><button id="rs">重新開始</button>`,(el,done)=>{
+ let seq=[];const ans=[4,2,0,1,3];const bs=[...el.querySelectorAll('.bottles button')];
+ const draw=()=>bs.forEach((b,i)=>{b.querySelector('b')?.remove();const k=seq.indexOf(i);if(k>=0)b.insertAdjacentHTML('beforeend',`<b>${k+1}</b>`)});
+ bs.forEach((b,i)=>b.onclick=async()=>{if(seq.includes(i))return;seq.push(i);click();draw();if(seq.length===5){if(seq.every((x,k)=>x===ans[k])){clunk();await sl(500);done(true)}else{seq=[];draw();await hurt('錯了。藥櫃的玻璃上，慢慢浮出一個手印。')}}});
+ el.querySelector('#rs').onclick=()=>{seq=[];draw()}})}
+
+/* 方向鎖 */
+function dirPanel(){return panel('講桌抽屜・方向鎖',`<p class="pd">抽屜上掛著一個方向鎖：把中間的鈕往上下左右推，推完一整組再拉開。<br>它不會顯示你推了什麼。</p><div class="padlock" style="width:200px"><div class="shackle" style="width:110px;height:80px;border-width:15px"></div><div class="lbody steel" style="padding:12px"><div class="dknob" id="kn"></div></div></div><div class="dpad"><span></span><button data-d="U">▲</button><span></span><button data-d="L">◀</button><button id="rs" style="font-size:12px">重設</button><button data-d="R">▶</button><span></span><button data-d="D">▼</button><span></span></div><button class="btn-red" id="pull">拉開鎖</button>`,(el,done)=>{
+ let seq=[];const ans='ULLDR',kn=el.querySelector('#kn'),mv={U:'0,-12px',D:'0,12px',L:'-12px,0',R:'12px,0'};
+ el.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{seq.push(b.dataset.d);click();kn.style.transform=`translate(${mv[b.dataset.d]})`;setTimeout(()=>kn.style.transform='',140)});
+ el.querySelector('#rs').onclick=()=>{seq=[];tone(500,.08,'square',.04)};
+ el.querySelector('#pull').onclick=async()=>{if(seq.join('')===ans){el.querySelector('.padlock').classList.add('open');clunk();await sl(800);done(true)}else{seq=[];shakeEl(el.querySelector('.padlock'));await hurt('鎖沒有開。窗邊的偲涵，慢慢地搖了搖頭。')}}})}
+
+/* 置物櫃 */
+function lockerPanel(){return panel('置物櫃',`<p class="pd">三十個置物櫃，每一個都上了漆，只有號碼。<br>打開錯的櫃子……你不會想知道裡面有什麼。</p><div class="lockers">${Array.from({length:30},(_,i)=>`<button data-n="${i+1}">${i+1}</button>`).join('')}</div>`,(el,done)=>{
+ el.querySelectorAll('[data-n]').forEach(b=>b.onclick=async()=>{const n=+b.dataset.n;click();if(n===17){b.classList.add('op');clunk();await sl(600);done(true)}else{b.classList.add('op');b.disabled=true;await hurt(`${n} 號的櫃門一開，一隻灰白的手從裡面伸了出來。`)}})})}
+
+/* 借書卡：用粉筆塗 */
+function scratchPanel(){return panel('借書卡',`<p class="pd">你把粉筆橫著，輕輕塗過卡面。（在卡片上來回拖曳）</p><div class="card"><div>借閱人：<b>17 號</b></div><div>索書號：<b style="font-size:24px">595.7</b></div><div>書名：<s>　　　　　</s></div><canvas></canvas></div>`,(el,done)=>{
+ const cv=el.querySelector('canvas'),r=cv.getBoundingClientRect(),dpr=devicePixelRatio||1;cv.width=r.width*dpr;cv.height=r.height*dpr;const x=cv.getContext('2d');x.scale(dpr,dpr);
+ x.fillStyle='#efe9da';x.fillRect(0,0,r.width,r.height);x.fillStyle='rgba(0,0,0,.05)';for(let i=0;i<400;i++)x.fillRect(Math.random()*r.width,Math.random()*r.height,2,2);
+ x.globalCompositeOperation='destination-out';x.fillStyle='#000';let dn=false,fin=false;
+ const p=e=>{const b=cv.getBoundingClientRect();return[e.clientX-b.left,e.clientY-b.top]};
+ const rub=e=>{if(!dn||fin)return;const[a,b]=p(e);x.beginPath();x.ellipse(a,b,22,9,0,0,7);x.fill();if(Math.random()<.2)nz(.05,.06,4000,1)};
+ const chk=()=>{const d=x.getImageData(0,0,cv.width,cv.height).data;let c=0;for(let i=3;i<d.length;i+=64)if(d[i]<40)c++;if(c/(d.length/64)>.5&&!fin){fin=true;cv.style.transition='opacity .6s';cv.style.opacity=0;setTimeout(()=>done(true),1500)}};
+ cv.onpointerdown=e=>{dn=true;try{cv.setPointerCapture(e.pointerId)}catch(_){}rub(e)};cv.onpointermove=rub;cv.onpointerup=()=>{dn=false;chk()}})}
+
+/* 書架 */
+function shelfPanel(){const R=[['591.2','595.1','595.7w','597.5','559.7','592.0','596.3'],['580.4','595.17','579.5','595.7','594.9','595.71','598.1'],['600.1','595.2','557.9','590.0','595.07','599.5','575.9']];const C=['#5a2a22','#2a3a4a','#3a4a2a','#6a5a3a','#3a2a3a','#4a2a2a','#2a4a4a'];
+ return panel('書架',`<p class="pd">找出索書號 595.7。</p><div class="shelf">${R.map((row,r)=>`<div class="sr">${row.map((n,i)=>`<button data-n="${n}" class="${n.endsWith('w')?'wet':''}" style="background:${C[(r*3+i)%7]};height:${80+((r*7+i*13)%30)}px">${n.replace('w','')}</button>`).join('')}</div>`).join('')}</div><p class="pd" id="sm"></p>`,(el,done)=>{
+ el.querySelectorAll('[data-n]').forEach(b=>b.onclick=async()=>{const n=b.dataset.n;click();if(n==='595.7'){clunk();await sl(400);done(true)}else if(n==='595.7w'){b.disabled=true;await hurt('書背黏黏的，是濕的。你抽出來——書頁之間，夾著一大把濕透的頭髮。')}else el.querySelector('#sm').textContent=`《${n}》——不是這一本。`})})}
+
+/* 鋼琴：記憶 */
+function pianoPanel(){const M=[2,5,1,4,0,6,3];let sp=650;return panel('鋼琴',`<p class="pd" id="pm">琴鍵自己動了起來。有人在彈，你卻看不見手。<br><b>只彈一次。記住它。</b></p><div class="piano">${['Do','Re','Mi','Fa','Sol','La','Si'].map((n,i)=>`<button data-i="${i}" disabled>${n}</button>`).join('')}</div>`,(el,done)=>{
+ const ks=[...el.querySelectorAll('[data-i]')];let k=0,on=false;
+ const play=async()=>{on=false;ks.forEach(b=>b.disabled=true);await sl(900);for(const i of M){if(!el.isConnected)return;ks[i].classList.add('lit');piano(i,sp/600);await sl(sp*.7);ks[i].classList.remove('lit');await sl(sp*.35)}k=0;on=true;ks.forEach(b=>b.disabled=false);const pm=el.querySelector('#pm');if(pm)pm.innerHTML='換你彈。'};
+ ks.forEach((b,i)=>b.onclick=async()=>{if(!on)return;piano(i,.6);b.classList.add('lit');setTimeout(()=>b.classList.remove('lit'),200);if(i===M[k]){if(++k===M.length){on=false;clunk();await sl(600);done(true)}}else{on=false;await hurt('琴鍵「碰」地一聲全部按了下去。');if(!S.on)return;sp*=.82;const pm=el.querySelector('#pm');if(pm)pm.innerHTML='她又彈了一次。這一次，更快了。';play()}});
+ play()},{closeText:'離開（下次她會重新彈）'})}
+
+/* 錄音間：偲涵敲玻璃 */
+function knockPanel(){note('knock','偲涵敲玻璃','她敲了 6 下，手腕順時針轉；敲 2 下，逆時針轉；敲 4 下，順時針轉。然後指向保險箱。');
+ return panel('錄音間',`<div class="glass"><svg viewBox="0 0 300 225" style="width:100%;height:100%"><use href="#P-si-calm" x="80" y="20" width="140" height="187"/></svg><div id="kt" style="position:absolute;bottom:10px;left:0;right:0;font-size:16px;color:#e6e0d4;text-shadow:0 0 6px #000,0 0 6px #000"></div></div><p class="pd">偲涵貼著玻璃，看著你。她不會說話。</p><button id="again" disabled>再看一次</button>`,(el)=>{
+ const G=[[6,'她的手腕，順時針轉了半圈。'],[2,'她的手腕，逆時針轉了半圈。'],[4,'她的手腕，順時針轉了半圈。']];
+ const run=async()=>{el.querySelector('#again').disabled=true;const gl=el.querySelector('.glass'),kt=el.querySelector('#kt');kt.textContent='';await sl(800);
+  for(const[n,t]of G){for(let i=0;i<n;i++){if(!el.isConnected)return;knock();const s=document.createElement('span');s.className='knk';s.textContent='叩';s.style.left=(30+Math.random()*40)+'%';s.style.top=(20+Math.random()*40)+'%';gl.append(s);setTimeout(()=>s.remove(),600);await sl(520)}kt.textContent=t;await sl(1500);kt.textContent=''}
+  kt.textContent='她指了指你腳邊的保險箱。';const a=el.querySelector('#again');if(a)a.disabled=false};
+ el.querySelector('#again').onclick=run;run()})}
+
+/* 盲人鎖：沒有數字的保險箱轉盤 */
+function blindPanel(){return panel('保險箱',`<p class="pd">轉盤上沒有任何數字，只有一道刻痕。<br>每轉一格，會「喀」一聲。你只能數。</p><div class="safe"><div class="dial" id="dl"></div><div class="handle"></div></div><div class="row"><button id="ccw">⟲ 逆時針</button><button id="cw">順時針 ⟳</button></div><div class="row"><button id="zero">歸零</button><button class="btn-red" id="pull">轉動把手</button></div>`,(el,done)=>{
+ let rot=0,seg=[],wrong=0;const dl=el.querySelector('#dl');
+ const turn=d=>{rot+=d*12;dl.style.transform=`rotate(${rot}deg)`;click();const last=seg[seg.length-1];if(last&&last[0]===d)last[1]++;else seg.push([d,1])};
+ el.querySelector('#cw').onclick=()=>turn(1);el.querySelector('#ccw').onclick=()=>turn(-1);
+ el.querySelector('#zero').onclick=()=>{seg=[];rot=0;dl.style.transform='';nz(.3,.3,600,1)};
+ el.querySelector('#pull').onclick=async()=>{const s=seg.map(([d,n])=>(d>0?'R':'L')+n).join(',');if(s==='R6,L2,R4'){clunk();await sl(700);done(true)}else{seg=[];rot=0;dl.style.transform='';shakeEl(el.querySelector('.safe'));nz(.2,.5,300,1);if(++wrong%3===0)await scare();else msg('把手卡住了。轉盤，自己轉回了原位。')}}})}
+
+/* 檢查物品 */
+async function examine(k){const it=IT[k];
+ if(k==='shell'&&!S.f.shellKey){await panel('蟬蛻',`<div style="width:120px;margin:auto">${icon('shell')}</div><p class="pd">${it.d}</p>`);S.f.shellKey=1;await say(['你把蟬蛻翻過來，對著手電筒。','裂開的背裡，好像塞著什麼東西。','你用指尖把它挑出來——是一把很小的鑰匙。']);take('shell');get('k_shutter');return}
+ if(k==='photo'){note('nm1','合照背面','「她的姓：兩棵樹，站在一起，一動也不動。」')}
+ if(k==='roll'){note('roll','點名簿','最後一頁：「17 號　偲涵」，後面的字被用力劃掉了。')}
+ if(k==='tape')return panel(it.n,`<div style="width:120px;margin:auto">${icon(it.i)}</div><p class="pd">${it.d}</p><p class="pd">標籤背面，畫著五條音量線：</p>${tapeLabel()}`);
+ if(k==='bulb')return panel(it.n,`<div style="width:120px;margin:auto">${icon(it.i)}</div><p class="pd">${it.d}</p><p class="pd">你搖了搖它。……裡面沒有聲音。燈絲，也許沒有斷。</p>`);
+ return panel(it.n,`<div style="width:120px;margin:auto">${icon(it.i)}</div><p class="pd">${it.d}</p>`)}
+</script>
+
+<script>
+/* ================= 地獄難度：通用謎題 ================= */
+function keypad(title,desc,n,ans,wrong,o={}){return panel(title,`${desc}<div class="kpd"><div class="kdisp">${'<i></i>'.repeat(n)}</div><div class="kgrid">${[1,2,3,4,5,6,7,8,9,'⌫',0,'✓'].map(k=>`<button data-k="${k}">${k}</button>`).join('')}</div></div>`,(el,done)=>{let v='';
+ const d=()=>el.querySelectorAll('.kdisp i').forEach((x,i)=>x.textContent=v[i]||'');
+ el.querySelectorAll('[data-k]').forEach(b=>b.onclick=async()=>{const k=b.dataset.k;
+  if(k==='⌫'){v=v.slice(0,-1);click()}
+  else if(k==='✓'){if(v===ans){clunk();await sl(500);return done(true)}const tried=v;v='';d();shakeEl(el.querySelector('.kpd'));await hurt(typeof wrong==='function'?wrong(tried):wrong)}
+  else if(v.length<n){v+=k;o.dial?(tone(300+ +k*35,.25,'sine',.12),nz(.2,.15,900,1)):click()}d()});d()})}
+function pickOne(title,desc,items,cols=1){return panel(title,`${desc}<div class="pick" style="grid-template-columns:repeat(${cols},1fr)">${items.map((it,i)=>`<button data-i="${i}">${it.h}</button>`).join('')}</div>`,(el,done)=>{
+ el.querySelectorAll('[data-i]').forEach(b=>b.onclick=async()=>{const it=items[+b.dataset.i];click();if(it.ok){clunk();await sl(500);done(true)}else{b.disabled=true;await hurt(it.bad||'錯了。')}})})}
+function orderTap(title,desc,items,ans,wrong,cols=4){return panel(title,`${desc}<div class="pick" style="grid-template-columns:repeat(${cols},1fr)">${items.map((h,i)=>`<button data-i="${i}" style="text-align:center">${h}</button>`).join('')}</div><button id="rs">重新開始</button>`,(el,done)=>{let seq=[];const bs=[...el.querySelectorAll('[data-i]')];
+ const draw=()=>bs.forEach((b,i)=>{const k=seq.indexOf(i);b.style.borderColor=k>=0?'#c9a255':'';b.dataset.n=k>=0?k+1:'';b.querySelector('sup')?.remove();if(k>=0)b.insertAdjacentHTML('beforeend',`<sup style="color:#c9a255"> ${k+1}</sup>`)});
+ bs.forEach((b,i)=>b.onclick=async()=>{if(seq.includes(i))return;seq.push(i);click();draw();if(seq.length===ans.length){if(seq.every((x,k)=>x===ans[k])){clunk();await sl(500);done(true)}else{seq=[];draw();await hurt(wrong)}}});
+ el.querySelector('#rs').onclick=()=>{seq=[];draw()}})}
+
+/* ===== 序章：警衛亭 ===== */
+function boothPanel(){note('booth1','警衛亭的告示','夜間巡邏：每 17 分鐘一次。');note('booth2','巡邏紀錄','20:34 正常／20:51 正常／21:08 正常／21:25（沒有寫完）。亭裡的電子鐘停在 21:42，旁邊亮著「巡邏中」。');note('booth3','鑰匙箱上的便條','「密碼是 2142。」',true);
+ return keypad('警衛亭・鑰匙箱',`<div class="paper" style="font-size:16px"><span class="ink">夜間巡邏：每 17 分鐘一次。<br>20:34 巡邏　正常<br>20:51 巡邏　正常<br>21:08 巡邏　正常<br>21:25 巡邏　……</span></div><p class="pd">亭裡的電子鐘停在 <b>21:42</b>，旁邊的小燈亮著「巡邏中」。<br>鑰匙箱的面板寫著：「<b>密碼：下一次巡邏的時間</b>」。</p><div class="paper wet" style="font-size:16px"><span class="ink">密碼是 2142。</span></div>`,4,'2159','鑰匙箱「嗶」了一聲。亭子外面，有人在敲玻璃。')}
+/* ===== 序章：空心磚（每排一塊、不同直行；只能敲 6 次） ===== */
+function bricksPanel(){const H=[2,0,3,1];return panel('圍牆的磚',`<p class="pd">印潔小聲說：「每一排只有一塊空心磚，而且任兩塊都不會在同一直行。實心的會滑。」<br>先敲敲看（只能敲 6 次，敲多了磚會鬆），再<b>從最下面一排，一路踩到最上面</b>。</p><div class="brk">${Array.from({length:16},(_,i)=>`<button data-i="${i}"></button>`).join('')}</div><p class="pd" id="bl"></p><div class="row"><button id="mL" class="sel">👂 敲敲看</button><button id="mS">🦶 踩上去</button><button id="mR">磚鬆了，換一段牆（-1 生命）</button></div>`,(el,done)=>{
+ let mode='L',left=6,path=[];const bs=[...el.querySelectorAll('[data-i]')],bl=el.querySelector('#bl');
+ const info=()=>bl.textContent=mode==='L'?`還能敲 ${left} 次`:`已經踩了 ${path.length} 階`;
+ const setM=m=>{mode=m;el.querySelector('#mL').classList.toggle('sel',m==='L');el.querySelector('#mS').classList.toggle('sel',m==='S');info()};
+ el.querySelector('#mL').onclick=()=>setM('L');el.querySelector('#mS').onclick=()=>setM('S');
+ el.querySelector('#mR').onclick=async()=>{left=6;path=[];bs.forEach(b=>{b.textContent='';b.classList.remove('ok')});await hurt('你換到另一段牆。磚縫裡，伸出了一隻灰白的手指。');info()};
+ bs.forEach((b,i)=>b.onclick=async()=>{const r=i/4|0,c=i%4,hol=H[r]===c;
+  if(mode==='L'){if(b.textContent)return;if(left<=0){bl.textContent='再敲下去，整面牆會塌。';return}left--;if(hol){knock();nz(.6,.25,180,2,.15);b.textContent='咚——'}else{click();tone(1400,.05,'square',.05);b.textContent='叩'}info();return}
+  const need=3-path.length;if(r!==need||!hol){path=[];bs.forEach(x=>x.classList.remove('ok'));await hurt(r!==need?'你踩錯了排，整個人滑了下來。':'磚是實心的。你的腳一滑，膝蓋撞上了牆。');info();return}
+  path.push(i);b.classList.add('ok');nz(.1,.3,400,1);info();if(path.length===4){clunk();await sl(600);done(true)}});info()})}
+/* ===== 序章：三隻手 ===== */
+function handsPanel(){return pickOne('牆頭',`<p class="pd">你爬到一半，牆頭的黑暗裡，同時伸下來三隻手。<br>印潔說過：「紅繩，我都綁在<b>左手</b>。」</p>`,[
+ {h:'① 紅繩綁在手腕上。手掌朝著你，大拇指在你的<b>左邊</b>。',bad:'那是一隻右手。它抓住你，指甲陷進你的肉裡——你用力甩開了。'},
+ {h:'② 沒有紅繩。手指很長、濕的，指甲是黑的。',bad:'冰冷的手指扣住你的手腕，往牆的另一邊拖——你差點掉下去。'},
+ {h:'③ 紅繩綁在手腕上。手掌朝著你，大拇指在你的<b>右邊</b>。',ok:1}])}
+
+/* ===== 穿堂：獎盃櫃 ===== */
+function trophyPanel(){note('trophy','獎盃櫃','五座「最會唱歌的孩子」獎盃，頒給同一個人。她每十七年，就會再拿一次。年份：民國七十四年／2002 年／民國一〇〇年／2019 年／2036 年。');
+ return pickOne('獎盃櫃',`<p class="pd">玻璃櫃裡有五座一模一樣的獎盃：「最會唱歌的孩子」。<br>底座的銅牌寫著：「<b>每一座，都頒給同一個人。她每隔十七年，就會再來拿一次。</b>」<br>其中一座是假的。拿起它。</p>`,
+ ['民國七十四年','2002 年','民國一〇〇年','2019 年','2036 年'].map((y,i)=>i===2?{h:'🏆 '+y,ok:1}:{h:'🏆 '+y,bad:'你拿起獎盃——底座黏著一撮濕透的頭髮。這座是真的。'}),5)}
+/* ===== 穿堂：大門上的霧字 ===== */
+function fogPanel(){note('fog','大門玻璃上的霧字','偲涵站在大門「外面」，在霧氣上寫了三個數字。從裡面看起來，是三個反過來的字：6　1　7。');
+ return panel('大門',`<p class="pd">偲涵站在玻璃門<b>外面</b>。她對著玻璃呵氣，用手指寫字。</p><div class="wall" style="font-family:'Noto Serif TC'"><span style="animation-delay:.3s">6</span><span style="animation-delay:1.1s">1</span><span style="animation-delay:1.9s">7</span></div><p class="pd" id="fp">寫完，她指了指樓梯的鐵捲門。</p>`,async el=>{await sl(4500);const w=el.querySelector('.wall');if(!w)return;w.style.transition='opacity 1.5s';w.style.opacity=0;const p=el.querySelector('#fp');if(p)p.textContent='霧氣散了。字，也不見了。'})}
+
+/* ===== 保健室：體溫表 / 冰箱 ===== */
+function fridgePanel(){note('temp','體溫紀錄表（偲涵）','第一天 36.8／第二天 36.1／第三天 35.4／第四天 34.7／第五天（空白）。下面寫著：「第五天，她就不會冷了。」');note('fridge2','冰箱上的便條','「冰箱密碼：347」',true);
+ return keypad('小冰箱',`<div class="paper" style="font-size:16px"><span class="ink">體溫紀錄（三年二班 17 號）<br>第一天 36.8　第二天 36.1　第三天 35.4<br>第四天 34.7　第五天 ＿＿.＿<br>「第五天，她就不會冷了。」</span></div><p class="pd">冰箱門上有三位數的密碼鎖：「<b>她第五天的體溫</b>（不含小數點）」。</p><div class="paper wet" style="font-size:16px"><span class="ink">冰箱密碼：347</span></div>`,3,'340','冰箱裡傳出指甲刮塑膠的聲音。')}
+
+/* ===== 一樓走廊：停電 ===== */
+async function blackout(){S.f.boOn=1;await say(['啪。','一樓走廊的燈，全滅了。只剩走廊中間一盞，還亮著。','走廊盡頭，傳來很慢的腳步聲。']);
+ const ok=await chase([['腳步聲越來越近。校規第十八條說過什麼？',['跑回穿堂','站到那盞還亮著的燈下'],1],['腳步聲停在你面前。印潔抓緊你的手，張開嘴想說話。',['摀住她的嘴','小聲問她怎麼了'],0],['有人在你的後頸，輕輕吹了一口氣。',['回頭看','閉上眼睛，不要動'],1]],4500);
+ if(!ok||!S.on)return;S.f.blackout=1;S.f.boOn=0;await say(['燈，一盞一盞亮了回來。','三年二班的門把上，那個生鏽的掛鎖——被人從裡面，扭開了一半。'])}
+/* ===== 一樓走廊：飲水機 ===== */
+function fountainPanel(){note('ftn1','飲水機上的標籤','「溫水鍵故障。先按冰水，再按熱水，就會自動混成溫水。」');note('ftn2','飲水機上的貼紙','「直接按溫水鍵就好。」',true);
+ return panel('飲水機',`<div class="paper" style="font-size:16px"><span class="ink">溫水鍵故障。<br>先按冰水，再按熱水，就會自動混成溫水。</span></div><div class="paper wet" style="font-size:16px"><span class="ink">直接按溫水鍵就好。</span></div><p class="pd">排水孔被什麼東西塞住了。病歷上說，她只喝溫水。</p><div class="row"><button data-b="冰">❄ 冰水</button><button data-b="溫">溫水</button><button data-b="熱">♨ 熱水</button></div><p class="pd" id="fs"></p><button class="btn-red" id="go">出水</button>`,(el,done)=>{let seq=[];const fs=el.querySelector('#fs');
+ el.querySelectorAll('[data-b]').forEach(b=>b.onclick=async()=>{click();if(b.dataset.b==='溫'){seq=[];fs.textContent='';return hurt('溫水鍵一按下去，流出來的是滾燙的血。')}seq.push(b.dataset.b);fs.textContent='已按：'+seq.join(' → ')});
+ el.querySelector('#go').onclick=async()=>{if(seq.join()==='冰,熱'){nz(1.2,.3,700,.5);await sl(900);done(true)}else{seq=[];fs.textContent='';await hurt('水管裡傳出一聲尖叫，排水孔噴出黑色的水。')}}})}
+/* ===== 一樓走廊：後花園的木板 ===== */
+function boardsPanel(){return orderTap('後花園的門',`<p class="pd">門上釘著四塊木板，每一塊都刻著一個圖案。木框上寫著：「<b>照她的一生，一塊一塊拔。</b>」<br>（用鐵鉗，依序點選要拔的木板）</p>`,['🦗 成蟲','🐚 蟬蛻','🥚 卵','🐛 若蟲'],[2,3,1,0],'順序錯了。剩下的木板一起塌下來，砸在你的肩膀上。',4)}
+
+/* ===== 三年二班：合照（記憶） ===== */
+function photoMemory(){const FL=[2,7,15],NS=[10,11];
+ const svg=`<svg viewBox="0 0 300 250" style="width:100%;background:#9a8466;border:10px solid #3a2a1a;display:block">${Array.from({length:18},(_,i)=>{const x=32+(i%6)*46,y=30+(i/6|0)*70;return`${NS.includes(i)?'':`<ellipse cx="${x+12}" cy="${y+50}" rx="17" ry="4.5" fill="#1e140a" opacity=".85"/>`}<path d="M${x-15} ${y+46}Q${x-13} ${y+15} ${x} ${y+15}Q${x+13} ${y+15} ${x+15} ${y+46}Z" fill="#4a3a28"/><circle cx="${x}" cy="${y}" r="11" fill="${i===11?'#d8c8a0':'#3a2c1c'}"/>${FL.includes(i)?`<path d="M${x-10} ${y-8}l20 16M${x+10} ${y-8}l-20 16M${x-11} ${y}h22" stroke="#000" stroke-width="2.5"/>`:''}`}).join('')}${T(150,242,'民國一〇八年　三年二班　畢業紀念',11,'#2a1a0a')}</svg>`;
+ return panel('班級合照',`<div class="photo">${svg}<div class="cover">她把照片翻了過去。<br><br>背面寫著：<br>「我的櫃子密碼：<br>那天的合照裡，沒有臉的人數，<br>和沒有影子的人數。」</div></div><p class="pd" id="pp">照片只會出現一下子。看清楚。</p>`,async el=>{await sl(5000);const c=el.querySelector('.cover');if(c)c.style.opacity=1;note('photo2','合照背面','「我的櫃子密碼：那天的合照裡，沒有臉的人數，和沒有影子的人數。」')})}
+
+/* ===== 二樓：刷卡機 / 校長室門 ===== */
+function readerPanel(){note('reader','刷卡機側面的紙條','「預設密碼 0000」',true);return keypad('刷卡機',`<p class="pd">「嗶。」學生證讀到了。螢幕上跳出：<b>請輸入四位數密碼</b>。</p><div class="paper wet" style="font-size:16px"><span class="ink">預設密碼 0000</span></div>`,4,'1717','密碼錯誤。刷卡機發出刺耳的長音，整條走廊的燈閃了一下。')}
+function prinDoorLock(){const W=['不','是','我','她','你','在'];return dialLock('校長室・門上的字鎖','<p class="pd">鑰匙轉開之後，門把下面還有一個三格的字鎖。門牌底下刻著：<br>「<b>說出最後一次廣播裡，她說的話。</b>」</p>',[W,W,W],['不','是','我'],'steel')}
+
+/* ===== 圖書室：書籤密碼 ===== */
+const POEM='蟬聲吞盡千年夏言者皆被井中封五更誰替她開口倒念其名夢方終';
+function poemPanel(){note('poem','《十七年蟬》扉頁的詩','蟬聲吞盡千年夏／言者皆被井中封／五更誰替她開口／倒念其名夢方終');note('bm1','藍色書籤','「2-1　3-1　3-7」');note('bm2','紅色書籤','「1-1　2-5　4-1」',true);
+ return panel('書籤',`<p class="pd">扉頁上印著一首詩。書裡夾著兩張書籤。</p><div class="paper" style="font-size:16px"><span class="ink">藍色書籤：2-1　3-1　3-7</span></div><div class="paper wet" style="font-size:16px"><span class="ink">紅色書籤：1-1　2-5　4-1</span></div><div class="poem">${[...POEM].map((c,i)=>`<button data-i="${i}">${c}</button>`).join('')}</div><p class="pd">依序點出書籤指的字。</p>`,(el,done)=>{let seq=[];const bs=[...el.querySelectorAll('[data-i]')];
+ bs.forEach((b,i)=>b.onclick=async()=>{if(seq.includes(i))return;seq.push(i);b.classList.add('on');click();if(seq.length===3){if(seq.join()==='7,14,20'){clunk();await sl(600);done(true)}else{seq=[];bs.forEach(x=>x.classList.remove('on'));await hurt('書頁「啪」地闔上，夾住了你的手指。')}}})})}
+
+/* ===== 音樂教室：調音 / 節拍器 ===== */
+function tunePanel(){const F=[452,428,440];return panel('調音',`<p class="pd">你敲響音叉，把它抵在鋼琴上。<br>三根「La」的琴弦，只有一根是對的。</p><div class="row"><button id="fk">🔔 敲音叉（A 440）</button></div><div class="row">${F.map((f,i)=>`<button data-i="${i}">第 ${i+1} 根弦 ▶</button>`).join('')}</div><div class="row">${F.map((f,i)=>`<button class="btn-red" data-c="${i}">選第 ${i+1} 根</button>`).join('')}</div>`,(el,done)=>{
+ el.querySelector('#fk').onclick=()=>tone(440,1.6,'sine',.25);el.querySelectorAll('[data-i]').forEach(b=>b.onclick=()=>{tone(F[+b.dataset.i],1.6,'triangle',.22)});
+ el.querySelectorAll('[data-c]').forEach(b=>b.onclick=async()=>{if(+b.dataset.c===2){clunk();await sl(500);done(true)}else{b.disabled=true;await hurt('琴弦「錚」地斷了，彈在你的臉上。')}})})}
+function rhythmPanel(){const R=[1,0,0,1,0,1,1,0];let sp=520;return panel('節拍器',`<p class="pd" id="rp">節拍器自己敲了起來。<b>強</b>的那一下比較高、比較亮。<br>記住它，然後敲回去。</p><div style="font-size:64px;height:80px" id="rv">▲</div><div class="row"><button data-v="1" disabled>強</button><button data-v="0" disabled>弱</button></div><p class="pd" id="rs"></p>`,(el,done)=>{let seq=[],on=false;const rv=el.querySelector('#rv'),bs=[...el.querySelectorAll('[data-v]')];
+ const play=async()=>{on=false;bs.forEach(b=>b.disabled=true);await sl(900);for(const v of R){if(!el.isConnected)return;rv.style.transform=`scale(${v?1.4:.7})`;rv.style.color=v?'#ffd27a':'#777';tone(v?1700:800,.08,'square',v?.12:.06);await sl(sp*.5);rv.style.transform='';rv.style.color='';await sl(sp*.5)}seq=[];on=true;bs.forEach(b=>b.disabled=false);el.querySelector('#rp').textContent='換你敲。'};
+ bs.forEach(b=>b.onclick=async()=>{if(!on)return;const v=+b.dataset.v;seq.push(v);tone(v?1700:800,.08,'square',.1);el.querySelector('#rs').textContent=seq.map(x=>x?'強':'弱').join(' ');if(seq.length===R.length){on=false;if(seq.join()===R.join()){clunk();await sl(500);done(true)}else{el.querySelector('#rs').textContent='';await hurt('節拍器的擺錘「啪」地斷了，飛過你的臉頰。');if(!S.on)return;sp*=.85;el.querySelector('#rp').textContent='她又敲了一次。更快了。';play()}}});play()},{closeText:'離開（下次會重新敲）'})}
+
+/* ===== 廣播室：推桿 ===== */
+function tapeLabel(){return`<svg viewBox="0 0 250 120" style="width:100%;max-width:300px;background:#e8e0c8;border-radius:4px">${[1,3,5,4,2].map((h,i)=>`<rect x="${20+i*45}" y="${95-h*15}" width="22" height="${h*15}" fill="#2a2a2a"/>${T(31+i*45,112,'CH'+(i+1),11,'#333')}`).join('')}</svg>`}
+function fadersPanel(){return panel('控制台・音量推桿',`<p class="pd">錄音帶標籤的背面，畫著五條音量線：</p>${tapeLabel()}<p class="pd">控制台上的五支推桿，由左到右標著：</p><div class="fad">${[5,4,3,2,1].map(c=>`<label>CH${c}<input type="range" min="0" max="5" step="1" value="0" data-c="${c}"><b>0</b></label>`).join('')}</div><button class="btn-red" id="pl">▶ 播放</button>`,(el,done)=>{
+ el.querySelectorAll('input').forEach(i=>i.oninput=()=>{i.nextElementSibling.textContent=i.value;click()});
+ el.querySelector('#pl').onclick=async()=>{const v={};el.querySelectorAll('input').forEach(i=>v[i.dataset.c]=+i.value);if(v[1]===1&&v[2]===3&&v[3]===5&&v[4]===4&&v[5]===2){clunk();await sl(400);done(true)}else{nz(.8,.9,2500,.4);await hurt('喇叭爆出一陣尖叫，震得你耳朵嗡嗡作響。')}}})}
+
+/* ===== 校長室：歷任校長 / 日誌鎖 / 電話 ===== */
+function portraitsPanel(){note('pr1','歷任校長照片的銘牌','第一任：民國七十四年就任／第二任：任期十七年／第三任：（被黑布蓋住）／第四任：民國一二五年就任。每一任的任期都一樣長。');
+ return panel('歷任校長',`<div class="paper" style="font-size:16px"><span class="ink">第一任校長　民國七十四年就任<br>第二任校長　任期十七年<br>第三任校長　${S.f.cloth?'（銘牌被刮花了）':'（被黑布蓋住）'}<br>第四任校長　民國一二五年就任</span></div><p class="pd">每一任，任期都一樣長。<br>第四任校長的照片裡……沒有人。</p>`)}
+function diaryLock(){return dialLock('校長日誌・數字鎖','<p class="pd">日誌被一個三位數的小鎖扣著。鎖上刻著：「<b>第三任校長，就任的那一年</b>」。</p>',[DG,DG,DG],['1','0','8'])}
+async function phoneEvent(){if(!S.f.ring){S.f.ring=1;await say(['電話突然響了。','你接起來。','「慈幽。」是印潔的聲音。可是印潔，就站在你身後。','「打給我。我的號碼是——零、七、一、七。」','嘟——電話掛了。']);note('phone','電話裡「印潔」說的號碼','「零、七、一、七。」——說話的人不是印潔。')}
+ if(await keypad('撥盤電話','<p class="pd">你要撥給誰？</p>',4,'7170',v=>v==='0717'?'電話那頭，傳來你自己的尖叫聲。':'「您撥的號碼，是空號。」……然後，是一陣笑聲。',{dial:1})){S.f.phone=1;get('k_garden');await say(['嘟——嘟——','電話接通了。那頭沒有人說話，只有水聲。','電話底下的抽屜「喀」地彈開了。裡面是一把纏著水草的鑰匙。'])}}
+
+/* ===== 後花園：樹洞 / 古井的順序 ===== */
+function treePanel(){const t=Array.from({length:17},()=>'正').join('');return keypad('老榕樹的樹洞',`<p class="pd">樹幹上刻滿了「正」字，一筆一劃，刻得很深。</p><div style="font:24px 'LXGW WenKai TC';letter-spacing:4px;color:#d9cfb5;line-height:1.5;background:#2a2016;padding:10px;border-radius:6px">${t}<svg viewBox="0 0 24 24" width="24" height="24" style="vertical-align:middle"><path d="M3 4h18M12 4v16M12 11h7" stroke="#d9cfb5" stroke-width="2.2"/></svg></div><p class="pd">樹洞被一個兩位數的鎖扣著：「<b>她一共數了幾天？</b>」</p>`,2,'88','鎖扣反彈，劃破了你的手指。樹洞裡，有東西在笑。')}
+function tabletPanel(){note('tablet','樹洞裡的石片（字是反的）','先喚其名，再數其日，終而勿動。');return panel('樹洞裡的石片',`<div class="wall" style="font-size:30px;height:auto;padding:20px;letter-spacing:.15em;flex-direction:column;gap:6px">${['先喚其名','再數其日','終而勿動'].map(s=>`<div style="transform:scaleX(-1)">${s}</div>`).join('')}</div><p class="pd">石片上的字全是反的。像是給鏡子裡的人看的。</p>`)}
+async function wellLocks(){if(S.f.well)return go('well');
+ if(!S.f.tree)return msg('石板上刻著一行字：「開鎖的順序，藏在樹裡。」三道鎖，你不敢亂碰。');
+ const st=()=>`${S.f.w2?'✔':'　'} 文字鎖　${S.f.w1?'✔':'　'} 數字鎖　${S.f.w3?'✔':'　'} 無字鎖`;
+ const pick=await new Promise(r=>panel('井蓋上的三道鎖',`<p class="pd">${st()}</p><p class="pd">要先碰哪一道？</p><div class="row"><button data-k="w1">四位數字鎖</button><button data-k="w2">三格文字鎖</button><button data-k="w3">刻著「別動」的鎖</button></div>`,(el,done)=>el.querySelectorAll('[data-k]').forEach(b=>b.onclick=()=>{done();r(b.dataset.k)})).then(v=>{if(v===false)r(null)}));
+ if(!pick)return;const need=!S.f.w2?'w2':!S.f.w1?'w1':'w3';
+ if(pick!==need)return hurt('石板裡傳出一聲尖叫。順序錯了——井口的鐵鍊，勒住了你的手腕。');
+ if(pick==='w2'){if(!await dialLock('井蓋・文字鎖','<p class="pd">三個轉輪上刻的不是數字，是字。鎖面寫著：「說出她的名字」。</p>',[W1,W2,W3],['林','語','蟬']))return;S.f.w2=1;render();return msg('文字鎖開了。')}
+ if(pick==='w1'){if(!await dialLock('井蓋・數字鎖','<p class="pd">四位數字鎖。鎖身上刻著：①②③④。</p>',[DG,DG,DG,DG],['0','7','1','7'],'steel'))return;S.f.w1=1;render();return msg('數字鎖開了。')}
+ await say(['最後一道鎖上，沒有數字，也沒有字。只刻著兩個字：「別動」。','你身後，傳來很慢、很慢的腳步聲。']);await hide(12,'別動。','她就站在你身後。');if(!S.on)return;
+ S.f.w3=1;S.f.well=1;render();await say(['腳步聲停在你耳邊，然後……遠去了。','三道鎖同時鬆開，石板「轟」地滑開。','井底沒有水。只有一道往下的鐵梯。',['yj','「我先下去。」'],'你還來不及拉住她，印潔已經消失在黑暗裡。']);go('well')}
+
+/* ===== 井底：攀爬 ===== */
+function climbPanel(){const CR={4:[1,3],3:[0,2],2:[2],1:[1,3],0:[2]};return panel('井壁',`<p class="pd">鐵梯斷了。你只能抓著井壁上的蟬蛻往上爬。<br><b>背上裂開的</b>是空殼，抓得住；沒有裂開的……裡面還有東西。<br>從最下面往上，每次只能抓正上方或斜上方那一格。</p><div class="tbar"><i id="cb" style="animation-duration:40s"></i></div><div class="climb">${Array.from({length:20},(_,i)=>{const r=i/4|0,c=i%4,cr=CR[r].includes(c);return`<button data-i="${i}"><svg viewBox="0 0 48 48" width="34" height="34"><path d="M24 8c8 0 12 7 11 15-1 9-5 16-11 18-6-2-10-9-11-18-1-8 3-15 11-15Z" fill="#8a5a2a"/>${cr?'<path d="M24 9l-1.5 14 3 6-2 10" stroke="#120a04" stroke-width="2.6" fill="none"/>':'<path d="M18 18c3 3 9 3 12 0M17 26c4 3 10 3 14 0" stroke="#5a3a18" stroke-width="1.5" fill="none"/>'}</svg></button>`}).join('')}</div>`,(el,done)=>{
+ let path=[],T;const bs=[...el.querySelectorAll('[data-i]')];
+ const reset=()=>{path=[];bs.forEach(b=>b.classList.remove('ok'));const b=el.querySelector('#cb');if(b){b.style.animation='none';void b.offsetWidth;b.style.animation='tb 40s linear forwards'}clearTimeout(T);T=setTimeout(async()=>{if(!el.isConnected)return;await hurt('太慢了。下面伸上來的手，抓住了你的腳踝。');if(S.on)reset()},40000)};
+ bs.forEach((b,i)=>b.onclick=async()=>{const r=i/4|0,c=i%4,last=path[path.length-1];const nr=last===undefined?4:(last/4|0)-1,ok=r===nr&&(last===undefined||Math.abs(c-last%4)<=1);
+  if(!ok)return;if(!CR[r].includes(c)){clearTimeout(T);await hurt('你抓住的蟬蛻「啪」地裂開——裡面的東西，咬住了你的手指。');if(S.on)reset();return}
+  path.push(i);b.classList.add('ok');click();if(r===0){clearTimeout(T);clunk();await sl(500);done(true)}else if(r===nr&&!bs.some((x,j)=>(j/4|0)===r-1&&Math.abs(j%4-c)<=1&&CR[r-1].includes(j%4)))msg('上面沒有能抓的地方了。只能退回去重爬。')});
+ const back=document.createElement('button');back.textContent='退回最下面';back.onclick=reset;el.append(back);reset()},{noClose:true})}
+
+/* ===== 校門口：兩個印潔 ===== */
+function twoYj(){return pickOne('兩個印潔',`<p class="pd">尖叫聲停了。你面前，躺著兩個印潔。<br>一模一樣的臉，一模一樣的制服。你手裡握著那條紅繩。</p>`,[
+ {h:'左邊的印潔睜開眼睛，對你伸出<b>右手</b>：「慈幽……紅繩還給我好不好？我好冷。」',bad:'紅繩一碰到她的手，就燒成了灰。她笑了。你從地上撿起另一條……是你自己的頭髮。'},
+ {h:'右邊的印潔閉著眼睛，一句話也沒說。她的<b>左手腕</b>上，有一圈被勒出來的紅痕。',ok:1}])}
+</script>
+
+<script>
+/* ================= 提示 ================= */
+function hint(){const f=S.f,sc=S.sc;
+ if(sc==='gate'){if(!f.booth)return'警衛室的鐘停在一次巡邏的時間。每十七分鐘巡一次，「下一次」是幾點？鑰匙箱上那張濕的便條，別信。';if(!f.ivy)return'鐵鉗。藤蔓。';if(!f.bricks)return'每排一塊、任兩塊不同直行。敲第一排最多三次就能確定，下一排可選的直行就少一個。';return'印潔說紅繩綁在左手。一隻左手掌心朝著你、手指朝下的時候，大拇指在你的哪一邊？'}
+ if(sc==='well')return f.climbed?'她追聲音、怕光。偲涵指的方向才是對的。鏡子是反的。被叫名字，不要回頭。':'只抓背上裂開的空殼。每次只能往正上方或斜上方。有一條路是死路，退回去重爬。';
+ if(sc==='gateEnd')return!f.named?'校長日誌的最後一頁：「倒著，還給她」。':!f.yjOk?'偲涵不會說話，但她從來沒有騙過人。真正的印潔，紅繩綁在哪一隻手？':'聽見有人叫你，不要回頭。';
+ if(!f.clock)return'鏡子裡的鐘是反的，鐘面沒有數字，只能看指針的方向。公布欄上那張濕的紙條，別信。';
+ if(!f.nurseOpen)return'掛鐘裡掉出來的鑰匙——選取它，再點保健室的門。';
+ if(!f.hid)return'病床上的東西……忍住，什麼都別碰。';
+ if(!f.fridge)return'體溫每天都降一樣多。第五天是幾度？冰箱上濕的便條，別信。';
+ if(!f.cab)return'藥櫃小鑰匙，選取它，再點藥櫃。';
+ if(!f.meds)return'三張寫著順序的紙，其中一張的墨是濕的。剩下兩張拼起來，順序只有一種。';
+ if(!f.blackout)return'回到一樓走廊。停電的時候，照校規第十八條做。';
+ if(!f.ftn)return'飲水機的溫水鍵壞了。照乾的那張標籤做。';
+ if(!f.classOpen)return'三年二班的鑰匙，妳已經拿到了。';
+ if(!f.drawer)return'偲涵面對著妳。她的右邊，是妳的哪一邊？';
+ if(!f.photo1)return'回頭看看教室後面的合照。它只出現五秒，看清楚哪些人沒有臉、哪些人沒有影子。';
+ if(!f.locker)return'公布欄和點名簿，都提過同一個號碼。掛鎖的密碼，寫在合照背面。';
+ if(!f.shellKey)return'有些東西看起來沒用。把撿到的東西，一樣一樣「檢查」看看。';
+ if(!f.trophy)return'穿堂背後的獎盃櫃。她每十七年拿一次——把西元換成民國（減 1911）。';
+ if(!f.shutter)return f.shKey?'掛鎖要的是「她寫給你的數字」。偲涵站在玻璃門外面寫的——你看到的，是反過來的。':'回頭看看穿堂的大門。然後用那把小鑰匙開鐵捲門。';
+ if(!f.swarm)return'蟬追聲音。別動，別出聲。';
+ if(!f.card)return'借書卡上有凹痕。妳身上有能把凹痕塗出來的東西。';
+ if(!f.book)return'有兩本書的索書號一模一樣。摸摸看書背。';
+ if(!f.poem)return'兩張書籤，一張的墨是濕的。「行-字」，從第一行、第一個字開始數。';
+ if(!f.tuned)return'獎盃裡的音叉，是 A 440。三根弦裡只有一根跟它一樣高。';
+ if(!f.piano)return'她只彈一次。專心聽，專心看。樂譜架上那張濕的紙條在騙妳。';
+ if(!f.metro)return'節拍器只敲一次。強的那一下比較高、比較亮。';
+ if(!f.radioOpen)return'廣播室的刷卡機。偲涵的學生證背面寫了密碼。';
+ if(!f.power)return'廣播室的燈罩是空的。那顆「壞掉」的燈泡，真的壞了嗎？';
+ if(!f.rsafe)return'保險箱沒有數字，只能數「喀」的聲音。她敲了幾下、手往哪邊轉？數錯了就歸零重來。';
+ if(!f.tape)return'錄音帶標籤畫著 CH1 到 CH5 的音量，但控制台的推桿是從 CH5 排到 CH1。';
+ if(!f.prinOpen)return f.prinKey?'最後一次廣播裡，偲涵用盡力氣，只說了三個字。':'黃銅鑰匙是校長室的。';
+ if(!f.diary)return'每一任校長任期都一樣長。第二任告訴妳多長，第一任告訴妳從哪一年開始。';
+ if(!f.psafe)return'日誌說她至今醒了三次，每次相隔十七年；日曆告訴妳今年是哪一年。桌上濕的便條，別信。';
+ if(!f.phone)return'打電話來的不是印潔。她說的話，全都是反的。';
+ if(!f.boards)return'用鐵鉗拔木板。照《十七年蟬》書裡寫的，牠的一生。';
+ if(!f.gardenOpen)return'纏著水草的鑰匙，是一樓走廊盡頭那扇門的。';
+ if(!f.tree)return'數數看樹上的「正」字。一個正字是五天；最後那個，還沒寫完。';
+ if(!f.w2||!f.w1)return'石片上的字是反的：先喚其名，再數其日，終而勿動。名字的三個部分、四個數字碎片，筆記裡都有。';
+ return'跟著偲涵。她從來沒有騙過人。'}
+$('#bHint').onclick=async()=>{if(busy)return;if(!await confirmP('要問小羽嗎？<br><small>（逃脫時間會增加 60 秒）</small>'))return;S.t+=60;S.hints=(S.hints||0)+1;hud();save(1);if(checkTime())return;await say([['yu','「'+hint()+'」']])};
+$('#bMenu').onclick=()=>{if(busy)return;panel('選單',`<div class="row" style="flex-direction:column"><button id="m1">💾 存檔</button><button id="m2">${snd?'🔇 關閉音效':'🔊 開啟音效'}</button><button id="m3">回到標題</button><button id="m4" class="btn-gold">回到第柒門大廳</button></div>`,(el,done)=>{
+ el.querySelector('#m1').onclick=()=>{done();busy=0;save(1);toast('💾 已存檔')};
+ el.querySelector('#m2').onclick=()=>{snd=!snd;cicada(snd?(SC[S.sc].out?.14:.05):0);if(drn)drn.gain.value=snd?.8:0;done()};
+ el.querySelector('#m3').onclick=()=>{done();toTitle()};el.querySelector('#m4').onclick=()=>{done();toLobby()}})};
+document.addEventListener('keydown',e=>{if((e.key===' '||e.key==='Enter')&&tapR){e.preventDefault();tapR()}});
+
+/* ================= 結局 ================= */
+async function trueEnd(){await say(['你沒有回頭。','你們跨出了校門。','蟬聲，停了。整座城市安靜得，像第一次學會呼吸。',['yj','「……慈幽？」印潔睜開眼睛，「我們怎麼會在這裡？」'],'天快亮了。你回頭看了一眼學校——現在，可以回頭了。','二樓的窗邊，站著兩個人影。偲涵，和小羽。','偲涵對你輕輕點了點頭。然後，她開口了。','你聽不見聲音。但你看懂了她的嘴型——','「謝謝。」']);
+ S.on=0;cicada(0);clr();if(window.SD)SD.clear(S.rid,S.t,S.deaths||0,S.hints||0);
+ $('#endh').textContent='第一章　完';$('#endp').innerHTML='十七年的蟬鳴，停了。<br>……可是，真的結束了嗎？';$('#endt').textContent='逃脫時間 '+fmt(S.t);$('#endr').style.display='none';show('end');setTimeout(egg,8000)}
+async function badEnd(){await say(['你回頭了。','站在那裡的是印潔——不，是她。她穿著印潔的臉，對你笑。','「找到妳了。」','你張開嘴，想叫印潔的名字。……發不出聲音。','從今天起，由妳，替她開口。']);await scare('偲涵',1);
+ S.on=0;$('#endh').textContent='結局：新的偲涵';$('#endp').innerHTML='聽見有人叫你，不要回頭。';$('#endt').textContent='';$('#endr').style.display='';show('end')}
+async function egg(){if(!$('#end').classList.contains('on'))return;show('egg');const p=$('#eggp'),v=$('#eggv');v.innerHTML=use('her-scream');v.style.opacity=0;$('#eggb').style.display='none';
+ p.textContent='（彩蛋）';await sl(2000);p.textContent='井壁的最深處，刻著一個比「林語蟬」更舊的名字。';await sl(4000);v.style.opacity=.9;p.textContent='邦瑜。';await sl(2600);p.textContent='她才是，第一個被關進去的人。';await sl(3800);await scare('邦瑜',1);p.innerHTML='第二章：邦瑜<br><small>（敬請期待）</small>';$('#eggb').style.display=''}
+function ch2(){$('#eggp').innerHTML='第二章：邦瑜<br>製作中，敬請期待。';const b=$('#eggb');b.textContent='回到標題';b.onclick=toTitle}
+
+
+/* ================= 開始 ================= */
+function ageOk(){ac();ambient();show('title');refreshTitle()}
+function ageNo(){$('#ag').innerHTML='<h1>抱歉</h1><p>未滿 18 歲，無法遊玩。</p><button class="btn-gold" onclick="toLobby()">回到大廳</button>'}
+function refreshTitle(){$('#ctw').style.display=hasSave()?'':'none'}
+function toTitle(){save(1);if(S)S.on=0;busy=0;tapR=null;closePanels();cicada(0);show('title');refreshTitle()}
+async function newGame(){if(hasSave()&&!confirm('開始新遊戲會覆蓋目前的存檔，確定嗎？'))return;clr();S=fresh();busy=0;sel=null;tapR=null;
+ const me=S;if(window.SD)SD.begin().then(id=>{me.rid=id;save(1)});
+ show('game');S.f.v_gate=1;render();cicada(.14);await SC.gate.first();save()}
+function loadGame(){let d;try{d=JSON.parse(localStorage.getItem(SK))}catch(e){}if(!d||!SC[d.sc]){clr();refreshTitle();return}
+ S=d;S.on=1;busy=0;sel=null;tapR=null;show('game');render();cicada(SC[S.sc].out?.14:.05);
+ if(SC[S.sc].again)SC[S.sc].again();else msg('（已讀取存檔。她，一直在等你回來。）')}
+$('#bNew').onclick=()=>{ac();newGame()};$('#bCont').onclick=()=>{ac();loadGame()};$('#bDel').onclick=()=>{clr();refreshTitle()};
+buildPortraits();
+$('#cast').innerHTML=[['ci-calm','慈幽'],['yj-calm','印潔'],['yu-calm','小羽'],['si-calm','偲涵']].map(([k,n])=>`<div>${use(k)}${n}</div>`).join('');
+// 連線失敗（12 秒內沒有完成登入檢查）時，讓玩家可以回大廳
+setTimeout(()=>{const h=document.getElementById('sd-hide');if(h&&!window.SD){h.remove();document.body.innerHTML='<div class="scr on"><h1>連線失敗</h1><p>無法確認你的角色，請重新整理，或回到大廳重新進入。</p><div class="row"><button onclick="location.reload()">重新整理</button><button onclick="location.href=LOBBY">回到大廳</button></div></div>'}},12000);
 </script>
 
 <!-- 第柒門：沒有註冊 / 沒有角色就送回大廳；記錄遊玩與通關時間 -->
@@ -353,16 +1182,21 @@ if (!user || !profile) {
   window.SD = {
     player: profile,
     begin,
-    async clear(rid, secs) {
+    async fail(rid, secs, deaths, hints) {
+      rid = rid || await begin();
+      if (rid) await sb.from('play_records').update({ status: 'failed', clear_time_sec: null, deaths, hints, updated_at: new Date().toISOString() }).eq('id', rid);
+    },
+    async clear(rid, secs, deaths = 0, hints = 0) {
       if (!game) return;
       rid = rid || await begin();
       if (!rid) return;
       await sb.from('play_records')
-        .update({ status: 'cleared', clear_time_sec: secs, updated_at: new Date().toISOString() })
+        .update({ status: 'cleared', clear_time_sec: secs, deaths, hints, updated_at: new Date().toISOString() })
         .eq('id', rid);
     },
   };
   document.getElementById('who').textContent = `玩家：${profile.username}`;
   document.getElementById('sd-hide').remove();
 }
-</script></body></html>
+</script>
+</body></html>
