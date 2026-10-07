@@ -290,11 +290,11 @@ function save(force){try{if(!S||!S.on||(busy&&!force))return;localStorage.setIte
 function clr(){try{localStorage.removeItem(SK)}catch(e){}}
 function hasSave(){try{return!!localStorage.getItem(SK)}catch(e){return false}}
 function ckpt(){const c=JSON.parse(JSON.stringify(S));c.ck=null;S.ck=c;save(1)}
-function tmText(){const e=$('#tm');e.textContent='⏱ '+fmt(S.t)+' / 120:00';e.style.color=S.t>=LIMIT-600?'#ff5a5a':''}
+function tmText(){$('#tm').textContent='⏱ '+fmt(S.t)}
 function hud(){$('#hp').textContent='●'.repeat(Math.max(0,S.hp))+'○'.repeat(MAXHP-Math.max(0,S.hp));tmText();document.documentElement.style.setProperty('--v',(MAXHP-S.hp)/MAXHP*.8)}
 setInterval(()=>{if(S&&S.on&&!onTitle&&!document.hidden){S.t++;tmText();checkTime()}},1000);
-/* 120 分鐘時間到：宣告失敗，存檔清除，全部重來 */
-function checkTime(){if(S&&S.on&&S.t>=LIMIT){timeUp();return true}return false}
+/* 不限時間：可以慢慢玩（計時只用來記錄逃脫時間） */
+function checkTime(){return false}
 function timeUp(){busy=0;tapR=null;closePanels();S.on=0;cicada(0);if(window.SD)SD.fail(S.rid,S.t,S.deaths||0,S.hints||0);clr();show('timeout')}
 setInterval(()=>save(),5000);addEventListener('pagehide',()=>save(1));
 
