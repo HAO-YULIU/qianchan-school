@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-Hant"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>千蟬學校：第一章｜第柒門</title>
-<style id="sd-hide">body{visibility:hidden}</style> 
+<title>千嬋高級中學：第一章｜第柒門</title>
+<style id="sd-hide">body{visibility:hidden}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=LXGW+WenKai+TC&display=swap" rel="stylesheet">
 <style>
@@ -31,7 +31,7 @@ h1,h2,h3{margin:.2em 0;font-weight:900}
 .tposter img{width:100%;height:100%;object-fit:cover;display:block}
 .tside{max-width:440px;display:flex;flex-direction:column;align-items:center;gap:8px}
 .tbrand{color:var(--gold);letter-spacing:.4em;font-size:13px}
-.tt{font-size:clamp(46px,8vw,84px);letter-spacing:.12em;color:#efeae0;margin:0;line-height:1.1;text-shadow:3px 3px 0 #6d0b12,0 0 30px rgba(160,10,20,.45)}
+.tt{white-space:nowrap;font-size:clamp(36px,6vw,70px);letter-spacing:.12em;color:#efeae0;margin:0;line-height:1.1;text-shadow:3px 3px 0 #6d0b12,0 0 30px rgba(160,10,20,.45)}
 .ten{font-size:12px;letter-spacing:.25em;color:#9fb1aa}
 .tchap{font-size:20px;color:var(--red);letter-spacing:.3em;margin-top:6px}
 .tag{color:#b9b0a6;margin:4px 0}
@@ -209,11 +209,11 @@ body.sk #game,body.sk #sc{animation:skk .09s 8}
 <div id="ag" class="scr on"><h1>⚠ 年齡確認</h1><p>本遊戲含強烈驚嚇、突然巨響、閃爍畫面與恐怖意象。<br>建議戴上耳機，在安靜的地方遊玩。<br>你是否已滿 18 歲？</p><div class="row"><button class="btn-red" onclick="ageOk()">我已滿 18 歲</button><button onclick="ageNo()">未滿 18 歲</button></div></div>
 
 <div id="title" class="scr">
- <div class="tposter"><img src="https://umlnwzpmjxktfzjvcbts.supabase.co/storage/v1/object/public/covers/qianchan-school.jpg" alt="千蟬學校"></div>
+ <div class="tposter"><img src="https://umlnwzpmjxktfzjvcbts.supabase.co/storage/v1/object/public/covers/qianchan-school.jpg?v=3" alt="千嬋高級中學"></div>
  <div class="tside">
   <div class="tbrand">第柒門　原創線上密室</div>
-  <h1 class="tt">千蟬學校</h1>
-  <div class="ten">ESCAPE FROM THE THOUSAND CICADAS SCHOOL</div>
+  <h1 class="tt">千嬋高級中學</h1>
+  <div class="ten">ESCAPE FROM CHIAN-CHAN HIGH SCHOOL</div>
   <div class="tchap">第一章・她不說話</div>
   <p id="who"></p>
   <p class="tag">在永無止境的蟬鳴中……你能活著出去嗎？</p>
@@ -240,7 +240,7 @@ body.sk #game,body.sk #sc{animation:skk .09s 8}
 </div>
 
 <div id="dead" class="scr"><h1>她抓到你了</h1><p id="deadp"></p><div class="row"><button class="btn-red" onclick="revive()">復活（逃脫時間 +10 分鐘）</button><button onclick="toTitle()">回到標題</button></div></div>
-<div id="timeout" class="scr"><h1 style="color:var(--red);letter-spacing:.2em">時間到了</h1><p style="max-width:30em;color:#b9b0a6">一百二十分鐘過去了。<br>天亮之前，你沒能走出千蟬學校。<br>蟬聲裡，多了一個你的聲音。<br><br>……一切，都要從頭開始。</p><div class="row"><button class="btn-red" onclick="newGame()">從頭再來</button><button class="btn-gold" onclick="toLobby()">回到大廳</button></div></div>
+<div id="timeout" class="scr"><h1 style="color:var(--red);letter-spacing:.2em">時間到了</h1><p style="max-width:30em;color:#b9b0a6">一百二十分鐘過去了。<br>天亮之前，你沒能走出千嬋高級中學。<br>蟬聲裡，多了一個你的聲音。<br><br>……一切，都要從頭開始。</p><div class="row"><button class="btn-red" onclick="newGame()">從頭再來</button><button class="btn-gold" onclick="toLobby()">回到大廳</button></div></div>
 <div id="end" class="scr"><h1 id="endh"></h1><p id="endp"></p><div id="endt" class="etime"></div><div class="row"><button id="endr" onclick="retry()">回到最後一幕</button><button onclick="toTitle()">回到標題</button><button class="btn-gold" onclick="toLobby()">回到大廳看排行榜</button></div></div>
 <div id="egg" class="scr"><div id="eggv" style="width:min(50vw,220px);opacity:0;transition:opacity 2s"></div><p id="eggp" style="font-size:20px;letter-spacing:.2em;color:#9dd;min-height:3em"></p><div class="row"><button id="eggb" style="display:none" onclick="ch2()">進入第二章</button><button class="btn-gold" onclick="toLobby()">回到大廳</button></div></div>
 
@@ -573,7 +573,7 @@ setInterval(()=>{if(S&&S.on&&!busy&&!onTitle&&SC[S.sc].hall&&Math.random()<.3){c
 SC.gate={name:'校門口',area:'校外',out:1,dark:.88,
  art:()=>{let s=outside(7)+`<polygon points="100,140 400,96 700,140" fill="#0a1110"/><rect x="110" y="140" width="580" height="210" fill="#0e1716"/>`;
   for(let r=0;r<3;r++)for(let c=0;c<10;c++){const lit=r===0&&c===6;s+=`<rect x="${140+c*55}" y="${170+r*55}" width="34" height="34" fill="${lit?'#4a1216':'#152120'}" stroke="#070b0b" stroke-width="2"/>`;if(lit)s+=`<rect x="${125+c*55}" y="155" width="64" height="64" fill="#b11" opacity=".2" filter="url(#bl8)"/>`}
-  s+=`<rect x="300" y="104" width="200" height="28" fill="#1b2524" stroke="#0a0f0e"/>`+T(400,124,'千蟬國民中學',18,'#8a9c95')+`<rect y="350" width="800" height="150" fill="#090d0c"/>`+tree(60,430);
+  s+=`<rect x="300" y="104" width="200" height="28" fill="#1b2524" stroke="#0a0f0e"/>`+T(400,124,'千嬋高級中學',18,'#8a9c95')+`<rect y="350" width="800" height="150" fill="#090d0c"/>`+tree(60,430);
   s+=`<rect x="0" y="300" width="248" height="118" fill="#2c312e"/><rect x="552" y="300" width="248" height="118" fill="#2c312e"/>`;
   for(let y=312;y<418;y+=14)s+=`<path d="M0 ${y}H248M552 ${y}H800" stroke="#1a1e1c" stroke-width="2"/>`;
   s+=`<rect x="238" y="236" width="24" height="182" fill="#3a3f3c"/><rect x="538" y="236" width="24" height="182" fill="#3a3f3c"/><rect x="262" y="258" width="276" height="8" fill="#3d423f"/><rect x="262" y="392" width="276" height="8" fill="#3d423f"/>`;
@@ -589,7 +589,7 @@ SC.gate={name:'校門口',area:'校外',out:1,dark:.88,
   {r:[455,160,64,64],l:'亮著的窗',a:()=>msg('二樓有一扇窗透出暗紅色的光。你盯著它看——窗簾，動了一下。')},
   {r:[40,236,140,182],l:'警衛室',a:async()=>{if(S.f.booth)return msg('鑰匙箱開著，裡面已經空了。');if(await boothPanel()){S.f.booth=1;get('pliers');await say(['鑰匙箱「喀」地彈開。裡面沒有鑰匙，只有一把生鏽的鐵鉗。','箱子的內側，用指甲刻滿了同一個字：「數」。'])}}},
   {r:[610,310,160,100],l:S.f.ivy?'圍牆':'藤蔓',a:climb,u:{pliers:async()=>{if(S.f.ivy)return msg('藤蔓已經剪開了。');S.f.ivy=1;render();msg('你用鐵鉗剪斷藤蔓。後面的磚頭有好幾塊鬆了——有些敲起來，好像是空心的。')}}}],
- first:async()=>{await say(['暑假的最後一個晚上。蟬，叫得像要把整座城市吞掉。','千蟬國中，十七年前就廢校了。大人們從來不提原因。',['yj','「慈幽，妳聽。」'],['yj','「有人在裡面叫我的名字。」她頓了一下，「……聲音，跟妳一模一樣。」'],['ci','「我又沒有叫妳。」'],['yj','「我知道。所以，我才想進去看看。」'],['yj','她摸了摸左手腕上的紅繩。「奶奶說，戴著它，叫我名字的東西就碰不到我。我都綁在左手。」'],'你握緊手電筒。校門上，纏著生鏽的鐵鍊。']);note('rope0','印潔的紅繩','奶奶給的紅繩，她說「我都綁在左手」。');msg('（點擊畫面上的東西來調查。在畫面上拖曳或點擊，手電筒會照向那裡。）')}};
+ first:async()=>{await say(['暑假的最後一個晚上。蟬，叫得像要把整座城市吞掉。','千嬋高中，十七年前就廢校了。大人們從來不提原因。',['yj','「慈幽，妳聽。」'],['yj','「有人在裡面叫我的名字。」她頓了一下，「……聲音，跟妳一模一樣。」'],['ci','「我又沒有叫妳。」'],['yj','「我知道。所以，我才想進去看看。」'],['yj','她摸了摸左手腕上的紅繩。「奶奶說，戴著它，叫我名字的東西就碰不到我。我都綁在左手。」'],'你握緊手電筒。校門上，纏著生鏽的鐵鍊。']);note('rope0','印潔的紅繩','奶奶給的紅繩，她說「我都綁在左手」。');msg('（點擊畫面上的東西來調查。在畫面上拖曳或點擊，手電筒會照向那裡。）')}};
 async function climb(){if(!S.f.ivy)return msg('藤蔓纏得又密又緊，徒手根本扯不開。');
  if(!S.f.bricks){if(!await bricksPanel())return;S.f.bricks=1;await say(['你踩著空心磚，一階一階爬了上去。',['yj','「我先上去，再拉妳。」'],'印潔翻過了牆頭。你還差一點——','牆頭的黑暗裡，同時伸下來三隻手。'])}
  if(!await handsPanel())return;
