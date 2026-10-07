@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-Hant"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>千蟬學校：第二章</title>
+<title>千蟬學校：第一章｜第柒門</title>
+<style id="sd-hide">body{visibility:hidden}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;900&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
@@ -64,6 +65,10 @@ body{background:radial-gradient(ellipse at 50% 0,#1c0a10,#040405 70%)}
 .lo{display:grid;grid-template-columns:repeat(3,72px);gap:6px;justify-content:center;margin:8px 0}.lt{font-size:26px;padding:10px;margin:0}.dl{font-size:24px;padding:12px 20px}
 #eg{background:#000;z-index:7}#eg svg{width:min(60vw,240px);height:auto;opacity:0;transition:opacity 2s;filter:drop-shadow(0 0 24px #0cc)}#egp{font-size:20px;letter-spacing:.2em;color:#9dd;min-height:3em}
 .cast4{display:flex;gap:12px;margin:10px;justify-content:center}.cast4 div{font-size:12px;color:#988}.cast4 svg{width:56px;height:67px;display:block;margin:0 auto 2px}
+#tm{color:#c9a255;font-weight:700;letter-spacing:.05em}
+#who{color:#c9a255;font-size:14px;margin:4px 0}
+.lobby{background:transparent;border-color:#5a4a2a;color:#c9a255}
+.etime{font-size:22px;color:#c9a255;letter-spacing:.1em;margin:4px 0 10px}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="ci" viewBox="0 0 200 240"><path d="M36 240C38 186 50 132 48 96C46 38 154 38 152 96C150 132 162 186 164 240Z" fill="#1b1413"/><rect x="88" y="126" width="24" height="42" fill="#ecd8cb"/><path d="M14 240C18 192 54 174 80 168H120C146 174 182 192 186 240Z" fill="#dcd9de"/><path d="M80 168L100 198 120 168 111 164 100 180 89 164Z" fill="#c9c5cd"/><path d="M48 108C42 158 44 204 50 236L70 236C66 194 64 152 66 112Z" fill="#1b1413"/><path d="M152 108C158 158 156 204 150 236L130 236C134 194 136 152 134 112Z" fill="#1b1413"/><ellipse cx="100" cy="94" rx="39" ry="47" fill="#f1e0d3"/><path d="M60 94C58 40 142 40 140 94C136 72 122 62 100 64 78 62 64 72 60 94Z" fill="#1b1413"/><path d="M66 82C72 70 86 66 94 74M134 82C128 70 114 66 106 74" fill="none" stroke="#3a2e2c" stroke-width="3" stroke-linecap="round"/><ellipse cx="84" cy="100" rx="5" ry="6" fill="#241a18"/><ellipse cx="116" cy="100" rx="5" ry="6" fill="#241a18"/><path d="M93 123Q100 128 107 123" fill="none" stroke="#b27272" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="73" cy="113" rx="8" ry="4" fill="#e8b0a6" opacity=".5"/><ellipse cx="127" cy="113" rx="8" ry="4" fill="#e8b0a6" opacity=".5"/></symbol>
@@ -77,15 +82,15 @@ body{background:radial-gradient(ellipse at 50% 0,#1c0a10,#040405 70%)}
 
 <div id="ag" class="scr on"><h1>⚠ 年齡確認</h1><p>本遊戲含強烈驚嚇、突然巨響、閃爍畫面與恐怖意象。<br>你是否已滿 18 歲？</p><div><button onclick="yes()">我已滿 18 歲</button><button onclick="no()">未滿 18 歲</button></div></div>
 
-<div id="cv" class="scr"><svg viewBox="0 0 200 240"><use href="#si"/></svg><h1>千蟬學校：第二章</h1><p class="sub">她一直都在看著你。<br>一個不會說話的女孩，一條通往校舍更深處的路。這一次，別相信任何指引。</p><div class="cast4"><div><svg viewBox="0 0 200 240"><use href="#ci"/></svg>慈幽</div><div><svg viewBox="0 0 200 240"><use href="#yu"/></svg>小羽</div><div><svg viewBox="0 0 200 240"><use href="#yj"/></svg>印潔</div><div><svg viewBox="0 0 200 240"><use href="#si"/></svg>偲涵</div></div><button onclick="newGame()">踏入校舍</button><div id="ctw"><button id="ct">▶ 繼續遊戲</button><button id="cd">🗑 刪除存檔</button></div></div>
+<div id="cv" class="scr"><svg viewBox="0 0 200 240"><use href="#si"/></svg><h1>千蟬學校：第一章</h1><p id="who"></p><p class="sub">在永無止境的蟬鳴中……你能活著出去嗎？<br>一個不會說話的女孩，一條通往校舍更深處的路。別相信任何指引。</p><div class="cast4"><div><svg viewBox="0 0 200 240"><use href="#ci"/></svg>慈幽</div><div><svg viewBox="0 0 200 240"><use href="#yu"/></svg>小羽</div><div><svg viewBox="0 0 200 240"><use href="#yj"/></svg>印潔</div><div><svg viewBox="0 0 200 240"><use href="#si"/></svg>偲涵</div></div><button onclick="newGame()">踏入校舍</button><div id="ctw"><button id="ct">▶ 繼續遊戲</button><button id="cd">🗑 刪除存檔</button></div><button class="lobby" onclick="toLobby()">← 回到第柒門大廳</button></div>
 
-<div id="g" class="scr"><div id="hud"><b id="rt"></b><button id="sv" onclick="save(1)">💾 存檔</button><span id="hp"></span></div><div id="sn"></div><div id="ds"></div><div id="lg"></div><div id="hs"></div><div id="bx"></div><div id="iv"></div></div>
+<div id="g" class="scr"><div id="hud"><b id="rt"></b><span id="tm">⏱ 00:00</span><button id="sv" onclick="save(1)">💾 存檔</button><span id="hp"></span></div><div id="sn"></div><div id="ds"></div><div id="lg"></div><div id="hs"></div><div id="bx"></div><div id="iv"></div></div>
 
 <div id="dt" class="scr"><h1>你死了</h1><p id="dtp"></p><button onclick="retry()">回到這一夜</button><button onclick="newGame()">從頭開始</button></div>
-<div id="en" class="scr"><h1>第二章　完</h1><p>偲涵從頭到尾，都在反抗。<br>下一個，是印潔。</p><button onclick="start()">重新遊玩</button><button id="enr" style="display:none" onclick="retry()">回到最後一夜</button></div>
-<div id="eg" class="scr"><svg viewBox="0 0 200 240"><use href="#by"/></svg><p id="egp"></p><button id="egb" style="display:none" onclick="ch3()">進入第三章</button></div>
+<div id="en" class="scr"><h1>第一章　完</h1><p id="enp">偲涵從頭到尾，都在反抗。</p><div id="ent" class="etime"></div><button onclick="start()">重新遊玩</button><button id="enr" style="display:none" onclick="retry()">回到最後一夜</button><button class="lobby" onclick="toLobby()">回到大廳看排行榜</button></div>
+<div id="eg" class="scr"><svg viewBox="0 0 200 240"><use href="#by"/></svg><p id="egp"></p><button id="egb" style="display:none" onclick="ch3()">進入第二章</button><button class="lobby" onclick="toLobby()">回到大廳</button></div>
 <div id="sc"><svg viewBox="0 0 200 260"><use href="#gh"/></svg><p id="sct"></p></div>
-<div id="vg"></div><div id="gr"></div><div id="ts"></div><div id="tt"><h1>第二章</h1><p>她一直都在看著你</p></div>
+<div id="vg"></div><div id="gr"></div><div id="ts"></div><div id="tt"><h1>第一章</h1><p>她一直都在看著你</p></div>
 
 <script>
 const $=s=>document.querySelector(s),sl=ms=>new Promise(r=>setTimeout(r,ms));
@@ -205,7 +210,7 @@ r303:{t:'303教室',d:'最後一間教室。黑板上空無一物，二十幾張
 
 /* ===== 第三夜：十七年（校長室 / 美術教室 / 太平間 / 後花園 / 天台） ===== */
 Object.assign(TH,{pr:['#2a1a10','#0a0604','🏛'],art:['#1a2a3a','#04080c','🖼'],mg:['#10242a','#020808','🧊'],gd:['#142010','#030804','🪱'],rf:['#1a1424','#04020a','🌙'],gu:['#102418','#020a06','📺'],au:['#2a1020','#0a0408','🎭'],po:['#103a46','#02080c','🏊'],lab:['#143a20','#020a04','🧪'],wl:['#1a1208','#050302','🕳'],mr:['#101830','#02040a','🪞'],sl:['#1a1a1a','#000','⛓'],gt:['#2a2a38','#05050a','🚪'],fl:['#6a6a80','#1a1a24','🤍']});
-Object.assign(EN,{pr:'校長室的桌上，放著一杯還冒著熱氣的茶。……是誰剛剛泡的？',art:'五雙眼睛，同時轉了過來。',mg:'冷。冷得你的呼吸，在空中結成了字。',gd:'一千隻蟬蛻，同時發出細碎的聲音，像有人在你耳邊笑。',rf:'風很大。你背後的鐵門，被什麼東西，輕輕地帶上了。',gu:'九個螢幕同時閃了一下。每一個畫面裡，都是你的背影。',au:'掌聲。從四面八方傳來。可是座位上，一個人也沒有。',po:'池底的黑水，慢慢地，往你的方向，流了過來。',lab:'玻璃罐裡的若蟲，一隻一隻，轉過頭來。',wl:'你聽見很多人，在很遠的地方，同時吸了一口氣。',mr:'每一面鏡子裡的你，都比你慢了半拍。',sl:'你記得這個地方。第一章。鐵床上的鍊子，是鬆的。',gt:'門外的白，亮得讓人想哭。',fl:'白色的牆上，有兩個人影，和你的，一模一樣。'});
+Object.assign(EN,{pr:'校長室的桌上，放著一杯還冒著熱氣的茶。……是誰剛剛泡的？',art:'五雙眼睛，同時轉了過來。',mg:'冷。冷得你的呼吸，在空中結成了字。',gd:'一千隻蟬蛻，同時發出細碎的聲音，像有人在你耳邊笑。',rf:'風很大。你背後的鐵門，被什麼東西，輕輕地帶上了。',gu:'九個螢幕同時閃了一下。每一個畫面裡，都是你的背影。',au:'掌聲。從四面八方傳來。可是座位上，一個人也沒有。',po:'池底的黑水，慢慢地，往你的方向，流了過來。',lab:'玻璃罐裡的若蟲，一隻一隻，轉過頭來。',wl:'你聽見很多人，在很遠的地方，同時吸了一口氣。',mr:'每一面鏡子裡的你，都比你慢了半拍。',sl:'你從沒來過這裡，卻覺得一切都很熟悉。鐵床上的鍊子，是鬆的。',gt:'門外的白，亮得讓人想哭。',fl:'白色的牆上，有兩個人影，和你的，一模一樣。'});
 const h3=()=>{const f=S.f;return !f.pr?'十七年。算一算，她醒過幾次。撕掉的那一頁，別信。':!f.art?'畫要依牠的一生來掛：從土裡出生，回到土裡。':!f.mgd?'兩張紙條就夠了。護理師的警告……也許是故意的。':!f.gd?'蟬鳴只叫一輪。你只有一次重聽的機會。':!f.gu?'守衛室。她只出現在「除了 1 和自己，沒有別的朋友」的螢幕上。':!f.au?'三幕戲：沉睡、鳴叫、死去。對應的是季節。':!f.po?'按一盞燈，上下左右跟著變。從角落想起。':!f.lb?'兩個量杯。先倒滿哪一個，再倒進另一個？':!f.wl?'三個字。姓、名、最後一個字——筆記裡都有。別信名冊上的那一個。':'她怕光，追聲音。還有——別回頭。'};
 RM.pr={t:'校長室',d:'厚重的木桌，牆上掛著歷任校長的畫像。其中一幅，被人用黑布蓋住了。保險箱嵌在牆裡，是三位數字鎖。',h:()=>{const f=S.f;return[
 ['📖 校長日誌',()=>say('「她每隔十七年醒來一次，至今三次。最近一次，是民國 125 年。」……那是今年。')],
@@ -264,7 +269,7 @@ RM.mr={t:'鏡之間',d:'一整條走廊的鏡子。每一面，都映出你，�
 ['🧾 鏡框上的便條',()=>say('「選出上排和下排，『位置相同』卻長得不同的。」——墨跡很舊，像是十七年前寫的。')],
 ['🪞 六面鏡子',()=>{if(f.mr)return say('鏡面靜止了。有一隻手，貼在玻璃的另一頭。');say('上排是真實的六件東西：🕯 📖 🔔 🗝 🪟 🚪。下排，是它們在鏡子裡的樣子——左右顛倒。選出下排裡，不對勁的鏡子。');sw(['🚪','🪟','👁','🔔','🧍','🕯'],'001010',()=>{f.mr=1;say(['兩面鏡子同時碎了。','碎片後面，有一隻手，正在拍打玻璃。是印潔的手——真正的那一個。']);setTimeout(()=>scare('',0),2500)})}],
 ['↩ 走廊',()=>go('hall')]]}};
-RM.sl={t:'封印室',d:'第一章的地下室。你認得這張鐵床，和上面的鐵鍊。鍊子是從裡面鎖上的。牆上貼滿了十七年的日期。',h:()=>{const f=S.f;return[
+RM.sl={t:'封印室',d:'地下室最深處，一間沒有門牌的房間。一張鐵床，上面纏著鐵鍊。鍊子是從裡面鎖上的。牆上貼滿了十七年的日期。',h:()=>{const f=S.f;return[
 ['⛓ 鐵鍊',()=>say('鎖孔，在裡面。有人，是自己把自己鎖進來的。')],
 ['📅 牆上的日期',()=>say(['一排一排的日期，全是十七的倍數。最底下，是兩個月前的一行：','「我聽見有人，在很遠的地方，叫我的名字。聲音，和慈幽，一模一樣。」'])],
 ['🔓 六個蟬形的鎖扣',()=>{if(f.sl)return say('鎖扣全都鬆開了。牆後，是空的。');say('每個鎖扣，刻著牠一生的樣子。要解開封印，得反著來。');seq(['🦗 掛著的空殼','🥚 土裡的卵','🕳 墜回土裡','🪲 爬出地面','🪰 樹上鳴叫','🐛 地底的若蟲'],[2,4,0,3,5,1],'o',()=>{f.sl=1;ckpt(5);say(['牆壁裂開。裡面坐著一個人——蜷縮著，眼睛閉著。是真正的印潔。',['yj','「慈幽……妳為什麼，現在才來？」'],'她的手，是熱的。可是，走廊的盡頭，有一個和她一模一樣的人，正在笑。'])})}],
@@ -277,15 +282,15 @@ async function oldIntro(){await say(['鐵門之後，是一棟從未出現過的
 async function end(r){if(!r)return bad('門後，有人在等你。');act2()}
 async function act3(){S.f.p3=1;await say(['黑板上的名字一個個亮起，最後停在「偲涵」。','然後，字跡開始滲血。第四個名字下面，浮現了第五個——','「慈幽」。',['si','偲涵站在門口。她的嘴型，一遍又一遍：「十七年。十七年。十七年。」'],['yu','……校長室。紀錄裡提過，每隔十七年，她醒一次。答案在那裡。快去！']]);busy=1;card('第三夜','十七年');await sl(3300);busy=0;ckpt(3);go('hall')}
 async function fin(){if(S.f.p3)return ending();return act3()}
-async function ending(){busy=1;await say([['si','偲涵回過頭。她的眼神，一點一點變得空洞，身體不自然地抽動。'],['yu','離她遠一點！'],'她走向欄杆。你抓住她的手。她第一次流下眼淚，一直搖頭，嘴型無聲：「對不起」。','然後，她的嘴型換了。三個字。你認得——林、語、蟬。','下一秒，那個東西徹底控制了她。偲涵翻過欄杆，消失在黑暗裡。','她不說話，是它不允許。她跟著你，是想警告你。她從頭到尾，都在反抗。','筆記本的最後一頁，浮現一行原本不存在的字：「下一個，是印潔。」','你猛然回頭。印潔站在你身後——她的眼睛，已經不是原本的樣子了。','「謝謝妳。」印潔開口了。這是整個夜晚，她第一次說話——用的，是你自己的聲音。',['yj','「替我把名字，說完了。」'],['yu','……第一章裡，妳從地下室帶出來的，不是印潔。'],'你終於明白。偲涵最後那三個字，不是對你說的。她看著的，是你身後的人。',['yj','「妳以為，是妳在解開這間學校？是我，在讓妳解開。」'],['yj','「那一行字，是我寫的。下一個，是印潔——真正的那一個。她還在下面，等著替我開口。」'],'她消失了。走廊裡，所有的燈，開始倒著閃爍。世界，翻轉了。']);await sl(2500);busy=0;await scare('她一直都在看著你',1);S.f.p5=1;busy=1;card('第五夜','反轉');await sl(3300);busy=0;ckpt(5);go('hall')}
-async function fin5(g){if(g)return act6();busy=1;S.on=0;await say(['你回頭了。','她等的，就是這一刻。「願意回頭的人」。','手裡的名牌，一點一點，燒成了灰。你想喊印潔的名字，卻發現——自己，已經發不出聲音了。','從今天起，由妳，替她開口。']);await sl(2500);busy=0;await scare('偲涵',1);$('#en h1').textContent='結局 B：新的偲涵';$('#en p').innerHTML='名牌在你的手裡，化成了灰。<br>從今天起，由妳，替她開口。';$('#enr').style.display='';$('#g').classList.remove('on');$('#en').classList.add('on')}
+async function ending(){busy=1;await say([['si','偲涵回過頭。她的眼神，一點一點變得空洞，身體不自然地抽動。'],['yu','離她遠一點！'],'她走向欄杆。你抓住她的手。她第一次流下眼淚，一直搖頭，嘴型無聲：「對不起」。','然後，她的嘴型換了。三個字。你認得——林、語、蟬。','下一秒，那個東西徹底控制了她。偲涵翻過欄杆，消失在黑暗裡。','她不說話，是它不允許。她跟著你，是想警告你。她從頭到尾，都在反抗。','筆記本的最後一頁，浮現一行原本不存在的字：「下一個，是印潔。」','你猛然回頭。印潔站在你身後——她的眼睛，已經不是原本的樣子了。','「謝謝妳。」印潔開口了。這是整個夜晚，她第一次說話——用的，是你自己的聲音。',['yj','「替我把名字，說完了。」'],['yu','……從她在校門外說「有人在叫我」的那一刻起，站在妳身邊的，就已經不是印潔了。'],'你終於明白。偲涵最後那三個字，不是對你說的。她看著的，是你身後的人。',['yj','「妳以為，是妳在解開這間學校？是我，在讓妳解開。」'],['yj','「那一行字，是我寫的。下一個，是印潔——真正的那一個。她還在下面，等著替我開口。」'],'她消失了。走廊裡，所有的燈，開始倒著閃爍。世界，翻轉了。']);await sl(2500);busy=0;await scare('她一直都在看著你',1);S.f.p5=1;busy=1;card('第五夜','反轉');await sl(3300);busy=0;ckpt(5);go('hall')}
+async function fin5(g){if(g)return act6();busy=1;S.on=0;await say(['你回頭了。','她等的，就是這一刻。「願意回頭的人」。','手裡的名牌，一點一點，燒成了灰。你想喊印潔的名字，卻發現——自己，已經發不出聲音了。','從今天起，由妳，替她開口。']);await sl(2500);busy=0;await scare('偲涵',1);$('#en h1').textContent='結局 B：新的偲涵';$('#ent').textContent='';$('#enp').innerHTML='名牌在你的手裡，化成了灰。<br>從今天起，由妳，替她開口。';$('#enr').style.display='';$('#g').classList.remove('on');$('#en').classList.add('on')}
 async function act6(){busy=1;await say(['你沒有回頭。你牽著印潔，一步，一步，跨出了校門。','門外的光，很白。白得，像一整面牆。','你低頭，看著牽著的手——不知道什麼時候，變成了兩隻。',['yj','「恭喜。妳破了我的規則。十七年來，從來沒有人，在最後，沒有回頭。」'],['yj','「所以，這一次——我換一個玩法。」']]);await sl(1500);busy=0;await scare();S.f.p6=1;busy=1;card('最終夜','大結局');await sl(3300);busy=0;ckpt(6,'fl');go('fl')}
-async function finale(){busy=1;S.on=0;clr();await say(['「蟬、語、林。」你倒著，把她的名字，還給了她。','假的印潔，發出一聲長長的、不像人的尖叫。整面白牆，一片一片剝落——像十七年來，所有的蟬蛻，同時碎了。','她的臉，一點一點，變回了很久以前的樣子。一個十六歲的女孩，渾身是水，眼睛，是濕的。','「……謝謝。」她說。這是十七年來，她第一次，用自己的聲音。','然後，她閉上眼睛，像蟬蛻一樣，輕輕地，碎成了灰。',['yj','「慈幽……我們，出來了。」'],'真正的印潔，緊緊握著你的手。她的手，是熱的。','鐘樓敲了十二下。十七年的蟬鳴，停了。']);await sl(2500);busy=0;$('#en h1').textContent='第二章　大結局';$('#en p').innerHTML='十七年的蟬鳴，停了。<br>……可是，真的結束了嗎？';$('#enr').style.display='none';$('#g').classList.remove('on');$('#en').classList.add('on');setTimeout(egg,7000)}
-async function egg(){const e=$('#eg'),p=$('#egp'),v=$('#eg svg');if(!$('#en').classList.contains('on'))return;v.style.opacity=0;$('#egb').style.display='none';e.classList.add('on');p.textContent='（彩蛋）';await sl(2000);p.textContent='井壁的最深處，刻著一個，比「林語蟬」更舊的名字。';await sl(4000);v.style.opacity=1;p.textContent='邦瑜。';await sl(2500);p.textContent='她才是，第一個，被關進去的人。';await sl(3800);await scare('邦瑜',1);p.innerHTML='第三章：邦瑜<br><small>（敬請期待）</small>';$('#egb').style.display=''}
-function ch3(){$('#egp').innerHTML='第三章：邦瑜<br>製作中，敬請期待。';const b=$('#egb');b.textContent='回到標題';b.onclick=()=>location.reload()}
+async function finale(){busy=1;const secs=S.t||0;S.on=0;clr();if(window.SD)SD.clear(S.rid,secs);await say(['「蟬、語、林。」你倒著，把她的名字，還給了她。','假的印潔，發出一聲長長的、不像人的尖叫。整面白牆，一片一片剝落——像十七年來，所有的蟬蛻，同時碎了。','她的臉，一點一點，變回了很久以前的樣子。一個十六歲的女孩，渾身是水，眼睛，是濕的。','「……謝謝。」她說。這是十七年來，她第一次，用自己的聲音。','然後，她閉上眼睛，像蟬蛻一樣，輕輕地，碎成了灰。',['yj','「慈幽……我們，出來了。」'],'真正的印潔，緊緊握著你的手。她的手，是熱的。','鐘樓敲了十二下。十七年的蟬鳴，停了。']);await sl(2500);busy=0;$('#en h1').textContent='第一章　大結局';$('#enp').innerHTML='十七年的蟬鳴，停了。<br>……可是，真的結束了嗎？';$('#ent').textContent='逃脫時間 '+fmt(secs);$('#enr').style.display='none';$('#g').classList.remove('on');$('#en').classList.add('on');setTimeout(egg,7000)}
+async function egg(){const e=$('#eg'),p=$('#egp'),v=$('#eg svg');if(!$('#en').classList.contains('on'))return;v.style.opacity=0;$('#egb').style.display='none';e.classList.add('on');p.textContent='（彩蛋）';await sl(2000);p.textContent='井壁的最深處，刻著一個，比「林語蟬」更舊的名字。';await sl(4000);v.style.opacity=1;p.textContent='邦瑜。';await sl(2500);p.textContent='她才是，第一個，被關進去的人。';await sl(3800);await scare('邦瑜',1);p.innerHTML='第二章：邦瑜<br><small>（敬請期待）</small>';$('#egb').style.display=''}
+function ch3(){$('#egp').innerHTML='第二章：邦瑜<br>製作中，敬請期待。';const b=$('#egb');b.textContent='回到標題';b.onclick=()=>location.reload()}
 function yes(){ac();$('#ag').classList.remove('on');$('#cv').classList.add('on')}
 function no(){$('#ag').innerHTML='<h1>抱歉</h1><p>未滿 18 歲，無法遊玩。</p>'}
-async function start(){['cv','dt','en'].forEach(i=>$('#'+i).classList.remove('on'));S={r:'hall',inv:[],f:{},w:0,on:1};sel=null;busy=0;$('#g').classList.add('on');$('#tt').classList.remove('on');void $('#tt').offsetWidth;$('#tt').classList.add('on');hud();if(!dr){dr=1;drone()}ckpt(1);render();say(['地下室的門在身後關上。慈幽扶著印潔，終於走回了走廊。',['yj','「……等等。」印潔停下腳步。「有人在叫我。聲音，和妳一模一樣。」'],['si','走廊盡頭，那個女生又站在那裡。'],'是她。第一章裡，她也是這樣，一句話都沒說，只是盯著你們。眼睛，幾乎沒有眨。','她抬起手，指向校舍深處。然後，不見了。','「她好像知道些什麼……」「正因為這樣，才更可怕。」'])}
+async function start(){['cv','dt','en','eg'].forEach(i=>$('#'+i).classList.remove('on'));S={r:'hall',inv:[],f:{},w:0,on:1,t:0,rid:null};const me=S;if(window.SD)SD.begin().then(id=>{me.rid=id;save()});sel=null;busy=0;$('#g').classList.add('on');card('第一章','她一直都在看著你');hud();if(!dr){dr=1;drone()}ckpt(1);render();say(['暑假的最後一個晚上。蟬，叫得像要把整座城市吞掉。','千蟬學校，十七年前就廢校了。沒有人說得出原因。',['yj','「慈幽，妳聽。」印潔停在生鏽的校門外。「有人在裡面叫我的名字。聲音……和妳一模一樣。」'],'你們翻過圍牆。身後的校門，「喀」地一聲，自己鎖上了。',['si','走廊盡頭，站著一個穿制服的女生。她一句話都沒說，只是盯著你們。眼睛，幾乎沒有眨。'],'她抬起手，指向校舍深處。然後，不見了。','「她好像知道些什麼……」「正因為這樣，才更可怕。」'])}
 
 /* ===== 最終夜：大結局（白色的校門） ===== */
 RM.fl={t:'白色的校門',d:'門外是一整面白牆。兩個印潔，並排站在你面前，一模一樣，連笑的樣子都一樣。其中一個，是真的。',h:()=>{const f=S.f;return[
@@ -297,15 +302,15 @@ RM.fl={t:'白色的校門',d:'門外是一整面白牆。兩個印潔，並排�
 ['💬 問小羽',()=>say([['yu',!f.fl1?'手。看看誰的手，是熱的。':'要把名字，倒著還給她。三個字，倒過來。']])]]}};
 
 /* ===== 存檔系統（自動存檔 / 手動存檔 / 繼續遊戲） ===== */
-const SK='cs2_save';
+const SK='cs1_save';
 const toast=t=>{const e=$('#ts');e.textContent=t;e.style.opacity=1;setTimeout(()=>e.style.opacity=0,1600)};
-function save(m){try{if(!S||!S.on||busy){m&&toast('現在不能存檔');return}localStorage.setItem(SK,JSON.stringify({r:S.r,inv:S.inv,f:S.f,w:S.w,ck:S.ck}));m&&toast('💾 已存檔')}catch(e){}}
+function save(m){try{if(!S||!S.on||busy){m&&toast('現在不能存檔');return}localStorage.setItem(SK,JSON.stringify({r:S.r,inv:S.inv,f:S.f,w:S.w,ck:S.ck,t:S.t,rid:S.rid}));m&&toast('💾 已存檔')}catch(e){}}
 function clr(){try{localStorage.removeItem(SK)}catch(e){}}
 const NN=['','第一夜','第二夜','第三夜','第四夜','第五夜','最終夜'];
 function ckpt(n,r){S.ck={r:r||'hall',inv:[...S.inv],f:JSON.parse(JSON.stringify(S.f)),n:n};save()}
-function dsave(){try{if(S.ck)localStorage.setItem(SK,JSON.stringify({r:S.ck.r,inv:S.ck.inv,f:S.ck.f,w:0,ck:S.ck}))}catch(e){}}
-function retry(){const c=S.ck;if(!c)return start();['cv','dt','en'].forEach(i=>$('#'+i).classList.remove('on'));S={r:c.r,inv:[...c.inv],f:JSON.parse(JSON.stringify(c.f)),w:0,on:1,ck:c};sel=null;busy=0;$('#g').classList.add('on');hud();render();say('（回到「'+NN[c.n]+'」的開始。你還活著——暫時。）')}
-function load(){let d;try{d=JSON.parse(localStorage.getItem(SK))}catch(e){}if(!d)return;if(!RM[d.r])d.r='hall';['cv','dt','en'].forEach(i=>$('#'+i).classList.remove('on'));S={r:d.r,inv:d.inv||[],f:d.f||{},w:d.w||0,on:1,ck:d.ck||null};sel=null;busy=0;$('#g').classList.add('on');hud();if(!dr){dr=1;drone()}render();say('（已讀取存檔。她，一直在等你回來。）')}
+function dsave(){try{if(S.ck)localStorage.setItem(SK,JSON.stringify({r:S.ck.r,inv:S.ck.inv,f:S.ck.f,w:0,ck:S.ck,t:S.t,rid:S.rid}))}catch(e){}}
+function retry(){const c=S.ck;if(!c)return start();['cv','dt','en'].forEach(i=>$('#'+i).classList.remove('on'));S={r:c.r,inv:[...c.inv],f:JSON.parse(JSON.stringify(c.f)),w:0,on:1,ck:c,t:S.t||0,rid:S.rid||null};sel=null;busy=0;$('#g').classList.add('on');hud();render();say('（回到「'+NN[c.n]+'」的開始。你還活著——暫時。）')}
+function load(){let d;try{d=JSON.parse(localStorage.getItem(SK))}catch(e){}if(!d)return;if(!RM[d.r])d.r='hall';['cv','dt','en'].forEach(i=>$('#'+i).classList.remove('on'));S={r:d.r,inv:d.inv||[],f:d.f||{},w:d.w||0,on:1,ck:d.ck||null,t:d.t||0,rid:d.rid||null};sel=null;busy=0;$('#g').classList.add('on');hud();if(!dr){dr=1;drone()}render();say('（已讀取存檔。她，一直在等你回來。）')}
 function newGame(){let h=0;try{h=localStorage.getItem(SK)}catch(e){}if(h&&!confirm('開始新遊戲會覆蓋目前的存檔，確定嗎？'))return;start()}
 const rf5=()=>{let h=0;try{h=localStorage.getItem(SK)}catch(e){}$('#ctw').style.display=h?'':'none'};rf5();
 $('#ct').onclick=()=>{ac();load()};$('#cd').onclick=()=>{clr();rf5()};
@@ -314,4 +319,50 @@ setInterval(()=>{if(S&&S.on&&S.f.p3&&!busy&&Math.random()<.35)scare()},15000);
 
 (function hb(){if(S&&S.on&&A){tone(50,.18,'sine',.3);setTimeout(()=>tone(45,.14,'sine',.22),200)}setTimeout(hb,1900-(S?S.w:0)*100)})();
 setInterval(()=>{if(S&&S.on&&!busy&&Math.random()<.25+S.w*.04)scare()},25000);
+
+/* ===== 第柒門：計時 / 回大廳 ===== */
+const LOBBY='https://hao-yuliu.github.io/escape-room/';
+const fmt=s=>{const h=s/3600|0,m=(s%3600)/60|0,x=s%60,p=n=>String(n).padStart(2,'0');return(h?h+':'+p(m):p(m))+':'+p(x)};
+setInterval(()=>{if(S&&S.on&&!document.hidden){S.t=(S.t||0)+1;$('#tm').textContent='⏱ '+fmt(S.t)}},1000);
+function toLobby(){save();location.href=LOBBY}
+// 連線失敗時（12 秒內沒有完成登入檢查），讓玩家可以回大廳
+setTimeout(()=>{const h=document.getElementById('sd-hide');if(h&&!window.SD){h.remove();document.body.innerHTML='<div class="scr on"><h1>連線失敗</h1><p>無法確認你的角色，請重新整理，或回到大廳重新進入。</p><button onclick="location.reload()">重新整理</button><button onclick="location.href=LOBBY">回到大廳</button></div>'}},12000);
+</script>
+
+<!-- 第柒門：沒有註冊 / 沒有角色就送回大廳；記錄遊玩與通關時間 -->
+<script type="module">
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+const LOBBY = 'https://hao-yuliu.github.io/escape-room/', SLUG = 'qianchan-school';
+const sb = createClient('https://umlnwzpmjxktfzjvcbts.supabase.co', 'sb_publishable_8J3VI8dijlCccHQbXPfCQQ_v_O0Au3w');
+
+const { data: { session } } = await sb.auth.getSession();
+const user = session?.user ?? null;
+const { data: profile } = user
+  ? await sb.from('profiles').select('username').eq('id', user.id).maybeSingle()
+  : { data: null };
+
+if (!user || !profile) {
+  location.replace(`${LOBBY}?need=player&room=${SLUG}#rooms`);
+} else {
+  const { data: game } = await sb.from('games').select('id').eq('slug', SLUG).maybeSingle();
+  const begin = async () => {
+    if (!game) return null;
+    const { data } = await sb.from('play_records').insert({ user_id: user.id, game_id: game.id }).select('id').single();
+    return data?.id ?? null;
+  };
+  window.SD = {
+    player: profile,
+    begin,
+    async clear(rid, secs) {
+      if (!game) return;
+      rid = rid || await begin();
+      if (!rid) return;
+      await sb.from('play_records')
+        .update({ status: 'cleared', clear_time_sec: secs, updated_at: new Date().toISOString() })
+        .eq('id', rid);
+    },
+  };
+  document.getElementById('who').textContent = `玩家：${profile.username}`;
+  document.getElementById('sd-hide').remove();
+}
 </script></body></html>
